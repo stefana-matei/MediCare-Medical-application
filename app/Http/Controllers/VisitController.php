@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class VisitController extends Controller
 {
     /**
-     * @return User[]
+     * @return Collection
      */
-    public function visits(): array
+    public function visits(): Collection
     {
         /** @var User $user */
         $user = Auth::user();
