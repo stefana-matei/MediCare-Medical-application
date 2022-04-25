@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -46,13 +47,49 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @return bool
+     */
     public function isMedic()
     {
         return $this->role == self::ROLE_MEDIC;
     }
 
+    /**
+     * @return bool
+     */
     public function isPatient()
     {
         return $this->role == self::ROLE_PATIENT;
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function patientVisitsMedic(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'visits', 'patient_id', 'medic_id');
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function medicVisitedByPatient(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'visits', 'medic_id', 'patient_id');
+    }
+
+    /**
+     * @return BelongsToMany|null
+     */
+    public function visits(): ?BelongsToMany
+    {
+        if ($this->isMedic()) {
+            return $this->medicVisitedByPatient();
+        } else if ($this->isPatient()) {
+            return $this->patientVisitsMedic();
+        }
+
+        return null;
     }
 }
