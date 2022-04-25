@@ -32,4 +32,5 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/visits', ['App\Http\Controllers\VisitController', 'visits']);
+Route::get('/visits/{id}', ['App\Http\Controllers\VisitController', 'visitsToId']);
 

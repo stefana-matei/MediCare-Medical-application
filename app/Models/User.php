@@ -9,6 +9,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @property string $role
+ * @property User[] $visits
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -50,7 +54,7 @@ class User extends Authenticatable
     /**
      * @return bool
      */
-    public function isMedic()
+    public function isMedic(): bool
     {
         return $this->role == self::ROLE_MEDIC;
     }
@@ -58,7 +62,7 @@ class User extends Authenticatable
     /**
      * @return bool
      */
-    public function isPatient()
+    public function isPatient(): bool
     {
         return $this->role == self::ROLE_PATIENT;
     }
