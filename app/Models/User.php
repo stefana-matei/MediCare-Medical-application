@@ -12,6 +12,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const ROLE_MEDIC = 'medic';
+    const ROLE_PATIENT = 'patient';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -41,4 +45,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isMedic()
+    {
+        return $this->role == self::ROLE_MEDIC;
+    }
+
+    public function isPatient()
+    {
+        return $this->role == self::ROLE_PATIENT;
+    }
 }

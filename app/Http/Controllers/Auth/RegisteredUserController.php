@@ -34,16 +34,21 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        // TODO Remove when frontend can handle roles
+        $request->mergeIfMissing(['role' => User::ROLE_PATIENT]);
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role' => 'required|string'
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $request->role
         ]);
 
         event(new Registered($user));
@@ -51,5 +56,19 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
+    }
+
+    public function storeMedic(Request $request)
+    {
+        $request->merge(['role' => User::ROLE_MEDIC]);
+
+        return $this->store($request);
+    }
+
+    public function storePatient(Request $request)
+    {
+        $request->merge(['role' => User::ROLE_PATIENT]);
+
+        return $this->store($request);
     }
 }
