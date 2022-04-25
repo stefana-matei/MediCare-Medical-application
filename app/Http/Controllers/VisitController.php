@@ -31,5 +31,4 @@ class VisitController extends Controller
 
         return $user->visits()->where($column, $id)->get();
     }
-
 }
