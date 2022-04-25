@@ -12,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @property string $role
- * @property Collection $visits
+ * @property Collection $memberships
  */
 class User extends Authenticatable
 {
@@ -71,28 +71,28 @@ class User extends Authenticatable
     /**
      * @return BelongsToMany
      */
-    public function patientVisitsMedic(): BelongsToMany
+    public function patientMedicMemberships(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'visits', 'patient_id', 'medic_id');
+        return $this->belongsToMany(User::class, 'memberships', 'patient_id', 'medic_id');
     }
 
     /**
      * @return BelongsToMany
      */
-    public function medicVisitedByPatient(): BelongsToMany
+    public function medicPatientMemberships(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'visits', 'medic_id', 'patient_id');
+        return $this->belongsToMany(User::class, 'memberships', 'medic_id', 'patient_id');
     }
 
     /**
      * @return BelongsToMany|null
      */
-    public function visits(): ?BelongsToMany
+    public function memberships(): ?BelongsToMany
     {
         if ($this->isMedic()) {
-            return $this->medicVisitedByPatient();
+            return $this->medicPatientMemberships();
         } else if ($this->isPatient()) {
-            return $this->patientVisitsMedic();
+            return $this->patientMedicMemberships();
         }
 
         return null;

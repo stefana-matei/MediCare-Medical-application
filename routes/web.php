@@ -31,6 +31,6 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 
-Route::get('/visits', ['App\Http\Controllers\VisitController', 'visits']);
-Route::get('/visits/{id}', ['App\Http\Controllers\VisitController', 'visitsToId']);
+Route::get('/memberships', ['App\Http\Controllers\MembershipController', 'memberships']);
+Route::get('/memberships/{id}', ['App\Http\Controllers\MembershipController', 'membershipsToId']);
 

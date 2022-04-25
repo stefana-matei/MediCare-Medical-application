@@ -7,28 +7,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
-class VisitController extends Controller
+class MembershipController extends Controller
 {
     /**
      * @return Collection
      */
-    public function visits(): Collection
+    public function memberships(): Collection
     {
         /** @var User $user */
         $user = Auth::user();
-        return $user->visits;
+        return $user->memberships;
     }
 
     /**
      * @param $id
      * @return Collection
      */
-    public function visitsToId($id): Collection
+    public function membershipsToId($id): Collection
     {
         /** @var User $user */
         $user = Auth::user();
         $column = $user->isMedic() ? 'patient_id' : 'medic_id';
 
-        return $user->visits()->where($column, $id)->get();
+        return $user->memberships()->where($column, $id)->get();
     }
 }
