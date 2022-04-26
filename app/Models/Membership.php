@@ -16,7 +16,7 @@ class Membership extends Model
         'patient_id'
     ];
 
-    //
+    
     public function medic()
     {
         return $this->belongsTo(User::class, 'medic_id');
