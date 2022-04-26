@@ -34,3 +34,4 @@ require __DIR__.'/auth.php';
 Route::get('/memberships', ['App\Http\Controllers\MembershipController', 'memberships']);
 Route::get('/memberships/{id}', ['App\Http\Controllers\MembershipController', 'membershipsToId']);
 
+

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use function PHPUnit\Framework\isNull;
 
 class MembershipController extends Controller
 {
@@ -34,5 +35,32 @@ class MembershipController extends Controller
             ->with('patient', 'medic')
             ->where($column, $id)
             ->get();
+    }
+
+    public function create(Request $request)
+    {
+//        Auth::loginUsingId(1);
+
+        /** @var User $user */
+        $user = Auth::user();
+        $column = $user->isMedic() ? 'patient_id' : 'medic_id';
+
+        $id = $request->id;
+
+        $membership = $user->memberships()
+            ->where($column, $id)
+            ->first();
+
+        if (is_null($membership)) {
+            $membership = $user->memberships()->create([
+                $column => $id
+            ]);
+        }
+
+//        $membership = $user->memberships()->firstOrCreate([
+//            $column => $id
+//        ]);
+
+        return $membership;
     }
 }

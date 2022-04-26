@@ -23,5 +23,8 @@ require __DIR__.'/auth.php';
 // TODO Remove test routes
 Route::get('/test/user', ['App\Http\Controllers\TestController', 'getUser']);
 
+Route::post('/memberships', ['App\Http\Controllers\MembershipController', 'create']);
+
+
 
 
