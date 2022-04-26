@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Membership;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -23,12 +24,15 @@ class MembershipController extends Controller
      * @param $id
      * @return Collection
      */
-    public function membershipsToId($id): Collection
+    public function membershipsToId($id)
     {
         /** @var User $user */
         $user = Auth::user();
         $column = $user->isMedic() ? 'patient_id' : 'medic_id';
 
-        return $user->memberships()->where($column, $id)->get();
+        return $user->memberships()
+            ->with('patient', 'medic')
+            ->where($column, $id)
+            ->get();
     }
 }

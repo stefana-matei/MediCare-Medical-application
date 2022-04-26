@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
@@ -69,25 +70,25 @@ class User extends Authenticatable
     }
 
     /**
-     * @return BelongsToMany
+     * @return HasMany
      */
-    public function patientMedicMemberships(): BelongsToMany
+    public function patientMedicMemberships(): HasMany
     {
-        return $this->belongsToMany(User::class, 'memberships', 'patient_id', 'medic_id');
+        return $this->hasMany(Membership::class, 'patient_id');
     }
 
     /**
-     * @return BelongsToMany
+     * @return HasMany
      */
-    public function medicPatientMemberships(): BelongsToMany
+    public function medicPatientMemberships(): HasMany
     {
-        return $this->belongsToMany(User::class, 'memberships', 'medic_id', 'patient_id');
+        return $this->hasMany(Membership::class, 'medic_id');
     }
 
     /**
-     * @return BelongsToMany|null
+     * @return HasMany|null
      */
-    public function memberships(): ?BelongsToMany
+    public function memberships()
     {
         if ($this->isMedic()) {
             return $this->medicPatientMemberships();
