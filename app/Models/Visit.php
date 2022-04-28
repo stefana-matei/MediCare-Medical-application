@@ -10,6 +10,10 @@ class Visit extends Model
 {
     use HasFactory;
 
+    protected $dates = [
+        'date'
+    ];
+
     public function record()
     {
         return $this->hasOne(Record::class);

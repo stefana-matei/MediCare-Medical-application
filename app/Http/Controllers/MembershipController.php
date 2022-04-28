@@ -65,7 +65,7 @@ class MembershipController extends Controller
     {
         return Auth::user()->memberships;
     }
-    
+
     public function delete($id)
     {
         Auth::loginUsingId(1);
