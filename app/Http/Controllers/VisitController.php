@@ -36,8 +36,6 @@ class VisitController extends Controller
     // delete
     public function delete($id)
     {
-
-
         Visit::find($id)->delete();
     }
 
