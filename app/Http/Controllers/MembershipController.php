@@ -59,13 +59,13 @@ class MembershipController extends Controller
     /**
      * @return Collection
      */
+
     // list all memberships
     public function list(): Collection
     {
         return Auth::user()->memberships;
     }
-
-
+    
     public function delete($id)
     {
         Auth::loginUsingId(1);
