@@ -14,6 +14,7 @@ class MembershipController extends Controller
     /**
      * @return Collection
      */
+    // list all of memberships
     public function memberships(): Collection
     {
         /** @var User $user */
@@ -39,7 +40,7 @@ class MembershipController extends Controller
 
     public function create(Request $request)
     {
-//        Auth::loginUsingId(1);
+        Auth::loginUsingId(1);
 
         /** @var User $user */
         $user = Auth::user();
@@ -63,4 +64,20 @@ class MembershipController extends Controller
 
         return $membership;
     }
+
+    public function get($id)
+    {
+        /** @var User $user */
+        $user = Auth::user();
+
+        return $user->memberships()->findOrFail($id);
+    }
+
+    public function delete($id)
+    {
+        Auth::loginUsingId(1);
+
+        Auth::user()->memberships()->findOrFail($id)->delete();
+    }
+
 }

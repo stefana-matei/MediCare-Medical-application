@@ -25,6 +25,7 @@ Route::get('/test/user', ['App\Http\Controllers\TestController', 'getUser']);
 
 Route::post('/memberships', ['App\Http\Controllers\MembershipController', 'create']);
 
+Route::delete('/memberships/{id}', ['App\Http\Controllers\MembershipController', 'delete']);
 
 
 

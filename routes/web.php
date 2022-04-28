@@ -33,5 +33,6 @@ require __DIR__.'/auth.php';
 
 Route::get('/memberships', ['App\Http\Controllers\MembershipController', 'memberships']);
 Route::get('/memberships/{id}', ['App\Http\Controllers\MembershipController', 'membershipsToId']);
+//Route::delete('/memberships/{id}', ['App\Http\Controllers\MembershipController', 'delete']);
 
 
