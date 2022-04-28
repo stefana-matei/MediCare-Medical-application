@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Membership;
 use App\Models\User;
+use App\Services\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
-use function PHPUnit\Framework\isNull;
 
 class MembershipController extends Controller
 {
@@ -17,7 +16,6 @@ class MembershipController extends Controller
      */
     public function membershipsToId($id)
     {
-        /** @var User $user */
         $user = Auth::user();
         $column = $user->isMedic() ? 'patient_id' : 'medic_id';
 
@@ -31,7 +29,6 @@ class MembershipController extends Controller
     {
         Auth::loginUsingId(1);
 
-        /** @var User $user */
         $user = Auth::user();
         $column = $user->isMedic() ? 'patient_id' : 'medic_id';
 
@@ -56,10 +53,7 @@ class MembershipController extends Controller
 
     public function get($id)
     {
-        /** @var User $user */
-        $user = Auth::user();
-
-        return $user->memberships()->findOrFail($id);
+        return Auth::user()->memberships()->findOrFail($id);
     }
 
     /**
@@ -68,9 +62,7 @@ class MembershipController extends Controller
     // list all memberships
     public function list(): Collection
     {
-        /** @var User $user */
-        $user = Auth::user();
-        return $user->memberships;
+        return Auth::user()->memberships;
     }
 
 

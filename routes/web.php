@@ -35,6 +35,10 @@ Route::get('/memberships', ['App\Http\Controllers\MembershipController', 'list']
 Route::get('/memberships/{id}', ['App\Http\Controllers\MembershipController', 'membershipsToId']);
 //Route::delete('/memberships/{id}', ['App\Http\Controllers\MembershipController', 'delete']);
 
-//rute get pentru celelalte
+// rute get pentru celelalte
+Route::get('/visits', ['App\Http\Controllers\VisitController', 'list']);
+
+Route::get('/record', ['App\Http\Controllers\RecordController', 'list']);
+
 
 
