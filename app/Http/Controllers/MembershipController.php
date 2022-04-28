@@ -12,17 +12,6 @@ use function PHPUnit\Framework\isNull;
 class MembershipController extends Controller
 {
     /**
-     * @return Collection
-     */
-    // list all of memberships
-    public function memberships(): Collection
-    {
-        /** @var User $user */
-        $user = Auth::user();
-        return $user->memberships;
-    }
-
-    /**
      * @param $id
      * @return Collection
      */
@@ -73,11 +62,22 @@ class MembershipController extends Controller
         return $user->memberships()->findOrFail($id);
     }
 
+    /**
+     * @return Collection
+     */
+    // list all memberships
+    public function list(): Collection
+    {
+        /** @var User $user */
+        $user = Auth::user();
+        return $user->memberships;
+    }
+
+
     public function delete($id)
     {
         Auth::loginUsingId(1);
 
         Auth::user()->memberships()->findOrFail($id)->delete();
     }
-
 }
