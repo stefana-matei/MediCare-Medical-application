@@ -10,9 +10,10 @@ class TestController extends Controller
     public function getUser()
     {
         /** @var User $user */
-        $user = User::find(1);
+        $user = User::find(2);
 
-        dd($user->visits()->where('patient_id', 2)->get());
+        return $user->memberships()->with('visits', 'visits.record')->get();
+
 
     }
 }

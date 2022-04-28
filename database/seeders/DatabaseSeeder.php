@@ -32,15 +32,41 @@ class DatabaseSeeder extends Seeder
             'email' => 'patient_1@pat.com'
         ]);
 
+        /** @var User $medic2 */
+        $medic2 = User::factory()->create([
+            'role' => 'medic',
+            'name' => 'Medic 2',
+            'email' => 'medic_2@med.com'
+        ]);
+
+
+
         /** @var Membership $membership */
         $membership = $medic->memberships()->create([
             'patient_id' => $patient->id
         ]);
 
-        $visit = $membership->visits()->create([
-            'date' => now()
+        /** @var Membership $membership2 */
+        $membership2 = $medic2->memberships()->create([
+            'patient_id' => $patient->id
         ]);
 
-        dd(Visit::first()->date, Visit::first()->created_at);
+
+        /** @var Visit $visit */
+        /** @var Visit $visit2 */
+        /** @var Visit $visit3 */
+        /** @var Visit $visit4 */
+
+        $visit = $membership->visits()->create([ 'date' => now() ]);
+        $visit2 = $membership->visits()->create([ 'date' => now() ]);
+        $visit3 = $membership2->visits()->create([ 'date' => now() ]);
+        $visit4 = $membership2->visits()->create([ 'date' => now() ]);
+
+        $record = $visit->record()->create([ 'file_name' => "Fisa nr. 1" ]);
+        $record2 = $visit2->record()->create([ 'file_name' => "Fisa nr. 2" ]);
+        $record3 = $visit3->record()->create([ 'file_name' => "Fisa nr. 3" ]);
+        $record4 = $visit4->record()->create([ 'file_name' => "Fisa nr. 4" ]);
+
+
     }
 }
