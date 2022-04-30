@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\MembershipController;
+use App\Services\Auth;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,24 +16,36 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    if (Auth::user()->isMedic()) {
+        return view('authenticated.medic.dashboard');
+    } else {
+        return view('authenticated.patient.dashboard');
+    }
 
-require __DIR__.'/auth.php';
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';
 
 
-Route::get('/memberships', ['App\Http\Controllers\MembershipController', 'list']);
-Route::get('/memberships/{id}', ['App\Http\Controllers\MembershipController', 'membershipsToId']);
-//Route::delete('/memberships/{id}', ['App\Http\Controllers\MembershipController', 'delete']);
+// CreateView
+Route::get('/memberships/create', [MembershipController::class, 'createView'])->name('memberships.createView');
+// Create
+Route::post('/memberships', [MembershipController::class, 'create'])->name('memberships.create');
+// Get
+Route::get('/memberships/{id}', [MembershipController::class, 'get'])->name('memberships.get');
+// List
+Route::get('/memberships', [MembershipController::class, 'list'])->name('memberships.list');
+// Update
+Route::put('/memberships/{id}', [MembershipController::class, 'update'])->name('memberships.update');
+// UpdateView
+Route::get('/memberships/{id}/edit', [MembershipController::class, 'updateView'])->name('memberships.updateView');
+// Delete
+Route::delete('/memberships/{id}', [MembershipController::class, 'delete'])->name('memberships.delete');
+
 
 // rute get pentru celelalte
 Route::get('/visits', ['App\Http\Controllers\VisitController', 'list']);

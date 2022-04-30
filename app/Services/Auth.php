@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth as FacadeAuth;
 
 class Auth
 {
@@ -11,6 +12,6 @@ class Auth
      */
     public static function user()
     {
-        return Auth::user();
+        return FacadeAuth::user();
     }
 }

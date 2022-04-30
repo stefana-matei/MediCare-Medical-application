@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Visit;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,21 +23,24 @@ class DatabaseSeeder extends Seeder
         $medic = User::factory()->create([
             'role' => 'medic',
             'name' => 'Medic 1',
-            'email' => 'medic_1@med.com'
+            'email' => 'medic_1@med.com',
+            'password' => Hash::make('secret123')
         ]);
 
         /** @var User $patient */
         $patient = User::factory()->create([
             'role' => 'patient',
             'name' => 'Patient 1',
-            'email' => 'patient_1@pat.com'
+            'email' => 'patient_1@pat.com',
+            'password' => Hash::make('secret123')
         ]);
 
         /** @var User $medic2 */
         $medic2 = User::factory()->create([
             'role' => 'medic',
             'name' => 'Medic 2',
-            'email' => 'medic_2@med.com'
+            'email' => 'medic_2@med.com',
+            'password' => Hash::make('secret123')
         ]);
 
 
