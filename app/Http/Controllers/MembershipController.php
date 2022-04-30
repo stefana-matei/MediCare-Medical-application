@@ -40,13 +40,13 @@ class MembershipController extends Controller
         $user = Auth::user();
 
         if($email == $user->email) {
-            throw new Exception('You can not subscribe to yourself');
+            return back()->withErrors(['email' => 'Nu te poti abona la tine insuti!']);
         }
 
         $member = User::where('email', $email)->first();
 
         if(is_null($member)){
-            throw new Exception("Nu exista email-ul in BD!");
+            return back()->withErrors(['email' => 'Nu exista email-ul in BD!']);
         }
 
         $column = $user->getOtherMemberKey();
