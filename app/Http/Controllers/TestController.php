@@ -13,7 +13,5 @@ class TestController extends Controller
         $user = User::find(2);
 
         return $user->memberships()->with('visits', 'visits.record')->get();
-
-
     }
 }

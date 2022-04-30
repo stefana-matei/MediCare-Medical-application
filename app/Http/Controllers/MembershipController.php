@@ -17,7 +17,7 @@ class MembershipController extends Controller
     public function membershipsToId($id)
     {
         $user = Auth::user();
-        $column = $user->isMedic() ? 'patient_id' : 'medic_id';
+        $column = $user->getOtherMemberKey();
 
         return $user->memberships()
             ->with('patient', 'medic')
@@ -30,7 +30,7 @@ class MembershipController extends Controller
         Auth::loginUsingId(1);
 
         $user = Auth::user();
-        $column = $user->isMedic() ? 'patient_id' : 'medic_id';
+        $column = $user->getOtherMemberKey();
 
         $id = $request->id;
 

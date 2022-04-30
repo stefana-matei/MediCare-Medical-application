@@ -69,6 +69,11 @@ class User extends Authenticatable
         return $this->role == self::ROLE_PATIENT;
     }
 
+    public function getOtherMemberKey()
+    {
+        return $this->isMedic() ? 'patient_id' : 'medic_id';
+    }
+
     /**
      * @return HasMany
      */
