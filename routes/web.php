@@ -40,9 +40,9 @@ Route::get('/memberships/{id}', [MembershipController::class, 'get'])->name('mem
 // List
 Route::get('/memberships', [MembershipController::class, 'list'])->name('memberships.list');
 // Update
-Route::put('/memberships/{id}', [MembershipController::class, 'update'])->name('memberships.update');
+//Route::put('/memberships/{id}', [MembershipController::class, 'update'])->name('memberships.update');
 // UpdateView
-Route::get('/memberships/{id}/edit', [MembershipController::class, 'updateView'])->name('memberships.updateView');
+//Route::get('/memberships/{id}/edit', [MembershipController::class, 'updateView'])->name('memberships.updateView');
 // Delete
 Route::delete('/memberships/{id}', [MembershipController::class, 'delete'])->name('memberships.delete');
 
