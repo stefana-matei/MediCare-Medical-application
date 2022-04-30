@@ -18,14 +18,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-require __DIR__.'/auth.php';
-
-// TODO Remove test routes
-Route::get('/test/user', ['App\Http\Controllers\TestController', 'getUser']);
-
-Route::post('/memberships', ['App\Http\Controllers\MembershipController', 'create']);
-
-Route::delete('/memberships/{id}', ['App\Http\Controllers\MembershipController', 'delete']);
-
-
-

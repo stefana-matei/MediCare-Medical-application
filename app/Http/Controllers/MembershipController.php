@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Membership;
 use App\Models\User;
 use App\Services\Auth;
+use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\View\View;
 
 class MembershipController extends Controller
 {
@@ -25,51 +28,79 @@ class MembershipController extends Controller
             ->get();
     }
 
-    public function create(Request $request)
-    {
-        Auth::loginUsingId(1);
 
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws Exception
+     */
+    public function create(Request $request): RedirectResponse
+    {
+        $email = $request->email;
         $user = Auth::user();
+
+        if($email == $user->email) {
+            throw new Exception('You can not subscribe to yourself');
+        }
+
+        $member = User::where('email', $email)->first();
+
+        if(is_null($member)){
+            throw new Exception("Nu exista email-ul in BD!");
+        }
+
         $column = $user->getOtherMemberKey();
 
-        $id = $request->id;
-
         $membership = $user->memberships()
-            ->where($column, $id)
+            ->where($column, $member->id)
             ->first();
 
         if (is_null($membership)) {
-            $membership = $user->memberships()->create([
-                $column => $id
+            $user->memberships()->create([
+                $column => $member->id
             ]);
         }
 
-//        $membership = $user->memberships()->firstOrCreate([
-//            $column => $id
-//        ]);
-
-        return $membership;
+        return redirect()->route('memberships.list');
     }
 
-    public function get($id)
+    public function createView()
     {
-        return Auth::user()->memberships()->findOrFail($id);
+        return view('authenticated.patient.memberships.create');
     }
 
     /**
-     * @return Collection
+     * @param $id
+     * @return View
      */
-
-    // list all memberships
-    public function list(): Collection
+    public function get($id): View
     {
-        return Auth::user()->memberships;
+        return view('authenticated.patient.memberships.get', [
+            'membership' => Auth::user()->memberships()->with('medic', 'patient')->findOrFail($id)
+        ]);
     }
 
+    /**
+     * List all memberships
+     * Eager loads medic and patient
+     *
+     * @return View
+     */
+    public function list(): View
+    {
+        return view('authenticated.patient.memberships.list', [
+            'memberships' => Auth::user()->memberships()->with('medic', 'patient')->get()
+        ]);
+    }
+
+    /**
+     * @param $id
+     * @return RedirectResponse
+     */
     public function delete($id)
     {
-        Auth::loginUsingId(1);
-
         Auth::user()->memberships()->findOrFail($id)->delete();
+
+        return redirect()->back();
     }
 }
