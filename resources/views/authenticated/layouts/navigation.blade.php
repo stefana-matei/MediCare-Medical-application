@@ -19,6 +19,10 @@
                     <x-nav-link :href="route('memberships.list')" :active="request()->routeIs('memberships')">
                         Subscriptii
                     </x-nav-link>
+
+                    <x-nav-link :href="route('visits.list')" :active="request()->routeIs('visits')">
+                        Vizite
+                    </x-nav-link>
                 </div>
             </div>
 
