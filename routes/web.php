@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\VisitController;
 use App\Services\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
-
+// membership
 // CreateView
 Route::get('/memberships/create', [MembershipController::class, 'createView'])->name('memberships.createView');
 // Create
@@ -40,17 +41,27 @@ Route::get('/memberships/{id}', [MembershipController::class, 'get'])->name('mem
 // List
 Route::get('/memberships', [MembershipController::class, 'list'])->name('memberships.list');
 // Update
-//Route::put('/memberships/{id}', [MembershipController::class, 'update'])->name('memberships.update');
+Route::put('/memberships/{id}', [MembershipController::class, 'update'])->name('memberships.update');
 // UpdateView
-//Route::get('/memberships/{id}/edit', [MembershipController::class, 'updateView'])->name('memberships.updateView');
+Route::get('/memberships/{id}/edit', [MembershipController::class, 'updateView'])->name('memberships.updateView');
 // Delete
 Route::delete('/memberships/{id}', [MembershipController::class, 'delete'])->name('memberships.delete');
 
-
-// rute get pentru celelalte
-Route::get('/visits', ['App\Http\Controllers\VisitController', 'list']);
-
-Route::get('/record', ['App\Http\Controllers\RecordController', 'list']);
+// Visits
+// CreateView
+Route::get('/visits/create', [VisitController::class, 'createView'])->name('visits.createView');
+// Create
+Route::post('/visits', [VisitController::class, 'create'])->name('visits.create');
+// Get
+Route::get('/visits/{id}', [VisitController::class, 'get'])->name('visits.get');
+// List
+Route::get('/visits', [VisitController::class, 'list'])->name('visits.list');
+// Update
+Route::put('/visits/{id}', [VisitController::class, 'update'])->name('visits.update');
+// UpdateView
+Route::get('/visits/{id}/edit', [VisitController::class, 'updateView'])->name('visits.updateView');
+// Delete
+Route::delete('/visits/{id}', [VisitController::class, 'delete'])->name('visits.delete');
 
 
 

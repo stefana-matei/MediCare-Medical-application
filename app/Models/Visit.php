@@ -10,6 +10,10 @@ class Visit extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'membership_id'
+    ];
+
     protected $dates = [
         'date'
     ];

@@ -74,20 +74,9 @@ class User extends Authenticatable
         return $this->isMedic() ? 'patient_id' : 'medic_id';
     }
 
-    /**
-     * @return HasMany
-     */
-    public function patientMedicMemberships(): HasMany
+    public function getMemberKey()
     {
-        return $this->hasMany(Membership::class, 'patient_id');
-    }
-
-    /**
-     * @return HasMany
-     */
-    public function medicPatientMemberships(): HasMany
-    {
-        return $this->hasMany(Membership::class, 'medic_id');
+        return $this->isMedic() ? 'medic_id' : 'patient_id';
     }
 
     /**
@@ -95,12 +84,12 @@ class User extends Authenticatable
      */
     public function memberships()
     {
-        if ($this->isMedic()) {
-            return $this->medicPatientMemberships();
-        } else if ($this->isPatient()) {
-            return $this->patientMedicMemberships();
-        }
+        return $this->hasMany(Membership::class, $this->getMemberKey());
+    }
 
-        return null;
+
+    public function visits()
+    {
+        return $this->hasManyThrough(Visit::class, Membership::class, $this->getMemberKey());
     }
 }
