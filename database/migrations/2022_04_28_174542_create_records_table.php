@@ -17,6 +17,7 @@ class CreateRecordsTable extends Migration
             $table->id();
             $table->foreignId('visit_id');
             $table->string('file_name');
+            $table->timestamp('date_processed');
             $table->timestamps();
         });
     }

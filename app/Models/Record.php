@@ -10,7 +10,12 @@ class Record extends Model
     use HasFactory;
 
     protected $fillable = [
-        'file_name'
+        'file_name',
+        'date_processed'
+    ];
+
+    protected $dates = [
+        'date_processed'
     ];
 
 

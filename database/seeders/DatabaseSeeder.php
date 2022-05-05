@@ -69,7 +69,10 @@ class DatabaseSeeder extends Seeder
             'date' => now()
         ]);
 
-        $record = $visit->record()->create([ 'file_name' => "Fisa nr. 1" ]);
+        $record = $visit->record()->create([
+            'file_name' => "Fisa nr. 1",
+            'date_processed' => now()->subDay(7)
+        ]);
 //        $record2 = $visit2->record()->create([ 'file_name' => "Fisa nr. 2" ]);
         $record3 = $visit3->record()->create([ 'file_name' => "Fisa nr. 3" ]);
 //        $record4 = $visit4->record()->create([ 'file_name' => "Fisa nr. 4" ]);
