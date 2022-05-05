@@ -13,6 +13,16 @@
             <div class="p-6 bg-white border-b border-gray-200">
                 <p><strong>{{ $record->file_name }}</strong></p>
                 <p>Data procesarii: <strong>{{ $record->date_processed->format('d M Y') }}</strong></p>
+
+                <form class="inline-block" method="POST"
+                      action="{{ route('visits.record.delete', ['visit_id' => $record->visit_id]) }}">
+                    @csrf
+                    @method('DELETE')
+
+                    <x-deletesubmit>
+                        Delete
+                    </x-deletesubmit>
+                </form>
             </div>
         </div>
     </div>

@@ -18,12 +18,6 @@ class Record extends Model
         'date_processed'
     ];
 
-
-    public function diagnostic()
-    {
-        return $this->hasOne(Diagnostic::class);
-    }
-
     public function visit()
     {
         return $this->belongsTo(Visit::class);
