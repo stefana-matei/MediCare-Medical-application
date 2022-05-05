@@ -2,9 +2,9 @@
 
 @section('header')
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        List Visits <br>
+        Consultatiile mele <br>
         <x-link href="{{ route('visits.createView') }}">
-            Create
+            Adauga consultatie
         </x-link>
     </h2>
 @endsection
@@ -24,11 +24,11 @@
 
                         @if($visit->record)
                             <x-purplelink href="{{ route('visits.record.get', ['visit_id' => $visit->id]) }}">
-                                Get Record
+                                Vezi raportul medical
                             </x-purplelink>
                         @else
                             <x-greenlink href="{{ route('visits.record.createView', ['visit_id' => $visit->id]) }}">
-                                Create Record
+                                Adaugare raport
                             </x-greenlink>
                         @endif
 
