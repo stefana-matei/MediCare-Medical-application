@@ -30,6 +30,8 @@ class MembershipController extends Controller
 
 
     /**
+     * Creates a membership
+     *
      * @param Request $request
      * @return RedirectResponse
      * @throws Exception
@@ -64,12 +66,21 @@ class MembershipController extends Controller
         return redirect()->route('memberships.list');
     }
 
-    public function createView()
+
+    /**
+     * Displays the form that creates a membership
+     *
+     * @return View
+     */
+    public function createView(): View
     {
         return view('authenticated.patient.memberships.create');
     }
 
+
     /**
+     * Displays a membership
+     *
      * @param $id
      * @return View
      */
@@ -79,6 +90,7 @@ class MembershipController extends Controller
             'membership' => Auth::user()->memberships()->with('medic', 'patient')->findOrFail($id)
         ]);
     }
+
 
     /**
      * List all memberships
@@ -93,11 +105,14 @@ class MembershipController extends Controller
         ]);
     }
 
+
     /**
+     * Deletes a membership
+     *
      * @param $id
      * @return RedirectResponse
      */
-    public function delete($id)
+    public function delete($id): RedirectResponse
     {
         Auth::user()->memberships()->findOrFail($id)->delete();
 

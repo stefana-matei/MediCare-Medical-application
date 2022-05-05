@@ -18,7 +18,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <p><strong>Onorata: </strong> {{ $visit->honored ? 'Da' : 'Nu' }}</p>
                         <p><strong>Data: </strong> {{ $visit->date }}</p>
-                        <p><strong>Medic ID: </strong> {{ $visit->membership->medic_id }}</p>
+{{--                        <p><strong>Medic ID: </strong> {{ $visit->membership->medic_id }}</p>--}}
                         <p><strong>Medic name: </strong> {{ $visit->membership->medic->name }}</p>
 
 

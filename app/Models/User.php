@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
@@ -34,6 +35,7 @@ class User extends Authenticatable
         'role'
     ];
 
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -44,6 +46,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
     /**
      * The attributes that should be cast.
      *
@@ -53,6 +56,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
     /**
      * @return bool
      */
@@ -60,6 +64,7 @@ class User extends Authenticatable
     {
         return $this->role == self::ROLE_MEDIC;
     }
+
 
     /**
      * @return bool
@@ -69,15 +74,18 @@ class User extends Authenticatable
         return $this->role == self::ROLE_PATIENT;
     }
 
+
     public function getOtherMemberKey()
     {
         return $this->isMedic() ? 'patient_id' : 'medic_id';
     }
 
+
     public function getMemberKey()
     {
         return $this->isMedic() ? 'medic_id' : 'patient_id';
     }
+
 
     /**
      * @return HasMany|null
@@ -88,6 +96,9 @@ class User extends Authenticatable
     }
 
 
+    /**
+     * @return HasManyThrough
+     */
     public function visits()
     {
         return $this->hasManyThrough(Visit::class, Membership::class, $this->getMemberKey());

@@ -33,6 +33,7 @@ class VisitController extends Controller
         return redirect()->route('visits.list');
     }
 
+
     /**
      * Displays the form that creates a visit
      *
@@ -44,6 +45,7 @@ class VisitController extends Controller
              'memberships' => Auth::user()->memberships()->with('medic')->get()
          ]);
     }
+
 
     /**
      * Displays a visit
@@ -58,6 +60,7 @@ class VisitController extends Controller
         ]);
     }
 
+
     /**
      * Displays a list of visits
      *
@@ -69,6 +72,7 @@ class VisitController extends Controller
             'visits' => Auth::user()->visits()->with('membership', 'membership.medic', 'record')->get()
         ]);
     }
+
 
     /**
      * Updates a visit
@@ -82,6 +86,7 @@ class VisitController extends Controller
         return Visit::find($id)->update($request->all());
     }
 
+
     /**
      * Displays the form that updates a visit
      *
@@ -90,8 +95,9 @@ class VisitController extends Controller
      */
     public function updateView()
     {
-
+        //
     }
+
 
     /**
      * Deletes a visit
