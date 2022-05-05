@@ -21,18 +21,6 @@
                         <p><strong>Medic ID: </strong> {{ $visit->membership->medic_id }}</p>
                         <p><strong>Medic name: </strong> {{ $visit->membership->medic->name }}</p>
 
-
-                        @if($visit->record)
-                            <x-purplelink href="{{ route('visits.record.get', ['visit_id' => $visit->id]) }}">
-                                Get Record
-                            </x-purplelink>
-                        @else
-                            <x-greenlink href="{{ route('visits.record.createView', ['visit_id' => $visit->id]) }}">
-                                Create Record
-                            </x-greenlink>
-                        @endif
-
-
                         <x-link href="{{ route('visits.get', ['id' => $visit->id]) }}">
                             Get
                         </x-link>

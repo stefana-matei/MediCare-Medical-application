@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\RecordController;
 use App\Http\Controllers\VisitController;
 use App\Services\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
-// membership
+// Membership
 // CreateView
 Route::get('/memberships/create', [MembershipController::class, 'createView'])->name('memberships.createView');
 // Create
@@ -62,6 +63,17 @@ Route::put('/visits/{id}', [VisitController::class, 'update'])->name('visits.upd
 Route::get('/visits/{id}/edit', [VisitController::class, 'updateView'])->name('visits.updateView');
 // Delete
 Route::delete('/visits/{id}', [VisitController::class, 'delete'])->name('visits.delete');
+
+
+// Record
+// Get
+Route::get('/visits/{visit_id}/record', [RecordController::class, 'get'])->name('visits.record.get');
+// CreateView
+Route::get('/visits/{visit_id}/record/create', [RecordController::class, 'createView'])->name('visits.record.createView');
+// Create
+Route::post('/visits/{visit_id}/record', [RecordController::class, 'create'])->name('visits.record.create');
+// Delete
+Route::delete('/visits/{visit_id}/record', [RecordController::class, 'delete'])->name('visits.record.delete');
 
 
 

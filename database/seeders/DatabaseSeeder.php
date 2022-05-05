@@ -64,12 +64,15 @@ class DatabaseSeeder extends Seeder
         $visit = $membership->visits()->create([ 'date' => now() ]);
         $visit2 = $membership->visits()->create([ 'date' => now() ]);
         $visit3 = $membership2->visits()->create([ 'date' => now() ]);
-        $visit4 = $membership2->visits()->create([ 'date' => now() ]);
+        $visit4 = $membership2->visits()->create([
+            'honored' => true,
+            'date' => now()
+        ]);
 
         $record = $visit->record()->create([ 'file_name' => "Fisa nr. 1" ]);
-        $record2 = $visit2->record()->create([ 'file_name' => "Fisa nr. 2" ]);
+//        $record2 = $visit2->record()->create([ 'file_name' => "Fisa nr. 2" ]);
         $record3 = $visit3->record()->create([ 'file_name' => "Fisa nr. 3" ]);
-        $record4 = $visit4->record()->create([ 'file_name' => "Fisa nr. 4" ]);
+//        $record4 = $visit4->record()->create([ 'file_name' => "Fisa nr. 4" ]);
 
 
     }

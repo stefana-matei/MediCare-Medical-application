@@ -9,6 +9,10 @@ class Record extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'file_name'
+    ];
+
 
     public function diagnostic()
     {

@@ -18,6 +18,10 @@ class Visit extends Model
         'date'
     ];
 
+    protected $casts = [
+        'honored' => 'boolean'
+    ];
+
     public function record()
     {
         return $this->hasOne(Record::class);
