@@ -13,6 +13,13 @@ use Illuminate\View\View;
 
 class MembershipController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * @param $id
      * @return Collection

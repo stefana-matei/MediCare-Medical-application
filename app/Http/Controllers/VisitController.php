@@ -13,6 +13,12 @@ use Illuminate\View\View;
 
 class VisitController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Creates a visit
      *
