@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Appointment;
 use App\Models\Membership;
 use App\Models\User;
 use App\Models\Visit;
@@ -27,19 +28,19 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('secret123')
         ]);
 
-        /** @var User $patient */
-        $patient = User::factory()->create([
-            'role' => 'patient',
-            'name' => 'Patient 1',
-            'email' => 'patient_1@pat.com',
-            'password' => Hash::make('secret123')
-        ]);
-
         /** @var User $medic2 */
         $medic2 = User::factory()->create([
             'role' => 'medic',
             'name' => 'Medic 2',
             'email' => 'medic_2@med.com',
+            'password' => Hash::make('secret123')
+        ]);
+
+        /** @var User $patient */
+        $patient = User::factory()->create([
+            'role' => 'patient',
+            'name' => 'Patient 1',
+            'email' => 'patient_1@pat.com',
             'password' => Hash::make('secret123')
         ]);
 
@@ -56,19 +57,66 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
+        // appointments
+        /** @var Appointment $appointment */
+        /** @var Appointment $appointment2 */
+        /** @var Appointment $appointment3 */
+        /** @var Appointment $appointment4 */
+
+        $appointment = $membership->appointments()->create([
+            'date' => now(),
+            'specialization' => 'Urology',
+            'honored' => true
+        ]);
+
+        $appointment2 = $membership->appointments()->create([
+            'date' => now(),
+            'specialization' => 'Cardiology',
+            'honored' => false
+        ]);
+
+        $appointment3 = $membership2->appointments()->create([
+            'date' => now(),
+            'specialization' => 'Gynecology',
+            'honored' => true
+        ]);
+
+        $appointment4 = $membership2->appointments()->create([
+            'date' => now(),
+            'specialization' => 'Gynecology',
+            'honored' => false
+        ]);
+
+
+
+        // visits
         /** @var Visit $visit */
         /** @var Visit $visit2 */
         /** @var Visit $visit3 */
         /** @var Visit $visit4 */
 
-        $visit = $membership->visits()->create([ 'date' => now() ]);
-        $visit2 = $membership->visits()->create([ 'date' => now() ]);
-        $visit3 = $membership2->visits()->create([ 'date' => now() ]);
-        $visit4 = $membership2->visits()->create([
-            'honored' => true,
-            'date' => now()
+        $visit = $membership->visits()->create([
+            'date' => now(),
+            'appointment_id' => $appointment->id
         ]);
 
+        $visit2 = $membership->visits()->create([
+            'date' => now(),
+            'appointment_id' => $appointment2->id
+        ]);
+
+        $visit3 = $membership2->visits()->create([
+            'date' => now(),
+            'appointment_id' => $appointment3->id
+        ]);
+
+        $visit4 = $membership2->visits()->create([
+            'date' => now(),
+            'appointment_id' => $appointment4->id
+        ]);
+
+
+        // records
         $record = $visit->record()->create([
             'file_name' => "Fisa nr. 1",
             'date_processed' => now()->subDay(7)
