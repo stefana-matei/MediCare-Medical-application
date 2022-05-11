@@ -22,13 +22,21 @@ class Membership extends Model
         return $this->belongsTo(User::class, 'medic_id');
     }
 
+
     public function patient()
     {
         return $this->belongsTo(User::class, 'patient_id');
     }
 
+
     public function visits(): HasMany
     {
         return $this->hasMany(Visit::class);
+    }
+
+
+    public function appointments(): HasMany
+    {
+        return $this->hasMany(Appointment::class);
     }
 }

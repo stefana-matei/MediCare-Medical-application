@@ -23,6 +23,10 @@
                     <x-nav-link :href="route('visits.list')" :active="request()->routeIs('visits')">
                         Vizite
                     </x-nav-link>
+
+                    <x-nav-link :href="route('appointments.list')" :active="request()->routeIs('appointments')">
+                        Programari
+                    </x-nav-link>
                 </div>
             </div>
 

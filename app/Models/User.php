@@ -103,4 +103,13 @@ class User extends Authenticatable
     {
         return $this->hasManyThrough(Visit::class, Membership::class, $this->getMemberKey());
     }
+
+
+    /**
+     * @return HasManyThrough
+     */
+    public function appointments(): HasManyThrough
+    {
+        return $this->hasManyThrough(Appointment::class, Membership::class, $this->getMemberKey());
+    }
 }

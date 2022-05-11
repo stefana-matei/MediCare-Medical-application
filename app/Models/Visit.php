@@ -18,9 +18,6 @@ class Visit extends Model
         'date'
     ];
 
-    protected $casts = [
-        'honored' => 'boolean'
-    ];
 
     public function record()
     {
@@ -31,5 +28,11 @@ class Visit extends Model
     public function membership(): BelongsTo
     {
         return $this->belongsTo(Membership::class);
+    }
+
+
+    public function appointment(): BelongsTo
+    {
+        return $this->belongsTo(Appointment::class);
     }
 }

@@ -62,8 +62,14 @@ class RecordController extends Controller
      */
     public function get($id): View
     {
+        $record = Auth::user()->visits()->with('record')->find($id)->record;
+
+        if(is_null($record)){
+            return abort(404);
+        }
+
         return view('authenticated.patient.records.get', [
-            'record' => Auth::user()->visits()->with('record')->find($id)->record
+            'record' => $record
         ]);
     }
 

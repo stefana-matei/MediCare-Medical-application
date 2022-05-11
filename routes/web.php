@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\VisitController;
@@ -63,6 +64,19 @@ Route::put('/visits/{id}', [VisitController::class, 'update'])->name('visits.upd
 Route::get('/visits/{id}/edit', [VisitController::class, 'updateView'])->name('visits.updateView');
 // Delete
 Route::delete('/visits/{id}', [VisitController::class, 'delete'])->name('visits.delete');
+
+
+//Appointments
+//List
+Route::get('/appointments', [AppointmentController::class, 'list'])->name('appointments.list');
+// Create
+Route::post('/appointments', [AppointmentController::class, 'create'])->name('appointments.create');
+// CreateView
+Route::get('/appointments/create', [AppointmentController::class, 'createView'])->name('appointments.createView');
+// Get
+Route::get('/appointments/{id}', [AppointmentController::class, 'get'])->name('appointments.get');
+// Delete
+Route::delete('/appointments/{id}', [AppointmentController::class, 'delete'])->name('appointments.delete');
 
 
 // Record

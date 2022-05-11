@@ -15,8 +15,8 @@ class CreateVisitsTable extends Migration
     {
         Schema::create('visits', function (Blueprint $table) {
             $table->id();
-            $table->boolean('honored')->default(false);
             $table->foreignId('membership_id');
+            $table->foreignId('appointment_id');
             $table->timestamp('date');
             $table->timestamps();
         });
