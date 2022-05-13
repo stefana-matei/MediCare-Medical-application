@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\Appointment;
 use App\Models\Membership;
+use App\Models\Setting;
 use App\Models\User;
+use App\Models\Specialty;
 use App\Models\Visit;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
@@ -65,25 +67,25 @@ class DatabaseSeeder extends Seeder
 
         $appointment = $membership->appointments()->create([
             'date' => now(),
-            'specialization' => 'Urology',
+            'specialty' => 'Urology',
             'honored' => true
         ]);
 
         $appointment2 = $membership->appointments()->create([
             'date' => now(),
-            'specialization' => 'Cardiology',
+            'specialty' => 'Cardiology',
             'honored' => false
         ]);
 
         $appointment3 = $membership2->appointments()->create([
             'date' => now(),
-            'specialization' => 'Gynecology',
+            'specialty' => 'Gynecology',
             'honored' => true
         ]);
 
         $appointment4 = $membership2->appointments()->create([
             'date' => now(),
-            'specialization' => 'Gynecology',
+            'specialty' => 'Gynecology',
             'honored' => false
         ]);
 
@@ -125,6 +127,14 @@ class DatabaseSeeder extends Seeder
         $record3 = $visit3->record()->create([ 'file_name' => "Fisa nr. 3" ]);
 //        $record4 = $visit4->record()->create([ 'file_name' => "Fisa nr. 4" ]);
 
+
+        $specialty = Specialty::factory()->create(['name' => 'Cardiology']);
+
+        // Settings
+        (new Setting())->for($medic->role)->create([
+            'user_id' => $medic->id,
+            'specialty_id' => $specialty->id
+        ]);
 
     }
 }

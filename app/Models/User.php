@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -56,6 +59,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = [
+        'setting'
+    ];
+
 
     /**
      * @return bool
@@ -97,6 +104,15 @@ class User extends Authenticatable
 
 
     /**
+     * @return BelongsTo
+     */
+    public function specialty(): BelongsTo
+    {
+        return $this->belongsTo(Specialty::class);
+    }
+
+
+    /**
      * @return HasManyThrough
      */
     public function visits()
@@ -111,5 +127,20 @@ class User extends Authenticatable
     public function appointments(): HasManyThrough
     {
         return $this->hasManyThrough(Appointment::class, Membership::class, $this->getMemberKey());
+    }
+
+    /**
+     * @return Model|null
+     * @throws Exception
+     */
+    public function getSettingAttribute(): ?Model
+    {
+        return (new Setting())->for($this->role)->newQuery()->where('user_id', $this->id)->first();
+    }
+
+    public function getSpecialtyAttribute()
+    {
+        if($this->isPatient()) return null;
+        return $this->setting->specialty;
     }
 }

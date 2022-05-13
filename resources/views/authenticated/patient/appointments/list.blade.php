@@ -18,7 +18,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <p><strong>Data: </strong> {{ $appointment->date }}</p>
                         <p><strong>Doctor: </strong> {{ $appointment->membership->medic->name }}</p>
-                        <p><strong>Specialization: </strong> {{ $appointment->specialization }}</p>
+                        <p><strong>Medical specialty: </strong> {{ $appointment->specialty }}</p>
                         <p style="color: {{ $appointment->honored ? 'green' : 'red' }}"><strong>{{ $appointment->honored ? 'Onorata' : 'Neonorata' }}</strong> </p>
 
 

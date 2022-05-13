@@ -13,7 +13,7 @@ class Appointment extends Model
 
     protected $fillable = [
         'membership_id',
-        'specialization'
+        'specialty'
     ];
 
     protected $dates = [
