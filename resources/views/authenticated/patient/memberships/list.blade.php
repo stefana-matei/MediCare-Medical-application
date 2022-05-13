@@ -17,6 +17,7 @@
                 @foreach($memberships as $membership)
                     <div class="p-6 bg-white border-b border-gray-200">
                         <p><strong>Medic:</strong> {{ $membership->medic->name }} #{{$membership->medic_id}}</p>
+                        <p><strong>Specializare:</strong> {{ $membership->medic->settingsMedic?->specialty?->name }}</p>
                         <p><strong>Patient:</strong> {{ $membership->patient->name }} #{{$membership->patient_id}}</p>
 
                         <x-link href="{{ route('memberships.get', ['id' => $membership->id]) }}">

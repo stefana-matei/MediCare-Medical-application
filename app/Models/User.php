@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
@@ -59,10 +60,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $appends = [
-        'setting'
-    ];
-
 
     /**
      * @return bool
@@ -104,15 +101,6 @@ class User extends Authenticatable
 
 
     /**
-     * @return BelongsTo
-     */
-    public function specialty(): BelongsTo
-    {
-        return $this->belongsTo(Specialty::class);
-    }
-
-
-    /**
      * @return HasManyThrough
      */
     public function visits()
@@ -129,18 +117,30 @@ class User extends Authenticatable
         return $this->hasManyThrough(Appointment::class, Membership::class, $this->getMemberKey());
     }
 
+
     /**
-     * @return Model|null
-     * @throws Exception
+     * @return HasOne
      */
-    public function getSettingAttribute(): ?Model
+    public function settingsMedic(): HasOne
     {
-        return (new Setting())->for($this->role)->newQuery()->where('user_id', $this->id)->first();
+        return $this->hasOne(SettingMedic::class);
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function settingsPatient(): HasOne
+    {
+        return $this->hasOne(SettingPatient::class);
     }
 
     public function getSpecialtyAttribute()
     {
-        if($this->isPatient()) return null;
-        return $this->setting->specialty;
+        if(is_null($this->settingsMedic)) {
+            return null;
+        }
+
+        return $this->settingsMedic->specialty;
     }
+
 }

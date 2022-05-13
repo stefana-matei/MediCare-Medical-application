@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Appointment;
 use App\Models\Membership;
 use App\Models\Setting;
+use App\Models\SettingMedic;
 use App\Models\User;
 use App\Models\Specialty;
 use App\Models\Visit;
@@ -45,7 +46,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'patient_1@pat.com',
             'password' => Hash::make('secret123')
         ]);
-
 
 
         /** @var Membership $membership */
@@ -90,7 +90,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-
         // visits
         /** @var Visit $visit */
         /** @var Visit $visit2 */
@@ -124,15 +123,14 @@ class DatabaseSeeder extends Seeder
             'date_processed' => now()->subDay(7)
         ]);
 //        $record2 = $visit2->record()->create([ 'file_name' => "Fisa nr. 2" ]);
-        $record3 = $visit3->record()->create([ 'file_name' => "Fisa nr. 3" ]);
+        $record3 = $visit3->record()->create(['file_name' => "Fisa nr. 3"]);
 //        $record4 = $visit4->record()->create([ 'file_name' => "Fisa nr. 4" ]);
 
 
         $specialty = Specialty::factory()->create(['name' => 'Cardiology']);
 
         // Settings
-        (new Setting())->for($medic->role)->create([
-            'user_id' => $medic->id,
+        $setting = $medic->settingsMedic()->create([
             'specialty_id' => $specialty->id
         ]);
 

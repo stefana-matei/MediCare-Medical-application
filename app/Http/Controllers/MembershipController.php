@@ -105,10 +105,12 @@ class MembershipController extends Controller
      *
      * @return View
      */
-    public function list(): View
+    public function list()
     {
+//        return Auth::user()->memberships()->with('medic', 'patient', 'medic.settingsMedic.specialty')->get();
+
         return view('authenticated.patient.memberships.list', [
-            'memberships' => Auth::user()->memberships()->with('medic', 'patient')->get()
+            'memberships' => Auth::user()->memberships()->with('medic', 'patient', 'medic.settingsMedic.specialty')->get()
         ]);
     }
 
