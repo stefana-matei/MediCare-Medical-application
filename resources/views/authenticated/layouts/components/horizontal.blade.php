@@ -108,6 +108,8 @@
                 </div>
             </div>
 
+
+            {{-- User --}}
             <div class="dropdown item">
                 <button
                     class="no-style dropdown-toggle"
@@ -118,14 +120,16 @@
                     data-bs-offset="0, 10"
                 >
                 <span class="d-flex align-items-center">
-                  <img src="{{ asset('assets/content/user-400-1.jpg') }}" alt="" width="40" height="40" class="rounded-500 me-1">
-                  <i class="icofont-simple-down"></i>
+                  <img src="{{ asset('assets/content/user-400-1.jpg') }}" alt="" width="40" height="40"
+                       class="rounded-500 me-1">
+                    <span><strong>{{ Auth::user()->name }}</strong></span>
+                  <i class="icofont-simple-down ms-2"></i>
                 </span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-w-180">
                     <ul class="list">
                         <li>
-                            <a href="./edit-account.html" class="align-items-center">
+                            <a href="{{ route('account.updateView') }}" class="align-items-center">
                                 <span class="icon icofont-ui-home"></span>
                                 Edit account
                             </a>
@@ -136,30 +140,24 @@
                                 User profile
                             </a>
                         </li>
+
                         <li>
-                            <a href="#" class="align-items-center">
-                                <span class="icon icofont-ui-calendar"></span>
-                                Calendar
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="align-items-center">
-                                <span class="icon icofont-ui-settings"></span>
-                                Settings
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./sign-in.html" class="align-items-center">
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault(); $('#logout').submit();"
+                               class="align-items-center">
                                 <span class="icon icofont-logout"></span>
                                 Log Out
                             </a>
                         </li>
+                        <form id="logout" method="POST" action="{{ route('logout') }}">
+                            @csrf
+                        </form>
                     </ul>
                 </div>
             </div>
+            {{-- End User --}}
+
         </div>
-
-
 
 
         <div class="navbar-skeleton horizontal">
@@ -177,7 +175,6 @@
                 <span class="avatar bg animated-bg"></span>
             </div>
         </div>
-
 
 
     </div>

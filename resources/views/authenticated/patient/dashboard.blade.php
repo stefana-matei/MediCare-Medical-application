@@ -1,5 +1,9 @@
 @extends('authenticated.layouts.app')
 
+@section('header')
+    <h1 class="page-title">Prima pagina</h1>
+@endsection
+
 @section('main')
     <div class="row">
 

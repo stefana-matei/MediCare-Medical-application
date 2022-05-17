@@ -48,6 +48,9 @@
             <div class="app-loader"><i class="icofont-spinner-alt-4 rotate"></i></div>
 
             <div class="main-content-wrap">
+                <header class="page-header">
+                    @yield('header')
+                </header>
                 <div class="page-content">
                     @yield('main')
                 </div>
