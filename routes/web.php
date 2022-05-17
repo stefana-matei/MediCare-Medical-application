@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\RecordController;
@@ -32,6 +33,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
+
+// Account
+// UpdateView
+Route::get('/account/edit', [AccountController::class, 'updateView'])->name('account.updateView');
+
+
 
 // Membership
 // CreateView
