@@ -1,60 +1,60 @@
-@extends('authenticated.layouts.old')
+@extends('authenticated.layouts.app')
 
 @section('header')
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Consultatiile mele <br>
-        <x-link href="{{ route('visits.createView') }}">
-            Adauga consultatie
-        </x-link>
+        Consultatiile mele
     </h2>
+
+    <a href="{{ route('visits.createView') }}" class="btn btn-primary align-self-center " role="button">
+        Adauga consultatie
+    </a>
 @endsection
 
 @section('main')
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+    <div class="page-content mt-5">
+        <div class="row">
+            @foreach($visits as $visit)
+                <div class="col-12 col-md-4">
+                    <div class="card text-center mb-5 bg-light">
+                        <div class="card-header" style="color: #1f4197">
+                            <strong>{{ $visit->membership->medic->name }}</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div class="fs-20">
+                                    {{ $visit->membership->medic->settingsMedic?->specialty?->name }}
+                                </div>
+                            </div>
 
-                @foreach($visits as $visit)
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        <p><strong>Data: </strong> {{ $visit->date }}</p>
-{{--                        <p><strong>Medic ID: </strong> {{ $visit->membership->medic_id }}</p>--}}
-                        <p><strong>Medic name: </strong> {{ $visit->membership->medic->name }}</p>
+                            <hr class="mt-4 mb-4">
+
+                            <ul class="list-unstyled text-start">
+                                <div class="text-muted">
+                                    <div class="fs-20">Data procesarii</div>
+                                </div>
+                                <li class="d-flex align-items-center pt-2 pb-2">
+                                    <span class="ms-1">{{ $visit->date }}</span>
+                                </li>
+                            </ul>
 
 
-                        @if($visit->record)
-                            <x-purplelink href="{{ route('visits.record.get', ['visit_id' => $visit->id]) }}">
-                                Vezi raportul medical
-                            </x-purplelink>
-                        @else
-                            <x-greenlink href="{{ route('visits.record.createView', ['visit_id' => $visit->id]) }}">
-                                Adaugare raport
-                            </x-greenlink>
-                        @endif
-
-
-                        <x-link href="{{ route('visits.get', ['id' => $visit->id]) }}">
-                            Get
-                        </x-link>
-
-                        <x-link href="{{ route('visits.updateView', ['id' => $visit->id]) }}">
-                            Update
-                        </x-link>
-
-                        <form class="inline-block" method="POST"
-                              action="{{ route('visits.delete', ['id' => $visit->id]) }}">
-                            @csrf
-                            @method('DELETE')
-
-                            <x-submit>
-                                Delete
-                            </x-submit>
-                        </form>
-
+                            @if($visit->record)
+                                <a href="{{ route('visits.record.get', ['visit_id' => $visit->id]) }}"
+                                   class="btn btn-primary w-90 mb-3" role="button">
+                                    Vezi raportul consultatiei
+                                </a>
+                            @endif
+                        </div>
                     </div>
-                @endforeach
+                </div>
+            @endforeach
 
-
-            </div>
         </div>
     </div>
 @endsection
+
+
+
+
+
+

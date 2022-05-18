@@ -1,51 +1,52 @@
-@extends('authenticated.layouts.old')
+@extends('authenticated.layouts.app')
 
 @section('header')
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Programarile mele <br>
-        <x-link href="{{ route('appointments.createView') }}">
-            Adaugare Programare online
-        </x-link>
+        Programarile mele
     </h2>
+
+    <a href="{{ route('appointments.createView') }}" class="btn btn-primary align-self-center" role="button">
+        Programare online
+    </a>
 @endsection
 
 @section('main')
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+    <div class="page-content mt-5">
+        <div class="row">
+            @foreach($appointments as $appointment)
+                <div class="col-12 col-md-4">
+                    <div class="card text-center mb-5 bg-light">
+                        <div class="card-header fs-4">
+                            <strong>{{ $appointment->date->format('d M Y H:i') }}</strong>
+                        </div>
 
-                @foreach($appointments as $appointment)
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        <p><strong>Data: </strong> {{ $appointment->date }}</p>
-                        <p><strong>Doctor: </strong> {{ $appointment->membership->medic->name }}</p>
-                        <p><strong>Medical specialty: </strong> {{ $appointment->specialty }}</p>
-                        <p style="color: {{ $appointment->honored ? 'green' : 'red' }}"><strong>{{ $appointment->honored ? 'Onorata' : 'Neonorata' }}</strong> </p>
+                        <div class="card-body">
+                            <hr class="mt-4 mb-4">
+                            <img src="{{ asset('assets/content/user-400-4.jpg') }}" alt="{{ $appointment->membership->medic->name }}" width="70" height="70" class="rounded-500 mb-4">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div class="fs-20" style="color: #1f4197; font-weight: bold">
+                                    {{ $appointment->membership->medic->name }}
+                                </div>
+                            </div>
 
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div class="text-muted">
+                                    <p class="fs-20">{{ $appointment->specialty }}</p>
+                                    <p style="color: {{ $appointment->honored ? 'green' : 'red' }}"><strong>{{ $appointment->honored ? 'Onorata' : 'Neonorata' }}</strong> </p>
+                                </div>
+                            </div>
 
-                        <x-link href="{{ route('appointments.get', ['id' => $appointment->id]) }}">
-                            Vezi consultatia
-                        </x-link>
-
-{{--                        <x-link href="{{ route('appointments.updateView', ['id' => $appointment->id]) }}">--}}
-{{--                            Update--}}
-{{--                        </x-link>--}}
-
-                        <form class="inline-block" method="POST"
-                              action="{{ route('appointments.delete', ['id' => $appointment->id]) }}">
-                            @csrf
-                            @method('DELETE')
-
-                            <x-submit>
-                                Delete
-                            </x-submit>
-                        </form>
-
+                        </div>
                     </div>
-                @endforeach
+                </div>
+            @endforeach
 
-
-
-            </div>
         </div>
     </div>
 @endsection
+
+
+
+
+
+
