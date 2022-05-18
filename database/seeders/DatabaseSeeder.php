@@ -127,8 +127,8 @@ class DatabaseSeeder extends Seeder
 //        $record4 = $visit4->record()->create([ 'file_name' => "Fisa nr. 4" ]);
 
 
-        $cardiology = Specialty::factory()->create(['name' => 'Cardiology']);
-        $gynecology = Specialty::factory()->create(['name' => 'Gynecology']);
+        $cardiology = Specialty::factory()->create(['name' => 'Cardiologie']);
+        $gynecology = Specialty::factory()->create(['name' => 'Ginecologie']);
 
         // Settings
         $setting = $medic->settingsMedic()->create([
