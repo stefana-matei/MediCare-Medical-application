@@ -18,7 +18,6 @@ class CreateAppointmentsTable extends Migration
             $table->foreignId('membership_id');
             $table->timestamp('date');
             //$table->string('location');
-            $table->string('specialty');
             $table->boolean('honored')->default(false);
             $table->timestamps();
         });

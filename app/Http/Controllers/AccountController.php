@@ -28,7 +28,6 @@ class AccountController extends Controller
             'avatar' => 'required|image|file|max:8192'
         ]);
 
-        // TODO if validation fails we delete the avatar and leave the user without one
         Auth::user()->getMedia('avatars')->first()?->delete();
         Auth::user()->addMediaFromRequest('avatar')->toMediaCollection('avatars');
 

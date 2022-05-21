@@ -22,7 +22,7 @@
 
                         <div class="card-body">
                             <hr class="mt-4 mb-4">
-                            <img src="{{ asset('assets/content/user-400-4.jpg') }}" alt="{{ $appointment->membership->medic->name }}" width="70" height="70" class="rounded-500 mb-4">
+                            <img src="{{ $appointment->membership->medic->avatar }}" alt="{{ $appointment->membership->medic->name }}" width="70" height="70" class="rounded-500 mb-4">
                             <div class="d-flex justify-content-center align-items-center">
                                 <div class="fs-20" style="color: #1f4197; font-weight: bold">
                                     {{ $appointment->membership->medic->name }}
@@ -31,7 +31,7 @@
 
                             <div class="d-flex justify-content-center align-items-center">
                                 <div class="text-muted">
-                                    <p class="fs-20">{{ $appointment->specialty }}</p>
+                                    <p class="fs-20">{{ $appointment->membership->medic->settingsMedic->specialty->name }}</p>
                                     <p style="color: {{ $appointment->honored ? 'green' : 'red' }}"><strong>{{ $appointment->honored ? 'Onorata' : 'Neonorata' }}</strong> </p>
                                 </div>
                             </div>

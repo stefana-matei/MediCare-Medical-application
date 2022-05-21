@@ -47,7 +47,11 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('secret123')
         ]);
 
+        // Avatars
+        $medic->addMediaFromUrl('https://i.imgur.com/ViyDFni.jpg')->toMediaCollection('avatars');
+        $medic2->addMediaFromUrl('https://i.imgur.com/jWRAc7O.jpg')->toMediaCollection('avatars');
 
+        // Memberships
         /** @var Membership $membership */
         $membership = $medic->memberships()->create([
             'patient_id' => $patient->id
@@ -58,8 +62,7 @@ class DatabaseSeeder extends Seeder
             'patient_id' => $patient->id
         ]);
 
-
-        // appointments
+        // Appointments
         /** @var Appointment $appointment */
         /** @var Appointment $appointment2 */
         /** @var Appointment $appointment3 */
@@ -67,30 +70,26 @@ class DatabaseSeeder extends Seeder
 
         $appointment = $membership->appointments()->create([
             'date' => now(),
-            'specialty' => 'Urology',
             'honored' => true
         ]);
 
         $appointment2 = $membership->appointments()->create([
             'date' => now(),
-            'specialty' => 'Cardiology',
             'honored' => false
         ]);
 
         $appointment3 = $membership2->appointments()->create([
             'date' => now(),
-            'specialty' => 'Gynecology',
             'honored' => true
         ]);
 
         $appointment4 = $membership2->appointments()->create([
             'date' => now(),
-            'specialty' => 'Gynecology',
             'honored' => false
         ]);
 
 
-        // visits
+        // Visits
         /** @var Visit $visit */
         /** @var Visit $visit2 */
         /** @var Visit $visit3 */
@@ -117,7 +116,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        // records
+        // Records
         $record = $visit->record()->create([
             'file_name' => "Fisa nr. 1",
             'date_processed' => now()->subDay(7)

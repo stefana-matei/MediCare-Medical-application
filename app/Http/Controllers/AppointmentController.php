@@ -30,7 +30,6 @@ class AppointmentController extends Controller
         $membership->appointments()->create([
             'date' => now(),
             'doctor' => $membership->medic->name,
-            'specialization' => 'Urology',
             'honored' => true
         ]);
 
@@ -75,7 +74,7 @@ class AppointmentController extends Controller
     public function list(): View
     {
         return view('authenticated.patient.appointments.list', [
-            'appointments' => Auth::user()->appointments()->with('membership', 'membership.medic')->get()
+            'appointments' => Auth::user()->appointments()->with('membership.medic.settingsMedic.specialty', 'membership.medic.media')->get()
         ]);
     }
 
