@@ -75,7 +75,7 @@ class VisitController extends Controller
     public function list()
     {
         return view('authenticated.patient.visits.list', [
-            'visits' => Auth::user()->visits()->with('membership.medic.settingsMedic.specialty', 'record')->get()
+            'visits' => Auth::user()->visits()->with('membership.medic.settingsMedic.specialty', 'membership.medic.media', 'record')->get()
         ]);
     }
 
