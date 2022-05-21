@@ -16,12 +16,12 @@
             @foreach($appointments as $appointment)
                 <div class="col-12 col-md-4">
                     <div class="card text-center mb-5 bg-light">
-                        <div class="card-header fs-4">
+                        <div class="card-header pt-4 fs-4">
                             <strong>{{ $appointment->date->format('d M Y H:i') }}</strong>
                         </div>
 
                         <div class="card-body">
-                            <hr class="mt-4 mb-4">
+                            <hr class="mt-0 mb-4">
                             <img src="{{ $appointment->membership->medic->avatar }}" alt="{{ $appointment->membership->medic->name }}" width="70" height="70" class="rounded-500 mb-4">
                             <div class="d-flex justify-content-center align-items-center">
                                 <div class="fs-20" style="color: #1f4197; font-weight: bold">
