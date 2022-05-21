@@ -77,14 +77,14 @@ return [
     ],
     'lte' => [
         'numeric' => 'The :attribute must be less than or equal to :value.',
-        'file' => 'The :attribute must be less than or equal to :value kilobytes.',
+        'file' => 'Fisierul incarcat este prea mare! Dimensiunea maxima este de 8MB.',
         'string' => 'The :attribute must be less than or equal to :value characters.',
         'array' => 'The :attribute must not have more than :value items.',
     ],
     'mac_address' => 'The :attribute must be a valid MAC address.',
     'max' => [
         'numeric' => 'The :attribute must not be greater than :max.',
-        'file' => 'The :attribute must not be greater than :max kilobytes.',
+        'file' => 'Fisierul incarcat este prea mare! Dimensiunea maxima este de 8MB.',
         'string' => 'The :attribute must not be greater than :max characters.',
         'array' => 'The :attribute must not have more than :max items.',
     ],

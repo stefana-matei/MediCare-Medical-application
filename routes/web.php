@@ -37,6 +37,8 @@ require __DIR__ . '/auth.php';
 // Account
 // UpdateView
 Route::get('/account/edit', [AccountController::class, 'updateView'])->name('account.updateView');
+// UpdateAvatar
+Route::put('/account/avatar/edit', [AccountController::class, 'updateAvatar'])->name('account.updateAvatar');
 
 
 

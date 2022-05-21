@@ -1,22 +1,33 @@
 @extends('authenticated.layouts.app')
 
 @section('header')
-    <h1 class="page-title">Edit account</h1>
+    <h1 class="page-title">Editare cont</h1>
 @endsection
 
 @section('main')
     <div class="row justify-content-center">
         <div class="col col-12 col-xl-8">
+            <label>Photo</label>
+            <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+            <div class="form-group avatar-box d-flex align-items-center">
+                <img src="{{ auth()->user()->avatar }}" width="100" height="100" alt="" class="rounded-500 me-4">
+
+                <button class="btn btn-outline-primary" type="button">
+                    Modifica poza de profil<span class="btn-icon icofont-ui-user ms-2"></span>
+                </button>
+
+                <form action="{{ route('account.updateAvatar') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <input type="file" id="avatarInput" name="avatar">
+                    <input type="submit">
+
+                </form>
+            </div>
+
+
             <form class="mb-4">
-                <label>Photo</label>
-                <div class="form-group avatar-box d-flex align-items-center">
-                    <img src="{{ asset('assets/content/user-400-1.jpg') }}" width="100" height="100" alt="" class="rounded-500 me-4">
-
-                    <button class="btn btn-outline-primary" type="button">
-                        Change photo<span class="btn-icon icofont-ui-user ms-2"></span>
-                    </button>
-                </div>
-
                 <div class="form-group">
                     <label>First name</label>
                     <input class="form-control" type="text" placeholder="First name" value="Liam">

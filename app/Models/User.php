@@ -15,14 +15,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 /**
  * @property string $role
  * @property Collection $memberships
  */
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia;
 
     const ROLE_MEDIC = 'medic';
     const ROLE_PATIENT = 'patient';
@@ -141,6 +143,18 @@ class User extends Authenticatable
         }
 
         return $this->settingsMedic->specialty;
+    }
+
+    public function getAvatarAttribute()
+    {
+        $avatar = $this->getMedia('avatars')->last();
+
+        if(!is_null($avatar)) {
+            return asset($this->getMedia('avatars')->last()->getUrl());
+        }else{
+            return 'https://ui-avatars.com/api?background=random&name=' . $this->name;
+        }
+
     }
 
 }

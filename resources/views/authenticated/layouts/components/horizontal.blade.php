@@ -120,7 +120,7 @@
                     data-bs-offset="0, 10"
                 >
                 <span class="d-flex align-items-center">
-                  <img src="{{ asset('assets/content/user-400-1.jpg') }}" alt="" width="40" height="40"
+                  <img src="{{ auth()->user()->avatar }}" alt="" width="40" height="40"
                        class="rounded-500 me-1">
                     <span><strong>{{ Auth::user()->name }}</strong></span>
                   <i class="icofont-simple-down ms-2"></i>
