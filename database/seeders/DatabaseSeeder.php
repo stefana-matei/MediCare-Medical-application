@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
         /** @var User $medic */
         $medic = User::factory()->create([
             'role' => 'medic',
-            'name' => 'Medic 1',
+            'firstname' => 'Medic',
+            'lastname' => 'Gica',
             'email' => 'medic_1@med.com',
             'password' => Hash::make('secret123')
         ]);
@@ -34,7 +35,8 @@ class DatabaseSeeder extends Seeder
         /** @var User $medic2 */
         $medic2 = User::factory()->create([
             'role' => 'medic',
-            'name' => 'Medic 2',
+            'firstname' => 'Medic',
+            'lastname' => 'Capsunica',
             'email' => 'medic_2@med.com',
             'password' => Hash::make('secret123')
         ]);
@@ -42,7 +44,8 @@ class DatabaseSeeder extends Seeder
         /** @var User $patient */
         $patient = User::factory()->create([
             'role' => 'patient',
-            'name' => 'Patient 1',
+            'firstname' => 'Patient',
+            'lastname' => 'Ionica',
             'email' => 'patient_1@pat.com',
             'password' => Hash::make('secret123')
         ]);
@@ -138,5 +141,15 @@ class DatabaseSeeder extends Seeder
             'specialty_id' => $gynecology->id
         ]);
 
+        $setting3 = $patient->settingsPatient()->create([
+            'cnp' => '2880822426702',
+            'birthday' => Carbon::create(1998, 8, 22),
+            'gender' => 'f',
+            'country' => 'Romania',
+            'county' => 'Timis',
+            'city' => 'Timisoara',
+            'address' => 'Str.Plosnitei, bl.34, sc.A',
+            'phone' => '0749987991'
+        ]);
     }
 }

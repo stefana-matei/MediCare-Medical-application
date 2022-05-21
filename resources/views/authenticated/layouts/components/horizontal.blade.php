@@ -122,7 +122,7 @@
                 <span class="d-flex align-items-center">
                   <img src="{{ auth()->user()->avatar }}" alt="" width="40" height="40"
                        class="rounded-500 me-1">
-                    <span><strong>{{ Auth::user()->name }}</strong></span>
+                    <span class="ms-2"><strong>{{ Auth::user()->name }}</strong></span>
                   <i class="icofont-simple-down ms-2"></i>
                 </span>
                 </button>

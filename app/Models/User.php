@@ -35,7 +35,8 @@ class User extends Authenticatable implements HasMedia
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'firstname',
+        'lastname',
         'email',
         'password',
         'role'
@@ -80,13 +81,17 @@ class User extends Authenticatable implements HasMedia
         return $this->role == self::ROLE_PATIENT;
     }
 
-
+    /**
+     * @return string
+     */
     public function getOtherMemberKey()
     {
         return $this->isMedic() ? 'patient_id' : 'medic_id';
     }
 
-
+    /**
+     * @return string
+     */
     public function getMemberKey()
     {
         return $this->isMedic() ? 'medic_id' : 'patient_id';
@@ -136,6 +141,9 @@ class User extends Authenticatable implements HasMedia
         return $this->hasOne(SettingPatient::class);
     }
 
+    /**
+     * @return null
+     */
     public function getSpecialtyAttribute()
     {
         if(is_null($this->settingsMedic)) {
@@ -145,6 +153,9 @@ class User extends Authenticatable implements HasMedia
         return $this->settingsMedic->specialty;
     }
 
+    /**
+     * @return string
+     */
     public function getAvatarAttribute()
     {
         $avatar = $this->getMedia('avatars')->last();
@@ -157,4 +168,13 @@ class User extends Authenticatable implements HasMedia
 
     }
 
+    /**
+     * Getter for name. Built from firstname and lastname.
+     *
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return $this->firstname . ' ' . $this->lastname;
+    }
 }

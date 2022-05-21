@@ -18,7 +18,9 @@ class AccountController extends Controller
      */
     public function updateView(): View
     {
-        return view('authenticated.all.account.update');
+        return view('authenticated.all.account.update', [
+            'user' => Auth::user()->load('settingsPatient')
+        ]);
     }
 
 

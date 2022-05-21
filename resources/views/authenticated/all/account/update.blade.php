@@ -1,92 +1,121 @@
 @extends('authenticated.layouts.app')
 
 @section('header')
-    <h1 class="page-title">Editare cont</h1>
+    <h1 class="page-title">Modificare date personale</h1>
 @endsection
 
 @section('main')
     <div class="row justify-content-center">
         <div class="col col-12 col-xl-8">
-            <label>Photo</label>
-            <x-auth-validation-errors class="mb-4" :errors="$errors" />
+            <x-auth-validation-errors class="mb-4" :errors="$errors"/>
 
             <div class="form-group avatar-box d-flex align-items-center">
-                <img src="{{ auth()->user()->avatar }}" width="100" height="100" alt="" class="rounded-500 me-4">
+                <img src="{{ $user->avatar }}" width="100" height="100" alt="" class="rounded-500 me-4">
 
-                <button class="btn btn-outline-primary" type="button">
-                    Modifica poza de profil<span class="btn-icon icofont-ui-user ms-2"></span>
+                <button class="btn btn-outline-primary" type="button" onclick="$('#avatarInput').click()">
+                    Adauga poza de profil<span class="btn-icon icofont-ui-user ms-2"></span>
                 </button>
 
-                <form action="{{ route('account.updateAvatar') }}" method="POST" enctype="multipart/form-data">
+                <form class="d-none" id="avatarForm" action="{{ route('account.updateAvatar') }}" method="POST"
+                      enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <input type="file" id="avatarInput" name="avatar">
-                    <input type="submit">
+                    <input class="d-none" type="file" id="avatarInput" name="avatar"
+                           onchange="$('#avatarForm').submit()">
+                    <input class="btn btn-primary ms-3" type="submit" value="Salveaza poza">
 
                 </form>
             </div>
 
+            <hr>
 
-            <form class="mb-4">
+
+            <form class="mb-4" method="POST">
+                @csrf
+                @method('PUT')
                 <div class="form-group">
-                    <label>First name</label>
-                    <input class="form-control" type="text" placeholder="First name" value="Liam">
+                    <label>Nume de familie</label>
+                    <input class="form-control" type="text" placeholder="Nume de familie"
+                           value="{{ $user->firstname }}">
                 </div>
 
                 <div class="form-group">
-                    <label>Last name</label>
-                    <input class="form-control" type="text" placeholder="Last name" value="Jouns">
+                    <label>Prenume</label>
+                    <input class="form-control" type="text" placeholder="Prenume" value="{{ $user->lastname }}">
+                </div>
+
+
+                <div class="form-group">
+                    <label>CNP</label>
+                    <input class="form-control" type="text" placeholder="CNP" value="{{ $user->settingsPatient->cnp }}">
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label>Age</label>
-                            <input class="form-control" type="number" placeholder="Age" value="25">
+                            <label>Data nasterii</label>
+                            <input name="birthday" class="form-control" type="date" placeholder="Data nasterii"
+                                   value="{{ $user->settingsPatient->birthday->format('Y-m-d') }}">
                         </div>
                     </div>
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label>Gender</label>
-                            <select class="selectpicker" title="Gender">
-                                <option selected>Male</option>
-                                <option>Female</option>
+                            <label>Sex</label>
+                            <select class="selectpicker" title="Sex">
+                                <option value="m" {{ $user->settingsPatient->gender == 'm' ? 'selected' : '' }}>
+                                    Masculin
+                                </option>
+                                <option value="f" {{ $user->settingsPatient->gender == 'f' ? 'selected' : '' }}>
+                                    Feminin
+                                </option>
                             </select>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Phone number</label>
-                    <input class="form-control" type="number" placeholder="Age" value="0126596578">
+                    <label>Tara</label>
+                    <input class="form-control" type="text" placeholder="Tara"
+                           value="{{ $user->settingsPatient->country }}">
                 </div>
 
                 <div class="form-group">
-                    <label>Address</label>
-                    <textarea class="form-control" placeholder="Address" rows="3">71 Pilgrim Avenue Chevy Chase, MD 20815</textarea>
+                    <label>Judet</label>
+                    <input class="form-control" type="text" placeholder="Judet"
+                           value="{{ $user->settingsPatient->county }}">
                 </div>
 
                 <div class="form-group">
-                    <label>Last visit</label>
-                    <input class="form-control" type="text" placeholder="Last visit" value="18 Dec 2019" readonly>
+                    <label>Oras</label>
+                    <input class="form-control" type="text" placeholder="Oras"
+                           value="{{ $user->settingsPatient->city }}">
                 </div>
 
                 <div class="form-group">
-                    <label>Status</label>
-                    <select class="selectpicker" title="Status">
-                        <option selected>Approved</option>
-                        <option>Pending</option>
-                    </select>
+                    <label>Adresa completa</label>
+                    <textarea class="form-control" placeholder="Adresa completa"
+                              rows="2">{{ $user->settingsPatient->address }}</textarea>
                 </div>
+
+                <div class="form-group">
+                    <label>Numar de telefon</label>
+                    <input class="form-control" type="text" placeholder="Numar de telefon"
+                           value="{{ $user->settingsPatient->phone }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control" type="email" placeholder="Email" value="{{ $user->email }}">
+                </div>
+
 
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-success">Save changes</button>
+                        <button type="submit" class="btn btn-success">Salveaza modificarile</button>
                     </div>
                     <div class="col text-end">
                         <button type="button" class="btn btn-outline-danger">
-                            <span class="d-none d-sm-block">Delete account</span>
-                            <span class="d-sm-none">Delete</span>
+                            <span class="d-none d-sm-block">Sterge contul</span>
                         </button>
                     </div>
                 </div>
@@ -94,34 +123,34 @@
 
             <hr>
 
-            <h4>Change password</h4>
+            <h4>Schimba parola</h4>
 
             <form>
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label>Current password</label>
-                            <input class="form-control" type="text" placeholder="Current password">
+                            <label>Parola veche</label>
+                            <input class="form-control" type="password" placeholder="Parola veche">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label>New password</label>
-                            <input class="form-control" type="text" placeholder="New password">
+                            <label>Parola noua</label>
+                            <input class="form-control" type="password" placeholder="Parola noua">
                         </div>
                     </div>
 
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label>Confirm new password</label>
-                            <input class="form-control" type="text" placeholder="Confirm new password">
+                            <label>Confirmare parola noua</label>
+                            <input class="form-control" type="password" placeholder="Confirmare parola noua">
                         </div>
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-outline-dark">Change password</button>
+                <button type="button" class="btn btn-outline-dark">Salveaza parola</button>
             </form>
         </div>
     </div>
