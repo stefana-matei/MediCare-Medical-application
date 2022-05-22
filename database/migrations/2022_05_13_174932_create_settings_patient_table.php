@@ -19,10 +19,10 @@ class CreateSettingsPatientTable extends Migration
             $table->string('cnp');
             $table->timestamp('birthday');
             $table->string('gender', 1);
-            $table->string('country');
-            $table->string('county');
-            $table->string('city');
-            $table->string('address');
+            $table->string('country')->nullable();
+            $table->string('county')->nullable();
+            $table->string('city')->nullable();
+            $table->string('address')->nullable();
             $table->string('phone');
             $table->timestamps();
         });

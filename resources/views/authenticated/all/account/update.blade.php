@@ -30,24 +30,25 @@
             <hr>
 
 
-            <form class="mb-4" method="POST">
+            <form class="mb-4" method="POST" action="{{ route('account.update') }}">
                 @csrf
                 @method('PUT')
+
                 <div class="form-group">
                     <label>Nume de familie</label>
-                    <input class="form-control" type="text" placeholder="Nume de familie"
-                           value="{{ $user->firstname }}">
+                    <input name="lastname" class="form-control" type="text" placeholder="Nume de familie"
+                           value="{{ $user->lastname }}">
                 </div>
 
                 <div class="form-group">
                     <label>Prenume</label>
-                    <input class="form-control" type="text" placeholder="Prenume" value="{{ $user->lastname }}">
+                    <input name="firstname" class="form-control" type="text" placeholder="Prenume" value="{{ $user->firstname }}">
                 </div>
 
 
                 <div class="form-group">
                     <label>CNP</label>
-                    <input class="form-control" type="text" placeholder="CNP" value="{{ $user->settingsPatient->cnp }}">
+                    <input name="cnp" class="form-control" type="text" placeholder="CNP" value="{{ $user->settingsPatient->cnp }}">
                 </div>
 
                 <div class="row">
@@ -58,10 +59,11 @@
                                    value="{{ $user->settingsPatient->birthday->format('Y-m-d') }}">
                         </div>
                     </div>
+
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
                             <label>Sex</label>
-                            <select class="selectpicker" title="Sex">
+                            <select name="gender" class="selectpicker" title="Sex">
                                 <option value="m" {{ $user->settingsPatient->gender == 'm' ? 'selected' : '' }}>
                                     Masculin
                                 </option>
@@ -75,50 +77,42 @@
 
                 <div class="form-group">
                     <label>Tara</label>
-                    <input class="form-control" type="text" placeholder="Tara"
+                    <input name="country" class="form-control" type="text" placeholder="Tara"
                            value="{{ $user->settingsPatient->country }}">
                 </div>
 
                 <div class="form-group">
                     <label>Judet</label>
-                    <input class="form-control" type="text" placeholder="Judet"
+                    <input name="county" class="form-control" type="text" placeholder="Judet"
                            value="{{ $user->settingsPatient->county }}">
                 </div>
 
                 <div class="form-group">
                     <label>Oras</label>
-                    <input class="form-control" type="text" placeholder="Oras"
+                    <input name="city" class="form-control" type="text" placeholder="Oras"
                            value="{{ $user->settingsPatient->city }}">
                 </div>
 
                 <div class="form-group">
                     <label>Adresa completa</label>
-                    <textarea class="form-control" placeholder="Adresa completa"
+                    <textarea name="address" class="form-control" placeholder="Adresa completa"
                               rows="2">{{ $user->settingsPatient->address }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label>Numar de telefon</label>
-                    <input class="form-control" type="text" placeholder="Numar de telefon"
+                    <input name="phone" class="form-control" type="text" placeholder="Numar de telefon"
                            value="{{ $user->settingsPatient->phone }}">
                 </div>
 
                 <div class="form-group">
                     <label>Email</label>
-                    <input class="form-control" type="email" placeholder="Email" value="{{ $user->email }}">
+                    <input name="email" class="form-control" type="text" placeholder="Email" value="{{ $user->email }}">
                 </div>
 
 
-                <div class="row">
-                    <div class="col">
-                        <button type="submit" class="btn btn-success">Salveaza modificarile</button>
-                    </div>
-                    <div class="col text-end">
-                        <button type="button" class="btn btn-outline-danger">
-                            <span class="d-none d-sm-block">Sterge contul</span>
-                        </button>
-                    </div>
-                </div>
+                <button type="submit" class="btn btn-success">Salveaza modificarile</button>
+
             </form>
 
             <hr>

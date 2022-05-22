@@ -14,4 +14,15 @@ class SettingPatient extends Model
         'birthday'
     ];
 
+    protected $fillable = [
+        'cnp',
+        'birthday',
+        'gender',
+        'country',
+        'county',
+        'city',
+        'address',
+        'phone',
+    ];
+
 }
