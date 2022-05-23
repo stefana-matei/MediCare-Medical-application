@@ -126,7 +126,7 @@
                   <i class="icofont-simple-down ms-2"></i>
                 </span>
                 </button>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-w-180">
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-account">
                     <ul class="list">
                         <li>
                             <a href="{{ route('account.updateView') }}" class="align-items-center">

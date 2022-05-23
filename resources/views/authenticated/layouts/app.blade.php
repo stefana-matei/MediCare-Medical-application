@@ -24,6 +24,7 @@
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     @yield('head')
 
@@ -33,19 +34,19 @@
 <body class="vertical-layout boxed">
 
 
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-    <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <img src="..." class="rounded me-2" alt="...">
-            <strong class="me-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">
-            Hello, world! This is a toast message.
+@if(session('success'))
+    <div id="toast-wrapper">
+        <div id="toast" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    {{session('success')}}
+                </div>
+                <button type="button" class="btn-close btn-close-white m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
         </div>
     </div>
-</div>
+@endif
+
 
 {{--<div class="app-loader main-loader">--}}
 {{--    <div class="loader-box">--}}
@@ -205,6 +206,7 @@
 <script src="{{ asset('assets/js/echarts-gl.min.js') }}"></script>
 
 <script src="{{ asset('assets/js/main.js') }}"></script>
+<script src="{{ asset('js/custom.js') }}"></script>
 
 
 </body>

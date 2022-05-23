@@ -9,13 +9,6 @@
         <div class="col col-12 col-xl-8">
             <x-auth-validation-errors class="mb-4" :errors="$errors"/>
 
-            @if(session('success'))
-                <h1>{{session('success')}}</h1>
-            @endif
-
-
-            <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
-
             <div class="form-group avatar-box d-flex align-items-center">
                 <img src="{{ $user->avatar }}" width="100" height="100" alt="" class="rounded-500 me-4">
 

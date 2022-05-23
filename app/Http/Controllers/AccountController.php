@@ -9,15 +9,28 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class AccountController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function update(Request $request)
     {
+        $user = Auth::user();
+
         $validated = $request->validate([
             'lastname' => 'required|min:2',
             'firstname' => 'required|min:2',
-            'email' => 'required|email:rfc,dns|unique:users|max:200',
+            'email' => [
+                'required',
+                'email:rfc,dns',
+                'max:200',
+                Rule::unique('users')->ignore($user->id)
+            ],
             'cnp' => 'required|size:13',
             'birthday' => 'required',
             'gender' => 'required',
@@ -30,17 +43,15 @@ class AccountController extends Controller
 
         $validated['birthday'] = Carbon::createFromFormat('Y-m-d', $validated['birthday'])->midDay();
 
-        //dd($validated);
-
         $userAttributes = Arr::only($validated, ['lastname', 'firstname', 'email']);
         $settingsAttributes = Arr::except($validated, ['lastname', 'firstname', 'email']);
 
-        $user = Auth::user()->load('settingsPatient');
+        $user->load('settingsPatient');
 
         $user->update($userAttributes);
         $user->settingsPatient->update($settingsAttributes);
 
-        return back();
+        return back()->withSuccess('Datele tale personale au fost modificate cu succes!');
     }
 
     /**
@@ -60,10 +71,20 @@ class AccountController extends Controller
             'avatar' => 'required|image|file|max:8192'
         ]);
 
-        Auth::user()->getMedia('avatars')->first()?->delete();
+        $oldAvatar = Auth::user()->getMedia('avatars')->first();
+        $hadOldAvatar = !is_null($oldAvatar);
+
+        $oldAvatar?->delete();
         Auth::user()->addMediaFromRequest('avatar')->toMediaCollection('avatars');
 
-        return back();
+        if($hadOldAvatar) {
+            $successMessage = 'Poza de profil a fost schimbata cu succes!';
+        }else{
+            $successMessage = 'Poza de profil a fost adaugata cu succes!';
+        }
+
+        return back()->withSuccess($successMessage);
+
     }
 
 

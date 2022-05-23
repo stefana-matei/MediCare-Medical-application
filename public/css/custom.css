@@ -1,0 +1,43 @@
+#toast-wrapper {
+    z-index: 11;
+    position: fixed;
+    top: 100px;
+    right:20px;
+}
+
+#toast .toast-body {
+    font-size:16px;
+    padding-right:20px;
+}
+
+#toast button.btn-close {
+    background: transparent url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3E%3C/svg%3E") 50%/1em auto no-repeat;
+    font-size: 0.875rem;
+    margin-right:12px !important;
+}
+
+.dropdown-menu-account {
+    width:200px;
+}
+
+/* TODO Recompile these typography changes */
+
+h1 {
+    font-size:44.8px;
+}
+h2 {
+    font-size:40px;
+}
+h3 {
+    font-size:28px;
+}
+h4 {
+    font-size:24px;
+}
+h5 {
+    font-size:20px;
+}
+h6 {
+    font-size:16px;
+}
+
