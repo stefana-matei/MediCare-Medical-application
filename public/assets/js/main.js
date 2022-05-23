@@ -1520,7 +1520,7 @@
     scroll();
 
     // settings
-    settings();
+    // settings();
 
     $('.alert').alert();
 
