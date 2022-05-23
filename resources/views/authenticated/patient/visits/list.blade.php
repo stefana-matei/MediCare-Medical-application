@@ -5,9 +5,6 @@
         Consultatiile mele
     </h2>
 
-    <a href="{{ route('visits.createView') }}" class="btn btn-primary align-self-center " role="button">
-        Adauga consultatie
-    </a>
 @endsection
 
 @section('main')

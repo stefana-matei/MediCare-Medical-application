@@ -40,7 +40,9 @@ Route::get('/account/edit', [AccountController::class, 'updateView'])->name('acc
 // Update
 Route::put('/account', [AccountController::class, 'update'])->name('account.update');
 // UpdateAvatar
-Route::put('/account/avatar/edit', [AccountController::class, 'updateAvatar'])->name('account.updateAvatar');
+Route::put('/account/avatar', [AccountController::class, 'updateAvatar'])->name('account.updateAvatar');
+// UpdatePassword
+Route::put('/account/password', [AccountController::class, 'updatePassword'])->name('account.updatePassword');
 
 
 

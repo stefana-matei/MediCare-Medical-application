@@ -134,12 +134,12 @@
                                 Edit account
                             </a>
                         </li>
-                        <li>
-                            <a href="./user-profile.html" class="align-items-center">
-                                <span class="icon icofont-ui-user"></span>
-                                User profile
-                            </a>
-                        </li>
+{{--                        <li>--}}
+{{--                            <a href="./user-profile.html" class="align-items-center">--}}
+{{--                                <span class="icon icofont-ui-user"></span>--}}
+{{--                                User profile--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 
                         <li>
                             <a href="{{ route('logout') }}"

@@ -9,6 +9,13 @@
         <div class="col col-12 col-xl-8">
             <x-auth-validation-errors class="mb-4" :errors="$errors"/>
 
+            @if(session('success'))
+                <h1>{{session('success')}}</h1>
+            @endif
+
+
+            <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+
             <div class="form-group avatar-box d-flex align-items-center">
                 <img src="{{ $user->avatar }}" width="100" height="100" alt="" class="rounded-500 me-4">
 
@@ -119,32 +126,35 @@
 
             <h4>Schimba parola</h4>
 
-            <form>
+            <form method="POST" action="{{ route('account.updatePassword') }}">
+                @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
                             <label>Parola veche</label>
-                            <input class="form-control" type="password" placeholder="Parola veche">
+                            <input name="old_password"  class="form-control" type="password" placeholder="Parola veche">
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
                             <label>Parola noua</label>
-                            <input class="form-control" type="password" placeholder="Parola noua">
+                            <input name="password" class="form-control" type="password" placeholder="Parola noua">
                         </div>
                     </div>
 
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
                             <label>Confirmare parola noua</label>
-                            <input class="form-control" type="password" placeholder="Confirmare parola noua">
+                            <input name="password_confirmation" class="form-control" type="password" placeholder="Confirmare parola noua">
                         </div>
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-outline-dark">Salveaza parola</button>
+                <button type="submit" class="btn btn-outline-dark">Salveaza parola</button>
             </form>
         </div>
     </div>

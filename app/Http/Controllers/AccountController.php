@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
@@ -63,5 +64,24 @@ class AccountController extends Controller
         Auth::user()->addMediaFromRequest('avatar')->toMediaCollection('avatars');
 
         return back();
+    }
+
+
+    public function updatePassword(Request $request)
+    {
+        $validated = $request->validate([
+            'old_password' => 'required',
+            'password' => 'required|confirmed|min:8',
+        ]);
+
+        if (!Hash::check($validated['old_password'], Auth::user()->getAuthPassword())) {
+            return back()->withErrors(['old_password' => 'Parola veche este gresita!']);
+        }
+
+        Auth::user()->update([
+            'password' => Hash::make($validated['password'])
+        ]);
+
+        return back()->withSuccess('Parola a fost schimbata cu succes!');
     }
 }
