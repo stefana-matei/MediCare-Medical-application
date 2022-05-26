@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Membership;
 use App\Services\Auth;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -24,16 +25,18 @@ class AppointmentController extends Controller
      */
     public function create(Request $request)
     {
-        /** @var Membership  $membership */
+        /** @var Membership $membership */
         $membership = Auth::user()->memberships()->find($request->membership_id);
 
+        $validated['date'] = Carbon::createFromFormat('Y-m-d', $request->date)->midDay();
+
+
         $membership->appointments()->create([
-            'date' => now(),
-            'doctor' => $membership->medic->name,
-            'honored' => true
+            'date' => $validated['date'],
+            'doctor' => $membership->medic->name
         ]);
 
-        return redirect()->route('appointments.list');
+        return back()->withSuccess('Programarea a fost creata cu succes!');
     }
 
 
@@ -71,10 +74,30 @@ class AppointmentController extends Controller
      * @return View
      *
      */
-    public function list(): View
+    public function list(Request $request)
     {
+        if($request->has('medic') && is_null($request->medic)) {
+            return redirect(route('appointments.list'));
+        }
+
+        $appointments = Auth::user()
+            ->appointments()
+            ->with('membership.medic.settingsMedic.specialty', 'membership.medic.media');
+
+        if ($request->medic) {
+            $appointments->where('membership_id', $request->medic);
+        }
+
+        $appointments = $appointments->get();
+
+        $memberships = Auth::user()
+            ->memberships()
+            ->with('medic.settingsMedic.specialty')
+            ->get();
+
         return view('authenticated.patient.appointments.list', [
-            'appointments' => Auth::user()->appointments()->with('membership.medic.settingsMedic.specialty', 'membership.medic.media')->get()
+            'appointments' => $appointments,
+            'memberships' => $memberships
         ]);
     }
 

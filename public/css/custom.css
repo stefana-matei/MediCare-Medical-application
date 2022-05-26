@@ -20,6 +20,25 @@
     width:200px;
 }
 
+
+
+.customizable-placeholder .filter-option-inner-inner {
+    position:relative;
+    color:transparent;
+}
+
+.customizable-placeholder .filter-option-inner-inner:after {
+    position:absolute;
+    content:"Don't forget about the content";
+    left:0;
+    top:0;
+    color: #6c757d;
+}
+
+#appointments-search.customizable-placeholder .filter-option-inner-inner:after {
+    content:"Cauta dupa medic sau specializare";
+}
+
 /* TODO Recompile these typography changes */
 
 h1 {

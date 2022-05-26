@@ -12,7 +12,9 @@ class Appointment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'membership_id'
+        'membership_id',
+        'honored',
+        'date'
     ];
 
     protected $dates = [

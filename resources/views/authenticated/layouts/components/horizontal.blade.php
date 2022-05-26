@@ -7,22 +7,22 @@
         </button>
 
 
-        <form class="app-search d-none d-md-block">
-            <div class="form-group typeahead__container with-suffix-icon mb-0">
-                <div class="typeahead__field">
-                    <div class="typeahead__query">
-                        <input
-                            class="form-control autocomplete-control topbar-search"
-                            type="search"
-                            placeholder="Introduceti cuvinte cheie"
-                            autocomplete="off"
-                            data-source="{{ asset('assets/data/search-menu.json') }}"
-                        >
-                        <div class="suffix-icon icofont-search"></div>
-                    </div>
-                </div>
-            </div>
-        </form>
+{{--        <form class="app-search d-none d-md-block">--}}
+{{--            <div class="form-group typeahead__container with-suffix-icon mb-0">--}}
+{{--                <div class="typeahead__field">--}}
+{{--                    <div class="typeahead__query">--}}
+{{--                        <input--}}
+{{--                            class="form-control autocomplete-control topbar-search"--}}
+{{--                            type="search"--}}
+{{--                            placeholder="Introduceti cuvinte cheie"--}}
+{{--                            autocomplete="off"--}}
+{{--                            data-source="{{ asset('assets/data/search-menu.json') }}"--}}
+{{--                        >--}}
+{{--                        <div class="suffix-icon icofont-search"></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </form>--}}
 
 
         <div class="app-actions">
