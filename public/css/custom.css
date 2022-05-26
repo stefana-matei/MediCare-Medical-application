@@ -29,7 +29,7 @@
 
 .customizable-placeholder .filter-option-inner-inner:after {
     position:absolute;
-    content:"Don't forget about the content";
+    content:"Lipseste filtru de cautare";
     left:0;
     top:0;
     color: #6c757d;
