@@ -160,23 +160,6 @@
         </div>
 
 
-        <div class="navbar-skeleton horizontal">
-            <div class="left-part d-flex align-items-center">
-                <span class="navbar-button bg animated-bg d-lg-none"></span>
-                <span class="sk-logo bg animated-bg d-none d-lg-block"></span>
-                <span class="search d-none d-md-block bg animated-bg"></span>
-            </div>
-
-            <div class="right-part d-flex align-items-center">
-                <div class="icon-box">
-                    <span class="icon bg animated-bg"></span>
-                    <span class="badge"></span>
-                </div>
-                <span class="avatar bg animated-bg"></span>
-            </div>
-        </div>
-
-
     </div>
 </div>
 <!-- end Horizontal navbar -->

@@ -39,6 +39,10 @@
     content:"Cauta dupa medic sau specializare";
 }
 
+.main-menu .main-menu-wrap .menu-ul .menu-item .item-link .link-icon {
+    width:20.8px;
+}
+
 /* TODO Recompile these typography changes */
 
 h1 {

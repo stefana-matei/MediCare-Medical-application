@@ -72,10 +72,30 @@ class VisitController extends Controller
      *
      * @return View
      */
-    public function list()
+    public function list(Request $request)
     {
+        if($request->has('medic') && is_null($request->medic)) {
+            return redirect(route('visits.list'));
+        }
+
+        $visits = Auth::user()
+            ->visits()
+            ->with('membership.medic.settingsMedic.specialty', 'membership.medic.media', 'record');
+
+        if ($request->medic) {
+            $visits->where('membership_id', $request->medic);
+        }
+
+        $visits = $visits->get();
+
+        $memberships = Auth::user()
+            ->memberships()
+            ->with('medic.settingsMedic.specialty')
+            ->get();
+
         return view('authenticated.patient.visits.list', [
-            'visits' => Auth::user()->visits()->with('membership.medic.settingsMedic.specialty', 'membership.medic.media', 'record')->get()
+            'visits' => $visits,
+            'memberships' => $memberships
         ]);
     }
 
