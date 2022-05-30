@@ -43,6 +43,10 @@
     width:20.8px;
 }
 
+.modal-backdrop {
+    background:rgba(0,0,0,.4);
+}
+
 /* TODO Recompile these typography changes */
 
 h1 {

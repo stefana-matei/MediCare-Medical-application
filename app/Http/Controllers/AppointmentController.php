@@ -95,8 +95,11 @@ class AppointmentController extends Controller
             ->with('medic.settingsMedic.specialty')
             ->get();
 
+        $now = now();
+
         return view('authenticated.patient.appointments.list', [
-            'appointments' => $appointments,
+            'appointments' => $appointments->where('date', '<=', $now),
+            'futureAppointments' => $appointments->where('date', '>=', $now),
             'memberships' => $memberships
         ]);
     }
