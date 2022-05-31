@@ -4,10 +4,17 @@
     <div class="card text-center mb-5 bg-light">
 
         @if($future)
-        <button type="button" class="btn-close float-end p-2" aria-label="Close">
-            <i class="icofont-close-line"></i>
-        </button>
+            <form class="inline-block" method="POST"
+                  action="{{ route('appointments.delete', ['id' => $appointment->id]) }}">
+                @csrf
+                @method('DELETE')
+
+                <button type="submit" class="btn-close float-end p-2" aria-label="Close">
+                    <i class="icofont-close-line"></i>
+                </button>
+            </form>
         @endif
+
 
         <div class="card-header pt-4 fs-4">
             <strong>{{ $appointment->date->format('d M Y H:i') }}</strong>

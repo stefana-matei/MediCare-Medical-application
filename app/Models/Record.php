@@ -10,8 +10,18 @@ class Record extends Model
     use HasFactory;
 
     protected $fillable = [
-        'file_name',
+        'medical_history',
+        'symptoms',
+        'diagnosis',
+        'clinical_data',
+        'para_clinical_data',
+        'referral',
+        'indications',
         'date_processed'
+    ];
+
+    protected $casts = [
+        'referral' => 'boolean'
     ];
 
     protected $dates = [

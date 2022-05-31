@@ -9,9 +9,11 @@ use App\Models\SettingMedic;
 use App\Models\User;
 use App\Models\Specialty;
 use App\Models\Visit;
+use Illuminate\Container\Container;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Faker\Generator;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,6 +24,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        /** @var Generator $faker */
+        $faker = Container::getInstance()->make(Generator::class);
+
         // \App\Models\User::factory(10)->create();
         /** @var User $medic */
         $medic = User::factory()->create([
@@ -121,12 +126,48 @@ class DatabaseSeeder extends Seeder
 
         // Records
         $record = $visit->record()->create([
-            'file_name' => "Fisa nr. 1",
+            'medical_history' => $faker->text(2000),
+            'symptoms' => $faker->text(2000),
+            'diagnosis' => $faker->text(2000),
+            'clinical_data' => $faker->text(2000),
+            'para_clinical_data' => $faker->text(2000),
+            'referral' => false,
+            'indications' => $faker->text(2000),
             'date_processed' => now()->subDay(7)
         ]);
-//        $record2 = $visit2->record()->create([ 'file_name' => "Fisa nr. 2" ]);
-        $record3 = $visit3->record()->create(['file_name' => "Fisa nr. 3"]);
-//        $record4 = $visit4->record()->create([ 'file_name' => "Fisa nr. 4" ]);
+
+//        $record2 = $visit2->record()->create([
+//            'medical_history' => $faker->text(),
+//            'symptoms' => $faker->text(),
+//            'diagnosis' => $faker->text(),
+//            'clinical_data' => $faker->text(),
+//            'para_clinical_data' => $faker->text(),
+//            'referral' => false,
+//            'indications' => $faker->text(),
+//            'date_processed' => now()->subDay(7)
+//        ]);
+
+        $record3 = $visit3->record()->create([
+            'medical_history' => $faker->text(),
+            'symptoms' => $faker->text(),
+            'diagnosis' => $faker->text(),
+//            'clinical_data' => $faker->text(),
+            'para_clinical_data' => $faker->text(),
+            'referral' => true,
+            'indications' => $faker->text(),
+            'date_processed' => now()->subDay(7)
+        ]);
+
+//        $record4 = $visit4->record()->create([
+//            'medical_history' => $faker->text(),
+//            'symptoms' => $faker->text(),
+//            'diagnosis' => $faker->text(),
+//            'clinical_data' => $faker->text(),
+//            'para_clinical_data' => $faker->text(),
+//            'referral' => false,
+//            'indications' => $faker->text(),
+//            'date_processed' => now()->subDay(7)
+//        ]);
 
 
         $cardiology = Specialty::factory()->create(['name' => 'Cardiologie']);

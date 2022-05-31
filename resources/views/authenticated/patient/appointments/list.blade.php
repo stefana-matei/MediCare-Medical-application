@@ -26,30 +26,41 @@
 
 
         <a href="{{ route('appointments.createView') }}"
-           class="btn btn-primary align-self-center"
+           class="btn btn-primary align-self-center ps-3"
            role="button"
            data-bs-toggle="modal"
            data-bs-target="#add-appointment">
+            <span class="btn-icon icofont-plus fs-6 me-3"></span>
             Programare noua
         </a>
 
     </div>
 
     <div class="page-content mt-5">
-        <div>
+        <div class="mb-5">
             <h4>Programari viitoare</h4>
             <div class="row">
-                @foreach($futureAppointments as $futureAppointment)
+                @forelse($futureAppointments as $futureAppointment)
                     @include('authenticated.components.appointment', ['future' => true, 'appointment' => $futureAppointment])
-                @endforeach
+                @empty
+                    <div class="alert alert-secondary with-before-icon" role="alert">
+                        <div class="alert-icon"><i class="icofont-calendar"></i></div>
+                        <div class="alert-content">Nu aveti programari planificate!</div>
+                    </div>
+                @endforelse
             </div>
         </div>
         <div>
             <h4>Programari anterioare</h4>
             <div class="row">
-                @foreach($appointments as $appointment)
+                @forelse($appointments as $appointment)
                     @include('authenticated.components.appointment', ['appointment' => $appointment])
-                @endforeach
+                @empty
+                    <div class="alert alert-secondary with-before-icon" role="alert">
+                        <div class="alert-icon"><i class="icofont-calendar"></i></div>
+                        <div class="alert-content">Nu aveti programari anterioare!</div>
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>
