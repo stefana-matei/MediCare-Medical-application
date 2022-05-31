@@ -161,7 +161,7 @@ class User extends Authenticatable implements HasMedia
         $avatar = $this->getMedia('avatars')->last();
 
         if(!is_null($avatar)) {
-            return asset($this->getMedia('avatars')->last()->getUrl());
+            return asset($avatar->getUrl());
         }else{
             return 'https://ui-avatars.com/api?background=random&name=' . $this->name;
         }

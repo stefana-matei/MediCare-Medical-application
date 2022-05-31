@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Record;
+use App\Models\Visit;
 use App\Services\Auth;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
@@ -112,5 +113,29 @@ class RecordController extends Controller
         $visit->record->delete();
 
         return redirect()->route('visits.list');
+    }
+
+
+    public function uploadFile($id, Request $request)
+    {
+        /** @var Visit $visit */
+        $visit = Auth::user()->visits()->with('record')->find($id);
+
+        /** @var Record $record */
+        $record = $visit->record;
+
+        if(is_null($record)){
+            return abort(404);
+        }
+
+        // validate request
+        $request->validate([
+            'file' => 'required|file|max:8192'
+        ]);
+
+        $record->addMediaFromRequest('file')->toMediaCollection('files');
+
+
+        return back()->withSuccess('Fisierul a fost incarcat cu succes!');
     }
 }

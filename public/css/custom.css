@@ -47,6 +47,11 @@
     background:rgba(0,0,0,.4);
 }
 
+.btn-content-ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 /* TODO Recompile these typography changes */
 
 h1 {

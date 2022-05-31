@@ -14,8 +14,39 @@
 @endsection
 
 @section('main')
+
     <div class="row">
-        @include('authenticated.components.visit', ['width' => 3, 'showRecord' => false, 'visit' => $visit])
+        <div class="col-3">
+            @include('authenticated.components.visit', ['width' => 12, 'showRecord' => false, 'visit' => $visit])
+
+
+{{--            <x-auth-validation-errors class="mb-4" :errors="$errors"/>--}}
+
+{{--            <button class="btn btn-outline-primary" type="button" onclick="$('#uploadFile').click()">--}}
+{{--                Incarca fisier<span class="btn-icon icofont-ui-user ms-2"></span>--}}
+{{--            </button>--}}
+
+{{--            <form class="d-none" id="uploadFileForm" action="{{ route('visits.record.uploadFile', ['visit_id' => $record->visit_id]) }}" method="POST"--}}
+{{--                  enctype="multipart/form-data">--}}
+{{--                @csrf--}}
+{{--                <input class="d-none" type="file" id="uploadFile" name="file"--}}
+{{--                       onchange="$('#uploadFileForm').submit()">--}}
+{{--            </form>--}}
+
+            @if($record->files->isNotEmpty())
+            <div class="mt-3">
+                <h5 class="mb-2">Fisiere atasate</h5>
+                @foreach($record->files as $file)
+                    <a href="{{ $file->getUrl() }}" target="_blank" class="btn btn-outline-primary rounded-pill btn-sm mw-100 p-2 mb-2">
+                        <span class="btn-icon icofont-clip me-2"></span>
+                        <span class="btn-content-ellipsis">{{ $file->file_name }}</span>
+                    </a>
+                @endforeach
+            </div>
+            @endif
+
+
+        </div>
         <div class="col-md-8">
             <div class="card">
                 {{--                <div class="card-header fs-4">--}}

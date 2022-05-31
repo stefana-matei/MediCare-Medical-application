@@ -101,6 +101,7 @@ Route::get('/visits/{visit_id}/record/create', [RecordController::class, 'create
 Route::post('/visits/{visit_id}/record', [RecordController::class, 'create'])->name('visits.record.create');
 // Delete
 Route::delete('/visits/{visit_id}/record', [RecordController::class, 'delete'])->name('visits.record.delete');
-
+// Upload
+Route::post('/visits/{visit_id}/record/upload', [RecordController::class, 'uploadFile'])->name('visits.record.uploadFile');
 
 
