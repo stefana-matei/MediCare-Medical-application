@@ -81,6 +81,21 @@ class DatabaseSeeder extends Seeder
             'honored' => true
         ]);
 
+        $membership->appointments()->create([
+            'date' => now()->addWeek(),
+            'honored' => true
+        ]);
+
+        $membership->appointments()->create([
+            'date' => now()->addMonth(),
+            'honored' => true
+        ]);
+
+        $membership->appointments()->create([
+            'date' => now()->addYear(),
+            'honored' => true
+        ]);
+
         $appointment2 = $membership->appointments()->create([
             'date' => now()->addWeek(),
             'honored' => false

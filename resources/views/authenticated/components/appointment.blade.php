@@ -4,15 +4,51 @@
     <div class="card text-center mb-5 bg-light">
 
         @if($future)
-            <form class="inline-block" method="POST"
-                  action="{{ route('appointments.delete', ['id' => $appointment->id]) }}">
-                @csrf
-                @method('DELETE')
+            <button type="button"
+                    class="btn-close float-end p-2"
+                    aria-label="Close"
+                    data-bs-toggle="modal"
+                    data-bs-target="#appointment-delete-modal-{{ $appointment->id }}">
+                <i class="icofont-close-line"></i>
+            </button>
 
-                <button type="submit" class="btn-close float-end p-2" aria-label="Close">
-                    <i class="icofont-close-line"></i>
-                </button>
-            </form>
+
+            <div class="modal fade"
+                 id="appointment-delete-modal-{{ $appointment->id }}"
+                 tabindex="-1"
+                 role="dialog"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <i class="icofont-close-line"></i>
+                        </button>
+
+                        <div class="modal-header justify-content-center py-5">
+                            <h5>Confirmati anularea programarii?</h5>
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="actions w-100 justify-content-between">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nu</button>
+
+                                <form class="inline-block" method="POST"
+                                      action="{{ route('appointments.delete', ['id' => $appointment->id]) }}">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-danger"
+                                            onclick="$(this).prop('disabled', true); $(this).parent().submit()">
+                                        Da, anuleaza
+                                    </button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         @endif
 
 

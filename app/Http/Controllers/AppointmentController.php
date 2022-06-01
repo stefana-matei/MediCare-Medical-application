@@ -25,10 +25,16 @@ class AppointmentController extends Controller
      */
     public function create(Request $request)
     {
+        $validated = $request->validate([
+            'date' => 'required',
+            'membership_id' => 'required'
+        ]);
+
         /** @var Membership $membership */
         $membership = Auth::user()->memberships()->find($request->membership_id);
 
-        $validated['date'] = Carbon::createFromFormat('Y-m-d', $request->date)->midDay();
+        // TODO Change midday
+        $validated['date'] = Carbon::createFromFormat('Y-m-d', $validated['date'])->midDay();
 
 
         $membership->appointments()->create([
@@ -55,6 +61,7 @@ class AppointmentController extends Controller
 
 
     /**
+     * TODO Not needed anymore
      * Displays an appointment
      *
      * @param $id
