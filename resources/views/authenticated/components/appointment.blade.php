@@ -36,8 +36,8 @@
                     <p class="fs-20">{{ $appointment->membership->medic->settingsMedic->specialty->name }}</p>
 
                     @if($future)
-                        <p style="color: {{ $appointment->confirmed ? 'green' : 'red' }}">
-                            <strong>{{ $appointment->confirmed ? 'Confirmata' : 'Refuzata' }}</strong>
+                        <p style="color: {{ $appointment->status['color'] }}">
+                            <strong>{{ $appointment->status['text'] }}</strong>
                         </p>
                     @else
                         <p style="color: {{ $appointment->honored ? 'green' : 'red' }}">

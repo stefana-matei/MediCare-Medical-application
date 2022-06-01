@@ -12,6 +12,11 @@ use Illuminate\View\View;
 
 class RecordController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Creates a record
      *
@@ -63,7 +68,7 @@ class RecordController extends Controller
      */
     public function get($id): View
     {
-        $visit = Auth::user()->visits()->with('record')->find($id);
+        $visit = Auth::user()->visits()->with('record')->findOrFail($id);
         $record = $visit->record;
 
         if(is_null($record)){

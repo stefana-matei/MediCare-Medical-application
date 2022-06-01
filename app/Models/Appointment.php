@@ -38,4 +38,26 @@ class Appointment extends Model
     }
 
 
+    public function getStatusAttribute()
+    {
+        return match ($this->confirmed) {
+            null => [
+                'color' => 'orange',
+                'text' => 'In asteptare'
+            ],
+            0 => [
+                'color' => 'red',
+                'text' => 'Refuzata'
+            ],
+            1 => [
+                'color' => 'green',
+                'text' => 'Confirmata'
+            ],
+            default => [
+                'color' => 'red',
+                'text' => 'Valoare nedefinita'
+            ],
+        };
+    }
+
 }
