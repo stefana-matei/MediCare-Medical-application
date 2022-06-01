@@ -1,59 +1,39 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('auth.layouts.app')
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+@section('type', 'page-sign-up')
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+@section('main')
+    <h2 class="h4 mt-0 mb-1">Inregistrare</h2>
+    <p class="text-muted">Creeaza-ti contul MediCare</p>
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
+    <form>
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Nume">
+        </div>
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Prenume">
+        </div>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
+        <div class="form-group">
+            <input class="form-control" type="email" placeholder="Adresa de email">
+        </div>
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
+        <div class="form-group">
+            <input class="form-control" type="password" placeholder="Parola">
+        </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+        <div class="form-check form-switch mb-4">
+            <input type="checkbox" class="form-check-input" id="remember-me" checked>
+            <label class="form-check-label" for="remember-me">Sunt de acord cu termenii si conditiile</label>
+        </div>
 
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
+        <div class="actions justify-content-between">
+            <button class="btn btn-primary">
+                <span class="btn-icon icofont-plus me-2"></span>Creeaza-ti cont
+            </button>
+        </div>
+    </form>
 
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+    <p class="mt-5">Ai deja cont? <a href="{{ route('login') }}">Conecteaza-te!</a></p>
+@endsection
