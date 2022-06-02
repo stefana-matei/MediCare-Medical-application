@@ -10,6 +10,9 @@ class Membership extends Model
 {
     use HasFactory;
 
+    const KEY_MEDIC = 'medic_id';
+    const KEY_PATIENT = 'patient_id';
+
     protected $fillable = [
         'id',
         'medic_id',
@@ -19,13 +22,13 @@ class Membership extends Model
 
     public function medic()
     {
-        return $this->belongsTo(User::class, 'medic_id');
+        return $this->belongsTo(User::class, self::KEY_MEDIC);
     }
 
 
     public function patient()
     {
-        return $this->belongsTo(User::class, 'patient_id');
+        return $this->belongsTo(User::class, self::KEY_PATIENT);
     }
 
 

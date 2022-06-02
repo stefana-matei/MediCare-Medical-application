@@ -15,9 +15,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Image\Exceptions\InvalidManipulation;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 /**
  * @property string $role
  * @property Collection $memberships
@@ -62,6 +64,26 @@ class User extends Authenticatable implements HasMedia
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    /**
+     * @param  Builder  $query
+     * @return Builder
+     */
+    public function scopeMedic($query)
+    {
+        return $query->where('role', self::ROLE_MEDIC);
+    }
+
+
+    /**
+     * @param  Builder  $query
+     * @return Builder
+     */
+    public function scopePatient($query)
+    {
+        return $query->where('role', self::ROLE_PATIENT);
+    }
 
 
     /**
@@ -161,11 +183,23 @@ class User extends Authenticatable implements HasMedia
         $avatar = $this->getMedia('avatars')->last();
 
         if (!is_null($avatar)) {
-            return asset($avatar->getUrl());
+            return asset($avatar->getUrl('thumb'));
         } else {
             return 'https://ui-avatars.com/api?background=random&name=' . $this->name;
         }
 
+    }
+
+    /**
+     * @param Media|null $media
+     * @return void
+     * @throws InvalidManipulation
+     */
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->fit(Manipulations::FIT_CONTAIN, 400, 400)
+            ->crop(Manipulations::CROP_TOP, 400, 400);
     }
 
     /**

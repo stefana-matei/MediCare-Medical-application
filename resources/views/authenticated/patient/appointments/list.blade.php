@@ -80,10 +80,10 @@
 
                         <div class="form-group">
                             <label>Medic, Specialitatea</label>
-                            <select name="membership_id" class="selectpicker" data-live-search="true">
-                                @foreach($memberships as $membership)
-                                    <option value="{{ $membership->id }}"
-                                            data-subtext="{{ $membership->medic->settingsMedic->specialty->name }}">{{ $membership->medic->name }}</option>
+                            <select name="medic_id" class="selectpicker" data-live-search="true">
+                                @foreach($medics as $medic)
+                                    <option value="{{ $medic->id }}"
+                                            data-subtext="{{ $medic->settingsMedic->specialty->name }}">{{ $medic->name }}</option>
                                 @endforeach
                             </select>
                         </div>

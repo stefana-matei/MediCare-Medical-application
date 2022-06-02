@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Membership;
+use App\Models\User;
 use App\Services\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
@@ -27,11 +28,15 @@ class AppointmentController extends Controller
     {
         $validated = $request->validate([
             'date' => 'required',
-            'membership_id' => 'required'
+            'medic_id' => 'required'
         ]);
 
+        $user = Auth::user();
+
         /** @var Membership $membership */
-        $membership = Auth::user()->memberships()->find($request->membership_id);
+        $membership = $user->memberships()->firstOrCreate([
+            Membership::KEY_MEDIC => $validated['medic_id']
+        ]);
 
         // TODO Change midday
         $validated['date'] = Carbon::createFromFormat('Y-m-d', $validated['date'])->midDay();
@@ -107,7 +112,8 @@ class AppointmentController extends Controller
         return view('authenticated.patient.appointments.list', [
             'appointments' => $appointments->where('date', '<=', $now),
             'futureAppointments' => $appointments->where('date', '>=', $now),
-            'memberships' => $memberships
+            'memberships' => $memberships,
+            'medics' => User::with('settingsMedic.specialty')->medic()->get()
         ]);
     }
 
