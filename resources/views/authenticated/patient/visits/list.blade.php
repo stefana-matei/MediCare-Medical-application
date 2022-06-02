@@ -34,11 +34,9 @@
             @empty
                 <div class="alert alert-secondary with-before-icon" role="alert">
                     <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                    <div class="alert-content">Nu sunt consultatii onorate!</div>
+                    <div class="alert-content">Nu sunt consultatii!</div>
                 </div>
             @endforelse
-
-
         </div>
     </div>
 @endsection

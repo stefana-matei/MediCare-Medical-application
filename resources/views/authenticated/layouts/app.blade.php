@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MedicApp - Medical & Hospital HTML5/Bootstrap admin template</title>
+    <title>MediCare</title>
     <meta name="keywords" content="MedicApp">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -30,9 +30,7 @@
 
 </head>
 
-
 <body class="vertical-layout boxed">
-
 
 @if(session('success'))
     <div id="toast-wrapper">

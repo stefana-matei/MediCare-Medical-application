@@ -1,7 +1,7 @@
 @extends('authenticated.layouts.app')
 
 @section('header')
-    <h1 class="page-title">Prima pagina</h1>
+    <h2 class="page-title">Home</h2>
 @endsection
 
 @section('main')
