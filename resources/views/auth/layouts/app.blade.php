@@ -24,6 +24,7 @@
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
 
 
@@ -34,7 +35,7 @@
     <div class="app-container @yield('type')">
 
         <div class="content-box">
-            <div class="content-header">
+            <div class="content-header mb-5">
                 <div class="app-logo">
                     <div class="logo-wrap">
                         <img src="{{ asset('assets/img/logo.svg') }}" alt="" width="147" height="33" class="logo-img">

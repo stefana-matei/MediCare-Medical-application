@@ -63,7 +63,7 @@
         @include('authenticated.layouts.components.vertical')
 
 
-        <main class="main-content">
+        <main class="main-content mb-0">
             <div class="app-loader"><i class="icofont-spinner-alt-4 rotate"></i></div>
 
             <div class="main-content-wrap">
@@ -76,7 +76,7 @@
             </div>
         </main>
 
-        @include('authenticated.layouts.components.footer')
+{{--        @include('authenticated.layouts.components.footer')--}}
 
     </div>
 </div>
