@@ -26,10 +26,19 @@
         </form>
     </div>
 
-
     <div class="page-content mt-5">
         <div class="row">
-            @each('authenticated.components.visit', $visits, 'visit')
+{{--            @each('authenticated.components.visit', $visits, 'visit')--}}
+            @forelse($visits as $visit)
+                @include('authenticated.components.visit', ['visit' => $visit])
+            @empty
+                <div class="alert alert-secondary with-before-icon" role="alert">
+                    <div class="alert-icon"><i class="icofont-calendar"></i></div>
+                    <div class="alert-content">Nu sunt consultatii onorate!</div>
+                </div>
+            @endforelse
+
+
         </div>
     </div>
 @endsection

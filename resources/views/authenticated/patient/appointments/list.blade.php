@@ -45,7 +45,7 @@
                 @empty
                     <div class="alert alert-secondary with-before-icon" role="alert">
                         <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                        <div class="alert-content">Nu aveti programari planificate!</div>
+                        <div class="alert-content">Nu sunt programari planificate!</div>
                     </div>
                 @endforelse
             </div>
@@ -58,7 +58,7 @@
                 @empty
                     <div class="alert alert-secondary with-before-icon" role="alert">
                         <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                        <div class="alert-content">Nu aveti programari anterioare!</div>
+                        <div class="alert-content">Nu sunt programari anterioare!</div>
                     </div>
                 @endforelse
             </div>
