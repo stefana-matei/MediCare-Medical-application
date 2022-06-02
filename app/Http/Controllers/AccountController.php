@@ -51,7 +51,7 @@ class AccountController extends Controller
         $user->update($userAttributes);
         $user->settingsPatient->update($settingsAttributes);
 
-        return back()->withSuccess('Datele tale personale au fost modificate cu succes!');
+        return back()->withSuccess('Datele personale au fost modificate cu succes!');
     }
 
     /**

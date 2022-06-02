@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
@@ -14,19 +15,29 @@ use Illuminate\Validation\Rules;
 class RegisteredUserController extends Controller
 {
     /**
-     * Display the registration view.
+     * Display the registration for patient.
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function createPatient()
     {
-        return view('auth.register');
+        return view('auth.register-patient');
+    }
+
+    /**
+     * Display the registration for medic.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function createMedic()
+    {
+        return view('auth.register-medic');
     }
 
     /**
      * Handle an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -37,14 +48,13 @@ class RegisteredUserController extends Controller
         $request->mergeIfMissing(['role' => User::ROLE_PATIENT]);
 
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role' => 'required|string'
         ]);
 
+        /** @var User $user */
         $user = User::create([
-            'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role
@@ -52,9 +62,15 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
+        if ($user->isMedic()) {
+            $user->settingsMedic()->create();
+        } else {
+            $user->settingsPatient()->create();
+        }
+
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('account.updateView')->withSuccess('Contul a fost creat cu succes, continua sa adaugi datele personale.');
     }
 
     public function storeMedic(Request $request)

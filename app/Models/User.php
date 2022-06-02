@@ -146,7 +146,7 @@ class User extends Authenticatable implements HasMedia
      */
     public function getSpecialtyAttribute()
     {
-        if(is_null($this->settingsMedic)) {
+        if (is_null($this->settingsMedic)) {
             return null;
         }
 
@@ -160,9 +160,9 @@ class User extends Authenticatable implements HasMedia
     {
         $avatar = $this->getMedia('avatars')->last();
 
-        if(!is_null($avatar)) {
+        if (!is_null($avatar)) {
             return asset($avatar->getUrl());
-        }else{
+        } else {
             return 'https://ui-avatars.com/api?background=random&name=' . $this->name;
         }
 
@@ -175,6 +175,10 @@ class User extends Authenticatable implements HasMedia
      */
     public function getNameAttribute()
     {
+        if (is_null($this->firstname) && is_null($this->lastname)) {
+            return $this->email;
+        }
+
         return $this->firstname . ' ' . $this->lastname;
     }
 }

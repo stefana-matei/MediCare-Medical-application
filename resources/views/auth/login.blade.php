@@ -48,5 +48,6 @@
     </form>
 
     <p class="mt-5 mb-1"><a href="{{ route('password.request') }}">Ai uitat parola?</a></p>
-    <p>Nu ai cont? <a href="{{ route('register') }}">Creaza cont nou</a></p>
+    <p>Nu ai cont? <a href="{{ route('patient.registerView') }}">Creaza cont nou</a></p>
+    <p>Esti medic? <a href="{{ route('medic.registerView') }}">Creaza cont de medic</a></p>
 @endsection

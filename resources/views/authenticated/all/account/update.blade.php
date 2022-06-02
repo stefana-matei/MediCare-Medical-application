@@ -37,18 +37,18 @@
                 <div class="form-group">
                     <label>Nume de familie</label>
                     <input name="lastname" class="form-control" type="text" placeholder="Nume de familie"
-                           value="{{ $user->lastname }}">
+                           value="{{ old('lastname') ?? $user->lastname }}">
                 </div>
 
                 <div class="form-group">
                     <label>Prenume</label>
-                    <input name="firstname" class="form-control" type="text" placeholder="Prenume" value="{{ $user->firstname }}">
+                    <input name="firstname" class="form-control" type="text" placeholder="Prenume" value="{{ old('firstname') ?? $user->firstname }}">
                 </div>
 
 
                 <div class="form-group">
                     <label>CNP</label>
-                    <input name="cnp" class="form-control" type="text" placeholder="CNP" value="{{ $user->settingsPatient->cnp }}">
+                    <input name="cnp" class="form-control" type="text" placeholder="CNP" value="{{ old('cnp') ??  $user->settingsPatient->cnp }}">
                 </div>
 
                 <div class="row">
@@ -56,7 +56,7 @@
                         <div class="form-group">
                             <label>Data nasterii</label>
                             <input name="birthday" class="form-control" type="date" placeholder="Data nasterii"
-                                   value="{{ $user->settingsPatient->birthday->format('Y-m-d') }}">
+                                   value="{{ old('birthday') ??  $user->settingsPatient->birthday?->format('Y-m-d') }}">
                         </div>
                     </div>
 
@@ -64,10 +64,10 @@
                         <div class="form-group">
                             <label>Sex</label>
                             <select name="gender" class="selectpicker" title="Sex">
-                                <option value="m" {{ $user->settingsPatient->gender == 'm' ? 'selected' : '' }}>
+                                <option value="m" {{ (old('gender') ?? $user->settingsPatient->gender) == 'm' ? 'selected' : '' }}>
                                     Masculin
                                 </option>
-                                <option value="f" {{ $user->settingsPatient->gender == 'f' ? 'selected' : '' }}>
+                                <option value="f" {{ (old('gender') ?? $user->settingsPatient->gender) == 'f' ? 'selected' : '' }}>
                                     Feminin
                                 </option>
                             </select>
@@ -78,36 +78,36 @@
                 <div class="form-group">
                     <label>Tara</label>
                     <input name="country" class="form-control" type="text" placeholder="Tara"
-                           value="{{ $user->settingsPatient->country }}">
+                           value="{{ old('country') ?? $user->settingsPatient->country }}">
                 </div>
 
                 <div class="form-group">
                     <label>Judet</label>
                     <input name="county" class="form-control" type="text" placeholder="Judet"
-                           value="{{ $user->settingsPatient->county }}">
+                           value="{{ old('county') ?? $user->settingsPatient->county }}">
                 </div>
 
                 <div class="form-group">
                     <label>Oras</label>
                     <input name="city" class="form-control" type="text" placeholder="Oras"
-                           value="{{ $user->settingsPatient->city }}">
+                           value="{{ old('city') ?? $user->settingsPatient->city }}">
                 </div>
 
                 <div class="form-group">
                     <label>Adresa completa</label>
                     <textarea name="address" class="form-control" placeholder="Adresa completa"
-                              rows="2">{{ $user->settingsPatient->address }}</textarea>
+                              rows="2">{{ old('address') ?? $user->settingsPatient->address }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label>Numar de telefon</label>
                     <input name="phone" class="form-control" type="text" placeholder="Numar de telefon"
-                           value="{{ $user->settingsPatient->phone }}">
+                           value="{{ old('phone') ?? $user->settingsPatient->phone }}">
                 </div>
 
                 <div class="form-group">
                     <label>Email</label>
-                    <input name="email" class="form-control" type="text" placeholder="Email" value="{{ $user->email }}">
+                    <input name="email" class="form-control" type="text" placeholder="Email" value="{{ old('email') ?? $user->email }}">
                 </div>
 
 

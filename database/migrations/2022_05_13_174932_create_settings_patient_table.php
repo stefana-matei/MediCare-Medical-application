@@ -16,14 +16,14 @@ class CreateSettingsPatientTable extends Migration
         Schema::create('settings_patient', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('cnp');
-            $table->timestamp('birthday');
-            $table->string('gender', 1);
+            $table->string('cnp')->nullable();
+            $table->timestamp('birthday')->nullable();
+            $table->string('gender', 1)->nullable();
             $table->string('country')->nullable();
             $table->string('county')->nullable();
             $table->string('city')->nullable();
             $table->string('address')->nullable();
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }
