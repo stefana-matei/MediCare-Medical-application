@@ -6,24 +6,7 @@
             <span></span><span></span><span></span>
         </button>
 
-
-{{--        <form class="app-search d-none d-md-block">--}}
-{{--            <div class="form-group typeahead__container with-suffix-icon mb-0">--}}
-{{--                <div class="typeahead__field">--}}
-{{--                    <div class="typeahead__query">--}}
-{{--                        <input--}}
-{{--                            class="form-control autocomplete-control topbar-search"--}}
-{{--                            type="search"--}}
-{{--                            placeholder="Introduceti cuvinte cheie"--}}
-{{--                            autocomplete="off"--}}
-{{--                            data-source="{{ asset('assets/data/search-menu.json') }}"--}}
-{{--                        >--}}
-{{--                        <div class="suffix-icon icofont-search"></div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </form>--}}
-
+        <x-breadcrumbs></x-breadcrumbs>
 
         <div class="app-actions">
             <div class="dropdown item">
@@ -134,12 +117,12 @@
                                 Edit account
                             </a>
                         </li>
-{{--                        <li>--}}
-{{--                            <a href="./user-profile.html" class="align-items-center">--}}
-{{--                                <span class="icon icofont-ui-user"></span>--}}
-{{--                                User profile--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        {{--                        <li>--}}
+                        {{--                            <a href="./user-profile.html" class="align-items-center">--}}
+                        {{--                                <span class="icon icofont-ui-user"></span>--}}
+                        {{--                                User profile--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
 
                         <li>
                             <a href="{{ route('logout') }}"

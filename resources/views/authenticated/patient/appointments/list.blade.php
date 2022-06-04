@@ -25,7 +25,7 @@
         </form>
 
 
-        <a href="{{ route('appointments.createView') }}"
+        <a href="#"
            class="btn btn-primary align-self-center ps-3"
            role="button"
            data-bs-toggle="modal"

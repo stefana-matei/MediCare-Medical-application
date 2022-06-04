@@ -48,7 +48,7 @@
             <nav class="main-menu-wrap">
                 <ul class="menu-ul">
                     <li class="menu-item">
-                        <span class="group-title">Meniu</span>
+                        <span class="group-title">Cont pacient</span>
                     </li>
 
 
@@ -91,6 +91,15 @@
                         </a>
                     </li>
 
+                </ul>
+            </nav>
+        </div>
+        <div class="main-menu">
+            <nav class="main-menu-wrap">
+                <ul class="menu-ul">
+                    <li class="menu-item">
+                        <span class="group-title">Sanatate</span>
+                    </li>
 
                     <li class="menu-item">
                         <a class="item-link" href="#">
@@ -99,7 +108,19 @@
                         </a>
                     </li>
 
+                    <li class="menu-item">
+                        <a class="item-link" href="#">
+                            <span class="link-icon icofont-contact-add"></span>
+                            <span class="link-text">Servicii</span>
+                        </a>
+                    </li>
 
+                    <li class="menu-item">
+                        <a class="item-link" href="#">
+                            <span class="link-icon icofont-ui-copy"></span>
+                            <span class="link-text">Abonamente</span>
+                        </a>
+                    </li>
 
                 </ul>
             </nav>

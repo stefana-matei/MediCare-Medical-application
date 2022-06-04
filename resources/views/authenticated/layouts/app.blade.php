@@ -30,7 +30,7 @@
 
 </head>
 
-<body class="vertical-layout boxed">
+<body class="vertical-layout boxed loaded">
 
 @if(session('success'))
     <div id="toast-wrapper">
@@ -38,6 +38,20 @@
             <div class="d-flex">
                 <div class="toast-body">
                     {{session('success')}}
+                </div>
+                <button type="button" class="btn-close btn-close-white m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+@endif
+
+
+@if(session('fail'))
+    <div id="toast-wrapper">
+        <div id="toast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    {{session('fail')}}
                 </div>
                 <button type="button" class="btn-close btn-close-white m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
@@ -62,7 +76,7 @@
 
 
         <main class="main-content mb-0">
-            <div class="app-loader"><i class="icofont-spinner-alt-4 rotate"></i></div>
+{{--            <div class="app-loader"><i class="icofont-spinner-alt-4 rotate"></i></div>--}}
 
             <div class="main-content-wrap">
                 <header class="page-header">

@@ -31,16 +31,21 @@ class AppointmentController extends Controller
             'medic_id' => 'required'
         ]);
 
+        // TODO Change midday
+        /** @var Carbon $date */
+        $date = Carbon::createFromFormat('Y-m-d', $validated['date'])->midDay();
+
+        if(!$date->isFuture()){
+            return back()->withFail('Programarea nu poate fi creata cu data din trecut!');
+        }
+        $validated['date'] = $date;
+
         $user = Auth::user();
 
         /** @var Membership $membership */
         $membership = $user->memberships()->firstOrCreate([
             Membership::KEY_MEDIC => $validated['medic_id']
         ]);
-
-        // TODO Change midday
-        $validated['date'] = Carbon::createFromFormat('Y-m-d', $validated['date'])->midDay();
-
 
         $membership->appointments()->create([
             'date' => $validated['date'],
@@ -61,7 +66,6 @@ class AppointmentController extends Controller
         return view('authenticated.patient.appointments.create', [
             'memberships' => Auth::user()->memberships()->with('medic')->get()
         ]);
-
     }
 
 
