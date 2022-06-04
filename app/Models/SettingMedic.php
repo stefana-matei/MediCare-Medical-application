@@ -19,4 +19,12 @@ class SettingMedic extends Model
     {
         return $this->belongsTo(Specialty::class);
     }
+
+    /**
+     * @return BelongsTo
+     */
+    public function level(): BelongsTo
+    {
+        return $this->belongsTo(Level::class);
+    }
 }

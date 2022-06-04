@@ -176,6 +176,18 @@ class User extends Authenticatable implements HasMedia
     }
 
     /**
+     * @return null
+     */
+    public function getLevelAttribute()
+    {
+        if (is_null($this->settingsMedic)) {
+            return null;
+        }
+
+        return $this->settingsMedic->level;
+    }
+
+    /**
      * @return string
      */
     public function getAvatarAttribute()

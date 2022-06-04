@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSettingsMedicTable extends Migration
+class CreateLevelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateSettingsMedicTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings_medic', function (Blueprint $table) {
+        Schema::create('levels', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('level_id')->nullable();
-            $table->foreignId('specialty_id')->nullable();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateSettingsMedicTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('settings_medic');
+        Schema::dropIfExists('levels');
     }
 }

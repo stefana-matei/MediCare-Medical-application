@@ -16,7 +16,7 @@ class MedicController extends Controller
 
     public function list()
     {
-        $medics = User::medic()->with('media', 'settingsMedic.specialty')->get();
+        $medics = User::medic()->with('media', 'settingsMedic.specialty', 'settingsMedic.level')->get();
 
         return view('authenticated.patient.medics.list', compact('medics'));
     }
