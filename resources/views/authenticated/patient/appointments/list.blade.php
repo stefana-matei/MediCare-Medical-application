@@ -24,7 +24,6 @@
             </div>
         </form>
 
-
         <a href="#"
            class="btn btn-primary align-self-center ps-3"
            role="button"
@@ -33,7 +32,6 @@
             <span class="btn-icon icofont-plus fs-6 me-3"></span>
             Programare noua
         </a>
-
     </div>
 
     <div class="page-content mt-5">

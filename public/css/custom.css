@@ -39,6 +39,14 @@
     content:"Cauta dupa medic sau specializare";
 }
 
+#visits-search.customizable-placeholder .filter-option-inner-inner:after {
+    content:"Cauta dupa medic sau specializare";
+}
+
+#medics-search.customizable-placeholder .filter-option-inner-inner:after {
+    content:"Cauta dupa nume sau specializare";
+}
+
 .main-menu .main-menu-wrap .menu-ul .menu-item .item-link .link-icon {
     width:20.8px;
 }

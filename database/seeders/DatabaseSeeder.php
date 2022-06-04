@@ -30,49 +30,84 @@ class DatabaseSeeder extends Seeder
 
         // Users
         // \App\Models\User::factory(10)->create();
+
+        // Medics
         /** @var User $medic */
         $medic = User::factory()->create([
             'role' => 'medic',
-            'firstname' => 'Medic',
-            'lastname' => 'Gica',
-            'email' => 'medic_1@med.com',
+            'firstname' => 'Andrei',
+            'lastname' => 'David',
+            'email' => 'david.andrei@medicare.com',
             'password' => Hash::make('secret123')
         ]);
 
         /** @var User $medic2 */
         $medic2 = User::factory()->create([
             'role' => 'medic',
-            'firstname' => 'Medic',
-            'lastname' => 'Capsunica',
-            'email' => 'medic_2@med.com',
+            'firstname' => 'Andreea',
+            'lastname' => 'Alexandru',
+            'email' => 'andreea.alexandru@medicare.com',
             'password' => Hash::make('secret123')
         ]);
 
         /** @var User $medic3 */
         $medic3 = User::factory()->create([
             'role' => 'medic',
-            'firstname' => 'Popescu',
-            'lastname' => 'Genoveva',
-            'email' => 'medic_3@med.com',
+            'firstname' => 'Alina',
+            'lastname' => 'Anghelus',
+            'email' => 'alina.anghelus@medicare.com',
             'password' => Hash::make('secret123')
         ]);
 
+        /** @var User $medic4 */
+        $medic4 = User::factory()->create([
+            'role' => 'medic',
+            'firstname' => 'Adina Ioana',
+            'lastname' => 'Popescu',
+            'email' => 'adina.i.popescu@medicare.com',
+            'password' => Hash::make('secret123')
+        ]);
+
+        /** @var User $medic5 */
+        $medic5 = User::factory()->create([
+            'role' => 'medic',
+            'firstname' => 'Ioan',
+            'lastname' => 'Baciu',
+            'email' => 'ioan.baciu@medicare.com',
+            'password' => Hash::make('secret123')
+        ]);
+
+        /** @var User $medic6 */
+        $medic6 = User::factory()->create([
+            'role' => 'medic',
+            'firstname' => 'Marius',
+            'lastname' => 'Balea',
+            'email' => 'marius.balea@medicare.com',
+            'password' => Hash::make('secret123')
+        ]);
+
+        // Patients
         /** @var User $patient */
         $patient = User::factory()->create([
             'role' => 'patient',
-            'firstname' => 'Patient',
-            'lastname' => 'Ionica',
-            'email' => 'patient_1@pat.com',
+            'firstname' => 'Stefana',
+            'lastname' => 'Matei',
+            'email' => 'stefana.matei@patient.medicare.com',
             'password' => Hash::make('secret123')
         ]);
+
 
         // Avatars
         $medic->addMediaFromUrl('https://i.imgur.com/ViyDFni.jpg')->toMediaCollection('avatars');
         $medic2->addMediaFromUrl('https://i.imgur.com/jWRAc7O.jpg')->toMediaCollection('avatars');
         $medic3->addMediaFromUrl('https://i.imgur.com/PA96UXv.jpeg')->toMediaCollection('avatars');
+        $medic4->addMediaFromUrl('https://i.imgur.com/xWl3Ohm.jpeg')->toMediaCollection('avatars');
+        $medic5->addMediaFromUrl('https://i.imgur.com/9fAyvhQ.jpeg')->toMediaCollection('avatars');
+        $medic6->addMediaFromUrl('https://i.imgur.com/2OqRqYU.jpeg')->toMediaCollection('avatars');
 
 
         // Memberships
+        // $patient
         /** @var Membership $membership */
         $membership = $medic->memberships()->create([
             'patient_id' => $patient->id
@@ -83,10 +118,25 @@ class DatabaseSeeder extends Seeder
             'patient_id' => $patient->id
         ]);
 
-        /** @var Membership $membership3 */
-        $membership3 = $medic3->memberships()->create([
-            'patient_id' => $patient->id
-        ]);
+//        /** @var Membership $membership3 */
+//        $membership3 = $medic3->memberships()->create([
+//            'patient_id' => $patient->id
+//        ]);
+
+//        /** @var Membership $membership4 */
+//        $membership4 = $medic4->memberships()->create([
+//            'patient_id' => $patient->id
+//        ]);
+//
+//        /** @var Membership $membership5 */
+//        $membership5 = $medic5->memberships()->create([
+//            'patient_id' => $patient->id
+//        ]);
+//
+//        /** @var Membership $membership6 */
+//        $membership6 = $medic6->memberships()->create([
+//            'patient_id' => $patient->id
+//        ]);
 
 
         // Appointments
@@ -127,20 +177,20 @@ class DatabaseSeeder extends Seeder
             'honored' => true
         ]);
 
-        $appointment4 = $membership2->appointments()->create([
-            'date' => now(),
-            'honored' => false
-        ]);
-
-        $appointment5 = $membership3->appointments()->create([
-            'date' => now(),
-            'honored' => true
-        ]);
-
-        $appointment6 = $membership3->appointments()->create([
-            'date' => now(),
-            'honored' => false
-        ]);
+//        $appointment4 = $membership2->appointments()->create([
+//            'date' => now(),
+//            'honored' => false
+//        ]);
+//
+//        $appointment5 = $membership3->appointments()->create([
+//            'date' => now(),
+//            'honored' => true
+//        ]);
+//
+//        $appointment6 = $membership3->appointments()->create([
+//            'date' => now(),
+//            'honored' => false
+//        ]);
 
 
         // Visits
@@ -166,20 +216,20 @@ class DatabaseSeeder extends Seeder
             'appointment_id' => $appointment3->id
         ]);
 
-        $visit4 = $membership2->visits()->create([
-            'date' => now(),
-            'appointment_id' => $appointment4->id
-        ]);
-
-        $visit5 = $membership3->visits()->create([
-            'date' => now(),
-            'appointment_id' => $appointment5->id
-        ]);
-
-        $visit6 = $membership3->visits()->create([
-            'date' => now(),
-            'appointment_id' => $appointment6->id
-        ]);
+//        $visit4 = $membership2->visits()->create([
+//            'date' => now(),
+//            'appointment_id' => $appointment4->id
+//        ]);
+//
+//        $visit5 = $membership3->visits()->create([
+//            'date' => now(),
+//            'appointment_id' => $appointment5->id
+//        ]);
+//
+//        $visit6 = $membership3->visits()->create([
+//            'date' => now(),
+//            'appointment_id' => $appointment6->id
+//        ]);
 
 
         // Records
@@ -267,6 +317,21 @@ class DatabaseSeeder extends Seeder
         $setting3 = $medic3->settingsMedic()->create([
             'level_id' => $primary->id,
             'specialty_id' => $endocrinology->id
+        ]);
+
+        $setting4 = $medic4->settingsMedic()->create([
+            'level_id' => $primary->id,
+            'specialty_id' => $gastroenterology->id
+        ]);
+
+        $setting5 = $medic5->settingsMedic()->create([
+            'level_id' => $specialist->id,
+            'specialty_id' => $dermatovenereology->id
+        ]);
+
+        $setting6 = $medic6->settingsMedic()->create([
+            'level_id' => $primary->id,
+            'specialty_id' => $diabetology->id
         ]);
 
         $setting4 = $patient->settingsPatient()->create([

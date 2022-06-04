@@ -14,9 +14,19 @@ class MedicController extends Controller
         return view('authenticated.patient.medics.get', compact('medic'));
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $medics = User::medic()->with('media', 'settingsMedic.specialty', 'settingsMedic.level')->get();
+        if($request->has('medic') && is_null($request->medic)) {
+            return redirect(route('medics.list'));
+        }
+
+        $medics = User::medic()->with('media', 'settingsMedic.specialty', 'settingsMedic.level');
+
+        if ($request->medic) {
+            $medics->where('id', $request->medic);
+        }
+
+        $medics = $medics->get();
 
         return view('authenticated.patient.medics.list', compact('medics'));
     }

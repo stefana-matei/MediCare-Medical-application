@@ -9,10 +9,10 @@
 
     <div class="d-flex justify-content-between">
 
-        <form id="appointments-search" class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} w-50">
+        <form id="visits-search" class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} w-50">
             <div class="form-group mb-0">
                 <select name="medic" class="selectpicker" data-live-search="true"
-                        onchange="$('#appointments-search').submit()">
+                        onchange="$('#visits-search').submit()">
                     <option></option>
 
                     @foreach($memberships as $membership)
