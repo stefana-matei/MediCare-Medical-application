@@ -102,7 +102,7 @@
                     </li>
 
                     <li class="menu-item">
-                        <a class="item-link" href="#">
+                        <a class="item-link" href="{{ route('medics.list') }}">
                             <span class="link-icon icofont-users"></span>
                             <span class="link-text">Medici</span>
                         </a>

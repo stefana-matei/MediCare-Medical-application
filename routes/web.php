@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\MedicController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\VisitController;
@@ -103,5 +104,12 @@ Route::post('/visits/{visit_id}/record', [RecordController::class, 'create'])->n
 Route::delete('/visits/{visit_id}/record', [RecordController::class, 'delete'])->name('visits.record.delete');
 // Upload
 Route::post('/visits/{visit_id}/record/upload', [RecordController::class, 'uploadFile'])->name('visits.record.uploadFile');
+
+
+// Medics
+// Get
+Route::get('/medics/{id}', [MedicController::class, 'get'])->name('medics.get');
+// List
+Route::get('/medics', [MedicController::class, 'list'])->name('medics.list');
 
 

@@ -51,12 +51,32 @@ class Breadcrumbs extends Component
             'name' => 'Programari'
         ];
 
+        $health = [
+            'href' => route('medics.list'),
+            'name' => 'Sanatate'
+        ];
+
+        $medics = [
+            'href' => route('medics.list'),
+            'name' => 'Medici'
+        ];
+
+        $medicProfile = [
+            'href' => '',
+            'name' => 'Profil medic'
+        ];
+
+
+
         $segments = match (request()->route()->getName()) {
             'account.updateView' => [$user, $update],
             'dashboard' => [$dashboard, $home],
             'visits.list' => [$dashboard, $visits],
             'visits.record.get' => [$dashboard, $visits, $record],
-            'appointments.list' => [$dashboard, $appointments]
+            'appointments.list' => [$dashboard, $appointments],
+            'medics.list' => [$health, $medics],
+            'medics.get' => [$health, $medics, $medicProfile],
+            default => []
         };
 
         return view('components.breadcrumbs', compact('segments'));
