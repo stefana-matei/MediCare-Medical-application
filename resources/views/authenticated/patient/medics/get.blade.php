@@ -1,137 +1,43 @@
 @extends('authenticated.layouts.app')
 
 @section('header')
-    <h2>{{ $medic->name }}</h2>
+    <h2>Profil medic</h2>
 @endsection
 
 @section('main')
     <div class="row">
-        <div class="col col-12 col-md-6 mb-md-0">
-            <div class="card bg-light personal-info-card">
-                <img src="../assets/content/user-profile.jpg" class="card-img-top" alt="">
+        @include('authenticated.components.medic', ['user' => $medic, 'showProfile' => false])
 
-                <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between mb-3 user-actions">
-                        <img src="../assets/content/user-400-1.jpg" width="100" height="100" alt="" class="rounded-500 me-4">
-
-                        <button type="button" class="btn btn-danger rounded-500">Subscribe</button>
-                    </div>
-
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0 mt-0 me-1">Liam Jouns</h5>
-
-                        <select class="rating" data-readonly="true">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4" selected>4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
-
-                    <p class="text-muted">UI/UX Designer</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio dolore enim, nemo nihil non omnis temporibus? Blanditiis
-                        culpa labore velit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, provident?</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    Websites & social channel
-                </div>
-                <div class="card-body">
-                    <div class="row align-items-center mb-3">
-                        <div class="col col-auto">
-                            <div class="icon icofont-github fs-30 github-color"></div>
-                        </div>
-                        <div class="col">
-                            <div>Github</div>
-                            <a href="#">github.com/liam-jouns</a>
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center mb-3">
-                        <div class="col col-auto">
-                            <div class="icon icofont-twitter fs-30 twitter-color"></div>
-                        </div>
-                        <div class="col">
-                            <div>Twitter</div>
-                            <a href="#">twitter.com/liam-jouns</a>
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center mb-3">
-                        <div class="col col-auto">
-                            <div class="icon icofont-linkedin fs-30 linkedin-color"></div>
-                        </div>
-                        <div class="col">
-                            <div>Linkedin</div>
-                            <a href="#">linkedin.com/liam-jouns</a>
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center">
-                        <div class="col col-auto">
-                            <div class="icon icofont-youtube fs-30 youtube-color"></div>
-                        </div>
-                        <div class="col">
-                            <div>YouTube</div>
-                            <a href="#">youtube.com/liam-jouns</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card mb-md-0">
-                <div class="card-header">
-                    Contact information
-                </div>
-                <div class="card-body">
-                    <div class="row align-items-center mb-3">
-                        <div class="col col-auto">
-                            <div class="icon icofont-ui-touch-phone fs-30 text-muted"></div>
-                        </div>
-                        <div class="col">
-                            <div>Mobile</div>
-                            0126596578
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center mb-3">
-                        <div class="col col-auto">
-                            <div class="icon icofont-slack fs-30 text-muted"></div>
-                        </div>
-                        <div class="col">
-                            <div>Slack</div>
-                            @liam.jouns
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center mb-3">
-                        <div class="col col-auto">
-                            <div class="icon icofont-skype fs-30 text-muted"></div>
-                        </div>
-                        <div class="col">
-                            <div>Skype</div>
-                            liam0jouns
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center">
-                        <div class="col col-auto">
-                            <div class="icon icofont-location-pin fs-30 text-muted"></div>
-                        </div>
-                        <div class="col">
-                            <div>Current Address</div>
-                            71 Pilgrim Avenue Chevy Chase, MD 20815
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="col col-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Programeaza-te
+                </div>
+                <div class="card-body">
+
+                    <form id="appointment-create-form" method="POST" action="{{ route('appointments.create') }}">
+                        @csrf
+
+                        <input name="medic_id" type="hidden" value="{{ $medic->id }}">
+
+                        <div class="form-group">
+                            <label>Data</label>
+                            <input name="date" class="form-control" type="date" placeholder="Data programarii"
+                                   value="{{ now()->format('Y-m-d') }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Ora</label>
+                            <input name="time" class="form-control" type="datetime-local" placeholder="Data programarii">
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">Adauga programare</button>
+                    </form>
+
+                </div>
+            </div>
+
+
             <div class="card">
                 <div class="card-header">
                     Experience

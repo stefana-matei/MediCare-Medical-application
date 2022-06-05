@@ -6,7 +6,7 @@
 
 @section('main')
     <div class="d-flex justify-content-between">
-        <form id="medics-search" class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} w-50">
+        <form id="medics-search" class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} search-height w-50">
             <div class="form-group mb-0">
                 <select name="medic" class="selectpicker" data-live-search="true"
                         onchange="$('#medics-search').submit()">

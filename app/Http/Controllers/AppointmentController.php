@@ -52,7 +52,7 @@ class AppointmentController extends Controller
             'doctor' => $membership->medic->name
         ]);
 
-        return back()->withSuccess('Programarea a fost creata cu succes!');
+        return redirect()->route('appointments.list')->withSuccess('Programarea a fost creata cu succes!');
     }
 
 
@@ -92,6 +92,7 @@ class AppointmentController extends Controller
      */
     public function list(Request $request)
     {
+
         if($request->has('medic') && is_null($request->medic)) {
             return redirect(route('appointments.list'));
         }
@@ -156,7 +157,7 @@ class AppointmentController extends Controller
     {
         Auth::user()->appointments()->find($id)->delete();
 
-        return redirect()->back();
+        return redirect()->back()->withSuccess('Programarea a fost anulata!');
     }
 
 }

@@ -9,7 +9,7 @@
 
     <div class="d-flex justify-content-between">
 
-        <form id="visits-search" class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} w-50">
+        <form id="visits-search" class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} search-height w-50">
             <div class="form-group mb-0">
                 <select name="medic" class="selectpicker" data-live-search="true"
                         onchange="$('#visits-search').submit()">
@@ -32,9 +32,11 @@
             @forelse($visits as $visit)
                 @include('authenticated.components.visit', ['visit' => $visit])
             @empty
-                <div class="alert alert-secondary with-before-icon" role="alert">
-                    <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                    <div class="alert-content">Nu sunt consultatii!</div>
+                <div class="col">
+                    <div class="alert alert-secondary with-before-icon" role="alert">
+                        <div class="alert-icon"><i class="icofont-calendar"></i></div>
+                        <div class="alert-content">Nu sunt consultatii!</div>
+                    </div>
                 </div>
             @endforelse
         </div>

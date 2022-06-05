@@ -1,4 +1,5 @@
 @php($width = $width ?? '4')
+@php($showProfile = $showProfile ?? true)
 
 <div class="col-12 col-md-{{ $width }}">
     <div class="contact">
@@ -17,12 +18,14 @@
             <h5 class="mb-1">Specialitate</h5>
             <p class="fs-6 text-muted">{{ $user->settingsMedic->specialty->name }}</p>
 
+            @if($showProfile)
             <div class="button-box">
                 <a href="{{ route('medics.get', ['id' => $user->id]) }}"
                    class="btn btn-primary">
                     Vezi profilul medicului
                 </a>
             </div>
+            @endif
 
         </div>
     </div>

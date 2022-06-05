@@ -35,6 +35,10 @@
     color: #6c757d;
 }
 
+.search-height {
+    height:47px;
+}
+
 #appointments-search.customizable-placeholder .filter-option-inner-inner:after {
     content:"Cauta dupa medic sau specializare";
 }

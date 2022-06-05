@@ -8,7 +8,7 @@
 
     <div class="d-flex justify-content-between">
 
-        <form id="appointments-search" class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} w-50">
+        <form id="appointments-search" class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} search-height w-50">
             <div class="form-group mb-0">
                 <select name="medic" class="selectpicker" data-live-search="true"
                         onchange="$('#appointments-search').submit()">
@@ -41,9 +41,11 @@
                 @forelse($futureAppointments as $futureAppointment)
                     @include('authenticated.components.appointment', ['future' => true, 'appointment' => $futureAppointment])
                 @empty
-                    <div class="alert alert-secondary with-before-icon" role="alert">
-                        <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                        <div class="alert-content">Nu sunt programari planificate!</div>
+                    <div class="col">
+                        <div class="alert alert-secondary with-before-icon" role="alert">
+                            <div class="alert-icon"><i class="icofont-calendar"></i></div>
+                            <div class="alert-content">Nu sunt programari planificate!</div>
+                        </div>
                     </div>
                 @endforelse
             </div>
@@ -54,9 +56,11 @@
                 @forelse($appointments as $appointment)
                     @include('authenticated.components.appointment', ['appointment' => $appointment])
                 @empty
-                    <div class="alert alert-secondary with-before-icon" role="alert">
-                        <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                        <div class="alert-content">Nu sunt programari anterioare!</div>
+                    <div class="col">
+                        <div class="alert alert-secondary with-before-icon" role="alert">
+                            <div class="alert-icon"><i class="icofont-calendar"></i></div>
+                            <div class="alert-content">Nu sunt programari anterioare!</div>
+                        </div>
                     </div>
                 @endforelse
             </div>
