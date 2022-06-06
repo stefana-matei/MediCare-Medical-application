@@ -21,6 +21,9 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 /**
+ * @property string $firstname
+ * @property string $lastname
+ * @property string $email
  * @property string $role
  * @property Collection $memberships
  */
@@ -67,6 +70,8 @@ class User extends Authenticatable implements HasMedia
 
 
     /**
+     * Filters the results by role: medic
+     *
      * @param  Builder  $query
      * @return Builder
      */
@@ -77,6 +82,8 @@ class User extends Authenticatable implements HasMedia
 
 
     /**
+     * Filters the results by role: patient
+     *
      * @param  Builder  $query
      * @return Builder
      */
@@ -87,6 +94,8 @@ class User extends Authenticatable implements HasMedia
 
 
     /**
+     * Checks if the user is a medic
+     *
      * @return bool
      */
     public function isMedic(): bool
@@ -96,6 +105,8 @@ class User extends Authenticatable implements HasMedia
 
 
     /**
+     * Checks if the user is a patient
+     *
      * @return bool
      */
     public function isPatient(): bool
@@ -103,7 +114,10 @@ class User extends Authenticatable implements HasMedia
         return $this->role == self::ROLE_PATIENT;
     }
 
+
     /**
+     * Checks the user role and returns the other role's foreign key
+     *
      * @return string
      */
     public function getOtherMemberKey()
@@ -111,7 +125,10 @@ class User extends Authenticatable implements HasMedia
         return $this->isMedic() ? 'patient_id' : 'medic_id';
     }
 
+
     /**
+     * Checks the user role and returns its own foreign key
+     *
      * @return string
      */
     public function getMemberKey()
@@ -121,6 +138,10 @@ class User extends Authenticatable implements HasMedia
 
 
     /**
+     * Memberships relationship
+     * One-to-Many relationship. One [User] has many [Memberships].
+     * [Membership] model act like a pivot table where users can be both medics or patients.
+     *
      * @return HasMany|null
      */
     public function memberships()
@@ -130,6 +151,10 @@ class User extends Authenticatable implements HasMedia
 
 
     /**
+     * Visits relationship
+     * One-to-Many through another One-to-Many relationship.
+     * One [User] has many [Memberships] which have many [Visits].
+     *
      * @return HasManyThrough
      */
     public function visits()
@@ -139,6 +164,10 @@ class User extends Authenticatable implements HasMedia
 
 
     /**
+     * Appointments relationship
+     * One-to-Many through another One-to-Many relationship.
+     * One [User] has many [Memberships] which have many [Appointments].
+     *
      * @return HasManyThrough
      */
     public function appointments(): HasManyThrough
@@ -148,6 +177,10 @@ class User extends Authenticatable implements HasMedia
 
 
     /**
+     * SettingsMedic relationship
+     * One-to-One relationship
+     * One [User] of role: medic has one [SettingMedic]
+     *
      * @return HasOne
      */
     public function settingsMedic(): HasOne
@@ -155,7 +188,12 @@ class User extends Authenticatable implements HasMedia
         return $this->hasOne(SettingMedic::class);
     }
 
+
     /**
+     * SettingsPatient relationship
+     * One-to-One relationship
+     * One [User] of role: patient has one [SettingPatient]
+     *
      * @return HasOne
      */
     public function settingsPatient(): HasOne
@@ -163,7 +201,10 @@ class User extends Authenticatable implements HasMedia
         return $this->hasOne(SettingPatient::class);
     }
 
+
     /**
+     * Accessor for 'specialty' attribute
+     *
      * @return null
      */
     public function getSpecialtyAttribute()
@@ -175,7 +216,10 @@ class User extends Authenticatable implements HasMedia
         return $this->settingsMedic->specialty;
     }
 
+
     /**
+     * Accessor for 'level' attribute
+     *
      * @return null
      */
     public function getLevelAttribute()
@@ -187,7 +231,11 @@ class User extends Authenticatable implements HasMedia
         return $this->settingsMedic->level;
     }
 
+
     /**
+     * Accessor for 'avatar' attribute
+     * Retrieves the avatar image url or provides a default
+     *
      * @return string
      */
     public function getAvatarAttribute()
@@ -202,20 +250,11 @@ class User extends Authenticatable implements HasMedia
 
     }
 
-    /**
-     * @param Media|null $media
-     * @return void
-     * @throws InvalidManipulation
-     */
-    public function registerMediaConversions(Media $media = null): void
-    {
-        $this->addMediaConversion('thumb')
-            ->fit(Manipulations::FIT_CONTAIN, 400, 400)
-            ->crop(Manipulations::CROP_TOP, 400, 400);
-    }
 
     /**
-     * Getter for name. Built from firstname and lastname.
+     * Accessor for 'name' attribute
+     * Built from firstname and lastname.
+     * If the user did not configure his account yet - the email is returned instead.
      *
      * @return string
      */
@@ -227,4 +266,22 @@ class User extends Authenticatable implements HasMedia
 
         return $this->firstname . ' ' . $this->lastname;
     }
+
+
+    /**
+     * Registers media conversions
+     * Adjusts image sizes to facilitate their storage and display
+     * Implements method from HasMedia interface
+     *
+     * @param Media|null $media
+     * @return void
+     * @throws InvalidManipulation
+     */
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->fit(Manipulations::FIT_CONTAIN, 400, 400)
+            ->crop(Manipulations::CROP_TOP, 400, 400);
+    }
+
 }

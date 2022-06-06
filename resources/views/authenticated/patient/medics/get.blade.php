@@ -23,7 +23,7 @@
 
                         <x-appointment-time></x-appointment-time>
 
-                        <button class="btn btn-primary" type="submit">Adauga programare</button>
+                        <button class="btn btn-primary" type="submit">Creaza programare</button>
                     </form>
 
                 </div>
