@@ -90,11 +90,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
-                            <label>Data</label>
-                            <input name="date" class="form-control" type="date" placeholder="Data programarii"
-                                   value="{{ now()->format('Y-m-d') }}">
-                        </div>
+                        <x-appointment-time></x-appointment-time>
                     </form>
 
 

@@ -28,12 +28,13 @@ class AppointmentController extends Controller
     {
         $validated = $request->validate([
             'date' => 'required',
+            'time' => 'required',
             'medic_id' => 'required'
         ]);
 
         // TODO Change midday
         /** @var Carbon $date */
-        $date = Carbon::createFromFormat('Y-m-d', $validated['date'])->midDay();
+        $date = Carbon::createFromFormat('Y-m-d H:i', $validated['date'] . ' ' . $validated['time']);
 
         if(!$date->isFuture()){
             return back()->withFail('Programarea nu poate fi creata cu data din trecut!');

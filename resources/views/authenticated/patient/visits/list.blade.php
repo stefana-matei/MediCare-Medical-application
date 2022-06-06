@@ -2,13 +2,10 @@
 
 @section('header')
     <h2>Consultatiile mele</h2>
-
 @endsection
 
 @section('main')
-
     <div class="d-flex justify-content-between">
-
         <form id="visits-search" class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} search-height w-50">
             <div class="form-group mb-0">
                 <select name="medic" class="selectpicker" data-live-search="true"
@@ -28,7 +25,6 @@
 
     <div class="page-content mt-5">
         <div class="row">
-{{--            @each('authenticated.components.visit', $visits, 'visit')--}}
             @forelse($visits as $visit)
                 @include('authenticated.components.visit', ['visit' => $visit])
             @empty

@@ -21,15 +21,7 @@
 
                         <input name="medic_id" type="hidden" value="{{ $medic->id }}">
 
-                        <div class="form-group">
-                            <label>Data</label>
-                            <input name="date" class="form-control" type="date" placeholder="Data programarii"
-                                   value="{{ now()->format('Y-m-d') }}">
-                        </div>
-                        <div class="form-group">
-                            <label>Ora</label>
-                            <input name="time" class="form-control" type="datetime-local" placeholder="Data programarii">
-                        </div>
+                        <x-appointment-time></x-appointment-time>
 
                         <button class="btn btn-primary" type="submit">Adauga programare</button>
                     </form>
