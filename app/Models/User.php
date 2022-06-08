@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -20,7 +21,10 @@ use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+
 /**
+ * User model
+ *
  * @property string $firstname
  * @property string $lastname
  * @property string $email
@@ -177,6 +181,18 @@ class User extends Authenticatable implements HasMedia
 
 
     /**
+     * Services relationship
+     * Many-to-Many through the pivot table: service_user
+     *
+     * @return BelongsToMany
+     */
+    public function services()
+    {
+        return $this->belongsToMany(Service::class)->withTimestamps();
+    }
+
+
+    /**
      * SettingsMedic relationship
      * One-to-One relationship
      * One [User] of role: medic has one [SettingMedic]
@@ -265,6 +281,12 @@ class User extends Authenticatable implements HasMedia
         }
 
         return $this->firstname . ' ' . $this->lastname;
+    }
+
+
+    public function getMedicNameAttribute()
+    {
+        return 'Dr. ' . $this->name;
     }
 
 

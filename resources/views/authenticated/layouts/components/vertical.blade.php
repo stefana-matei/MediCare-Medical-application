@@ -109,7 +109,7 @@
                     </li>
 
                     <li class="menu-item">
-                        <a class="item-link" href="#">
+                        <a class="item-link" href="{{ route('services.list') }}">
                             <span class="link-icon icofont-contact-add"></span>
                             <span class="link-text">Servicii</span>
                         </a>

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Appointment;
 use App\Models\Level;
 use App\Models\Membership;
+use App\Models\Service;
 use App\Models\Setting;
 use App\Models\SettingMedic;
 use App\Models\User;
@@ -344,5 +345,31 @@ class DatabaseSeeder extends Seeder
             'address' => 'Str.Plosnitei, bl.34, sc.A',
             'phone' => '0749987991'
         ]);
+
+
+
+        // Services
+        $ekg = Service::factory()->create([
+            'name' => 'Electrocardiograma',
+            'price' => 15500
+        ]);
+
+        $consultatie_cardio = Service::factory()->create([
+            'name' => 'Consultatie cardiologie',
+            'price' => 20000
+        ]);
+
+        $randomServices = Service::factory(10)->create();
+
+
+        $medic->services()->sync([
+            $ekg->id, $consultatie_cardio->id
+        ]);
+
+        $medic2->services()->sync([
+            $ekg->id
+        ]);
+
+
     }
 }

@@ -1,7 +1,7 @@
 @extends('authenticated.layouts.app')
 
 @section('header')
-    <h2> Lista medici</h2>
+    <h2>Lista medici</h2>
 @endsection
 
 @section('main')

@@ -20,7 +20,19 @@
     width:200px;
 }
 
+.avatar-list {
+    flex-wrap: wrap;
+    display:flex;
+    align-items: center;
+}
 
+.avatar-list .avatar {
+    margin-right:-10px;
+}
+
+.avatar-list .avatar:last-child {
+    margin-right:0;
+}
 
 .customizable-placeholder .filter-option-inner-inner {
     position:relative;

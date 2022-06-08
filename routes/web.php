@@ -5,6 +5,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\MedicController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\VisitController;
 use App\Services\Auth;
 use Illuminate\Support\Facades\Route;
@@ -111,5 +112,10 @@ Route::post('/visits/{visit_id}/record/upload', [RecordController::class, 'uploa
 Route::get('/medics/{id}', [MedicController::class, 'get'])->name('medics.get');
 // List
 Route::get('/medics', [MedicController::class, 'list'])->name('medics.list');
+
+// Services
+// List
+Route::get('/services', [ServiceController::class, 'list'])->name('services.list');
+
 
 
