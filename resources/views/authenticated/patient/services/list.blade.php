@@ -9,6 +9,7 @@
         <div class="card-body">
             <table
                 class="table data-table"
+                data-paging="false"
                 data-info="false"
             >
                 <thead>

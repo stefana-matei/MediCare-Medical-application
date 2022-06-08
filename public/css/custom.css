@@ -107,9 +107,32 @@
 #breadcrumbs .page-breadcrumbs .item:last-child .separator {
     display: none;
 }
-
-
 /* END Breadcrumbs */
+
+/* Data tables */
+
+div.dataTables_wrapper div.dataTables_filter label {
+    width:100%;
+}
+div.dataTables_wrapper div.dataTables_filter {
+    text-align: left;
+}
+
+.dataTables_filter .form-control {
+    padding:22px;
+    width:100% !important;
+    font-size:16px;
+    border-radius:500px;
+}
+
+.dataTables_length {
+    text-align:right;
+}
+
+.dataTable-header {
+    margin-bottom:32px;
+}
+/* END Data tables */
 
 .modal-backdrop {
     background:rgba(0,0,0,.4);

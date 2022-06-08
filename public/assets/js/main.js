@@ -16,9 +16,22 @@
 
     if (table.length) {
       table.DataTable({
-          "dom": "<'row'<'col-sm-12 col-md-4'f><'col-sm-12 col-md-4'l><'col-sm-12 col-md-4'p>>" +
+          dom: "<'row dataTable-header'<'col-sm-12 col-md-4'f><'col-sm-12 col-md-5'l><'col-sm-12 col-md-3'p>>" +
               "<'row'<'col-sm-12'tr>>" +
-              "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"
+              "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+          language: {
+              search: "",
+              paginate: {
+                  first:      "<<",
+                  previous:   "<",
+                  next:       ">",
+                  last:       ">>"
+              },
+              emptyTable:     "Nu exista rezultate",
+              lengthMenu:    "Arata _MENU_ rezultate",
+              searchPlaceholder: "Cauta"
+
+          }
       });
     }
   }

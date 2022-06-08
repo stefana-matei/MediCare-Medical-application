@@ -24,11 +24,7 @@
             </div>
         </form>
 
-        <a href="#"
-           class="btn btn-primary align-self-center ps-3"
-           role="button"
-           data-bs-toggle="modal"
-           data-bs-target="#add-appointment">
+        <a href="{{ route('appointments.createView') }}" class="btn btn-primary align-self-center ps-3">
             <span class="btn-icon icofont-plus fs-6 me-3"></span>
             Programare noua
         </a>
@@ -67,47 +63,6 @@
         </div>
     </div>
 @endsection
-
-@section('modals')
-    <div class="modal fade" id="add-appointment" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Programare noua</h5>
-                </div>
-                <div class="modal-body">
-
-                    <form id="appointment-create-form" method="POST" action="{{ route('appointments.create') }}">
-                        @csrf
-
-                        <div class="form-group">
-                            <label>Medic, Specialitatea</label>
-                            <select name="medic_id" class="selectpicker" data-live-search="true">
-                                @foreach($medics as $medic)
-                                    <option value="{{ $medic->id }}"
-                                            data-subtext="{{ $medic->settingsMedic->specialty->name }}">{{ $medic->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <x-appointment-time></x-appointment-time>
-                    </form>
-
-
-                </div>
-                <div class="modal-footer d-block">
-                    <div class="actions justify-content-between">
-                        <button type="button" class="btn btn-error" data-bs-dismiss="modal">Anuleaza</button>
-                        <button type="button" class="btn btn-info" onclick="$('#appointment-create-form').submit()">
-                            Adauga
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
-
 
 
 

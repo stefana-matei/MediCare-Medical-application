@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function list()
     {
         $services = Service::with('users.media')->get();

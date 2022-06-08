@@ -222,6 +222,7 @@
 <script src="{{ asset('assets/js/main.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
 
+@yield('scripts')
 
 </body>
 </html>

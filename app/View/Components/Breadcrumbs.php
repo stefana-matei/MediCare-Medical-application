@@ -51,6 +51,11 @@ class Breadcrumbs extends Component
             'name' => 'Programari'
         ];
 
+        $appointmentsCreate = [
+            'href' => route('appointments.create'),
+            'name' => 'Creare'
+        ];
+
         $health = [
             'href' => route('medics.list'),
             'name' => 'Sanatate'
@@ -79,6 +84,7 @@ class Breadcrumbs extends Component
             'visits.list' => [$dashboard, $visits],
             'visits.record.get' => [$dashboard, $visits, $record],
             'appointments.list' => [$dashboard, $appointments],
+            'appointments.createView' => [$dashboard, $appointments, $appointmentsCreate],
             'medics.list' => [$health, $medics],
             'medics.get' => [$health, $medics, $medicProfile],
             'services.list' => [$health, $services],
