@@ -15,7 +15,7 @@ class SettingPatient extends Model
     ];
 
     protected $fillable = [
-        'cnp',
+        'pin',
         'birthday',
         'gender',
         'country',

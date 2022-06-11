@@ -31,7 +31,7 @@ class AccountController extends Controller
                 'max:200',
                 Rule::unique('users')->ignore($user->id)
             ],
-            'cnp' => 'required|size:13',
+            'pin' => 'required|size:13',
             'birthday' => 'required',
             'gender' => 'required',
             'country' => '',

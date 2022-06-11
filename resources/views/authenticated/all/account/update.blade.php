@@ -48,7 +48,7 @@
 
                 <div class="form-group">
                     <label>CNP</label>
-                    <input name="cnp" class="form-control" type="text" placeholder="CNP" value="{{ old('cnp') ??  $user->settingsPatient->cnp }}">
+                    <input name="pin" class="form-control" type="text" placeholder="CNP" value="{{ old('pin') ??  $user->settingsPatient->pin }}">
                 </div>
 
                 <div class="row">

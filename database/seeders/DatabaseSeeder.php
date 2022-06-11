@@ -97,6 +97,8 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('secret123')
         ]);
 
+        User::factory(20)->create();
+
 
         // Avatars
         $medic->addMediaFromUrl('https://i.imgur.com/ViyDFni.jpg')->toMediaCollection('avatars');
@@ -336,7 +338,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $setting4 = $patient->settingsPatient()->create([
-            'cnp' => '2880822426702',
+            'pin' => '2880822426702',
             'birthday' => Carbon::create(1998, 8, 22),
             'gender' => 'f',
             'country' => 'Romania',

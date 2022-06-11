@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -15,6 +16,8 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
+//            'role' => Arr::random([User::ROLE_PATIENT, User::ROLE_MEDIC]),
+            'role' => User::ROLE_PATIENT,
             'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
