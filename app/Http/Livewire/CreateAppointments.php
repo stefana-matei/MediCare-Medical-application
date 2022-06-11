@@ -20,7 +20,7 @@ class CreateAppointments extends Component
 
     public function serviceSelectedEvent($value)
     {
-        if($value == 0) {
+        if ($value == 0) {
             $this->selectedService = null;
             return;
         }
@@ -38,7 +38,6 @@ class CreateAppointments extends Component
         $this->setMedics();
         $this->setTimes();
         $this->setServices();
-
 
         return view('livewire.create-appointments');
     }
