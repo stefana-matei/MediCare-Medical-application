@@ -1,5 +1,13 @@
 @extends('authenticated.layouts.app')
 
+@section('head')
+    @livewireStyles
+@endsection
+
+@section('scripts')
+    @livewireScripts
+@endsection
+
 @section('header')
     <h2 class="page-title">Pagina principala</h2>
 @endsection
@@ -29,7 +37,6 @@
                 Ultimele consultatii
 
                 <button type="button" class="btn btn-outline-primary btn-mini float-end">Toate consultatiile</button>
-
             </h3>
             <div class="row">
                 @forelse($visits as $visit)
@@ -48,7 +55,7 @@
 
         <div class="col-4 ps-4">
             <h3>Solicita o programare</h3>
-            <div class="alert alert-secondary">x</div>
+            <livewire:calendar />
 
             <h3>Consultatie online</h3>
             <div class="alert alert-secondary">Y</div>

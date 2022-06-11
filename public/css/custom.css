@@ -187,3 +187,9 @@ body.public-layout .page-box .app-container .content-box {
     line-height: 1;
     padding: calc(0.71429rem - 0.5px) 1rem;
 }
+
+.btn.btn-calendar:not([disabled]):hover {
+    background: #e4e4e4;
+    border-color: #e4e4e4;
+    color: #000;
+}
