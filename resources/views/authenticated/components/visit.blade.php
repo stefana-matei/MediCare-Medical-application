@@ -1,14 +1,18 @@
 @php($width = $width ?? '4')
 @php($showRecord = $showRecord ?? true)
+@php($mini = $mini ?? false)
 
 <div class="col-12 col-md-{{ $width }}">
     <div class="contact">
         <div class="img-box">
-            <img src="{{ $visit->membership->medic->avatar }}" width="400" alt="" style="height: 275px; object-fit: cover; object-position: top">
+            <img src="{{ $visit->membership->medic->avatar }}"
+                 width="400"
+                 alt=""
+                 style="height: {{ $mini ? '175' : '275' }}px; object-fit: cover; object-position: top">
         </div>
 
         <div class="info-box">
-            <h4 class="name">Dr. {{ $visit->membership->medic->name }}</h4>
+            <h4 class="name">{{ $visit->membership->medic->medicName }}</h4>
 
             <p class="role fs-5">{{ $visit->membership->medic->settingsMedic->specialty->name }}</p>
 
@@ -21,13 +25,13 @@
                 @if($visit->record)
                     <div class="button-box">
                         <a href="{{ route('visits.record.get', ['visit_id' => $visit->id]) }}"
-                           class="btn btn-primary">
+                           class="btn btn-primary {{ $mini ? 'btn-sm' : '' }}">
                             Vezi raportul consultatiei
                         </a>
                     </div>
                 @else
                     <div class="button-box">
-                        <button type="button" class="btn btn-secondary" disabled>
+                        <button type="button" class="btn btn-secondary {{ $mini ? 'btn-sm' : '' }}" disabled>
                             Vezi raportul consultatiei
                         </button>
                     </div>

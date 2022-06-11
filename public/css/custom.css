@@ -78,9 +78,7 @@
     padding:30px;
 }
 
-    /* Breadcrumbs */
-
-
+/* Breadcrumbs */
 #breadcrumbs .page-breadcrumbs {
     align-items: center;
     display: flex;
@@ -184,3 +182,8 @@ body.public-layout .page-box .app-container .content-box {
     padding-bottom:50px;
 }
 
+.btn.btn-mini {
+    font-size: .9rem;
+    line-height: 1;
+    padding: calc(0.71429rem - 0.5px) 1rem;
+}

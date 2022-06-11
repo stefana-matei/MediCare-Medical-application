@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MedicController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\RecordController;
@@ -25,14 +26,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    if (Auth::user()->isMedic()) {
-        return view('authenticated.medic.dashboard');
-    } else {
-        return view('authenticated.patient.dashboard');
-    }
-
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
 

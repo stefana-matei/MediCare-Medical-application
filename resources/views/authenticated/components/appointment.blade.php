@@ -1,6 +1,7 @@
 @php($future = $future ?? false)
+@php($width = $width ?? 4)
 
-<div class="col-12 col-md-4">
+<div class="col-12 col-md-{{ $width }}">
     <div class="card text-center mb-5 bg-light">
 
         @if($future)
@@ -63,7 +64,7 @@
                  class="rounded-500 mb-4">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="fs-20" style="color: #1f4197; font-weight: bold">
-                    {{ $appointment->membership->medic->name }}
+                    {{ $appointment->membership->medic->medicName }}
                 </div>
             </div>
 

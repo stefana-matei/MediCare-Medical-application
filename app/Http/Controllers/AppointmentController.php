@@ -93,7 +93,6 @@ class AppointmentController extends Controller
      */
     public function list(Request $request)
     {
-
         if($request->has('medic') && is_null($request->medic)) {
             return redirect(route('appointments.list'));
         }
