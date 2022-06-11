@@ -359,7 +359,7 @@ class DatabaseSeeder extends Seeder
             'price' => 20000
         ]);
 
-        $randomServices = Service::factory(10)->create();
+//        $randomServices = Service::factory(10)->create();
 
 
         $medic->services()->sync([

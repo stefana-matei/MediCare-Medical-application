@@ -53,7 +53,7 @@ class Breadcrumbs extends Component
 
         $appointmentsCreate = [
             'href' => route('appointments.create'),
-            'name' => 'Creare'
+            'name' => 'Programare noua'
         ];
 
         $health = [

@@ -1,38 +1,43 @@
 <div>
-    <form id="appointment-create-form" method="POST" action="{{ route('appointments.create') }}">
+    <form id="appointment-create-form" class="mt-5" method="POST" action="{{ route('appointments.create') }}">
         @csrf
 
-        <div class="form-group">
-            <label>Medic, Specialitatea</label>
-            <select name="medic_id" class="selectpicker" data-live-search="true">
-                @foreach($medics as $medic)
-                    <option value="{{ $medic->id }}"
-                            data-subtext="{{ $medic->settingsMedic->specialty->name }}">{{ $medic->name }}</option>
-                @endforeach
-            </select>
-        </div>
-
         <div class="row">
-            <div class="col-12 col-sm-6">
+            <div class="col-sm-6">
+                <div wire:ignore class="form-group">
+                    <label>Alege tipul investigatiei</label>
+                    <select class="selectpicker" data-live-search="true" onchange="Livewire.emit('serviceSelectedEvent', this.value)">
+                        <option value="0"></option>
+                        @foreach($services as $service)
+                            <option value="{{ $service->id }}">{{ $service->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6">
                 <div class="form-group">
-                    <label>Data</label>
+                    <label>Dupa data</label>
                     <input name="date" class="form-control" type="date" placeholder="Data programarii"
                            value="{{ now()->addDay()->format('Y-m-d') }}">
                 </div>
             </div>
-            <div class="col-12 col-sm-6">
-                <div class="form-group">
-                    <label>Ora</label>
-                    <div class="form-group with-suffix-icon">
-                        <select name="time" class="form-control">
-                            @foreach($times as $time)
-                                <option {{ $loop->first ? 'selected' : '' }}>{{ $time }}</option>
-                            @endforeach
-                        </select>
-                        <div class="suffix-icon sli-list"></div>
-                    </div>
-                </div>
-            </div>
         </div>
+
+        @if(empty($medics))
+            <div class="empty-alert alert alert-secondary">
+                Alege un serviciu de mai sus
+            </div>
+        @else
+            <div class="row">
+                @forelse($medics as $medic)
+
+                    @include('authenticated.components.medic-appointment', ['width' => 3, 'user' => $medic])
+
+                @empty
+                    <p>no medics to show</p>
+                @endforelse
+            </div>
+        @endif
+
     </form>
 </div>

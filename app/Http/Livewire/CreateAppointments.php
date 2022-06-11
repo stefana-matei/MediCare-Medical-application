@@ -2,13 +2,32 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\User;
+use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\View\View;
 use Livewire\Component;
 
 class CreateAppointments extends Component
 {
+    public $medics;
+    public $times;
+    public $services;
+
+    public $selectedMedic;
+    public $selectedService;
+
+    protected $listeners = ['serviceSelectedEvent'];
+
+    public function serviceSelectedEvent($value)
+    {
+        if($value == 0) {
+            $this->selectedService = null;
+            return;
+        }
+        $this->selectedService = $value;
+    }
+
+
     /**
      * Renders the component
      *
@@ -16,45 +35,58 @@ class CreateAppointments extends Component
      */
     public function render()
     {
-        return view('livewire.create-appointments', [
-            'times' => $this->getTimes(),
-            'medics' => $this->getMedics()
-        ]);
-    }
+        $this->setMedics();
+        $this->setTimes();
+        $this->setServices();
 
-    /**
-     * Accessor for medics list
-     *
-     * @return mixed
-     */
-    private function getMedics()
-    {
-        return User::with('settingsMedic.specialty')->medic()->get();
+
+        return view('livewire.create-appointments');
     }
 
 
     /**
-     * Accessor for times
-     *
-     * @return array
+     * Sets the medics property
      */
-    private function getTimes()
+    private function setMedics()
     {
-        $start_date = Carbon::today()->setTime(8,0,0);
-        $end_date = Carbon::today()->setTime(17,0,0);
+        if (!$this->selectedService) {
+            $this->medics = null;
+            return;
+        }
+
+        $this->medics = Service::with('users.media', 'users.settingsMedic.specialty', 'users.settingsMedic.level')->find($this->selectedService)->users;
+    }
+
+
+    /**
+     * Sets the services property
+     */
+    private function setServices()
+    {
+        $this->services = Service::orderBy('name')->get();
+    }
+
+
+    /**
+     * Sets the times property
+     */
+    private function setTimes()
+    {
+        $start_date = Carbon::today()->setTime(8, 0, 0);
+        $end_date = Carbon::today()->setTime(17, 0, 0);
         $slot_duration = 30;
 
         $times = [];
-        $slots = $start_date->diffInMinutes($end_date)/$slot_duration;
+        $slots = $start_date->diffInMinutes($end_date) / $slot_duration;
 
         // First time
-        $times[]=$start_date->format('H:i');
+        $times[] = $start_date->format('H:i');
 
-        for($s = 1;$s <=$slots;$s++){
+        for ($s = 1; $s <= $slots; $s++) {
             // Adding each additional to the list
-            $times[]=$start_date->addMinute($slot_duration)->format('H:i');
+            $times[] = $start_date->addMinute($slot_duration)->format('H:i');
         }
 
-        return $times;
+        $this->times = $times;
     }
 }

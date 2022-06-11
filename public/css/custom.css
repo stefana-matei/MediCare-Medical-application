@@ -67,7 +67,18 @@
     width:20.8px;
 }
 
-/* Breadcrumbs */
+.btn.appointment-btn {
+    padding:7px;
+    margin-bottom:3px;
+}
+
+.empty-alert {
+    text-align: center;
+    border:rgba(0,0,0,.1) dashed 1px !important;
+    padding:30px;
+}
+
+    /* Breadcrumbs */
 
 
 #breadcrumbs .page-breadcrumbs {
