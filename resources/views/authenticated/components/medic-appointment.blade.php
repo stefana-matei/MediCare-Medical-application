@@ -17,7 +17,7 @@
 
             <p>
                 @forelse($times as $time)
-                    <button class="appointment-btn btn btn-primary btn-sm">{{ $time }}</button>
+                    <div class="appointment-btn btn btn-primary btn-sm">{{ $time }}</div>
                 @empty
 
                 @endforelse

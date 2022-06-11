@@ -15,13 +15,9 @@ class Specialty extends Model
     ];
 
 
-    /**
-     * @return HasMany
-     */
-    public function medics(): HasMany
+    public function settingsMedic()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(SettingMedic::class);
     }
-
 
 }

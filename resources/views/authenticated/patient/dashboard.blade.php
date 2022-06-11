@@ -18,7 +18,9 @@
             <h3>
                 Programari planificate
 
-                <button type="button" class="btn btn-outline-primary btn-mini ms-3 float-end">Toate programarile</button>
+                <a href="{{ route('appointments.list') }}" type="button" class="btn btn-outline-primary btn-mini ms-3 float-end">
+                    Toate programarile
+                </a>
             </h3>
             <div class="row">
                 @forelse($futureAppointments as $futureAppointment)
@@ -36,7 +38,9 @@
             <h3>
                 Ultimele consultatii
 
-                <button type="button" class="btn btn-outline-primary btn-mini float-end">Toate consultatiile</button>
+                <a href="{{ route('visits.list') }}" type="button" class="btn btn-outline-primary btn-mini float-end">
+                    Toate consultatiile
+                </a>
             </h3>
             <div class="row">
                 @forelse($visits as $visit)

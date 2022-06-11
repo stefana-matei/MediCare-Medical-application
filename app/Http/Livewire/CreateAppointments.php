@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Service;
+use App\Models\Specialty;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -14,17 +16,17 @@ class CreateAppointments extends Component
     public $services;
 
     public $selectedMedic;
-    public $selectedService;
+    public $selectedSpecialty;
 
-    protected $listeners = ['serviceSelectedEvent'];
+    protected $listeners = ['specialtySelectedEvent'];
 
-    public function serviceSelectedEvent($value)
+    public function specialtySelectedEvent($value)
     {
         if ($value == 0) {
-            $this->selectedService = null;
+            $this->selectedSpecialty = null;
             return;
         }
-        $this->selectedService = $value;
+        $this->selectedSpecialty = $value;
     }
 
 
@@ -39,7 +41,11 @@ class CreateAppointments extends Component
         $this->setTimes();
         $this->setServices();
 
-        return view('livewire.create-appointments');
+        $specialties = Specialty::all();
+
+        return view('livewire.create-appointments', [
+            'specialties' => $specialties
+        ]);
     }
 
 
@@ -48,12 +54,23 @@ class CreateAppointments extends Component
      */
     private function setMedics()
     {
-        if (!$this->selectedService) {
+        if (!$this->selectedSpecialty) {
             $this->medics = null;
             return;
         }
 
-        $this->medics = Service::with('users.media', 'users.settingsMedic.specialty', 'users.settingsMedic.level')->find($this->selectedService)->users;
+//        $this->medics = Specialty::with('settingsMedic.medic.media', 'settingsMedic.medic.settingsMedic.specialty', 'settingsMedic.medic.settingsMedic.level')
+//            ->find($this->selectedSpecialty)->settingsMedic->pluck('medic');
+
+
+        $this->medics = User::medic()
+            ->with('settingsMedic.specialty', 'settingsMedic.level', 'media')
+            ->whereHas('settingsMedic', function($query){
+                $query->where('specialty_id', $this->selectedSpecialty);
+            })
+            ->get();
+
+
     }
 
 
@@ -71,8 +88,8 @@ class CreateAppointments extends Component
      */
     private function setTimes()
     {
-        $start_date = Carbon::today()->setTime(8, 0, 0);
-        $end_date = Carbon::today()->setTime(17, 0, 0);
+        $start_date = Carbon::today()->setTime(9, 0, 0);
+        $end_date = Carbon::today()->setTime(10, 0, 0);
         $slot_duration = 30;
 
         $times = [];

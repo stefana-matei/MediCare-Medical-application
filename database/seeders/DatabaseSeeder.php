@@ -97,7 +97,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('secret123')
         ]);
 
-        User::factory(20)->create();
+//        User::factory(20)->create();
 
 
         // Avatars
@@ -314,7 +314,7 @@ class DatabaseSeeder extends Seeder
 
         $setting2 = $medic2->settingsMedic()->create([
             'level_id' => $specialist->id,
-            'specialty_id' => $pulmonology->id
+            'specialty_id' => $cardiology->id
         ]);
 
         $setting3 = $medic3->settingsMedic()->create([

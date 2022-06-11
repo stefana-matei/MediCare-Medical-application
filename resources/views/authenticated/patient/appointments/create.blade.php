@@ -9,7 +9,7 @@
 @endsection
 
 @section('header')
-    <h2>Creaza programare</h2>
+    <h2>Programare noua</h2>
 @endsection
 
 @section('main')

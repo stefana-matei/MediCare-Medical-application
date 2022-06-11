@@ -3,41 +3,40 @@
         @csrf
 
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <div wire:ignore class="form-group">
-                    <label>Alege tipul investigatiei</label>
-                    <select class="selectpicker" data-live-search="true" onchange="Livewire.emit('serviceSelectedEvent', this.value)">
+                    <label>Specialitate</label>
+                    <select class="selectpicker" data-live-search="true" onchange="Livewire.emit('specialtySelectedEvent', this.value)">
                         <option value="0"></option>
-                        @foreach($services as $service)
-                            <option value="{{ $service->id }}">{{ $service->name }}</option>
+                        @foreach($specialties as $specialty)
+                            <option value="{{ $specialty->id }}">{{ $specialty->name }}</option>
                         @endforeach
                     </select>
                 </div>
+
+                @if(empty($medics))
+                    <div class="empty-alert alert alert-secondary">
+                        Pentru a incepe cautarea, te rugam sa alegi specialitatea si data programarii.
+                    </div>
+                @else
+                    <div class="row">
+                        @forelse($medics as $medic)
+
+                            @include('authenticated.components.medic-appointment', ['width' => 4, 'user' => $medic])
+
+                        @empty
+                            <p>no medics to show</p>
+                        @endforelse
+                    </div>
+                @endif
             </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label>Dupa data</label>
-                    <input name="date" class="form-control" type="date" placeholder="Data programarii"
-                           value="{{ now()->addDay()->format('Y-m-d') }}">
-                </div>
+            <div class="col-sm-4">
+                <label>Incepand cu data</label>
+                <livewire:calendar />
             </div>
         </div>
 
-        @if(empty($medics))
-            <div class="empty-alert alert alert-secondary">
-                Alege un serviciu de mai sus
-            </div>
-        @else
-            <div class="row">
-                @forelse($medics as $medic)
 
-                    @include('authenticated.components.medic-appointment', ['width' => 3, 'user' => $medic])
-
-                @empty
-                    <p>no medics to show</p>
-                @endforelse
-            </div>
-        @endif
 
     </form>
 </div>

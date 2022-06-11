@@ -27,4 +27,12 @@ class SettingMedic extends Model
     {
         return $this->belongsTo(Level::class);
     }
+
+    /**
+     * @return BelongsTo
+     */
+    public function medic()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
