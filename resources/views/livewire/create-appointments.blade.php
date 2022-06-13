@@ -16,7 +16,7 @@
 
                 @if(empty($medics))
                     <div class="empty-alert alert alert-secondary">
-                        Pentru a incepe cautarea, te rugam sa alegi specialitatea si data programarii.
+                        Pentru o noua programare, te rugam sa alegi data programarii si specialitatea medicului.
                     </div>
                 @else
                     <div class="row">
@@ -25,14 +25,14 @@
                             @include('authenticated.components.medic-appointment', ['width' => 4, 'user' => $medic])
 
                         @empty
-                            <p>no medics to show</p>
+                            <p>Nu sunt medici cu aceasta specialitate.</p>
                         @endforelse
                     </div>
                 @endif
             </div>
             <div class="col-sm-4">
                 <label>Incepand cu data</label>
-                <livewire:calendar />
+                <livewire:calendar-select />
             </div>
         </div>
 

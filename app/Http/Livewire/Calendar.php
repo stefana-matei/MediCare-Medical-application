@@ -8,15 +8,28 @@ use Livewire\Component;
 
 class Calendar extends Component
 {
-    const DAYS_COUNT = 35;
-
+    /** @var Carbon */
     public $now;
+
+    /** @var array */
     public $weeks;
+
+    /** @var string */
     public $month;
+
+    /** @var int */
     public $monthDifference = 0;
+
+    /** @var bool */
+    public $monthChanged = false;
+
+    /** @var Carbon */
+    public $presetDate;
 
     public function render()
     {
+        $this->setPresetDate();
+
         $this->now = now()->locale('ro_RO')->addMonths($this->monthDifference);
 
         $this->month = $this->now->format('F Y');
@@ -43,12 +56,27 @@ class Calendar extends Component
     public function addMonth()
     {
         $this->monthDifference++;
+        $this->monthChanged = true;
     }
 
     public function subMonth()
     {
-        if($this->monthDifference > 0) {
+        if ($this->monthDifference > 0) {
             $this->monthDifference--;
+            $this->monthChanged = true;
         }
+    }
+
+    protected function setPresetDate()
+    {
+//        $this->presetDate = today();
+    }
+
+    /**
+     * @param $date
+     */
+    public function selectDate($date)
+    {
+        $this->redirect(route('appointments.createView', ['date' => $date]));
     }
 }

@@ -60,10 +60,15 @@ class AppointmentController extends Controller
     /**
      * Displays the form that creates an appointment
      *
-     * @return View
+     * @param Request $request
+     * @return View|RedirectResponse
      */
-    public function createView(): View
+    public function createView(Request $request): View|RedirectResponse
     {
+        if($request->has('date')){
+            return redirect()->route('appointments.createView')->withInput(['date' => $request->date]);
+        }
+
         return view('authenticated.patient.appointments.create', [
             'memberships' => Auth::user()->memberships()->with('medic')->get()
         ]);

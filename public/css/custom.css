@@ -2,80 +2,80 @@
     z-index: 11;
     position: fixed;
     top: 100px;
-    right:20px;
+    right: 20px;
 }
 
 #toast .toast-body {
-    font-size:16px;
-    padding-right:20px;
+    font-size: 16px;
+    padding-right: 20px;
 }
 
 #toast button.btn-close {
     background: transparent url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3E%3C/svg%3E") 50%/1em auto no-repeat;
     font-size: 0.875rem;
-    margin-right:12px !important;
+    margin-right: 12px !important;
 }
 
 .dropdown-menu-account {
-    width:200px;
+    width: 200px;
 }
 
 .avatar-list {
     flex-wrap: wrap;
-    display:flex;
+    display: flex;
     align-items: center;
 }
 
 .avatar-list .avatar {
-    margin-right:-10px;
+    margin-right: -10px;
 }
 
 .avatar-list .avatar:last-child {
-    margin-right:0;
+    margin-right: 0;
 }
 
 .customizable-placeholder .filter-option-inner-inner {
-    position:relative;
-    color:transparent;
+    position: relative;
+    color: transparent;
 }
 
 .customizable-placeholder .filter-option-inner-inner:after {
-    position:absolute;
-    content:"Lipseste filtru de cautare";
-    left:0;
-    top:0;
+    position: absolute;
+    content: "Lipseste filtru de cautare";
+    left: 0;
+    top: 0;
     color: #6c757d;
 }
 
 .search-height {
-    height:47px;
+    height: 47px;
 }
 
 #appointments-search.customizable-placeholder .filter-option-inner-inner:after {
-    content:"Cauta dupa medic sau specializare";
+    content: "Cauta dupa medic sau specializare";
 }
 
 #visits-search.customizable-placeholder .filter-option-inner-inner:after {
-    content:"Cauta dupa medic sau specializare";
+    content: "Cauta dupa medic sau specializare";
 }
 
 #medics-search.customizable-placeholder .filter-option-inner-inner:after {
-    content:"Cauta dupa nume sau specializare";
+    content: "Cauta dupa nume sau specializare";
 }
 
 .main-menu .main-menu-wrap .menu-ul .menu-item .item-link .link-icon {
-    width:20.8px;
+    width: 20.8px;
 }
 
 .btn.appointment-btn {
-    padding:7px;
-    margin-bottom:3px;
+    padding: 7px;
+    margin-bottom: 3px;
 }
 
 .empty-alert {
     text-align: center;
-    border:rgba(0,0,0,.1) dashed 1px !important;
-    padding:30px;
+    border: rgba(0, 0, 0, .1) dashed 1px !important;
+    padding: 30px;
 }
 
 /* Breadcrumbs */
@@ -86,7 +86,7 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 #breadcrumbs .page-breadcrumbs .item {
@@ -98,7 +98,7 @@
 #breadcrumbs .page-breadcrumbs .item i {
     margin: 0 .5rem;
     width: 1rem;
-    display:inline-block;
+    display: inline-block;
 }
 
 #breadcrumbs .page-breadcrumbs .item .link {
@@ -116,35 +116,38 @@
 #breadcrumbs .page-breadcrumbs .item:last-child .separator {
     display: none;
 }
+
 /* END Breadcrumbs */
 
 /* Data tables */
 
 div.dataTables_wrapper div.dataTables_filter label {
-    width:100%;
+    width: 100%;
 }
+
 div.dataTables_wrapper div.dataTables_filter {
     text-align: left;
 }
 
 .dataTables_filter .form-control {
-    padding:22px;
-    width:100% !important;
-    font-size:16px;
-    border-radius:500px;
+    padding: 22px;
+    width: 100% !important;
+    font-size: 16px;
+    border-radius: 500px;
 }
 
 .dataTables_length {
-    text-align:right;
+    text-align: right;
 }
 
 .dataTable-header {
-    margin-bottom:32px;
+    margin-bottom: 32px;
 }
+
 /* END Data tables */
 
 .modal-backdrop {
-    background:rgba(0,0,0,.4);
+    background: rgba(0, 0, 0, .4);
 }
 
 .btn-content-ellipsis {
@@ -155,31 +158,36 @@ div.dataTables_wrapper div.dataTables_filter {
 /* TODO Recompile these typography changes */
 
 h1 {
-    font-size:44.8px;
+    font-size: 44.8px;
 }
+
 h2 {
-    font-size:40px;
+    font-size: 40px;
 }
+
 h3 {
-    font-size:28px;
+    font-size: 28px;
 }
+
 h4 {
-    font-size:24px;
+    font-size: 24px;
 }
+
 h5 {
-    font-size:20px;
+    font-size: 20px;
 }
+
 h6 {
-    font-size:16px;
+    font-size: 16px;
 }
 
 
 body.public-layout .page-box .app-container .content-box {
     max-width: 400px;
     border-radius: 10px;
-    min-height:auto;
+    min-height: auto;
     margin: 10vh auto 0;
-    padding-bottom:50px;
+    padding-bottom: 50px;
 }
 
 .btn.btn-mini {
@@ -190,6 +198,14 @@ body.public-layout .page-box .app-container .content-box {
 
 .btn.btn-calendar:not([disabled]):hover {
     background: #e4e4e4;
-    border-color: #e4e4e4;
     color: #000;
+}
+
+.btn.btn-primary.btn-outline-primary {
+    color: white;
+    box-shadow:inset 0 0 0 2px white !important;
+}
+
+.btn.btn-faded {
+    opacity:0.5;
 }
