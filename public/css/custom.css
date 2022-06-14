@@ -209,3 +209,12 @@ body.public-layout .page-box .app-container .content-box {
 .btn.btn-faded {
     opacity:0.5;
 }
+
+.calendar-week {
+    width:100%;
+    display:flex;
+}
+
+.calendar-day {
+    width:14.28%;
+}

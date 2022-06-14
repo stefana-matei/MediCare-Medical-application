@@ -6,6 +6,11 @@ use Carbon\Carbon;
 
 class CalendarSelect extends Calendar
 {
+    protected function getView()
+    {
+        return view('livewire.calendar-select');
+    }
+
     protected function setPresetDate()
     {
         $presetDate = old('date');

@@ -36,6 +36,11 @@ class Calendar extends Component
 
         $this->setWeeks();
 
+        return $this->getView();
+    }
+
+    protected function getView()
+    {
         return view('livewire.calendar');
     }
 

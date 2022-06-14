@@ -89,7 +89,7 @@ class CreateAppointments extends Component
     private function setTimes()
     {
         $start_date = Carbon::today()->setTime(9, 0, 0);
-        $end_date = Carbon::today()->setTime(10, 0, 0);
+        $end_date = Carbon::today()->setTime(17, 0, 0);
         $slot_duration = 30;
 
         $times = [];
