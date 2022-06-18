@@ -6,9 +6,11 @@
 
 @section('main')
 
-    <div class="d-flex justify-content-between">
+    <div class="d-flex align-items-center">
 
-        <form id="appointments-search" class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} search-height w-50">
+
+        <form id="appointments-search"
+              class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} search-height w-50">
             <div class="form-group mb-0">
                 <select name="medic" class="selectpicker" data-live-search="true"
                         onchange="$('#appointments-search').submit()">
@@ -19,12 +21,18 @@
                                 {{ $membership->id == request('medic') ? 'selected' : '' }}
                                 data-subtext="{{ $membership->medic->settingsMedic->specialty->name }}">{{ $membership->medic->name }}</option>
                     @endforeach
-
                 </select>
             </div>
         </form>
 
-        <a href="{{ route('appointments.createView') }}" class="btn btn-primary align-self-center ps-3">
+        @if(request()->medic)
+            <a class="btn btn-light btn-reset ms-3 shadow-none ps-3" href="{{ route('appointments.list') }}">
+                <span class="btn-icon icofont-refresh fs-6 me-2"></span>
+                Reseteaza
+            </a>
+        @endif
+
+        <a href="{{ route('appointments.createView') }}" class="btn btn-primary align-self-center ps-3 ms-auto">
             <span class="btn-icon icofont-plus fs-6 me-3"></span>
             Programare noua
         </a>

@@ -209,6 +209,9 @@ body.public-layout .page-box .app-container .content-box {
 .btn.btn-faded {
     opacity:0.5;
 }
+.btn.btn-reset {
+    height:36px;
+}
 
 .calendar-week {
     width:100%;
