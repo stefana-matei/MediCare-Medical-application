@@ -114,7 +114,7 @@
                         <li>
                             <a href="{{ route('account.updateView') }}" class="align-items-center">
                                 <span class="icon icofont-ui-home"></span>
-                                Edit account
+                                Profilul meu
                             </a>
                         </li>
                         {{--                        <li>--}}

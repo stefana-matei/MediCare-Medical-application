@@ -1,7 +1,7 @@
 @extends('authenticated.layouts.app')
 
 @section('header')
-    <h1 class="page-title">Modificare date personale</h1>
+    <h1 class="page-title">Informatii personale</h1>
 @endsection
 
 @section('main')
