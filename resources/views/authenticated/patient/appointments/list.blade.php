@@ -7,8 +7,6 @@
 @section('main')
 
     <div class="d-flex align-items-center">
-
-
         <form id="appointments-search"
               class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} search-height w-50">
             <div class="form-group mb-0">
