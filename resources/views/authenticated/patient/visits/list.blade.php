@@ -5,7 +5,7 @@
 @endsection
 
 @section('main')
-    <div class="d-flex justify-content-between">
+    <div class="d-flex align-items-center">
         <form id="visits-search" class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} search-height w-50">
             <div class="form-group mb-0">
                 <select name="medic" class="selectpicker" data-live-search="true"
@@ -21,6 +21,13 @@
                 </select>
             </div>
         </form>
+
+        @if(request()->medic)
+            <a class="btn btn-light btn-reset ms-3 shadow-none ps-3" href="{{ route('visits.list') }}">
+                <span class="btn-icon icofont-refresh fs-6 me-2"></span>
+                Reseteaza
+            </a>
+        @endif
     </div>
 
     <div class="page-content mt-5">
