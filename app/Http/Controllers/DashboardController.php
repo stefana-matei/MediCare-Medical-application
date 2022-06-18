@@ -35,12 +35,14 @@ class DashboardController extends Controller
             ->with('membership.medic.settingsMedic.specialty', 'membership.medic.media')
             ->where('date', '>=', now())
             ->take(3)
+            ->orderBy('date')
             ->get();
 
         $visits = Auth::user()
             ->visits()
             ->with('membership.medic.settingsMedic.specialty', 'membership.medic.media', 'record')
             ->take(2)
+            ->orderBy('date', 'desc')
             ->get();
 
 

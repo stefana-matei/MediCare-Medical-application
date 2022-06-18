@@ -110,7 +110,7 @@ class AppointmentController extends Controller
             $appointments->where('membership_id', $request->medic);
         }
 
-        $appointments = $appointments->get();
+        $appointments = $appointments->orderBy('date', 'desc')->get();
 
         $memberships = Auth::user()
             ->memberships()

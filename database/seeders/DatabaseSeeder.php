@@ -205,7 +205,7 @@ class DatabaseSeeder extends Seeder
         /** @var Visit $visit6 */
 
         $visit = $membership->visits()->create([
-            'date' => now(),
+            'date' => now()->addWeek(),
             'appointment_id' => $appointment->id
         ]);
 
@@ -215,7 +215,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $visit3 = $membership2->visits()->create([
-            'date' => now(),
+            'date' => now()->addDay(3),
             'appointment_id' => $appointment3->id
         ]);
 

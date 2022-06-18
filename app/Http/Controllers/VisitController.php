@@ -86,7 +86,9 @@ class VisitController extends Controller
             $visits->where('membership_id', $request->medic);
         }
 
-        $visits = $visits->get();
+        $visits = $visits
+            ->orderBy('date', 'desc')
+            ->get();
 
         $memberships = Auth::user()
             ->memberships()
