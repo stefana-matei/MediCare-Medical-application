@@ -19,6 +19,7 @@ class MedicController extends Controller
         return view('authenticated.patient.medics.get', compact('medic'));
     }
 
+
     public function list(Request $request)
     {
         if($request->has('medic') && is_null($request->medic)) {

@@ -76,6 +76,11 @@ class Breadcrumbs extends Component
             'name' => 'Servicii'
         ];
 
+        $patientMedics = [
+            'href' => route('memberships.list'),
+            'name' => 'Medicii mei'
+        ];
+
 
 
         $segments = match (request()->route()->getName()) {
@@ -88,6 +93,7 @@ class Breadcrumbs extends Component
             'medics.list' => [$health, $medics],
             'medics.get' => [$health, $medics, $medicProfile],
             'services.list' => [$health, $services],
+            'memberships.list' => [$dashboard, $patientMedics],
             default => []
         };
 

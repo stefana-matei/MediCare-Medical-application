@@ -48,13 +48,13 @@ class MembershipController extends Controller
         $email = $request->email;
         $user = Auth::user();
 
-        if($email == $user->email) {
+        if ($email == $user->email) {
             return back()->withErrors(['email' => 'Nu te poti abona la tine insuti!']);
         }
 
         $member = User::where('email', $email)->first();
 
-        if(is_null($member)){
+        if (is_null($member)) {
             return back()->withErrors(['email' => 'Nu exista email-ul in BD!']);
         }
 
@@ -105,12 +105,15 @@ class MembershipController extends Controller
      *
      * @return View
      */
-    public function list()
+    public function list(Request $request)
     {
-//        return Auth::user()->memberships()->with('medic', 'patient', 'medic.settingsMedic.specialty')->get();
+        $memberships = Auth::user()
+            ->memberships()
+            ->with('medic', 'medic.media', 'medic.settingsMedic.specialty', 'medic.settingsMedic.level')
+            ->get();
 
         return view('authenticated.patient.memberships.list', [
-            'memberships' => Auth::user()->memberships()->with('medic', 'patient', 'medic.settingsMedic.specialty')->get()
+            'memberships' => $memberships
         ]);
     }
 
