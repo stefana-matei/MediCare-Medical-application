@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Patient;
 
-use App\Models\User;
 use App\Services\Auth;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;

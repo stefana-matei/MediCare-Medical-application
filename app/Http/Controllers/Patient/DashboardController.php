@@ -1,34 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Patient;
 
 use App\Services\Auth;
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+    /**
+     * @return View
+     */
     public function dashboard()
-    {
-        if (Auth::user()->isMedic()) {
-            return $this->medicDashboard();
-        } else {
-            return $this->patientDashboard();
-        }
-    }
-
-    private function medicDashboard()
-    {
-        return view('authenticated.medic.dashboard');
-
-    }
-
-    private function patientDashboard()
     {
         $appointments = Auth::user()
             ->appointments()
@@ -51,4 +34,6 @@ class DashboardController extends Controller
             'visits' => $visits
         ]);
     }
+
+
 }

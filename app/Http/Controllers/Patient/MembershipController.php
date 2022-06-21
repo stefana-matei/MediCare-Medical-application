@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Patient;
 
-use App\Models\Membership;
 use App\Models\User;
 use App\Services\Auth;
 use Exception;

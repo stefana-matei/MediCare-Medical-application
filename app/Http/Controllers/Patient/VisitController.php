@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Patient;
 
 use App\Models\Membership;
-use App\Models\User;
 use App\Models\Visit;
+use App\Services\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Services\Auth;
 use Illuminate\View\View;
 
 

@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Patient;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
