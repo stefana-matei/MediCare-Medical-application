@@ -9,8 +9,8 @@
 
     <div class="page-content">
         <div class="row">
-            @foreach($memberships as $membership)
-                @include('authenticated.components.medic', ['user' => $membership->medic])
+            @foreach($medics as $medic)
+                @include('authenticated.components.medic', ['user' => $medic])
             @endforeach
         </div>
     </div>

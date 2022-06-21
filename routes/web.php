@@ -41,7 +41,6 @@ Route::put('/account/avatar', [AccountController::class, 'updateAvatar'])->name(
 Route::put('/account/password', [AccountController::class, 'updatePassword'])->name('account.updatePassword');
 
 
-
 // Membership
 // CreateView
 Route::get('/memberships/create', [MembershipController::class, 'createView'])->name('memberships.createView');
@@ -50,7 +49,7 @@ Route::post('/memberships', [MembershipController::class, 'create'])->name('memb
 // Get
 Route::get('/memberships/{id}', [MembershipController::class, 'get'])->name('memberships.get');
 // List
-Route::get('/memberships', [MembershipController::class, 'list'])->name('memberships.list');
+//Route::get('/memberships', [MembershipController::class, 'list'])->name('memberships.list');
 // Update
 Route::put('/memberships/{id}', [MembershipController::class, 'update'])->name('memberships.update');
 // UpdateView
@@ -103,9 +102,12 @@ Route::post('/visits/{visit_id}/record/upload', [RecordController::class, 'uploa
 
 // Medics
 // Get
-Route::get('/medics/{id}', [MedicController::class, 'get'])->name('medics.get');
+Route::get('/medici/{id}', [MedicController::class, 'get'])->name('medics.get');
 // List
-Route::get('/medics', [MedicController::class, 'list'])->name('medics.list');
+Route::get('/medici', [MedicController::class, 'list'])->name('medics.list');
+// My Medics
+Route::get('/medicii-mei', [MedicController::class, 'myMedics'])->name('medics.myMedics');
+
 
 // Services
 // List

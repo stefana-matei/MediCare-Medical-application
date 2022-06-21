@@ -315,7 +315,7 @@ class DatabaseSeeder extends Seeder
             'postgraduate_courses' => '2015: Al 54-lea Congres National de Cardiologie, Sinaia' .
                 PHP_EOL . '2011: Curs Ecocardiografie Transesofagiana in practica clinica, Timisoara' .
                 PHP_EOL . '2009: Curs Cum tratam hipertensiunea arteriala',
-            'member' => 'Membra a Societatii Romane de Cardiologie'
+            'member' => 'Societatea Romana de Cardiologie'
         ]);
 
         $settingMedic2 = $medic2->settingsMedic()->create([
@@ -331,9 +331,9 @@ class DatabaseSeeder extends Seeder
             'trainings' => '2010 Ianuarie: stagiu de Obstetrica/Ginecologie, Univ.-Frauenklinik Heidelberg, Germania' .
                 PHP_EOL . '2007 August: Hospital de Santa Maria, sectia de Medicina Interna, Lisabona, Portugalia' .
                 PHP_EOL . '2005 Noiembrie: Centre l’Hopitalier Regional de Meulan-Les Mureaux, sectia de Pneumologie, Paris, Franta',
-            'member' => 'Societatii Europene de Cardiologie' . PHP_EOL . 'Asociatiei Europene de Aritmologie' .
-                PHP_EOL . 'Asociatiei Europene de Imagistica Cardiovasculara' .
-                PHP_EOL . 'Societatii Romane de Cardiologie'
+            'member' => 'Societatea Europeana de Cardiologie' . PHP_EOL . 'Asociatia Europeana de Aritmologie' .
+                PHP_EOL . 'Asociatia Europeana de Imagistica Cardiovasculara' .
+                PHP_EOL . 'Societatea Europeana de Cardiologie'
         ]);
 
         $settingMedic3 = $medic3->settingsMedic()->create([

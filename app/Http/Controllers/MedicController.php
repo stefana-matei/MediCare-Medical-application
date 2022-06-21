@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Services\Auth;
 use Illuminate\Http\Request;
 
 class MedicController extends Controller
@@ -35,5 +36,19 @@ class MedicController extends Controller
         $medics = $medics->get();
 
         return view('authenticated.patient.medics.list', compact('medics'));
+    }
+
+    public function myMedics()
+    {
+        $medics = Auth::user()
+            ->visits()
+            ->with('membership.medic','membership.medic.media','membership.medic.settingsMedic.specialty','membership.medic.settingsMedic.level', 'record')
+            ->get()
+            ->pluck('membership.medic')
+            ->unique('id');
+
+        return view('authenticated.patient.memberships.list', [
+            'medics' => $medics
+        ]);
     }
 }
