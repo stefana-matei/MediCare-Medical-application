@@ -18,6 +18,16 @@ class CreateSettingsMedicTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('level_id')->nullable();
             $table->foreignId('specialty_id')->nullable();
+            $table->text('specialisation')->nullable();
+            $table->text('skills')->nullable();
+            $table->text('areas_of_activity')->nullable();
+            $table->text('education')->nullable();
+            $table->text('postgraduate_courses')->nullable();
+            $table->text('trainings')->nullable();
+            $table->text('international_certifications')->nullable();
+            $table->text('publications')->nullable();
+            $table->text('member')->nullable();
+            $table->text('other_realizations')->nullable();
             $table->timestamps();
         });
     }

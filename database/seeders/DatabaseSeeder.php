@@ -176,7 +176,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $appointment3 = $membership2->appointments()->create([
-            'date' => now(),
+            'date' => now()->subWeek(),
             'honored' => true
         ]);
 
@@ -287,7 +287,7 @@ class DatabaseSeeder extends Seeder
         $laboratory_analysis = Specialty::factory()->create(['name' => "Analize laborator"]);
         $cardiology = Specialty::factory()->create(['name' => "Cardiologie"]);
         $dermatovenereology = Specialty::factory()->create(['name' => "Dermatovenerologie"]);
-        $diabetology= Specialty::factory()->create(['name' => "Diabet zaharat, nutriţie şi boli metabolice"]);
+        $diabetology = Specialty::factory()->create(['name' => "Diabet zaharat, nutriţie şi boli metabolice"]);
         $endocrinology = Specialty::factory()->create(['name' => "Endocrinologie"]);
         $gastroenterology = Specialty::factory()->create(['name' => "Gastroenterologie"]);
         $haematology = Specialty::factory()->create(['name' => "Hematologie"]);
@@ -307,37 +307,70 @@ class DatabaseSeeder extends Seeder
         $specialist = Level::factory()->create(['name' => 'Medic specialist']);
 
         // Settings
-        $setting = $medic->settingsMedic()->create([
+        $settingMedic = $medic->settingsMedic()->create([
             'level_id' => $primary->id,
-            'specialty_id' => $cardiology->id
+            'specialty_id' => $cardiology->id,
+            'skills' => 'Ecografie abdominala' . PHP_EOL . 'Ecocardiografie transtoracica',
+            'areas_of_activity' => 'Ecografie cardiaca',
+            'postgraduate_courses' => '2015: Al 54-lea Congres National de Cardiologie, Sinaia' .
+                PHP_EOL . '2011: Curs Ecocardiografie Transesofagiana in practica clinica, Timisoara' .
+                PHP_EOL . '2009: Curs Cum tratam hipertensiunea arteriala',
+            'member' => 'Membra a Societatii Romane de Cardiologie'
         ]);
 
-        $setting2 = $medic2->settingsMedic()->create([
+        $settingMedic2 = $medic2->settingsMedic()->create([
             'level_id' => $specialist->id,
-            'specialty_id' => $cardiology->id
+            'specialty_id' => $cardiology->id,
+            'skills' => 'Cardiologie pediatrica' . PHP_EOL . 'Ecografie',
+            'education' => 'Ianuarie 2016 - prezent: Medic Specialist Cardiolog in cadrul Clinicii de Cardiologie a Spitalului Clinic de Urgenta Bucuresti' .
+                PHP_EOL . 'Iunie 2012 – Decembrie 2015: Spitalul Clinic de Urgenta Bucuresti, Medic rezident, Sectia Cardiologie' .
+                PHP_EOL . '2004-2010: Facultatea de Medicina si Farmacie “Iuliu Hatieganu” Cluj-Napoca, Romania',
+            'postgraduate_courses' => '2014: EHRA Course: Cardiac Pacing, ICD and Cardiac Resynchronisation, Viena, Austria.' .
+                PHP_EOL . '2012: “Cardiologists of Tomorrow” grant oferit de Societate Europeana de Cardiologie(ESC) pentru participarea a ce de-al 60-lea congres ESC, Munchen 24-29 August 2012' .
+                PHP_EOL . '2011: Basis of Good Clinical Practice for Investigators, Verum.edu symposia, 11 Aprilie 2011, Bucuresti, Romania',
+            'trainings' => '2010 Ianuarie: stagiu de Obstetrica/Ginecologie, Univ.-Frauenklinik Heidelberg, Germania' .
+                PHP_EOL . '2007 August: Hospital de Santa Maria, sectia de Medicina Interna, Lisabona, Portugalia' .
+                PHP_EOL . '2005 Noiembrie: Centre l’Hopitalier Regional de Meulan-Les Mureaux, sectia de Pneumologie, Paris, Franta',
+            'member' => 'Societatii Europene de Cardiologie' . PHP_EOL . 'Asociatiei Europene de Aritmologie' .
+                PHP_EOL . 'Asociatiei Europene de Imagistica Cardiovasculara' .
+                PHP_EOL . 'Societatii Romane de Cardiologie'
         ]);
 
-        $setting3 = $medic3->settingsMedic()->create([
+        $settingMedic3 = $medic3->settingsMedic()->create([
             'level_id' => $primary->id,
             'specialty_id' => $endocrinology->id
         ]);
 
-        $setting4 = $medic4->settingsMedic()->create([
+        $settingMedic4 = $medic4->settingsMedic()->create([
             'level_id' => $primary->id,
             'specialty_id' => $gastroenterology->id
         ]);
 
-        $setting5 = $medic5->settingsMedic()->create([
+        $settingMedic5 = $medic5->settingsMedic()->create([
             'level_id' => $specialist->id,
             'specialty_id' => $dermatovenereology->id
         ]);
 
-        $setting6 = $medic6->settingsMedic()->create([
+        $settingMedic6 = $medic6->settingsMedic()->create([
             'level_id' => $primary->id,
-            'specialty_id' => $diabetology->id
+            'specialty_id' => $obstetrics_gynaecology->id,
+            'specialisation' => 'Chirurgia endometriozei (peste 100 de cazuri de endometrioza avansata operate pe an, cu rezectii colorectale, cu rezectii de vezica si alte tipuri de interventii similare)',
+            'skills' => 'competenta in ecografie obstetrica-ginecologie' .
+                PHP_EOL . 'competenta in histeroscopie' .
+                PHP_EOL . 'competenta in laparoscopie',
+            'trainings' => 'Chirurgie avansata in domeniul endometriozei, Prof. Hudelist, Viena, Austria' .
+                PHP_EOL . 'Chirurgice avansata in domeniul endometriozei, Prof. Horace Roman, Rouen, France' .
+                PHP_EOL . 'Chirururgie avansata in domeniul endometriozei, Prof. Keckstein, Villach, Austria',
+            'international_certifications' => 'Certificare Fetal Medical Foundation, London (FMF)' .
+                PHP_EOL . 'EndoCert, Centrul de Excelenta Endo Institute acreditat de Liga Europeana de Endometrioza',
+            'publications' => 'Pelvic nerves Endometriosis, EEL 2018' .
+                PHP_EOL . 'Pregnancy after deep endometriosis surgery –National Congress of Obstetrics and Gynecology, 2018' .
+                PHP_EOL . 'First Romanan experience as a center for deep Endometriosis surgery, SEUD Pars, 2015',
+            'other_realizations' => 'Proiecte: ' . PHP_EOL . 'Cofondator Spitalul Premiere, cel mai mare spital privat din regiunea de Vest a Romaniei' .
+                PHP_EOL . 'Fondator al Centrului de Excelenta EndoInstitute Timisoara'
         ]);
 
-        $setting4 = $patient->settingsPatient()->create([
+        $settingPatient = $patient->settingsPatient()->create([
             'pin' => '2880822426702',
             'birthday' => Carbon::create(1998, 8, 22),
             'gender' => 'f',
@@ -347,7 +380,6 @@ class DatabaseSeeder extends Seeder
             'address' => 'Str.Plosnitei, bl.34, sc.A',
             'phone' => '0749987991'
         ]);
-
 
 
         // Services

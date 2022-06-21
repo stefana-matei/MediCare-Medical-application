@@ -14,7 +14,7 @@ class MedicController extends Controller
 
     public function get($id)
     {
-        $medic = User::medic()->findOrFail($id);
+        $medic = User::medic()->with('settingsMedic')->findOrFail($id);
 
         return view('authenticated.patient.medics.get', compact('medic'));
     }

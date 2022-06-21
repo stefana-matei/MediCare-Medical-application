@@ -19,7 +19,6 @@
                 @forelse($times as $time)
                     <div class="appointment-btn btn btn-primary btn-sm">{{ $time }}</div>
                 @empty
-
                 @endforelse
             </p>
 
