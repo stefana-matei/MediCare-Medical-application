@@ -112,7 +112,7 @@
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-account">
                     <ul class="list">
                         <li>
-                            <a href="{{ route('account.updateView') }}" class="align-items-center">
+                            <a href="{{ route('medic.updateView') }}" class="align-items-center">
                                 <span class="icon icofont-ui-home"></span>
                                 Profilul meu
                             </a>
