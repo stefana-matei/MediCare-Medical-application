@@ -10,6 +10,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Mpdf\HTMLParserMode;
+use Mpdf\Mpdf;
 use Spatie\Browsershot\Browsershot;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -169,15 +171,9 @@ class RecordController extends Controller
             'medic' => $visit->membership->medic
         ]);
 
-        $pdf = Browsershot::html($view)
-            ->showBackground()
-            ->fullPage()
-            ->paperSize(210, 297)
-            ->margins(10, 10, 20, 10)
-            ->pdf();
+        $pdf = new Mpdf();
+        $pdf->WriteHTML($view->render());
+        $pdf->Output();
 
-        return response()->streamDownload(function () use ($pdf) {
-            echo $pdf;
-        }, 'raport_medical.pdf');
     }
 }
