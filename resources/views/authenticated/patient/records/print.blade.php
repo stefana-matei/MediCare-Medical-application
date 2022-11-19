@@ -15,6 +15,9 @@
         table.spaced tr td {
             padding-bottom:20px;
         }
+        table {
+            vertical-align: top;
+        }
     </style>
 @endsection
 

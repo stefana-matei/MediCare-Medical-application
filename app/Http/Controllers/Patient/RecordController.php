@@ -8,12 +8,8 @@ use App\Services\Auth;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\View\View;
-use Mpdf\HTMLParserMode;
 use Mpdf\Mpdf;
-use Spatie\Browsershot\Browsershot;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class RecordController extends Controller
 {
@@ -153,12 +149,12 @@ class RecordController extends Controller
     /**
      * @param $id
      * @param Request $request
-     * @return View
      */
     public function print($id, Request $request)
     {
         $visit = Auth::user()->visits()->with('record', 'membership.patient.settingsPatient', 'membership.medic')->findOrFail($id);
         $record = $visit->record;
+        $patient = $visit->membership->patient;
 
         if(is_null($record)){
             return abort(404);
@@ -167,13 +163,14 @@ class RecordController extends Controller
         $view = view('authenticated.patient.records.print', [
             'visit' => $visit,
             'record' => $record,
-            'patient' => $visit->membership->patient,
+            'patient' => $patient,
             'medic' => $visit->membership->medic
         ]);
 
         $pdf = new Mpdf();
         $pdf->WriteHTML($view->render());
-        $pdf->Output();
+        $prefix = $patient->firstname . '_' . $patient->lastname . '_';
+        $pdf->Output($prefix . 'raport_medical.pdf', 'I');
 
     }
 }
