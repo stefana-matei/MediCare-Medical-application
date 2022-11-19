@@ -86,7 +86,8 @@ Route::post('/visits/{visit_id}/record', [RecordController::class, 'create'])->n
 Route::delete('/visits/{visit_id}/record', [RecordController::class, 'delete'])->name('visits.record.delete');
 // Upload
 Route::post('/visits/{visit_id}/record/upload', [RecordController::class, 'uploadFile'])->name('visits.record.uploadFile');
-
+// Print
+Route::get('/visits/{visit_id}/record/print', [RecordController::class, 'print'])->name('visits.record.print');
 
 // Medics
 // Get

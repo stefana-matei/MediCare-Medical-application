@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Image\Exceptions\InvalidManipulation;
@@ -281,6 +282,20 @@ class User extends Authenticatable implements HasMedia
         }
 
         return $this->firstname . ' ' . $this->lastname;
+    }
+
+    /**
+     * Accessor for 'age' attribute
+     * Built from the birthday
+     *
+     * @return int
+     */
+    public function getPatientAgeAttribute()
+    {
+        /** @var Carbon $birthday */
+        $birthday = $this->settingsPatient->birthday;
+
+        return $birthday->age;
     }
 
 

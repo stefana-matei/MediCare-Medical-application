@@ -8,7 +8,10 @@ use App\Services\Auth;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Spatie\Browsershot\Browsershot;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class RecordController extends Controller
 {
@@ -142,5 +145,39 @@ class RecordController extends Controller
 
 
         return back()->withSuccess('Fisierul a fost incarcat cu succes!');
+    }
+
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return View
+     */
+    public function print($id, Request $request)
+    {
+        $visit = Auth::user()->visits()->with('record', 'membership.patient.settingsPatient', 'membership.medic')->findOrFail($id);
+        $record = $visit->record;
+
+        if(is_null($record)){
+            return abort(404);
+        }
+
+        $view = view('authenticated.patient.records.print', [
+            'visit' => $visit,
+            'record' => $record,
+            'patient' => $visit->membership->patient,
+            'medic' => $visit->membership->medic
+        ]);
+
+        $pdf = Browsershot::html($view)
+            ->showBackground()
+            ->fullPage()
+            ->paperSize(210, 297)
+            ->margins(10, 10, 20, 10)
+            ->pdf();
+
+        return response()->streamDownload(function () use ($pdf) {
+            echo $pdf;
+        }, 'raport_medical.pdf');
     }
 }
