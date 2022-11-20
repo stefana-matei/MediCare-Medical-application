@@ -60,12 +60,12 @@
                     </li>
 
 
-                    <li class="menu-item">
-                        <a class="item-link" href="#">
-                            <span class="link-icon icofont-contact-add"></span>
-                            <span class="link-text">Istoric medical</span>
-                        </a>
-                    </li>
+{{--                    <li class="menu-item">--}}
+{{--                        <a class="item-link" href="#">--}}
+{{--                            <span class="link-icon icofont-contact-add"></span>--}}
+{{--                            <span class="link-text">Istoric medical</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
 
 
                     <li class="menu-item">
@@ -76,12 +76,12 @@
                     </li>
 
 
-                    <li class="menu-item">
-                        <a class="item-link" href="#">
-                            <span class="link-icon icofont-test-tube"></span>
-                            <span class="link-text">Analize</span>
-                        </a>
-                    </li>
+{{--                    <li class="menu-item">--}}
+{{--                        <a class="item-link" href="#">--}}
+{{--                            <span class="link-icon icofont-test-tube"></span>--}}
+{{--                            <span class="link-text">Analize</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
 
 
                     <li class="menu-item">
@@ -122,27 +122,22 @@
                         </a>
                     </li>
 
-                    <li class="menu-item">
-                        <a class="item-link" href="#">
-                            <span class="link-icon icofont-ui-copy"></span>
-                            <span class="link-text">Abonamente</span>
-                        </a>
-                    </li>
+{{--                    <li class="menu-item">--}}
+{{--                        <a class="item-link" href="#">--}}
+{{--                            <span class="link-icon icofont-ui-copy"></span>--}}
+{{--                            <span class="link-text">Abonamente</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
 
                 </ul>
             </nav>
         </div>
 
 
-        <div class="add-patient">
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-patient">
-                <span class="btn-icon icofont-plus me-2"></span>
-                Add Patient
-            </button>
-        </div>
+{{--w--}}
 
 
-        <div class="assistant-menu">
+        <div class="assistant-menu mt-auto">
             <a class="link" href="#" data-bs-toggle="modal" data-bs-target="#settings">
                 <span class="link-icon icofont-ui-settings"></span>Settings
             </a>

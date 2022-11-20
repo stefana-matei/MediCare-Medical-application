@@ -12,7 +12,20 @@
         </div>
 
 
-        <div class="card-body">
+        <div class="card-body pt-1">
+            <div class="calendar-week calendar-header">
+                @foreach(['L','Ma','Mi','J','V','S','D'] as $label)
+                    <div class="calendar-day">
+                        <div
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            class="btn btn-square rounded-pill shadow-none">
+                            {{ $label }}
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
             @foreach($weeks as $week)
                 <div class="calendar-week">
                     @foreach($week as $day)
