@@ -1,7 +1,7 @@
 @extends('authenticated.layouts.app')
 
 @section('header')
-    <h2>{{ $medic->medicName }}</h2>
+    <h2>Profil medic</h2>
 
     <a href="#"
        class="btn btn-outline-primary align-self-center"
