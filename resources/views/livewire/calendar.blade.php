@@ -14,7 +14,7 @@
 
         <div class="card-body pt-1">
             <div class="calendar-week calendar-header">
-                @foreach(['L','Ma','Mi','J','V','S','D'] as $label)
+                @foreach(['Lu','Ma','Mi','Jo','Vi','Sa','Du'] as $label)
                     <div class="calendar-day">
                         <div
                             data-bs-toggle="dropdown"
