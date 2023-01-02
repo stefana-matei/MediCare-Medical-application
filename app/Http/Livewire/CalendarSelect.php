@@ -22,20 +22,30 @@ class CalendarSelect extends Calendar
 
             $this->changeMonthDifference();
         }
+
+        $this->emit('selectedDateEvent', $this->presetDate);
     }
 
     private function changeMonthDifference()
     {
-        if(!$this->monthChanged) {
+        if (!$this->monthChanged) {
             $this->monthDifference = (int)today()->startOfMonth()->floatDiffInMonths($this->presetDate->copy()->startOfMonth());
         }
     }
 
     public function selectDate($date)
     {
-        $this->presetDate = Carbon::createFromFormat('d-m-Y', $date)->startOfDay();
+        $presetDate = Carbon::createFromFormat('d-m-Y', $date)->startOfDay();
+
+        if ($presetDate->isBefore(today())) {
+            return;
+        }
+
+        $this->presetDate = $presetDate;
 
         $this->monthDifference = (int)today()->startOfMonth()->floatDiffInMonths($this->presetDate->copy()->startOfMonth());
         $this->monthChanged = true;
+
+        $this->emit('selectedDateEvent', $this->presetDate);
     }
 }

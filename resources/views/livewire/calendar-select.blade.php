@@ -29,7 +29,9 @@
             @foreach($weeks as $week)
                 <div class="calendar-week">
                     @foreach($week as $day)
-                        <div class="calendar-day" wire:click="selectDate('{{ $day->format('d-m-Y') }}')">
+                        <div class="calendar-day"
+                             wire:click="selectDate('{{ $day->format('d-m-Y') }}')"
+                             >
                             <div class="btn btn-square rounded-pill shadow-none
                                     {{ !$day->isFuture() && !$day->isToday() ? 'disabled' : '' }}
                                     {{ $day->isToday() ? 'btn-primary' : 'btn-calendar' }}

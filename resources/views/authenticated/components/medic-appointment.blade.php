@@ -16,10 +16,9 @@
             <hr class="my-3">
 
             <p>
-                @forelse($times as $time)
-                    <div class="appointment-btn btn btn-primary btn-sm">{{ $time }}</div>
-                @empty
-                @endforelse
+                <button wire:click="selectMedic({{ $user->id }})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmAppointment">
+                    Programeaza-te
+                </button>
             </p>
 
         </div>

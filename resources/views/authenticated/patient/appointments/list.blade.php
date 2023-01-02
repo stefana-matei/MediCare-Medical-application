@@ -41,7 +41,7 @@
             <h4>Programari viitoare</h4>
             <div class="row">
                 @forelse($futureAppointments as $futureAppointment)
-                    @include('authenticated.components.appointment', ['future' => true, 'appointment' => $futureAppointment])
+                    @include('authenticated.components.appointment', ['width' => 3, 'future' => true, 'appointment' => $futureAppointment])
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
@@ -56,7 +56,7 @@
             <h4>Programari anterioare</h4>
             <div class="row">
                 @forelse($appointments as $appointment)
-                    @include('authenticated.components.appointment', ['appointment' => $appointment])
+                    @include('authenticated.components.appointment', ['width' => 3, 'appointment' => $appointment])
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">

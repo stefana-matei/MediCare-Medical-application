@@ -54,7 +54,7 @@ class MembershipController extends Controller
         $member = User::where('email', $email)->first();
 
         if (is_null($member)) {
-            return back()->withErrors(['email' => 'Nu exista email-ul in BD!']);
+            return back()->withErrors(['email' => 'Nu exista email-ul in BD!']); // TODO rescrie
         }
 
         $column = $user->getOtherMemberKey();

@@ -7,8 +7,9 @@ use App\Services\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
-
+// App\Http\Controllers\Patient\AppointmentController
 class AppointmentController extends Controller
 {
     public function __construct()
@@ -27,13 +28,11 @@ class AppointmentController extends Controller
     {
         $validated = $request->validate([
             'date' => 'required',
-            'time' => 'required',
             'medic_id' => 'required'
         ]);
 
-        // TODO Change midday
         /** @var Carbon $date */
-        $date = Carbon::createFromFormat('Y-m-d H:i', $validated['date'] . ' ' . $validated['time']);
+        $date = Carbon::createFromFormat('Y-m-d', $validated['date']);
 
         if(!$date->isFuture()){
             return back()->withFail('Programarea nu poate fi creata cu data din trecut!');
@@ -92,7 +91,7 @@ class AppointmentController extends Controller
     /**
      * Displays a list of appointments
      *
-     * @return View
+     * @return View|Redirector
      *
      */
     public function list(Request $request)
@@ -109,7 +108,7 @@ class AppointmentController extends Controller
             $appointments->where('membership_id', $request->medic);
         }
 
-        $appointments = $appointments->orderBy('date', 'desc')->get();
+        $appointments = $appointments->orderBy('date', 'asc')->get();
 
         $memberships = Auth::user()
             ->memberships()
