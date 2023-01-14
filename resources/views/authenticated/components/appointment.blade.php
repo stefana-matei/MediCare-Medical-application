@@ -54,7 +54,8 @@
 
 
         <div class="card-header pt-4 fs-4">
-            <strong>{{ $appointment->date->format('d M Y H:i') }}</strong>
+            <strong>{{ $appointment->date->format('d M Y') }}</strong><br>
+            <strong>{{ $appointment->date->format('H:i') }}</strong>
         </div>
 
         <div class="card-body">

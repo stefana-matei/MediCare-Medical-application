@@ -3,12 +3,9 @@
 @section('header')
     <h2> Detalii consultatie</h2>
 
-    <a href="#"
+    <a href="{{ route('visits.record.print', ['visit_id' => $visit->id]) }}"
        class="btn btn-outline-primary align-self-center"
-       role="button"
-       data-bs-toggle="modal"
-       data-bs-target="#add-appointment"
-    >
+       role="button">
         Tipareste raportul medical
     </a>
 @endsection
@@ -20,29 +17,30 @@
             @include('authenticated.components.visit', ['width' => 12, 'showRecord' => false, 'visit' => $visit])
 
 
-{{--            <x-auth-validation-errors class="mb-4" :errors="$errors"/>--}}
+            {{--            <x-auth-validation-errors class="mb-4" :errors="$errors"/>--}}
 
-{{--            <button class="btn btn-outline-primary" type="button" onclick="$('#uploadFile').click()">--}}
-{{--                Incarca fisier<span class="btn-icon icofont-ui-user ms-2"></span>--}}
-{{--            </button>--}}
+            {{--            <button class="btn btn-outline-primary" type="button" onclick="$('#uploadFile').click()">--}}
+            {{--                Incarca fisier<span class="btn-icon icofont-ui-user ms-2"></span>--}}
+            {{--            </button>--}}
 
-{{--            <form class="d-none" id="uploadFileForm" action="{{ route('visits.record.uploadFile', ['visit_id' => $record->visit_id]) }}" method="POST"--}}
-{{--                  enctype="multipart/form-data">--}}
-{{--                @csrf--}}
-{{--                <input class="d-none" type="file" id="uploadFile" name="file"--}}
-{{--                       onchange="$('#uploadFileForm').submit()">--}}
-{{--            </form>--}}
+            {{--            <form class="d-none" id="uploadFileForm" action="{{ route('visits.record.uploadFile', ['visit_id' => $record->visit_id]) }}" method="POST"--}}
+            {{--                  enctype="multipart/form-data">--}}
+            {{--                @csrf--}}
+            {{--                <input class="d-none" type="file" id="uploadFile" name="file"--}}
+            {{--                       onchange="$('#uploadFileForm').submit()">--}}
+            {{--            </form>--}}
 
             @if($record->files->isNotEmpty())
-            <div class="mt-3">
-                <h5 class="mb-2">Fisiere atasate</h5>
-                @foreach($record->files as $file)
-                    <a href="{{ $file->getUrl() }}" target="_blank" class="btn btn-outline-primary rounded-pill btn-sm mw-100 p-2 mb-2">
-                        <span class="btn-icon icofont-clip me-2"></span>
-                        <span class="btn-content-ellipsis">{{ $file->file_name }}</span>
-                    </a>
-                @endforeach
-            </div>
+                <div class="mt-3">
+                    <h5 class="mb-2">Fisiere atasate</h5>
+                    @foreach($record->files as $file)
+                        <a href="{{ $file->getUrl() }}" target="_blank"
+                           class="btn btn-outline-primary rounded-pill btn-sm mw-100 p-2 mb-2">
+                            <span class="btn-icon icofont-clip me-2"></span>
+                            <span class="btn-content-ellipsis">{{ $file->file_name }}</span>
+                        </a>
+                    @endforeach
+                </div>
             @endif
 
 
@@ -104,7 +102,7 @@
                                     <div class="content-block">
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Diagnostic</h3>
-{{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
+                                            {{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -123,7 +121,7 @@
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Date clinice</h3>
 
-{{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
+                                            {{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -142,7 +140,7 @@
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Date paraclinice</h3>
 
-{{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
+                                            {{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -161,11 +159,11 @@
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Bilet trimitere</h3>
 
-{{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
+                                            {{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
-                                           {{ $record->referral ? 'Da' : 'Nu' }}
+                                            {{ $record->referral ? 'Da' : 'Nu' }}
                                         </div>
                                     </div>
                                 </div>
@@ -180,11 +178,11 @@
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Recomandari</h3>
 
-{{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
+                                            {{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
-                                           {{ $record->indications ?? '-' }}
+                                            {{ $record->indications ?? '-' }}
                                         </div>
                                     </div>
                                 </div>

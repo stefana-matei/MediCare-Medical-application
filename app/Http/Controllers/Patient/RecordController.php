@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Mpdf\Mpdf;
 
 class RecordController extends Controller
 {
@@ -142,5 +143,34 @@ class RecordController extends Controller
 
 
         return back()->withSuccess('Fisierul a fost incarcat cu succes!');
+    }
+
+
+    /**
+     * @param $id
+     * @param Request $request
+     */
+    public function print($id, Request $request)
+    {
+        $visit = Auth::user()->visits()->with('record', 'membership.patient.settingsPatient', 'membership.medic')->findOrFail($id);
+        $record = $visit->record;
+        $patient = $visit->membership->patient;
+
+        if(is_null($record)){
+            return abort(404);
+        }
+
+        $view = view('authenticated.patient.records.print', [
+            'visit' => $visit,
+            'record' => $record,
+            'patient' => $patient,
+            'medic' => $visit->membership->medic
+        ]);
+
+        $pdf = new Mpdf();
+        $pdf->WriteHTML($view->render());
+        $prefix = $patient->firstname . '_' . $patient->lastname . '_';
+        $pdf->Output($prefix . 'raport_medical.pdf', 'I');
+
     }
 }

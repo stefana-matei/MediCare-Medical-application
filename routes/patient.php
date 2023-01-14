@@ -86,7 +86,8 @@ Route::post('/visits/{visit_id}/record', [RecordController::class, 'create'])->n
 Route::delete('/visits/{visit_id}/record', [RecordController::class, 'delete'])->name('visits.record.delete');
 // Upload
 Route::post('/visits/{visit_id}/record/upload', [RecordController::class, 'uploadFile'])->name('visits.record.uploadFile');
-
+// Print
+Route::get('/visits/{visit_id}/record/print', [RecordController::class, 'print'])->name('visits.record.print');
 
 // Medics
 // Get
@@ -95,11 +96,6 @@ Route::get('/medici/{id}', [MedicController::class, 'get'])->name('medics.get');
 Route::get('/medici', [MedicController::class, 'list'])->name('medics.list');
 // My Medics
 Route::get('/medicii-mei', [MedicController::class, 'myMedics'])->name('medics.myMedics');
-
-
-// Services
-// List
-Route::get('/services', [ServiceController::class, 'list'])->name('services.list');
 
 
 

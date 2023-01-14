@@ -30,7 +30,7 @@ class Calendar extends Component
     {
         $this->setPresetDate();
 
-        $this->now = now()->locale('ro_RO')->addMonths($this->monthDifference);
+        $this->now = now()->addMonthsWithoutOverflow($this->monthDifference);
 
         $this->month = $this->now->format('F Y');
 

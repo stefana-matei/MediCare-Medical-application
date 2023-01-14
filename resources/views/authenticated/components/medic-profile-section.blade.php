@@ -3,9 +3,9 @@
 @if($value)
     <div class="card">
         <div class="card-header">
-            {{ $title }}:
+            {{ $title }}
         </div>
-        <div class="card-body">
+        <div class="card-body pt-2">
             <p>{!! nl2br(e($value)) !!} </p>
         </div>
     </div>

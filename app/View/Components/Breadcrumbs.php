@@ -71,11 +71,6 @@ class Breadcrumbs extends Component
             'name' => 'Profil medic'
         ];
 
-        $services = [
-            'href' => route('services.list'),
-            'name' => 'Servicii'
-        ];
-
         $patientMedics = [
             'href' => route('medics.myMedics'),
             'name' => 'Medicii mei'
@@ -92,7 +87,6 @@ class Breadcrumbs extends Component
             'appointments.createView' => [$dashboard, $appointments, $appointmentsCreate],
             'medics.list' => [$health, $medics],
             'medics.get' => [$health, $medics, $medicProfile],
-            'services.list' => [$health, $services],
             'medics.myMedics' => [$dashboard, $patientMedics],
             default => []
         };

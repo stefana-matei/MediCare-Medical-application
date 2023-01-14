@@ -2,24 +2,26 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Service;
 use App\Models\Specialty;
 use App\Models\User;
-use Carbon\Carbon;
-use Illuminate\View\View;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class CreateAppointments extends Component
 {
+    /** @var Collection */
     public $medics;
-    public $times;
-    public $services;
 
     public $selectedMedic;
     public $selectedSpecialty;
+    public $selectedDate;
 
-    protected $listeners = ['specialtySelectedEvent'];
+    protected $listeners = ['specialtySelectedEvent', 'selectedDateEvent'];
 
+    /**
+     * Event listener for specialty selection
+     */
     public function specialtySelectedEvent($value)
     {
         if ($value == 0) {
@@ -29,17 +31,21 @@ class CreateAppointments extends Component
         $this->selectedSpecialty = $value;
     }
 
+    /**
+     * Event listener for date selection
+     */
+    public function selectedDateEvent($value)
+    {
+        $this->selectedDate = Carbon::parse($value)->timezone(config('app.timezone'));
+    }
 
     /**
      * Renders the component
-     *
-     * @return View
      */
     public function render()
     {
         $this->setMedics();
-        $this->setTimes();
-        $this->setServices();
+        $this->setPresetDate();
 
         $specialties = Specialty::all();
 
@@ -59,50 +65,28 @@ class CreateAppointments extends Component
             return;
         }
 
-//        $this->medics = Specialty::with('settingsMedic.medic.media', 'settingsMedic.medic.settingsMedic.specialty', 'settingsMedic.medic.settingsMedic.level')
-//            ->find($this->selectedSpecialty)->settingsMedic->pluck('medic');
-
-
         $this->medics = User::medic()
             ->with('settingsMedic.specialty', 'settingsMedic.level', 'media')
             ->whereHas('settingsMedic', function($query){
                 $query->where('specialty_id', $this->selectedSpecialty);
             })
             ->get();
-
-
     }
 
 
-    /**
-     * Sets the services property
-     */
-    private function setServices()
+    protected function setPresetDate()
     {
-        $this->services = Service::orderBy('name')->get();
-    }
+        $presetDate = old('date');
 
-
-    /**
-     * Sets the times property
-     */
-    private function setTimes()
-    {
-        $start_date = Carbon::today()->setTime(9, 0, 0);
-        $end_date = Carbon::today()->setTime(17, 0, 0);
-        $slot_duration = 30;
-
-        $times = [];
-        $slots = $start_date->diffInMinutes($end_date) / $slot_duration;
-
-        // First time
-        $times[] = $start_date->format('H:i');
-
-        for ($s = 1; $s <= $slots; $s++) {
-            // Adding each additional to the list
-            $times[] = $start_date->addMinute($slot_duration)->format('H:i');
+        if (empty($presetDate) && empty($this->selectedDate)) {
+            $this->selectedDate = today();
+        } else {
+            $this->selectedDate = \Carbon\Carbon::createFromFormat('d-m-Y', $presetDate ?? $this->selectedDate->format('d-m-Y'))->startOfDay();
         }
+    }
 
-        $this->times = $times;
+    public function selectMedic($id)
+    {
+        $this->selectedMedic = $this->medics->where('id', $id)->first();
     }
 }
