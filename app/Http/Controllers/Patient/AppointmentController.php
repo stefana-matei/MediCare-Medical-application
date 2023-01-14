@@ -32,12 +32,11 @@ class AppointmentController extends Controller
         ]);
 
         /** @var Carbon $date */
-        $date = Carbon::createFromFormat('Y-m-d', $validated['date']);
+        $date = Carbon::createFromFormat('Y-m-d', $validated['date'])->endOfDay();
 
         if(!$date->isFuture()){
             return back()->withFail('Programarea nu poate fi creata cu data din trecut!');
         }
-        $validated['date'] = $date;
 
         $user = Auth::user();
 
@@ -47,7 +46,7 @@ class AppointmentController extends Controller
         ]);
 
         $membership->appointments()->create([
-            'date' => $validated['date'],
+            'date' => $date,
             'doctor' => $membership->medic->name
         ]);
 
@@ -119,7 +118,9 @@ class AppointmentController extends Controller
 
         return view('authenticated.patient.appointments.list', [
             'appointments' => $appointments->where('date', '<=', $now),
-            'futureAppointments' => $appointments->where('date', '>=', $now),
+            'canceledAppointments' => $appointments->whereStrict('confirmed', 0),
+            'pendingAppointments' => $appointments->where('date', '>=', $now)->whereStrict('confirmed', null),
+            'confirmedAppointments' => $appointments->where('date', '>=', $now)->whereStrict('confirmed', 1),
             'memberships' => $memberships
         ]);
     }
