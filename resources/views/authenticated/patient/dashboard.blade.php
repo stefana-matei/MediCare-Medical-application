@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-8 pe-4">
             <h3>
-                Programari planificate
+                Programari viitoare
 
                 <a href="{{ route('appointments.list') }}" type="button" class="btn btn-outline-primary btn-mini ms-3 float-end">
                     Toate programarile
@@ -36,7 +36,7 @@
             </div>
 
             <h3>
-                Ultimele consultatii
+                Istoric consultatii
 
                 <a href="{{ route('visits.list') }}" type="button" class="btn btn-outline-primary btn-mini float-end">
                     Toate consultatiile
