@@ -98,9 +98,4 @@ Route::get('/medici', [MedicController::class, 'list'])->name('medics.list');
 Route::get('/medicii-mei', [MedicController::class, 'myMedics'])->name('medics.myMedics');
 
 
-// Services
-// List
-Route::get('/services', [ServiceController::class, 'list'])->name('services.list');
-
-
 

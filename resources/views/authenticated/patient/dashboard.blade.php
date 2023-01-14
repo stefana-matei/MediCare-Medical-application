@@ -60,9 +60,6 @@
         <div class="col-4 ps-4">
             <h3>Solicita o programare</h3>
             <livewire:calendar />
-
-            <h3>Consultatie online</h3>
-            <div class="alert alert-secondary">Y</div>
         </div>
 
 

@@ -108,27 +108,6 @@
                         <span class="group-title">Sanatate</span>
                     </li>
 
-{{--                    <li class="menu-item">--}}
-{{--                        <a class="item-link" href="{{ route('medics.list') }}">--}}
-{{--                            <span class="link-icon icofont-users"></span>--}}
-{{--                            <span class="link-text">Medici</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-
-{{--                    <li class="menu-item">--}}
-{{--                        <a class="item-link" href="{{ route('services.list') }}">--}}
-{{--                            <span class="link-icon icofont-contact-add"></span>--}}
-{{--                            <span class="link-text">Servicii</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-
-{{--                    <li class="menu-item">--}}
-{{--                        <a class="item-link" href="#">--}}
-{{--                            <span class="link-icon icofont-ui-copy"></span>--}}
-{{--                            <span class="link-text">Abonamente</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-
                 </ul>
             </nav>
         </div>

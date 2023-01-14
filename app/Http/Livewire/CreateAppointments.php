@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Service;
 use App\Models\Specialty;
 use App\Models\User;
 use Illuminate\Support\Carbon;
@@ -13,7 +12,6 @@ class CreateAppointments extends Component
 {
     /** @var Collection */
     public $medics;
-    public $services;
 
     public $selectedMedic;
     public $selectedSpecialty;
@@ -47,7 +45,6 @@ class CreateAppointments extends Component
     public function render()
     {
         $this->setMedics();
-        $this->setServices();
         $this->setPresetDate();
 
         $specialties = Specialty::all();
@@ -74,15 +71,6 @@ class CreateAppointments extends Component
                 $query->where('specialty_id', $this->selectedSpecialty);
             })
             ->get();
-    }
-
-
-    /**
-     * Sets the services property
-     */
-    private function setServices()
-    {
-        $this->services = Service::orderBy('name')->get();
     }
 
 

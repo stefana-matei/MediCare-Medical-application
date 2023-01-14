@@ -77,10 +77,6 @@
     <table class="spaced">
         <tbody>
             <tr>
-                <td class="bold mr-20">Servicii efectuate</td>
-                <td>{{ $medic->name }}</td>
-            </tr>
-            <tr>
                 <td class="bold mr-20">Bilet de trimitere</td>
                 <td>{{ $record->referral ? 'Da' : 'Nu' }}</td>
             </tr>

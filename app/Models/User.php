@@ -182,18 +182,6 @@ class User extends Authenticatable implements HasMedia
 
 
     /**
-     * Services relationship
-     * Many-to-Many through the pivot table: service_user
-     *
-     * @return BelongsToMany
-     */
-    public function services()
-    {
-        return $this->belongsToMany(Service::class)->withTimestamps();
-    }
-
-
-    /**
      * SettingsMedic relationship
      * One-to-One relationship
      * One [User] of role: medic has one [SettingMedic]
