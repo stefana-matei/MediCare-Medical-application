@@ -23,13 +23,13 @@
                 </a>
             </h3>
             <div class="row">
-                @forelse($futureAppointments as $futureAppointment)
-                    @include('authenticated.components.appointment', ['future' => true, 'appointment' => $futureAppointment])
+                @forelse($confirmedAppointments as $confirmedAppointment)
+                    @include('authenticated.components.appointment', ['future' => true, 'appointment' => $confirmedAppointment])
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
                             <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                            <div class="alert-content">Nu sunt programari planificate!</div>
+                            <div class="alert-content">Nu sunt programari viitoare!</div>
                         </div>
                     </div>
                 @endforelse

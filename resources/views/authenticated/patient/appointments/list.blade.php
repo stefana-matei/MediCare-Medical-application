@@ -57,7 +57,7 @@
         </div>
 
         <div class="mb-5">
-            <h4>Programari confirmate de medic</h4>
+            <h4>Programari viitoare</h4>
             <div class="row">
                 @forelse($confirmedAppointments as $confirmedAppointment)
                     @include('authenticated.components.appointment', ['width' => 3, 'future' => true, 'appointment' => $confirmedAppointment])

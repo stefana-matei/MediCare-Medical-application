@@ -16,7 +16,7 @@
             <hr class="my-3">
 
             <p>
-                <button wire:click="selectMedic({{ $user->id }})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmAppointment">
+                <button wire:click="selectMedic({{ $user->id }})" type="button" class="btn btn-primary" onclick="setTimeout(function(){$('#confirmAppointment').modal('show');}, 1000);">
                     Programeaza-te
                 </button>
             </p>

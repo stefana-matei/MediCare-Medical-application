@@ -17,9 +17,11 @@ class DashboardController extends Controller
             ->appointments()
             ->with('membership.medic.settingsMedic.specialty', 'membership.medic.media')
             ->where('date', '>=', now())
+            ->where('confirmed', true)
             ->take(3)
             ->orderBy('date')
             ->get();
+
 
         $visits = Auth::user()
             ->visits()
@@ -30,10 +32,8 @@ class DashboardController extends Controller
 
 
         return view('authenticated.patient.dashboard', [
-            'futureAppointments' => $appointments,
+            'confirmedAppointments' => $appointments,
             'visits' => $visits
         ]);
     }
-
-
 }

@@ -118,10 +118,10 @@ class DatabaseSeeder extends Seeder
             'patient_id' => $patient->id
         ]);
 
-//        /** @var Membership $membership3 */
-//        $membership3 = $medic3->memberships()->create([
-//            'patient_id' => $patient->id
-//        ]);
+        /** @var Membership $membership3 */
+        $membership3 = $medic3->memberships()->create([
+            'patient_id' => $patient->id
+        ]);
 
 //        /** @var Membership $membership4 */
 //        $membership4 = $medic4->memberships()->create([
@@ -187,11 +187,11 @@ class DatabaseSeeder extends Seeder
             'honored' => false,
             'confirmed' => true
         ]);
-//
-//        $appointment5 = $membership3->appointments()->create([
-//            'date' => now(),
-//            'honored' => true
-//        ]);
+
+        $appointment5 = $membership3->appointments()->create([
+            'date' => now()->addWeek(2),
+            'honored' => true
+        ]);
 //
 //        $appointment6 = $membership3->appointments()->create([
 //            'date' => now(),
