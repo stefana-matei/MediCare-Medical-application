@@ -29,7 +29,7 @@
                 @endif
             </div>
             <div class="col-sm-4">
-                <label>Incepand cu data</label>
+                <label>Selectati data dorita</label>
                 <livewire:calendar-select/>
             </div>
         </div>
