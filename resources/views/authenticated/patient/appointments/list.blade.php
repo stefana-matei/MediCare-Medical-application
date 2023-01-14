@@ -38,20 +38,40 @@
 
     <div class="page-content mt-5">
         <div class="mb-5">
-            <h4>Programari viitoare</h4>
+            <h4>Programari in asteptare</h4>
             <div class="row">
-                @forelse($futureAppointments as $futureAppointment)
-                    @include('authenticated.components.appointment', ['width' => 3, 'future' => true, 'appointment' => $futureAppointment])
+                @if($pendingAppointments->isNotEmpty())
+                    <p>Veti fi contactat in cel mai scurt timp pentru a stabili ora prezentarii.</p>
+                @endif
+                @forelse($pendingAppointments as $pendingAppointment)
+                    @include('authenticated.components.appointment', ['width' => 3, 'future' => true, 'appointment' => $pendingAppointment])
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
                             <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                            <div class="alert-content">Nu sunt programari planificate!</div>
+                            <div class="alert-content">Nu aveti programari in asteptare!</div>
                         </div>
                     </div>
                 @endforelse
             </div>
         </div>
+
+        <div class="mb-5">
+            <h4>Programari confirmate de medic</h4>
+            <div class="row">
+                @forelse($confirmedAppointments as $confirmedAppointment)
+                    @include('authenticated.components.appointment', ['width' => 3, 'future' => true, 'appointment' => $confirmedAppointment])
+                @empty
+                    <div class="col">
+                        <div class="alert alert-secondary with-before-icon" role="alert">
+                            <div class="alert-icon"><i class="icofont-calendar"></i></div>
+                            <div class="alert-content">Nu aveti programari viitoare!</div>
+                        </div>
+                    </div>
+                @endforelse
+            </div>
+        </div>
+
         <div>
             <h4>Programari anterioare</h4>
             <div class="row">
@@ -67,6 +87,23 @@
                 @endforelse
             </div>
         </div>
+
+        <div class="mb-5">
+            <h4>Programari refuzate</h4>
+            <div class="row">
+                @forelse($canceledAppointments as $canceledAppointment)
+                    @include('authenticated.components.appointment', ['width' => 3, 'appointment' => $canceledAppointment])
+                @empty
+                    <div class="col">
+                        <div class="alert alert-secondary with-before-icon" role="alert">
+                            <div class="alert-icon"><i class="icofont-calendar"></i></div>
+                            <div class="alert-content">Nu aveti programari refuzate!</div>
+                        </div>
+                    </div>
+                @endforelse
+            </div>
+        </div>
+
     </div>
 @endsection
 

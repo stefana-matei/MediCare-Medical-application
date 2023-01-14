@@ -149,12 +149,14 @@ class DatabaseSeeder extends Seeder
 
         $appointment = $membership->appointments()->create([
             'date' => now(),
-            'honored' => true
+            'honored' => true,
+            'confirmed' => true
         ]);
 
         $membership->appointments()->create([
             'date' => now()->addWeek(),
-            'honored' => true
+            'honored' => true,
+            'confirmed' => true
         ]);
 
         $membership->appointments()->create([
@@ -164,23 +166,27 @@ class DatabaseSeeder extends Seeder
 
         $membership->appointments()->create([
             'date' => now()->addYear(),
-            'honored' => true
+            'honored' => true,
+            'confirmed' => true
         ]);
 
         $appointment2 = $membership->appointments()->create([
             'date' => now()->addWeek(),
-            'honored' => false
+            'honored' => false,
+            'confirmed' => false
         ]);
 
         $appointment3 = $membership2->appointments()->create([
             'date' => now()->subWeek(),
-            'honored' => true
+            'honored' => true,
+            'confirmed' => true
         ]);
 
-//        $appointment4 = $membership2->appointments()->create([
-//            'date' => now(),
-//            'honored' => false
-//        ]);
+        $appointment4 = $membership2->appointments()->create([
+            'date' => now(),
+            'honored' => false,
+            'confirmed' => true
+        ]);
 //
 //        $appointment5 = $membership3->appointments()->create([
 //            'date' => now(),

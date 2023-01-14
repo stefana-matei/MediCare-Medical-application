@@ -55,7 +55,7 @@
 
         <div class="card-header pt-4 fs-4">
             <strong>{{ $appointment->date->format('d M Y') }}</strong><br>
-            <strong>{{ $appointment->date->format('H:i') }}</strong>
+            <strong>{{ $appointment->confirmed ? $appointment->date->format('H:i') : ''}}</strong>
         </div>
 
         <div class="card-body">
@@ -73,7 +73,7 @@
                 <div class="text-muted">
                     <p class="fs-20">{{ $appointment->membership->medic->settingsMedic->specialty->name }}</p>
 
-                    @if($future)
+                    @if($future || $appointment->confirmed === 0)
                         <p style="color: {{ $appointment->status['color'] }}">
                             <strong>{{ $appointment->status['text'] }}</strong>
                         </p>
