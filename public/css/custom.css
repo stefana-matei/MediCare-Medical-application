@@ -1,3 +1,37 @@
+/* LOGO */
+.app-logo .logo-wrap {
+    margin-top:10px;
+}
+.text-logo {
+    font-family: 'Forum', cursive;
+    font-size:33px;
+    font-weight: bold;
+    color:#1f4197;
+}
+.text-logo .icon-logo{
+    float:left;
+    padding-top:2px;
+}
+/* END LOGO */
+
+/* VERTICAL MENU OVERLAY */
+.app-navbar.vertical {
+    border-right: solid 2px rgba(0,0,0,.07);
+}
+.vertical-overlay {
+    position:absolute;
+    left:0;
+    bottom:0;
+    pointer-events: none;
+}
+.vertical-overlay .large-icon {
+    font-size:360px;
+    margin-left:-120px;
+    color: rgba(0,0,0,0.04)
+}
+/* END VERTICAL MENU OVERLAY */
+
+
 #toast-wrapper {
     z-index: 11;
     position: fixed;
@@ -145,6 +179,10 @@ div.dataTables_wrapper div.dataTables_filter {
 }
 
 /* END Data tables */
+
+.main-menu .main-menu-wrap .menu-ul .menu-item .item-link {
+    padding: 10px 0;
+}
 
 .modal-backdrop {
     background: rgba(0, 0, 0, .4);
