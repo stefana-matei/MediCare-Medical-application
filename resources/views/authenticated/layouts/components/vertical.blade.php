@@ -6,10 +6,7 @@
 
         <div class="app-logo">
             <div class="logo-wrap">
-                <div class="text-logo">
-                    <span class="icon-logo icofont-doctor"></span>
-                    MediCare
-                </div>
+                @include('components/logo')
             </div>
         </div>
 

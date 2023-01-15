@@ -1,16 +1,37 @@
 @extends('authenticated.medic.layouts.app')
 
 @section('header')
-    <h2>Pagina medic</h2>
+    <h2>Pagina de start</h2>
 @endsection
 
 @section('main')
-    <div class="card">
-        <div class="card-header">
-            Titlu
+    <div class="row">
+        <div class="col-8 pe-4">
+            <h3>
+                Programari planificate
+
+                <a href="{{ route('medic.appointments.list') }}" type="button" class="btn btn-outline-primary btn-mini ms-3 float-end">
+                    Toate programarile
+                </a>
+            </h3>
+            <div class="row">
+                @forelse($appointments as $appointment)
+                    @include('authenticated.medic.components.appointment', ['future' => true, 'appointment' => $appointment])
+                @empty
+                    <div class="col">
+                        <div class="alert alert-secondary with-before-icon" role="alert">
+                            <div class="alert-icon"><i class="icofont-calendar"></i></div>
+                            <div class="alert-content">Nu aveti programari viitoare!</div>
+                        </div>
+                    </div>
+                @endforelse
+            </div>
         </div>
-        <div class="card-body">
-            Esti autentificat
+
+        <div class="col-4 ps-4">
+            <h3>Sidebar</h3>
         </div>
+
+
     </div>
 @endsection

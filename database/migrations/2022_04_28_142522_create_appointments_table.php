@@ -21,6 +21,7 @@ class CreateAppointmentsTable extends Migration
             $table->boolean('honored')->default(false);
             $table->boolean('confirmed')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

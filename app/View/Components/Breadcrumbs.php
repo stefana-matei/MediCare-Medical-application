@@ -78,6 +78,23 @@ class Breadcrumbs extends Component
 
 
 
+        $medicDashboard = [
+            'href' => route('medic.dashboard'),
+            'name' => 'Cont medic'
+        ];
+
+        $medicHome = [
+            'href' => route('medic.dashboard'),
+            'name' => 'Home'
+        ];
+
+        $medicUpdate = [
+            'href' => route('medic.updateView'),
+            'name' => 'Date personale medic'
+        ];
+
+
+
         $segments = match (request()->route()->getName()) {
             'account.updateView' => [$user, $update],
             'dashboard' => [$dashboard, $home],
@@ -88,6 +105,8 @@ class Breadcrumbs extends Component
             'medics.list' => [$health, $medics],
             'medics.get' => [$health, $medics, $medicProfile],
             'medics.myMedics' => [$dashboard, $patientMedics],
+            'medic.dashboard' => [$medicDashboard, $medicHome],
+            'medic.updateView' => [$medicDashboard, $user, $medicUpdate],
             default => []
         };
 

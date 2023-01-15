@@ -29,7 +29,7 @@
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
                             <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                            <div class="alert-content">Nu sunt programari viitoare!</div>
+                            <div class="alert-content">Nu aveti programari viitoare!</div>
                         </div>
                     </div>
                 @endforelse

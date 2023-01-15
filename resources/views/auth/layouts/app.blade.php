@@ -27,9 +27,7 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
 
-
 <body class="public-layout">
-
 
 <div class="page-box">
     <div class="app-container @yield('type')">
@@ -37,8 +35,8 @@
         <div class="content-box">
             <div class="content-header mb-5">
                 <div class="app-logo">
-                    <div class="logo-wrap">
-                        <img src="{{ asset('assets/img/logo.svg') }}" alt="" width="147" height="33" class="logo-img">
+                    <div class="logo-wrap justify-content-center">
+                        @include('components/logo')
                     </div>
                 </div>
             </div>

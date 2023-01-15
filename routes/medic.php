@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Medic\AccountController;
+use App\Http\Controllers\Medic\AppointmentController;
 use App\Http\Controllers\Medic\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,19 @@ Route::prefix('medic')->group(function () {
     // Account
     // UpdateView
     Route::get('/account/edit', [AccountController::class, 'updateView'])->name('medic.updateView');
+
+    //Appointments
+    //List
+    Route::get('/appointments', [AppointmentController::class, 'list'])->name('medic.appointments.list');
+    // Create
+//    Route::post('/appointments', [AppointmentController::class, 'create'])->name('appointments.create');
+    // CreateView
+//    Route::get('/appointments/create', [AppointmentController::class, 'createView'])->name('appointments.createView');
+    // Get
+//    Route::get('/appointments/{id}', [AppointmentController::class, 'get'])->name('appointments.get');
+    // Delete
+//    Route::delete('/appointments/{id}', [AppointmentController::class, 'delete'])->name('appointments.delete');
+
 
 });
 

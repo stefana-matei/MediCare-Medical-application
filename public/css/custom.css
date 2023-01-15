@@ -4,7 +4,7 @@
 }
 
 .text-logo {
-    font-family: 'Forum', cursive;
+    font-family: 'Forum', sans-serif;
     font-size: 33px;
     font-weight: bold;
     color: #1f4197;
@@ -94,6 +94,9 @@
 
 #appointments-search.customizable-placeholder .filter-option-inner-inner:after {
     content: "Cauta dupa medic sau specializare";
+}
+#medic-appointments-search.customizable-placeholder .filter-option-inner-inner:after {
+    content: "Cauta dupa numele pacientului";
 }
 
 #visits-search.customizable-placeholder .filter-option-inner-inner:after {
