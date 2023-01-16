@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Patient;
 
 use App\Models\Membership;
+use App\Models\User;
 use App\Models\Visit;
 use App\Services\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 
 
@@ -26,14 +28,14 @@ class VisitController extends Controller
      */
     public function create(Request $request)
     {
-        /** @var Membership  $membership */
+        /** @var Membership $membership */
         $membership = Auth::user()->memberships()->find($request->membership_id);
 
-        if(is_null($membership)){
-            return back()->withErrors(['membership_id' => 'Nu poti crea vizita pentru aceasta subscriptie!']);
+        if (is_null($membership)) {
+            return back()->withErrors(['membership_id' => 'Nu poți crea vizită pentru această subscripție!']);
         }
 
-        $membership->visits()->create([ 'date' => now() ]);
+        $membership->visits()->create(['date' => now()]);
 
         return redirect()->route('visits.list');
     }
@@ -46,9 +48,9 @@ class VisitController extends Controller
      */
     public function createView()
     {
-         return view('authenticated.patient.visits.create', [
-             'memberships' => Auth::user()->memberships()->with('medic')->get()
-         ]);
+        return view('authenticated.patient.visits.create', [
+            'memberships' => Auth::user()->memberships()->with('medic')->get()
+        ]);
     }
 
 
@@ -69,13 +71,15 @@ class VisitController extends Controller
     /**
      * Displays a list of visits
      *
-     * @return View
+     * @return View|Redirector
      */
     public function list(Request $request)
     {
-        if($request->has('medic') && is_null($request->medic)) {
+        if ($request->has('medic') && is_null($request->medic)) {
             return redirect(route('visits.list'));
         }
+
+        $medic = null;
 
         $visits = Auth::user()
             ->visits()
@@ -83,6 +87,7 @@ class VisitController extends Controller
 
         if ($request->medic) {
             $visits->where('membership_id', $request->medic);
+            $medic = User::find($request->medic);
         }
 
         $visits = $visits
@@ -96,7 +101,8 @@ class VisitController extends Controller
 
         return view('authenticated.patient.visits.list', [
             'visits' => $visits,
-            'memberships' => $memberships
+            'memberships' => $memberships,
+            'medic' => $medic
         ]);
     }
 

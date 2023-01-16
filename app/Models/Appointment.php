@@ -44,19 +44,19 @@ class Appointment extends Model
         return match ($this->confirmed) {
             null => [
                 'color' => 'orange',
-                'text' => 'In asteptare'
+                'text' => 'În așteptare'
             ],
             0 => [
                 'color' => 'red',
-                'text' => 'Refuzata'
+                'text' => 'Refuzată'
             ],
             1 => [
                 'color' => 'green',
-                'text' => 'Confirmata'
+                'text' => 'Confirmată'
             ],
             default => [
                 'color' => 'red',
-                'text' => 'Valoare nedefinita'
+                'text' => 'Stare nedefinită'
             ],
         };
     }

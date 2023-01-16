@@ -3,11 +3,11 @@
 @section('type', 'page-sign-up')
 
 @section('main')
-    <h2 class="h4 mt-0 mb-1">Inregistrare pacient</h2>
-    <p class="text-muted">Creeaza-ti contul MediCare</p>
+    <h2 class="h4 mt-0 mb-1">Înregistrare pacient</h2>
+    <p class="text-muted">Creează-ți contul MediCare</p>
 
     <!-- Validation Errors -->
-    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <x-auth-validation-errors class="mb-4" :errors="$errors"/>
 
     <form method="POST" action="{{ route('patient.register') }}">
         @csrf
@@ -17,7 +17,7 @@
                    name="email"
                    type="email"
                    value="{{ old('email') }}"
-                   placeholder="Adresa de email"
+                   placeholder="Adresă de email"
                    required>
         </div>
 
@@ -25,7 +25,7 @@
             <input class="form-control"
                    name="password"
                    type="password"
-                   placeholder="Parola"
+                   placeholder="Parolă"
                    autocomplete="new-password"
                    required>
         </div>
@@ -34,17 +34,16 @@
             <input class="form-control"
                    name="password_confirmation"
                    type="password"
-                   placeholder="Confirmare parola"
+                   placeholder="Confirmare parolă"
                    required>
         </div>
 
-
         <div class="actions justify-content-between">
             <button class="btn btn-primary">
-                <span class="btn-icon icofont-plus me-2"></span>Creeaza-ti cont
+                <span class="btn-icon icofont-plus me-2"></span>Creează-ți cont
             </button>
         </div>
     </form>
 
-    <p class="mt-5">Ai deja cont? <a href="{{ route('login') }}">Conecteaza-te!</a></p>
+    <p class="mt-5">Ai deja cont? <a href="{{ route('login') }}">Conectează-te!</a></p>
 @endsection

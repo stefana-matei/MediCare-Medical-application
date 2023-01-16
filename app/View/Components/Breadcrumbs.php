@@ -38,27 +38,27 @@ class Breadcrumbs extends Component
 
         $visits = [
             'href' => route('visits.list'),
-            'name' => 'Consultatii'
+            'name' => 'Consultații'
         ];
 
         $record = [
             'href' => route('visits.list'),
-            'name' => 'Raportul consultatiei'
+            'name' => 'Raportul consultației'
         ];
 
         $appointments = [
             'href' => route('appointments.list'),
-            'name' => 'Programari'
+            'name' => 'Programări'
         ];
 
         $appointmentsCreate = [
             'href' => route('appointments.create'),
-            'name' => 'Programare noua'
+            'name' => 'Programare nouă'
         ];
 
         $health = [
             'href' => route('medics.list'),
-            'name' => 'Sanatate'
+            'name' => 'Sănătate'
         ];
 
         $medics = [
@@ -77,7 +77,6 @@ class Breadcrumbs extends Component
         ];
 
 
-
         $medicDashboard = [
             'href' => route('medic.dashboard'),
             'name' => 'Cont medic'
@@ -92,7 +91,6 @@ class Breadcrumbs extends Component
             'href' => route('medic.updateView'),
             'name' => 'Date personale medic'
         ];
-
 
 
         $segments = match (request()->route()->getName()) {

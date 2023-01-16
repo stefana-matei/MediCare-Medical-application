@@ -5,7 +5,7 @@
 @endsection
 
 @section('main')
-    <p>Aici poti vedea medicii pe care i-ai vizitat in trecut.</p>
+    <p>Aici puteți vedea medicii pe care i-ați vizitat în trecut.</p>
 
     <div class="page-content">
         <div class="row">

@@ -26,7 +26,7 @@
                         </button>
 
                         <div class="modal-header justify-content-center py-5">
-                            <h5>Aceasta actiune este ireversibila! <br>Confirmati stergerea programarii?</h5>
+                            <h5>Această acțiune este ireversibilă! <br>Confirmați ștergerea programării?</h5>
                         </div>
 
                         <div class="modal-footer">
@@ -72,7 +72,7 @@
             <div class="d-flex justify-content-center align-items-center">
                 <div class="text-muted">
                     @if($appointment->trashed())
-                        <p style="color: red"><strong>Anulata</strong></p>
+                        <p style="color: red"><strong>Anulată</strong></p>
                     @else
                         @if($future || $appointment->confirmed === 0)
                             <p style="color: {{ $appointment->status['color'] }}">
@@ -80,7 +80,7 @@
                             </p>
                         @else
                             <p style="color: {{ $appointment->honored ? 'green' : 'red' }}">
-                                <strong>{{ $appointment->honored ? 'Onorata' : 'Neonorata' }}</strong>
+                                <strong>{{ $appointment->honored ? 'Onorată' : 'Neonorată' }}</strong>
                             </p>
                         @endif
                     @endif

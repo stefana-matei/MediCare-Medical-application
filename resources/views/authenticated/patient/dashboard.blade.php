@@ -16,10 +16,10 @@
     <div class="row">
         <div class="col-8 pe-4">
             <h3>
-                Programari viitoare
+                Programări viitoare
 
                 <a href="{{ route('appointments.list') }}" type="button" class="btn btn-outline-primary btn-mini ms-3 float-end">
-                    Toate programarile
+                    Toate programările
                 </a>
             </h3>
             <div class="row">
@@ -29,17 +29,17 @@
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
                             <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                            <div class="alert-content">Nu aveti programari viitoare!</div>
+                            <div class="alert-content">Nu aveți programări viitoare!</div>
                         </div>
                     </div>
                 @endforelse
             </div>
 
             <h3>
-                Istoric consultatii
+                Istoric consultații
 
                 <a href="{{ route('visits.list') }}" type="button" class="btn btn-outline-primary btn-mini float-end">
-                    Toate consultatiile
+                    Toate consultațiile
                 </a>
             </h3>
             <div class="row">
@@ -49,7 +49,7 @@
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
                             <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                            <div class="alert-content">Nu sunt consultatii!</div>
+                            <div class="alert-content">Nu sunt consultații!</div>
                         </div>
                     </div>
                 @endforelse
@@ -58,7 +58,7 @@
         </div>
 
         <div class="col-4 ps-4">
-            <h3>Solicita o programare</h3>
+            <h3>Solicită o programare</h3>
             <livewire:calendar />
         </div>
 

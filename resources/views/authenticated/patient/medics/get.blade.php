@@ -7,7 +7,7 @@
     <a href="#"
        class="btn btn-outline-primary align-self-center"
        role="button" data-bs-toggle="modal" data-bs-target="#createAppointment">
-        Solicita programare
+        Solicită programare
     </a>
 @endsection
 

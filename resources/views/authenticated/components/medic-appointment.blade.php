@@ -17,7 +17,7 @@
 
             <p>
                 <button wire:click="selectMedic({{ $user->id }})" type="button" class="btn btn-primary" onclick="setTimeout(function(){$('#confirmAppointment').modal('show');}, 1000);">
-                    Programeaza-te
+                    Programează-te
                 </button>
             </p>
 

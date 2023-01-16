@@ -4,7 +4,7 @@
 
 @section('main')
     <h2 class="h4 mt-0 mb-1">Autentificare</h2>
-    <p class="text-muted">Conecteaza-te la contul tau</p>
+    <p class="text-muted">Conectează-te la contul tău</p>
 
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')"/>
@@ -34,20 +34,22 @@
                    autocomplete="current-password">
         </div>
 
-        <div class="form-check form-switch mb-4">
-            <input type="checkbox" class="form-check-input" id="remember-me" name="remember" checked>
-            <label class="form-check-label" for="remember-me">Tine-ma logat</label>
-        </div>
+{{--        <div class="form-check form-switch mb-4">--}}
+{{--            <input type="checkbox" class="form-check-input" id="remember-me" name="remember" checked>--}}
+{{--            <label class="form-check-label" for="remember-me">Tine-ma logat</label>--}}
+{{--        </div>--}}
 
         <div class="actions justify-content-between">
             <button type="submit" class="btn btn-primary">
                 <span class="btn-icon icofont-login me-2"></span>
-                Intra in cont
+                Intră in cont
             </button>
         </div>
     </form>
 
-    <p class="mt-5 mb-1"><a href="{{ route('password.request') }}">Ai uitat parola?</a></p>
-    <p>Nu ai cont? <a href="{{ route('patient.registerView') }}">Creaza cont nou</a></p>
-    <p>Esti medic? <a href="{{ route('medic.registerView') }}">Creaza cont de medic</a></p>
+   <br>
+   <br>
+    <p class="mb-1">Nu ai cont? <a href="{{ route('patient.registerView') }}">Creează cont nou</a></p>
+    <p>Ești medic? <a href="{{ route('medic.registerView') }}">Creează cont de medic</a></p>
+    <p class="mb-1"><a href="{{ route('password.request') }}">Ai uitat parola?</a></p>
 @endsection

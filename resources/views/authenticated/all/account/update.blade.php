@@ -1,7 +1,7 @@
 @extends('authenticated.layouts.app')
 
 @section('header')
-    <h1 class="page-title">Informatii personale</h1>
+    <h1 class="page-title">Informații personale</h1>
 @endsection
 
 @section('main')
@@ -13,7 +13,7 @@
                 <img src="{{ $user->avatar }}" width="100" height="100" alt="" class="rounded-500 me-4">
 
                 <button class="btn btn-outline-primary" type="button" onclick="$('#avatarInput').click()">
-                    Adauga poza de profil<span class="btn-icon icofont-ui-user ms-2"></span>
+                    Adaugă poză de profil<span class="btn-icon icofont-ui-user ms-2"></span>
                 </button>
 
                 <form class="d-none" id="avatarForm" action="{{ route('account.updateAvatar') }}" method="POST"
@@ -54,8 +54,8 @@
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label>Data nasterii</label>
-                            <input name="birthday" class="form-control" type="date" placeholder="Data nasterii"
+                            <label>Data nașterii</label>
+                            <input name="birthday" class="form-control" type="date" placeholder="Data nașterii"
                                    value="{{ old('birthday') ??  $user->settingsPatient->birthday?->format('Y-m-d') }}">
                         </div>
                     </div>
@@ -76,32 +76,32 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Tara</label>
-                    <input name="country" class="form-control" type="text" placeholder="Tara"
+                    <label>Țară</label>
+                    <input name="country" class="form-control" type="text" placeholder="Țară"
                            value="{{ old('country') ?? $user->settingsPatient->country }}">
                 </div>
 
                 <div class="form-group">
-                    <label>Judet</label>
-                    <input name="county" class="form-control" type="text" placeholder="Judet"
+                    <label>Județ</label>
+                    <input name="county" class="form-control" type="text" placeholder="Județ"
                            value="{{ old('county') ?? $user->settingsPatient->county }}">
                 </div>
 
                 <div class="form-group">
-                    <label>Oras</label>
-                    <input name="city" class="form-control" type="text" placeholder="Oras"
+                    <label>Oraș</label>
+                    <input name="city" class="form-control" type="text" placeholder="Oraș"
                            value="{{ old('city') ?? $user->settingsPatient->city }}">
                 </div>
 
                 <div class="form-group">
-                    <label>Adresa completa</label>
-                    <textarea name="address" class="form-control" placeholder="Adresa completa"
+                    <label>Adresa completă</label>
+                    <textarea name="address" class="form-control" placeholder="Adresa completă"
                               rows="2">{{ old('address') ?? $user->settingsPatient->address }}</textarea>
                 </div>
 
                 <div class="form-group">
-                    <label>Numar de telefon</label>
-                    <input name="phone" class="form-control" type="text" placeholder="Numar de telefon"
+                    <label>Număr de telefon</label>
+                    <input name="phone" class="form-control" type="text" placeholder="Număr de telefon"
                            value="{{ old('phone') ?? $user->settingsPatient->phone }}">
                 </div>
 
@@ -111,12 +111,12 @@
                 </div>
 
 
-                <button type="submit" class="btn btn-success">Salveaza modificarile</button>
+                <button type="submit" class="btn btn-success">Salvați modificările</button>
             </form>
 
             <hr>
 
-            <h4>Schimba parola</h4>
+            <h4>Schimbați parola</h4>
 
             <form method="POST" action="{{ route('account.updatePassword') }}">
                 @csrf
@@ -133,20 +133,20 @@
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label>Parola noua</label>
-                            <input name="password" class="form-control" type="password" placeholder="Parola noua">
+                            <label>Parola nouă</label>
+                            <input name="password" class="form-control" type="password" placeholder="Parola nouă">
                         </div>
                     </div>
 
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label>Confirmare parola noua</label>
-                            <input name="password_confirmation" class="form-control" type="password" placeholder="Confirmare parola noua">
+                            <label>Confirmare parola nouă</label>
+                            <input name="password_confirmation" class="form-control" type="password" placeholder="Confirmare parola nouă">
                         </div>
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-outline-dark">Salveaza parola</button>
+                <button type="submit" class="btn btn-outline-dark">Salvați parola</button>
             </form>
         </div>
     </div>

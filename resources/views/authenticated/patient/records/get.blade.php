@@ -1,12 +1,12 @@
 @extends('authenticated.layouts.app')
 
 @section('header')
-    <h2> Detalii consultatie</h2>
+    <h2> Detalii consultație</h2>
 
     <a href="{{ route('visits.record.print', ['visit_id' => $visit->id]) }}"
        class="btn btn-outline-primary align-self-center"
        role="button">
-        Tipareste raportul medical
+        Tipărește raportul medical
     </a>
 @endsection
 
@@ -32,7 +32,7 @@
 
             @if($record->files->isNotEmpty())
                 <div class="mt-3">
-                    <h5 class="mb-2">Fisiere atasate</h5>
+                    <h5 class="mb-2">Fișiere atașate</h5>
                     @foreach($record->files as $file)
                         <a href="{{ $file->getUrl() }}" target="_blank"
                            class="btn btn-outline-primary rounded-pill btn-sm mw-100 p-2 mb-2">
@@ -47,9 +47,6 @@
         </div>
         <div class="col-md-8">
             <div class="card">
-                {{--                <div class="card-header fs-4">--}}
-                {{--                    Poti vizualiza detaliile consultatiei--}}
-                {{--                </div>--}}
                 <div class="card-body">
                     <div class="v-timeline">
                         <div class="line"></div>
@@ -66,7 +63,6 @@
                                     <div class="content-block">
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Istoric</h3>
-                                            {{--                                            <div class="item-date"><span>2m ago</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -84,7 +80,6 @@
                                     <div class="content-block">
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Simptome</h3>
-                                            {{--                                            <div class="item-date"><span>2h ago</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -102,7 +97,6 @@
                                     <div class="content-block">
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Diagnostic</h3>
-                                            {{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -120,8 +114,6 @@
                                     <div class="content-block">
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Date clinice</h3>
-
-                                            {{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -139,8 +131,6 @@
                                     <div class="content-block">
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Date paraclinice</h3>
-
-                                            {{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -158,8 +148,6 @@
                                     <div class="content-block">
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Bilet trimitere</h3>
-
-                                            {{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -177,8 +165,6 @@
                                     <div class="content-block">
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Recomandari</h3>
-
-                                            {{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -191,7 +177,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 

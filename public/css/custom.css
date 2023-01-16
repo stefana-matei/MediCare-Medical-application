@@ -82,7 +82,7 @@
 
 .customizable-placeholder .filter-option-inner-inner:after {
     position: absolute;
-    content: "Lipseste filtru de cautare";
+    content: "Lipsește filtru de căutare";
     left: 0;
     top: 0;
     color: #6c757d;
@@ -93,18 +93,18 @@
 }
 
 #appointments-search.customizable-placeholder .filter-option-inner-inner:after {
-    content: "Cauta dupa medic sau specializare";
+    content: "Căutați după medic sau specializare";
 }
 #medic-appointments-search.customizable-placeholder .filter-option-inner-inner:after {
-    content: "Cauta dupa numele pacientului";
+    content: "Căutați după numele pacientului";
 }
 
 #visits-search.customizable-placeholder .filter-option-inner-inner:after {
-    content: "Cauta dupa medic sau specializare";
+    content: "Căutați după medic sau specializare";
 }
 
 #medics-search.customizable-placeholder .filter-option-inner-inner:after {
-    content: "Cauta dupa nume sau specializare";
+    content: "Căutați după nume sau specializare";
 }
 
 .main-menu .main-menu-wrap .menu-ul .menu-item .item-link .link-icon {

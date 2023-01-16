@@ -1,12 +1,13 @@
 @extends('authenticated.layouts.app')
 
 @section('header')
-    <h2>Consultatiile mele</h2>
+    <h2>Consultațiile mele</h2>
 @endsection
 
 @section('main')
     <div class="d-flex align-items-center">
-        <form id="visits-search" class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} search-height w-50">
+        <form id="visits-search"
+              class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} search-height w-50">
             <div class="form-group mb-0">
                 <select name="medic" class="selectpicker" data-live-search="true"
                         onchange="$('#visits-search').submit()">
@@ -25,7 +26,7 @@
         @if(request()->medic)
             <a class="btn btn-light btn-reset ms-3 shadow-none ps-3" href="{{ route('visits.list') }}">
                 <span class="btn-icon icofont-refresh fs-6 me-2"></span>
-                Reseteaza
+                Resetează
             </a>
         @endif
     </div>
@@ -38,7 +39,11 @@
                 <div class="col">
                     <div class="alert alert-secondary with-before-icon" role="alert">
                         <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                        <div class="alert-content">Nu sunt consultatii!</div>
+                        @if(is_null($medic))
+                            <div class="alert-content">Nu sunt informații despre istoricul consultațiilor dumneavoastră!</div>
+                        @else
+                            <div class="alert-content">Nu sunt informații despre istoricul consultațiilor la {{ $medic->medicName }}!</div>
+                        @endif
                     </div>
                 </div>
             @endforelse

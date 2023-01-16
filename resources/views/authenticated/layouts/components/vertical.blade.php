@@ -27,14 +27,14 @@
                     <li class="menu-item">
                         <a class="item-link" href="{{ route('visits.list') }}">
                             <span class="link-icon icofont-ui-copy"></span>
-                            <span class="link-text">Consultatii</span>
+                            <span class="link-text">Consultații</span>
                         </a>
                     </li>
 
                     <li class="menu-item">
                         <a class="item-link" href="{{ route('appointments.list') }}">
                             <span class="link-icon icofont-calendar"></span>
-                            <span class="link-text">Programari</span>
+                            <span class="link-text">Programări</span>
                         </a>
                     </li>
 
@@ -52,7 +52,7 @@
             <nav class="main-menu-wrap">
                 <ul class="menu-ul">
                     <li class="menu-item">
-                        <span class="group-title">Sanatate</span>
+                        <span class="group-title">Sănătate</span>
                     </li>
 
                     <li class="menu-item">

@@ -26,7 +26,7 @@
                         </button>
 
                         <div class="modal-header justify-content-center py-5">
-                            <h5>Confirmati anularea programarii?</h5>
+                            <h5>Confirmați anularea programării?</h5>
                         </div>
 
                         <div class="modal-footer">
@@ -40,7 +40,7 @@
 
                                     <button type="submit" class="btn btn-danger"
                                             onclick="$(this).prop('disabled', true); $(this).parent().submit()">
-                                        Da, anuleaza
+                                        Da, anulează
                                     </button>
 
                                 </form>
@@ -52,7 +52,7 @@
 
         @endif
 
-
+        {{--            {{$appointment->id}}:--}}
         <div class="card-header pt-4 fs-4">
             <strong>{{ $appointment->date->format('d M Y') }}</strong><br>
             <strong>{{ $appointment->confirmed ? $appointment->date->format('H:i') : ''}}</strong>
@@ -79,7 +79,7 @@
                         </p>
                     @else
                         <p style="color: {{ $appointment->honored ? 'green' : 'red' }}">
-                            <strong>{{ $appointment->honored ? 'Onorata' : 'Neonorata' }}</strong>
+                            <strong>{{ $appointment->honored ? 'Onorată' : 'Neonorată' }}</strong>
                         </p>
                     @endif
                 </div>

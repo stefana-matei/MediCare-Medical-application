@@ -129,56 +129,60 @@ class PatientPOVSeeder extends Seeder
         /** @var Appointment $appointment5 */
         /** @var Appointment $appointment6 */
 
-        $appointment = $membership->appointments()->create([
-            'date' => now(),
-            'honored' => true,
-            'confirmed' => true
-        ]);
 
-        $membership->appointments()->create([
-            'date' => now()->addWeek(),
-            'honored' => false,
-            'confirmed' => true
-        ]);
-
+        // Programari in asteptare
         $membership->appointments()->create([
             'date' => now()->addMonth(),
             'honored' => true
-        ]);
-
-        $membership->appointments()->create([
-            'date' => now()->addYear(),
-            'honored' => false,
-            'confirmed' => true
-        ]);
-
-        $appointment2 = $membership->appointments()->create([
-            'date' => now()->addWeek(),
-            'honored' => false,
-            'confirmed' => false
-        ]);
-
-        $appointment3 = $membership2->appointments()->create([
-            'date' => now()->subWeek(),
-            'honored' => true,
-            'confirmed' => true
-        ]);
-
-        $appointment4 = $membership2->appointments()->create([
-            'date' => now(),
-            'honored' => false,
-            'confirmed' => true
         ]);
 
         $appointment5 = $membership3->appointments()->create([
             'date' => now()->addWeek(2),
             'honored' => true
         ]);
-//
-//        $appointment6 = $membership3->appointments()->create([
-//            'date' => now(),
-//            'honored' => false
-//        ]);
+
+
+        // Programari viitoare
+        $membership->appointments()->create([
+            'date' => now()->addWeek(),
+            'confirmed' => true,
+            'honored' => false
+        ]);
+
+        $membership->appointments()->create([
+            'date' => now()->addYear(),
+            'confirmed' => true,
+            'honored' => false
+        ]);
+
+
+        //Programari anterioare
+        $appointment = $membership->appointments()->create([
+            'date' => now()->subMonth(),
+            'confirmed' => true,
+            'honored' => true
+        ]);
+
+        $appointment3 = $membership2->appointments()->create([
+            'date' => now()->subWeek(),
+            'confirmed' => true,
+            'honored' => true
+        ]);
+
+        // neonorata
+        $appointment4 = $membership2->appointments()->create([
+            'date' => now()->subMonth(),
+            'confirmed' => true,
+            'honored' => false
+        ]);
+
+
+        // Programari refuzate
+        $appointment2 = $membership->appointments()->create([
+            'date' => now()->addWeek(),
+            'honored' => false,
+            'confirmed' => false
+        ]);
 
 
         // Visits
@@ -190,17 +194,17 @@ class PatientPOVSeeder extends Seeder
         /** @var Visit $visit6 */
 
         $visit = $membership->visits()->create([
-            'date' => now()->addWeek(),
+            'date' => $appointment->date,
             'appointment_id' => $appointment->id
         ]);
 
-        $visit2 = $membership->visits()->create([
-            'date' => now(),
-            'appointment_id' => $appointment2->id
-        ]);
+//        $visit2 = $membership->visits()->create([
+//            'date' => $appointment2->date,
+//            'appointment_id' => $appointment2->id
+//        ]);
 
         $visit3 = $membership2->visits()->create([
-            'date' => now()->addDay(3),
+            'date' => $appointment3->date,
             'appointment_id' => $appointment3->id
         ]);
 
@@ -218,7 +222,6 @@ class PatientPOVSeeder extends Seeder
         ]);
 
 
-
         $record3 = $visit3->record()->create([
             'medical_history' => $faker->text(),
             'symptoms' => $faker->text(),
@@ -228,8 +231,6 @@ class PatientPOVSeeder extends Seeder
             'indications' => $faker->text(),
             'date_processed' => now()->subDay(7)
         ]);
-
-
 
 
         $allergology = Specialty::factory()->create(['name' => "Alergologie şi imunologie"]);
