@@ -1,6 +1,7 @@
 @php($future = $future ?? false)
 @php($width = $width ?? 4)
 
+
 <div class="col-12 col-md-{{ $width }}">
     <div class="card text-center mb-5 bg-light">
 
@@ -42,14 +43,12 @@
                                             onclick="$(this).prop('disabled', true); $(this).parent().submit()">
                                         Da, anulează
                                     </button>
-
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         @endif
 
         {{--            {{$appointment->id}}:--}}
@@ -81,6 +80,15 @@
                         <p style="color: {{ $appointment->honored ? 'green' : 'red' }}">
                             <strong>{{ $appointment->honored ? 'Onorată' : 'Neonorată' }}</strong>
                         </p>
+
+                        @if($appointment->honored)
+                            <div class="d-grid gap-2 col-6">
+                                <a href="{{ route('appointments.get', ['id' => $appointment->id]) }}"
+                                   type="button" class="btn btn-primary btn-mini">
+                                    Vezi raportul medical
+                                </a>
+                            </div>
+                        @endif
                     @endif
                 </div>
             </div>
