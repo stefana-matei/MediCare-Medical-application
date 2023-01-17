@@ -87,7 +87,7 @@ class VisitController extends Controller
 
         if ($request->medic) {
             $visits->where('membership_id', $request->medic);
-            $medic = User::find($request->medic);
+            $medic = Auth::user()->memberships()->find($request->medic)?->medic;
         }
 
         $visits = $visits
