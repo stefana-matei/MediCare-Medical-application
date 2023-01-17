@@ -38,7 +38,7 @@
             @empty
                 <div class="col">
                     <div class="alert alert-secondary with-before-icon" role="alert">
-                        <div class="alert-icon"><i class="icofont-calendar"></i></div>
+                        <div class="alert-icon"><i class="icofont-ui-copy"></i></div>
                         @if(is_null($medic))
                             <div class="alert-content">Nu sunt informații despre istoricul consultațiilor dumneavoastră!</div>
                         @else

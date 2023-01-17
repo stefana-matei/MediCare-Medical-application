@@ -9,9 +9,16 @@
 
     <div class="page-content">
         <div class="row">
-            @foreach($medics as $medic)
+            @forelse($medics as $medic)
                 @include('authenticated.components.medic', ['user' => $medic])
-            @endforeach
+            @empty
+                <div class="col">
+                    <div class="alert alert-secondary with-before-icon" role="alert">
+                        <div class="alert-icon"><i class="icofont-stethoscope-alt"></i></div>
+                        <div class="alert-content">Nu sunt medici pe care i-ați vizitat!</div>
+                    </div>
+                </div>
+            @endforelse
         </div>
     </div>
 @endsection
