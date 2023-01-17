@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
-// App\Http\Controllers\Patient\AppointmentController
+
 class AppointmentController extends Controller
 {
     public function __construct()
