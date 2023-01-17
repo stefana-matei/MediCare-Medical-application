@@ -2,6 +2,7 @@
 @php($showRecord = $showRecord ?? true)
 @php($mini = $mini ?? false)
 
+
 <div class="col-12 col-md-{{ $width }}">
     <div class="contact">
         <div class="img-box">
