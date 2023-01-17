@@ -18,8 +18,8 @@ class CreateAppointmentsTable extends Migration
             $table->foreignId('membership_id');
             $table->dateTime('date')->useCurrent();
             //$table->string('location');
-            $table->boolean('honored')->default(false);
             $table->boolean('confirmed')->nullable();
+            $table->boolean('honored')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });
