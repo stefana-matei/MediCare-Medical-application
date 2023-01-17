@@ -6,7 +6,9 @@
 
         <div class="app-logo">
             <div class="logo-wrap">
-                @include('components/logo')
+                <a class="item-link" href="{{ route('dashboard') }}">
+                    @include('components.logo')
+                </a>
             </div>
         </div>
 

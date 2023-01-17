@@ -1,17 +1,13 @@
 @extends('authenticated.medic.layouts.app')
 
-@section('header')
-    <h2>Pagina de start</h2>
-@endsection
-
 @section('main')
     <div class="row">
         <div class="col-8 pe-4">
             <h3>
-                Programari planificate
+                Programări planificate
 
                 <a href="{{ route('medic.appointments.list') }}" type="button" class="btn btn-outline-primary btn-mini ms-3 float-end">
-                    Toate programarile
+                    Toate programările
                 </a>
             </h3>
             <div class="row">

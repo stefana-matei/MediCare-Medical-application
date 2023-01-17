@@ -7,7 +7,9 @@
 
         <div class="app-logo">
             <div class="logo-wrap">
+                <a class="item-link" href="{{ route('medic.dashboard') }}">
                 @include('components.logo')
+                </a>
             </div>
         </div>
 
@@ -24,6 +26,20 @@
                             <span class="link-text">Home</span>
                         </a>
                     </li>
+
+                    <li class="menu-item">
+                        <a class="item-link" href="{{ route('medic.appointments.list') }}">
+                            <span class="link-icon icofont-calendar"></span>
+                            <span class="link-text">Programări</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a class="item-link" href="#">
+                            <span class="link-icon icofont-users"></span>
+                            <span class="link-text">Pacienții mei</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -31,7 +47,7 @@
         <div class="add-patient">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-patient">
                 <span class="btn-icon icofont-plus me-2"></span>
-                Adauga pacient
+                Adăugare pacient
             </button>
         </div>
 
