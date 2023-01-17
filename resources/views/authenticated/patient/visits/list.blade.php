@@ -13,10 +13,10 @@
                         onchange="$('#visits-search').submit()">
                     <option></option>
 
-                    @foreach($visits as $visit)
-                        <option value="{{ $visit->membership->id }}"
-                                {{ $visit->membership->id == request('medic') ? 'selected' : '' }}
-                                data-subtext="{{ $visit->membership->medic->settingsMedic->specialty->name }}">{{ $visit->membership->medic->name }}</option>
+                    @foreach($memberships as $membership)
+                        <option value="{{ $membership->id }}"
+                                {{ $membership->id == request('medic') ? 'selected' : '' }}
+                                data-subtext="{{ $membership->medic->settingsMedic->specialty->name }}">{{ $membership->medic->name }}</option>
                     @endforeach
 
                 </select>

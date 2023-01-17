@@ -83,21 +83,17 @@ class VisitController extends Controller
 
         $visits = Auth::user()
             ->visits()
-            ->with('membership.medic.settingsMedic.specialty', 'membership.medic.media', 'record');
+            ->with('membership.medic.settingsMedic.specialty', 'membership.medic.media', 'record')
+            ->get();
+
+        $memberships = $visits->pluck('membership')->unique('id');
 
         if ($request->medic) {
-            $visits->where('membership_id', $request->medic);
+            $visits = $visits->where('membership_id', $request->medic);
             $medic = Auth::user()->memberships()->find($request->medic)?->medic;
         }
 
-        $visits = $visits
-            ->orderBy('date', 'desc')
-            ->get();
-
-        $memberships = Auth::user()
-            ->memberships()
-            ->with('medic.settingsMedic.specialty')
-            ->get();
+        $visits = $visits->sortBy(callback:'date', descending:true);
 
         return view('authenticated.patient.visits.list', [
             'visits' => $visits,

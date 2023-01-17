@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Patient;
 use App\Models\User;
 use App\Services\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class MedicController extends Controller
 {
@@ -27,28 +28,45 @@ class MedicController extends Controller
             return redirect(route('medics.list'));
         }
 
-        $medics = User::medic()->with('media', 'settingsMedic.specialty', 'settingsMedic.level');
+        /** @var Collection $medics */
+        $medics = User::medic()
+            ->with('media', 'settingsMedic.specialty', 'settingsMedic.level')
+            ->get();
+
+        $allMedics = $medics;
 
         if ($request->medic) {
-            $medics->where('id', $request->medic);
+            $medics = $medics->where('id', $request->medic);
         }
 
-        $medics = $medics->get();
-
-        return view('authenticated.patient.medics.list', compact('medics'));
+        return view('authenticated.patient.medics.list', [
+            'medics' => $medics,
+            'allMedics' => $allMedics
+        ]);
     }
 
-    public function myMedics()
+    public function myMedics(Request $request)
     {
-        $medics = Auth::user()
+        if($request->has('medic') && is_null($request->medic)) {
+            return redirect(route('medics.myMedics'));
+        }
+
+        $allMedics = Auth::user()
             ->visits()
             ->with('membership.medic','membership.medic.media','membership.medic.settingsMedic.specialty','membership.medic.settingsMedic.level', 'record')
             ->get()
             ->pluck('membership.medic')
             ->unique('id');
 
+        $medics = $allMedics;
+
+        if ($request->medic) {
+            $medics = $medics->where('id', $request->medic);
+        }
+
         return view('authenticated.patient.memberships.list', [
-            'medics' => $medics
+            'medics' => $medics,
+            'allMedics' => $allMedics
         ]);
     }
 }

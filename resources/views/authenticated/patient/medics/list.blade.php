@@ -12,7 +12,7 @@
                         onchange="$('#medics-search').submit()">
                     <option></option>
 
-                    @foreach($medics as $medic)
+                    @foreach($allMedics as $medic)
                         <option value="{{ $medic->id }}"
                                 {{ $medic->id == request('medic') ? 'selected' : '' }}
                                 data-subtext="{{ $medic->settingsMedic->specialty->name }}">{{ $medic->name }}</option>
