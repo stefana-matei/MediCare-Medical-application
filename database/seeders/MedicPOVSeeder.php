@@ -50,8 +50,8 @@ class MedicPOVSeeder extends Seeder
 
 
         $appointmentA = $membershipA->appointments()->create([
-            'date' => now()->addWeek(),
-            'honored' => false,
+            'date' => now()->subMonth(),
+            'honored' => true,
             'confirmed' => true
         ]);
 
