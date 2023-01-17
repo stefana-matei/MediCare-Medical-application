@@ -21,8 +21,8 @@ class MedicPOVSeeder extends Seeder
 
         $patientS = User::find(7);
 
-        /** @var User $patientA */
-        $patientA = User::factory()->create([
+        /** @var User $patient1 */
+        $patient1 = User::factory()->create([
             'role' => 'patient',
             'firstname' => 'Andromeda',
             'lastname' => 'Gheorghescu',
@@ -30,8 +30,8 @@ class MedicPOVSeeder extends Seeder
             'password' => Hash::make('secret123')
         ]);
 
-        /** @var User $patientB */
-        $patientB = User::factory()->create([
+        /** @var User $patient2 */
+        $patient2 = User::factory()->create([
             'role' => 'patient',
             'firstname' => 'Beatrice',
             'lastname' => 'Ionela',
@@ -39,23 +39,23 @@ class MedicPOVSeeder extends Seeder
             'password' => Hash::make('secret123')
         ]);
 
-        $membershipA = $medic->memberships()->create([
-            'patient_id' => $patientA->id
+        $membership1 = $medic->memberships()->create([
+            'patient_id' => $patient1->id
         ]);
 
         /** @var Membership $membership2 */
-        $membershipB = $medic->memberships()->create([
-            'patient_id' => $patientB->id
+        $membership2 = $medic->memberships()->create([
+            'patient_id' => $patient2->id
         ]);
 
 
-        $appointmentA = $membershipA->appointments()->create([
+        $appointment1 = $membership1->appointments()->create([
             'date' => now()->subMonth(),
             'honored' => true,
             'confirmed' => true
         ]);
 
-        $appointmentB = $membershipB->appointments()->create([
+        $appointment2 = $membership2->appointments()->create([
             'date' => now()->addMonth(),
             'honored' => false,
             'confirmed' => true
