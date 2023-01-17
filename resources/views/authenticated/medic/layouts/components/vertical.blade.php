@@ -8,7 +8,7 @@
         <div class="app-logo">
             <div class="logo-wrap">
                 <a class="item-link" href="{{ route('medic.dashboard') }}">
-                @include('components.logo')
+                    @include('components.logo')
                 </a>
             </div>
         </div>
@@ -35,7 +35,7 @@
                     </li>
 
                     <li class="menu-item">
-                        <a class="item-link" href="#">
+                        <a class="item-link" href="{{ route('patients.myPatients') }}">
                             <span class="link-icon icofont-users"></span>
                             <span class="link-text">Pacienții mei</span>
                         </a>
