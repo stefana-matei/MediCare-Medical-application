@@ -93,18 +93,22 @@
 }
 
 #appointments-search.customizable-placeholder .filter-option-inner-inner:after {
-    content: "Căutați după medic sau specializare";
+    content: "Căutați după medic sau specialitate";
 }
 #medic-appointments-search.customizable-placeholder .filter-option-inner-inner:after {
     content: "Căutați după numele pacientului";
 }
 
 #visits-search.customizable-placeholder .filter-option-inner-inner:after {
-    content: "Căutați după medic sau specializare";
+    content: "Căutați după medic sau specialitate";
 }
 
 #medics-search.customizable-placeholder .filter-option-inner-inner:after {
-    content: "Căutați după nume sau specializare";
+    content: "Căutați după nume sau specialitate";
+}
+
+#my-medics-search.customizable-placeholder .filter-option-inner-inner:after {
+    content: "Căutați după nume sau specialitate";
 }
 
 .main-menu .main-menu-wrap .menu-ul .menu-item .item-link .link-icon {
