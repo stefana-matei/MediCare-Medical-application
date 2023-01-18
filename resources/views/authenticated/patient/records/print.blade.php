@@ -25,7 +25,7 @@
 
     <div class="row">
         <div class="col-6">
-            <img src="{{ public_path('assets/img/logo_print.png') }}" alt="" width="175">
+            <img src="{{ public_path('assets/img/logo_final.png') }}" alt="" width="175">
         </div>
         <div class="col-6">
             <h1>Raport medical</h1>
