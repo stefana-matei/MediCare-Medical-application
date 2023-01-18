@@ -1,7 +1,7 @@
 @extends('authenticated.medic.layouts.app')
 
 @section('header')
-    <h2> Programarile mele</h2>
+    <h2> Programările mele</h2>
 @endsection
 
 @section('main')
@@ -27,19 +27,19 @@
         @if(request()->patient)
             <a class="btn btn-light btn-reset ms-3 shadow-none ps-3" href="{{ route('medic.appointments.list') }}">
                 <span class="btn-icon icofont-refresh fs-6 me-2"></span>
-                Reseteaza
+                Resetează
             </a>
         @endif
 
         <a href="{{ route('appointments.createView') }}" class="btn btn-primary align-self-center ps-3 ms-auto">
             <span class="btn-icon icofont-plus fs-6 me-3"></span>
-            Programare noua
+            Programare nouă
         </a>
     </div>
 
     <div class="page-content mt-5">
         <div class="mb-5">
-            <h4>Programari in asteptare</h4>
+            <h4>Programări în așteptare</h4>
             <div class="row">
                 @if($pendingAppointments->isNotEmpty())
                 @endif
@@ -49,7 +49,7 @@
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
                             <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                            <div class="alert-content">Nu aveti programari in asteptare!</div>
+                            <div class="alert-content">Nu aveți programări în așteptare!</div>
                         </div>
                     </div>
                 @endforelse
@@ -57,7 +57,7 @@
         </div>
 
         <div class="mb-5">
-            <h4>Programari viitoare</h4>
+            <h4>Programări viitoare</h4>
             <div class="row">
                 @forelse($confirmedAppointments as $confirmedAppointment)
                     @include('authenticated.medic.components.appointment', ['width' => 3, 'future' => true, 'appointment' => $confirmedAppointment])
@@ -65,7 +65,7 @@
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
                             <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                            <div class="alert-content">Nu aveti programari viitoare!</div>
+                            <div class="alert-content">Nu aveți programări viitoare!</div>
                         </div>
                     </div>
                 @endforelse
@@ -81,7 +81,7 @@
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
                             <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                            <div class="alert-content">Nu sunt programari anterioare!</div>
+                            <div class="alert-content">Nu aveți programări anterioare!</div>
                         </div>
                     </div>
                 @endforelse
@@ -97,13 +97,12 @@
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
                             <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                            <div class="alert-content">Nu aveti programari refuzate!</div>
+                            <div class="alert-content">Nu aveți programări refuzate!</div>
                         </div>
                     </div>
                 @endforelse
             </div>
         </div>
-
     </div>
 @endsection
 
