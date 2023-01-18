@@ -101,7 +101,7 @@ class AppointmentController extends Controller
 
         $appointments = Auth::user()
             ->appointments()
-            ->with('membership.medic.settingsMedic.specialty', 'membership.medic.media');
+            ->with('membership.medic.settingsMedic.specialty', 'membership.medic.media', 'visit.record');
 
         if ($request->medic) {
             $appointments->where('membership_id', $request->medic);

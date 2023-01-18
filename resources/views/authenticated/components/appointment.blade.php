@@ -81,13 +81,23 @@
                         </p>
 
                         @if($appointment->honored)
-                            <div class="d-grid gap-2 col-6">
-                                <a href="{{ route('appointments.get', ['id' => $appointment->id]) }}"
-                                   type="button" class="btn btn-primary btn-mini">
-                                    Vezi raportul medical
-                                </a>
-                            </div>
+                            @if($appointment->visit->record)
+                                <div class="d-grid gap-2 col-6">
+                                    <a href="{{ route('appointments.get', ['id' => $appointment->id]) }}"
+                                       type="button" class="btn btn-primary btn-mini">
+                                        Vezi raportul medical
+                                    </a>
+                                </div>
+                            @else
+                                <div class="d-grid gap-2 col-6">
+                                    <a href="{{ route('appointments.get', ['id' => $appointment->id]) }}"
+                                       type="button" class="btn btn-secondary btn-mini disabled">
+                                        Vezi raportul medical
+                                    </a>
+                                </div>
+                            @endif
                         @endif
+
                     @endif
                 </div>
             </div>
