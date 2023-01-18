@@ -6,7 +6,8 @@
             <h3>
                 Programări planificate
 
-                <a href="{{ route('medic.appointments.list') }}" type="button" class="btn btn-outline-primary btn-mini ms-3 float-end">
+                <a href="{{ route('medic.appointments.list') }}" type="button"
+                   class="btn btn-outline-primary btn-mini ms-3 float-end">
                     Toate programările
                 </a>
             </h3>
@@ -27,6 +28,5 @@
         <div class="col-4 ps-4">
             <h3>Sidebar</h3>
         </div>
-
     </div>
 @endsection
