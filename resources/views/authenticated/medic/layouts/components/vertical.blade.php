@@ -44,12 +44,12 @@
             </nav>
         </div>
 
-        <div class="add-patient">
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-patient">
-                <span class="btn-icon icofont-plus me-2"></span>
-                Adăugare pacient
-            </button>
-        </div>
+{{--        <div class="add-patient">--}}
+{{--            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-patient">--}}
+{{--                <span class="btn-icon icofont-plus me-2"></span>--}}
+{{--                Adăugare pacient--}}
+{{--            </button>--}}
+{{--        </div>--}}
 
         <div class="vertical-overlay">
             <span class="large-icon icofont-doctor"></span>
