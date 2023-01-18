@@ -5,7 +5,7 @@
 @endsection
 
 @section('main')
-    <p>Aici puteți vedea lista tuturor pacienților consultați.</p>
+    <p>Aici puteți vedea lista tuturor pacienților pe care îi aveți în evidență.</p>
 
     <div class="d-flex align-items-center">
         <form id="my-patients-search"
@@ -31,6 +31,11 @@
                 Resetează
             </a>
         @endif
+
+        <a href="{{ route('appointments.createView') }}" class="btn btn-primary align-self-center ps-3 ms-auto disabled">
+            <span class="btn-icon icofont-plus fs-6 me-3"></span>
+            Adăugare pacient
+        </a>
     </div>
 
 
