@@ -28,7 +28,7 @@ class AppointmentController extends Controller
      */
     public function list(Request $request)
     {
-        if($request->has('patient') && is_null($request->patient)) {
+        if ($request->has('patient') && is_null($request->patient)) {
             return redirect(route('medic.appointments.list'));
         }
 
@@ -44,7 +44,7 @@ class AppointmentController extends Controller
 
         $memberships = Auth::user()
             ->memberships()
-            ->with('patient.media')
+            ->with('patient.media', 'patient.settingsPatient')
             ->get();
 
         $now = now();
@@ -57,6 +57,4 @@ class AppointmentController extends Controller
             'memberships' => $memberships
         ]);
     }
-
-
 }

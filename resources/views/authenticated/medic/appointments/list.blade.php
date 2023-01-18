@@ -16,8 +16,8 @@
 
                     @foreach($memberships as $membership)
                         <option value="{{ $membership->id }}"
-                            {{ $membership->id == request('patient') ? 'selected' : '' }}>
-                            {{ $membership->patient->name }}
+                                {{ $membership->id == request('patient') ? 'selected' : '' }}
+                                data-subtext="{{ $membership->patient->settingsPatient->pin }}">{{ $membership->patient->name }}
                         </option>
                     @endforeach
                 </select>
