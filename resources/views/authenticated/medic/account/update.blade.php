@@ -1,7 +1,7 @@
 @extends('authenticated.medic.layouts.app')
 
 @section('header')
-    <h1 class="page-title">Informatii personale medic</h1>
+    <h1 class="page-title">Informații personale medic</h1>
 @endsection
 
 @section('main')
@@ -13,7 +13,7 @@
                 <img src="{{ $user->avatar }}" width="100" height="100" alt="" class="rounded-500 me-4">
 
                 <button class="btn btn-outline-primary" type="button" onclick="$('#avatarInput').click()">
-                    Adauga poza de profil<span class="btn-icon icofont-ui-user ms-2"></span>
+                    Adaugă poză de profil<span class="btn-icon icofont-ui-user ms-2"></span>
                 </button>
 
                 <form class="d-none" id="avatarForm" action="{{ route('account.updateAvatar') }}" method="POST"
@@ -22,8 +22,7 @@
                     @method('PUT')
                     <input class="d-none" type="file" id="avatarInput" name="avatar"
                            onchange="$('#avatarForm').submit()">
-                    <input class="btn btn-primary ms-3" type="submit" value="Salveaza poza">
-
+                    <input class="btn btn-primary ms-3" type="submit" value="Salvează poza">
                 </form>
             </div>
 
@@ -31,7 +30,7 @@
 
             <hr>
 
-            <h4>Schimba parola</h4>
+            <h4>Schimbă parola</h4>
 
             <form method="POST" action="{{ route('account.updatePassword') }}">
                 @csrf
@@ -39,8 +38,8 @@
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label>Parola veche</label>
-                            <input name="old_password"  class="form-control" type="password" placeholder="Parola veche">
+                            <label>Parolă veche</label>
+                            <input name="old_password"  class="form-control" type="password" placeholder="Parolă veche">
                         </div>
                     </div>
                 </div>
@@ -48,20 +47,20 @@
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label>Parola noua</label>
-                            <input name="password" class="form-control" type="password" placeholder="Parola noua">
+                            <label>Parolă nouă</label>
+                            <input name="password" class="form-control" type="password" placeholder="Parolă noua">
                         </div>
                     </div>
 
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label>Confirmare parola noua</label>
+                            <label>Confirmare parolă nouă</label>
                             <input name="password_confirmation" class="form-control" type="password" placeholder="Confirmare parola noua">
                         </div>
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-outline-dark">Salveaza parola</button>
+                <button type="submit" class="btn btn-outline-dark">Salvează parola</button>
             </form>
         </div>
     </div>
