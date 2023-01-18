@@ -124,8 +124,8 @@
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label>Parola veche</label>
-                            <input name="old_password"  class="form-control" type="password" placeholder="Parola veche">
+                            <label>Parolă veche</label>
+                            <input name="old_password"  class="form-control" type="password" placeholder="Parolă veche">
                         </div>
                     </div>
                 </div>
@@ -133,14 +133,14 @@
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label>Parola nouă</label>
-                            <input name="password" class="form-control" type="password" placeholder="Parola nouă">
+                            <label>Parolă nouă</label>
+                            <input name="password" class="form-control" type="password" placeholder="Parolă nouă">
                         </div>
                     </div>
 
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label>Confirmare parola nouă</label>
+                            <label>Confirmare parolă nouă</label>
                             <input name="password_confirmation" class="form-control" type="password" placeholder="Confirmare parola nouă">
                         </div>
                     </div>
