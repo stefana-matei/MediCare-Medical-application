@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Medic;
 
 use App\Http\Controllers\Controller;
 use App\Services\Auth;
+use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
@@ -12,18 +13,28 @@ class PatientController extends Controller
         $this->middleware('auth');
     }
 
-    public function myPatients()
+    public function myPatients(Request $request)
     {
-        $patients = Auth::user()
+        if ($request->has('patient') && is_null($request->patient)) {
+            return redirect(route('patients.myPatients'));
+        }
+
+        $allPatients = Auth::user()
             ->visits()
-            ->with('membership.patient','membership.patient.media','membership.patient.settingsPatient')
+            ->with('membership.patient', 'membership.patient.media', 'membership.patient.settingsPatient')
             ->get()
             ->pluck('membership.patient')
             ->unique('id');
 
-        return view('authenticated.medic.memberships.list', [
-            'patients' => $patients
-        ]);
+        $patients = $allPatients;
 
+        if ($request->patient) {
+            $patients = $patients->where('id', $request->patient);
+        }
+
+        return view('authenticated.medic.memberships.list', [
+            'patients' => $patients,
+            'allPatients' => $allPatients
+        ]);
     }
 }
