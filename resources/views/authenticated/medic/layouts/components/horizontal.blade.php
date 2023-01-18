@@ -29,16 +29,10 @@
                     <ul class="list">
                         <li>
                             <a href="{{ route('medic.updateView') }}" class="align-items-center">
-                                <span class="icon icofont-ui-home"></span>
+                                <span class="icon icofont-ui-user"></span>
                                 Profilul meu
                             </a>
                         </li>
-                        {{--                        <li>--}}
-                        {{--                            <a href="./user-profile.html" class="align-items-center">--}}
-                        {{--                                <span class="icon icofont-ui-user"></span>--}}
-                        {{--                                User profile--}}
-                        {{--                            </a>--}}
-                        {{--                        </li>--}}
 
                         <li>
                             <a href="{{ route('logout') }}"
@@ -54,8 +48,6 @@
                     </ul>
                 </div>
             </div>
-            {{-- End User --}}
-
         </div>
 
 

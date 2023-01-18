@@ -95,10 +95,6 @@
 #appointments-search.customizable-placeholder .filter-option-inner-inner:after {
     content: "Căutați după medic sau specialitate";
 }
-#medic-appointments-search.customizable-placeholder .filter-option-inner-inner:after {
-    content: "Căutați după numele pacientului";
-}
-
 #visits-search.customizable-placeholder .filter-option-inner-inner:after {
     content: "Căutați după medic sau specialitate";
 }
@@ -110,6 +106,15 @@
 #my-medics-search.customizable-placeholder .filter-option-inner-inner:after {
     content: "Căutați după nume sau specialitate";
 }
+
+#medic-appointments-search.customizable-placeholder .filter-option-inner-inner:after {
+    content: "Căutați după numele pacientului sau CNP-ul acestuia";
+}
+
+#my-patients-search.customizable-placeholder .filter-option-inner-inner:after {
+    content: "Căutați după numele pacientului sau CNP-ul acestuia";
+}
+
 
 .main-menu .main-menu-wrap .menu-ul .menu-item .item-link .link-icon {
     width: 20.8px;

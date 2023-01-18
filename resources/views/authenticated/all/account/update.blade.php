@@ -1,7 +1,7 @@
 @extends('authenticated.layouts.app')
 
 @section('header')
-    <h1 class="page-title">Informații personale</h1>
+    <h1 class="page-title">Administrare cont - {{ $user->name }}</h1>
 @endsection
 
 @section('main')
@@ -28,7 +28,6 @@
             </div>
 
             <hr>
-
 
             <form class="mb-4" method="POST" action="{{ route('account.update') }}">
                 @csrf

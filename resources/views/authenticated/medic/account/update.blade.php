@@ -1,7 +1,7 @@
 @extends('authenticated.medic.layouts.app')
 
 @section('header')
-    <h1 class="page-title">Informații personale medic</h1>
+    <h1 class="page-title">Administrare cont - Dr. {{ $user->name }}</h1>
 @endsection
 
 @section('main')

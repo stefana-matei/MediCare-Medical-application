@@ -30,7 +30,7 @@
                     <ul class="list">
                         <li>
                             <a href="{{ route('account.updateView') }}" class="align-items-center">
-                                <span class="icon icofont-ui-home"></span>
+                                <span class="icon icofont-ui-user"></span>
                                 Profilul meu
                             </a>
                         </li>
