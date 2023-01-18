@@ -16,7 +16,7 @@ class CreateSettingsPatientTable extends Migration
         Schema::create('settings_patient', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('pin')->nullable();
+            $table->string('pin')->unique()->nullable();
             $table->timestamp('birthday')->nullable();
             $table->string('gender', 1)->nullable();
             $table->string('country')->nullable();
