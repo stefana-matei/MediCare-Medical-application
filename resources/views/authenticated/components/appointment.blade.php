@@ -14,7 +14,6 @@
                 <i class="icofont-close-line"></i>
             </button>
 
-
             <div class="modal fade"
                  id="appointment-delete-modal-{{ $appointment->id }}"
                  tabindex="-1"
