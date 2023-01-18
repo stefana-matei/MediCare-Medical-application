@@ -24,7 +24,7 @@ class MedicController extends Controller
 
     public function list(Request $request)
     {
-        if($request->has('medic') && is_null($request->medic)) {
+        if ($request->has('medic') && is_null($request->medic)) {
             return redirect(route('medics.list'));
         }
 
@@ -47,13 +47,13 @@ class MedicController extends Controller
 
     public function myMedics(Request $request)
     {
-        if($request->has('medic') && is_null($request->medic)) {
+        if ($request->has('medic') && is_null($request->medic)) {
             return redirect(route('medics.myMedics'));
         }
 
         $allMedics = Auth::user()
             ->visits()
-            ->with('membership.medic','membership.medic.media','membership.medic.settingsMedic.specialty','membership.medic.settingsMedic.level', 'record')
+            ->with('membership.medic', 'membership.medic.media', 'membership.medic.settingsMedic.specialty', 'membership.medic.settingsMedic.level', 'record')
             ->get()
             ->pluck('membership.medic')
             ->unique('id');
