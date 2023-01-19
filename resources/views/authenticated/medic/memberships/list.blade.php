@@ -80,7 +80,7 @@
                         <td colspan="5">
                             <span class="text-center d-block py-4">
                                 <span class="icon sli-book-open text-muted fs-48 mb-2"></span><br>
-                                <strong>Nu aveti pacienti in evidenta!</strong>
+                                <strong>Nu aveți pacienți în evidență!</strong>
                             </span>
 
                         </td>
