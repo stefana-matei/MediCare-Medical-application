@@ -48,7 +48,7 @@
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
-                            <div class="alert-icon"><i class="icofont-calendar"></i></div>
+                            <div class="alert-icon"><i class="icon sli-calendar"></i></div>
                             <div class="alert-content">Nu aveți programări în așteptare!</div>
                         </div>
                     </div>

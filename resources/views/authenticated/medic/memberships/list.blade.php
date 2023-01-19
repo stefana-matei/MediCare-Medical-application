@@ -32,7 +32,8 @@
             </a>
         @endif
 
-        <a href="{{ route('appointments.createView') }}" class="btn btn-primary align-self-center ps-3 ms-auto disabled">
+        <a href="{{ route('appointments.createView') }}"
+           class="btn btn-primary align-self-center ps-3 ms-auto disabled">
             <span class="btn-icon icofont-plus fs-6 me-3"></span>
             Adăugare pacient
         </a>
@@ -41,10 +42,59 @@
 
 
     <div class="page-content mt-5">
-        <div class="row">
-            @foreach($patients as $patient)
-                @include('authenticated.components.patient', ['user' => $patient])
-            @endforeach
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Nume</th>
+                    <th scope="col">Cod numeric personal</th>
+                    <th scope="col">Data nașterii</th>
+                    <th scope="col">Telefon</th>
+                </tr>
+                </thead>
+                <tbody>
+                @forelse($patients as $patient)
+                    <tr>
+                        <td>
+                            <img src="{{$patient->avatar}}" alt="" width="40" height="40" class="rounded-500">
+                        </td>
+                        <td>
+                            <strong class="text-nowrap">{{$patient->name}}</strong><br>
+                            <span class="text-muted">{{$patient->email}}</span>
+                        </td>
+                        <td>
+                            <span>{{ $patient->settingsPatient->pin }}</span>
+                        </td>
+                        <td>
+                            <span
+                                class="text-muted text-nowrap">{{$patient->settingsPatient->birthday->format('d.m.Y')}}</span><br>
+                            <strong>{{$patient->settingsPatient->birthday->age}} ani</strong>
+                        </td>
+                        <td>
+                            <div class="text-muted text-nowrap">{{$patient->settingsPatient->phone}}</div>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="5">
+                            <span class="text-center d-block py-4">
+                                <span class="icon sli-book-open text-muted fs-48 mb-2"></span><br>
+                                <strong>Nu aveti pacienti in evidenta!</strong>
+                            </span>
+
+                        </td>
+                    </tr>
+                @endforelse
+
+                </tbody>
+            </table>
         </div>
+
+        {{--        <div class="row">--}}
+        {{--            @foreach($patients as $patient)--}}
+        {{--                @include('authenticated.components.patient', ['user' => $patient])--}}
+        {{--            @endforeach--}}
+        {{--        </div>--}}
     </div>
 @endsection

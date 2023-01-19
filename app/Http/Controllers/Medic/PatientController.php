@@ -20,10 +20,10 @@ class PatientController extends Controller
         }
 
         $allPatients = Auth::user()
-            ->visits()
-            ->with('membership.patient', 'membership.patient.media', 'membership.patient.settingsPatient')
+            ->memberships()
+            ->with('patient', 'patient.media', 'patient.settingsPatient')
             ->get()
-            ->pluck('membership.patient')
+            ->pluck('patient')
             ->unique('id');
 
         $patients = $allPatients;
