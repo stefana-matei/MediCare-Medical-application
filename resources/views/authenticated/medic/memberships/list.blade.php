@@ -40,7 +40,6 @@
     </div>
 
 
-
     <div class="page-content mt-5">
         <div class="table-responsive">
             <table class="table table-hover">
@@ -51,28 +50,36 @@
                     <th scope="col">Cod numeric personal</th>
                     <th scope="col">Data nașterii</th>
                     <th scope="col">Telefon</th>
+                    <th class="text-center" scope="col">Consultații</th>
                 </tr>
                 </thead>
                 <tbody>
-                @forelse($patients as $patient)
+                @forelse($memberships as $membership)
                     <tr>
                         <td>
-                            <img src="{{$patient->avatar}}" alt="" width="40" height="40" class="rounded-500">
+                            <img src="{{ $membership->patient->avatar }}" alt="" width="40" height="40" class="rounded-500">
                         </td>
                         <td>
-                            <strong class="text-nowrap">{{$patient->name}}</strong><br>
-                            <span class="text-muted">{{$patient->email}}</span>
+                            <strong class="text-nowrap">{{ $membership->patient->name }}</strong><br>
+                            <span class="text-muted">{{ $membership->patient->email }}</span>
                         </td>
                         <td>
-                            <span>{{ $patient->settingsPatient->pin }}</span>
+                            <span>{{ $membership->patient->settingsPatient->pin }}</span>
                         </td>
                         <td>
                             <span
-                                class="text-muted text-nowrap">{{$patient->settingsPatient->birthday->format('d.m.Y')}}</span><br>
-                            <strong>{{$patient->settingsPatient->birthday->age}} ani</strong>
+                                class="text-muted text-nowrap">{{ $membership->patient->settingsPatient->birthday->format('d.m.Y') }}</span><br>
+                            <strong>{{ $membership->patient->settingsPatient->birthday->age }} ani</strong>
                         </td>
                         <td>
-                            <div class="text-muted text-nowrap">{{$patient->settingsPatient->phone}}</div>
+                            <div class="text-muted text-nowrap">{{ $membership->patient->settingsPatient->phone }}</div>
+                        </td>
+                        <td>
+                            <div class="col-md-12 text-center">
+                                <a href="{{ route('patients.history', ['membershipId' => $membership->id]) }}" class="btn btn-primary btn-square rounded-pill">
+                                    <span class="btn-icon icofont-ui-copy"></span>
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 @empty

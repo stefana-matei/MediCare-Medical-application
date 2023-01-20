@@ -36,6 +36,7 @@ Route::prefix('medic')->group(function () {
     // My Patients
     Route::get('/pacientii-mei', [PatientController::class, 'myPatients'])->name('patients.myPatients');
 
+    Route::get('/istoric-consultatii/{membershipId}', [PatientController::class, 'history'])->name('patients.history');
 
 });
 

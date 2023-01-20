@@ -19,22 +19,33 @@ class PatientController extends Controller
             return redirect(route('patients.myPatients'));
         }
 
-        $allPatients = Auth::user()
+        $memberships = Auth::user()
             ->memberships()
             ->with('patient', 'patient.media', 'patient.settingsPatient')
-            ->get()
+            ->get();
+
+        $allPatients = $memberships
             ->pluck('patient')
             ->unique('id');
 
-        $patients = $allPatients;
-
         if ($request->patient) {
-            $patients = $patients->where('id', $request->patient);
+            $memberships = $memberships->where('patient.id', $request->patient);
         }
 
         return view('authenticated.medic.memberships.list', [
-            'patients' => $patients,
+            'memberships' => $memberships,
             'allPatients' => $allPatients
+        ]);
+    }
+
+    public function history(int $membershipId, Request $request)
+    {
+        $membership = Auth::user()->memberships()
+            ->with('visits.record', 'appointments')
+            ->find($membershipId);
+
+        return view('authenticated.medic.memberships.history', [
+            'patient' => $membership->patient
         ]);
     }
 }
