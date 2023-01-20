@@ -42,9 +42,9 @@
                     @endforeach
                 </div>
             @endif
-
-
         </div>
+
+
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
@@ -164,7 +164,7 @@
 
                                     <div class="content-block">
                                         <div class="item-header">
-                                            <h3 class="h5 item-title">Recomandari</h3>
+                                            <h3 class="h5 item-title">Recomandări</h3>
                                         </div>
 
                                         <div class="item-desc">
