@@ -84,10 +84,10 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5">
-                            <span class="text-center d-block py-4">
+                        <td colspan="6">
+                            <span class="text-center d-block py-4 fw-bold">
                                 <span class="icon sli-book-open text-muted fs-48 mb-2"></span><br>
-                                <strong>Nu aveți pacienți în evidență!</strong>
+                                Nu aveți pacienți în evidență!
                             </span>
 
                         </td>
@@ -97,11 +97,5 @@
                 </tbody>
             </table>
         </div>
-
-        {{--        <div class="row">--}}
-        {{--            @foreach($patients as $patient)--}}
-        {{--                @include('authenticated.components.patient', ['user' => $patient])--}}
-        {{--            @endforeach--}}
-        {{--        </div>--}}
     </div>
 @endsection
