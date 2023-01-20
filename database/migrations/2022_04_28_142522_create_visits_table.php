@@ -19,6 +19,9 @@ class CreateVisitsTable extends Migration
             $table->foreignId('appointment_id');
             $table->timestamp('date');
             $table->timestamps();
+
+            $table->unique(['membership_id', 'appointment_id']);
+
         });
     }
 
