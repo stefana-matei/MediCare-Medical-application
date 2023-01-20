@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    
+
     <meta charset="utf-8">
     <title>MediCare</title>
     <meta name="keywords" content="MedicApp">
