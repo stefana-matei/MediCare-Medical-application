@@ -16,7 +16,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 
-class PatientPOVSeeder extends Seeder
+class PatientSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -114,6 +114,8 @@ class PatientPOVSeeder extends Seeder
         /** @var Appointment $appointment4 */
         /** @var Appointment $appointment5 */
         /** @var Appointment $appointment6 */
+        /** @var Appointment $appointment7 */
+        /** @var Appointment $appointment8 */
 
 
         // Programari in asteptare
@@ -158,8 +160,14 @@ class PatientPOVSeeder extends Seeder
 
         $appointment6 = $membership4->appointments()->create([
             'date' => now()->subMonth(),
-            'honored' => true,
-            'confirmed' => true
+            'confirmed' => true,
+            'honored' => true
+        ]);
+
+        $appointment8 = $membership->appointments()->create([
+            'date' => now()->subMonths(2),
+            'confirmed' => true,
+            'honored' => true
         ]);
 
 
@@ -172,16 +180,16 @@ class PatientPOVSeeder extends Seeder
 
         $appointment7 = $membership5->appointments()->create([
             'date' => now()->addMonth(),
-            'honored' => false,
-            'confirmed' => true
+            'confirmed' => true,
+            'honored' => false
         ]);
 
 
         // Programari refuzate
         $appointment2 = $membership->appointments()->create([
             'date' => now()->addWeek(),
-            'honored' => false,
-            'confirmed' => false
+            'confirmed' => false,
+            'honored' => false
         ]);
 
 
@@ -211,6 +219,11 @@ class PatientPOVSeeder extends Seeder
         $visit4 = $membership4->visits()->create([
             'date' => $appointment6->date,
             'appointment_id' => $appointment6->id
+        ]);
+
+        $visit5 = $membership->visits()->create([
+            'date' => $appointment8->date,
+            'appointment_id' => $appointment8->id
         ]);
 
 

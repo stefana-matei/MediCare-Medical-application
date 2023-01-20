@@ -10,7 +10,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class MedicPOVSeeder extends Seeder
+class MedicSeeder extends Seeder
 {
     /**
      * Run the database seeds.
