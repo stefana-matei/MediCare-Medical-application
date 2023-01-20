@@ -73,7 +73,7 @@
         </div>
 
         <div>
-            <h4>Programari anterioare</h4>
+            <h4>Programări anterioare</h4>
             <div class="row">
                 @forelse($appointments as $appointment)
                     @include('authenticated.medic.components.appointment', ['width' => 3, 'appointment' => $appointment])
@@ -89,7 +89,7 @@
         </div>
 
         <div class="mb-5">
-            <h4>Programari refuzate</h4>
+            <h4>Programări refuzate</h4>
             <div class="row">
                 @forelse($canceledAppointments as $canceledAppointment)
                     @include('authenticated.medic.components.appointment', ['width' => 3, 'appointment' => $canceledAppointment])
