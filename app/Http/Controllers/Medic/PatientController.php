@@ -13,6 +13,7 @@ class PatientController extends Controller
         $this->middleware('auth');
     }
 
+
     public function myPatients(Request $request)
     {
         if ($request->has('patient') && is_null($request->patient)) {
@@ -41,11 +42,12 @@ class PatientController extends Controller
     public function history(int $membershipId, Request $request)
     {
         $membership = Auth::user()->memberships()
-            ->with('visits.record', 'appointments')
+            ->with('visits.record')
             ->find($membershipId);
 
         return view('authenticated.medic.memberships.history', [
-            'patient' => $membership->patient
+            'patient' => $membership->patient,
+            'visits' => $membership->visits
         ]);
     }
 }

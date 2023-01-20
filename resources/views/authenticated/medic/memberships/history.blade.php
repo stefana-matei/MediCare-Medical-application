@@ -9,31 +9,174 @@
 
 @section('main')
     <div class="page-content mt-5">
-        <div class="d-flex align-items-start">
-            <div class="nav flex-column nav-pills me-5" role="tablist" aria-orientation="vertical">
-                <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-10" type="button" role="tab" aria-selected="true">13.01.2012</button>
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-11" type="button" role="tab" aria-selected="false">25.05.2015</button>
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-12" type="button" role="tab" aria-selected="false">15.02.2023</button>
+        @if($visits->isNotEmpty())
+            <div class="d-flex align-items-start">
+
+                <div class="nav flex-column nav-pills me-5" role="tablist" aria-orientation="vertical">
+                    <h4 class="mt-0">Data investigației</h4>
+                    @foreach($visits as $visit)
+                        <button class="nav-link @if($loop->first) active @endif" data-bs-toggle="pill"
+                                data-bs-target="#tab-{{ $visit->id }}" type="button" role="tab"
+                                @if($loop->first)  aria-selected="true" @endif>{{ $visit->date->format('d.m.Y') }}</button>
+                    @endforeach
+                </div>
+
+                <div class="tab-content flex-grow-1">
+                    @foreach($visits as $visit)
+                        <div class="tab-pane fade @if($loop->first) active show @endif" id="tab-{{ $visit->id }}"
+                             role="tabpanel">
+                            <h4 class="mt-0">Detaliile consultației din data de {{ $visit->date->format('d.m.Y') }}</h4>
+
+                            @if($visit->record)
+                                <div class="col-md-8">
+                                    <div class="v-timeline dots">
+                                        <div class="line"></div>
+
+                                        <div class="timeline-box">
+                                            <div class="box-items">
+
+                                                {{--Istoric--}}
+                                                <div class="item">
+                                                    <div class="icon-block">
+                                                        <div class="item-icon bg-info"></div>
+                                                    </div>
+
+                                                    <div class="content-block">
+                                                        <div class="item-header">
+                                                            <h3 class="h5 item-title">Istoric</h3>
+                                                        </div>
+
+                                                        <div class="item-desc">
+                                                            {{ $visit->record->medical_history ?? '-' }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {{--Simptome--}}
+                                                <div class="item">
+                                                    <div class="icon-block">
+                                                        <div class="item-icon bg-danger"></div>
+                                                    </div>
+
+                                                    <div class="content-block">
+                                                        <div class="item-header">
+                                                            <h3 class="h5 item-title">Simptome</h3>
+                                                        </div>
+
+                                                        <div class="item-desc">
+                                                            {{ $visit->record->symptoms ?? '-' }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {{--Diagnostic--}}
+                                                <div class="item">
+                                                    <div class="icon-block">
+                                                        <div class="item-icon bg-warning"></div>
+                                                    </div>
+
+                                                    <div class="content-block">
+                                                        <div class="item-header">
+                                                            <h3 class="h5 item-title">Diagnostic</h3>
+                                                        </div>
+
+                                                        <div class="item-desc">
+                                                            {{ $visit->record->diagnosis ?? '-' }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {{--Date clinice--}}
+                                                <div class="item">
+                                                    <div class="icon-block">
+                                                        <div class="item-icon"></div>
+                                                    </div>
+
+                                                    <div class="content-block">
+                                                        <div class="item-header">
+                                                            <h3 class="h5 item-title">Date clinice</h3>
+                                                        </div>
+
+                                                        <div class="item-desc">
+                                                            {{ $record->clinical_data ?? '-' }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {{--Date paraclinice--}}
+                                                <div class="item">
+                                                    <div class="icon-block">
+                                                        <div class="item-icon bg-dark"></div>
+                                                    </div>
+
+                                                    <div class="content-block">
+                                                        <div class="item-header">
+                                                            <h3 class="h5 item-title">Date paraclinice</h3>
+                                                        </div>
+
+                                                        <div class="item-desc">
+                                                            {{ $visit->record->para_clinical_data ?? '-' }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {{--Bilet trimitere--}}
+                                                <div class="item">
+                                                    <div class="icon-block">
+                                                        <div class="item-icon bg-warning"></div>
+                                                    </div>
+
+                                                    <div class="content-block">
+                                                        <div class="item-header">
+                                                            <h3 class="h5 item-title">Bilet trimitere</h3>
+                                                        </div>
+
+                                                        <div class="item-desc">
+                                                            {{ $visit->record->referral ? 'Da' : 'Nu' }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {{--Recomandari--}}
+                                                <div class="item">
+                                                    <div class="icon-block">
+                                                        <div class="item-icon bg-success"></div>
+                                                    </div>
+
+                                                    <div class="content-block">
+                                                        <div class="item-header">
+                                                            <h3 class="h5 item-title">Recomandări</h3>
+                                                        </div>
+
+                                                        <div class="item-desc">
+                                                            {{ $visit->record->indications ?? '-' }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @else
+                                <p class="alert alert-secondary text-center fw-bold">
+                                    <span class="icon sli-list text-muted fs-48 mb-2"></span><br>
+                                    Nu sunt informații despre această consultație!
+                                    <br>
+                                    <a href="#"
+                                       type="button" class="btn btn-primary btn-mini mt-3">
+                                        Adăugați informații
+                                    </a>
+                                </p>
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
             </div>
-            <div class="tab-content">
-                <div class="tab-pane fade active show" id="tab-10" role="tabpanel">
-                    <h4 class="mt-0">Consultatia 1</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet ex, exercitationem inventore labore laborum maxime nostrum nulla odio officiis placeat, possimus praesentium quas quod repellat. Commodi debitis delectus distinctio eius facilis fugit illum molestiae, perspiciatis! Ab dolor ducimus enim fugit illo ipsum mollitia nesciunt obcaecati provident quia velit, voluptate.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, soluta.</p>
-                </div>
-                <div class="tab-pane fade" id="tab-11" role="tabpanel">
-                    <h4 class="mt-0">Consultatia 2</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci animi asperiores assumenda atque corporis culpa cumque cupiditate debitis dicta dignissimos dolor, dolorem dolores eius est et facere fugit harum hic illo impedit in libero nesciunt nisi nostrum obcaecati quae quam qui ratione reiciendis repellendus rerum sit soluta veritatis vitae voluptas?</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque facilis nihil nisi, numquam
-                        perferendis sed!</p>
-                </div>
-                <div class="tab-pane fade" id="tab-12" role="tabpanel">
-                    <h4 class="mt-0">Consultatia 3</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad aliquid asperiores consequatur dolore error hic id magnam, optio, praesentium repellendus sunt tempora velit? Asperiores doloremque molestiae odio rem repellendus, sit totam voluptas! Commodi culpa, deserunt dolor et magnam molestiae mollitia necessitatibus officia officiis praesentium quam sit suscipit, tempore!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque laboriosam laudantium
-                        repellat.</p>
-                </div>
-            </div>
-        </div>
+        @else
+            <p class="alert alert-secondary text-center fw-bold">
+                <span class="icon sli-docs text-muted fs-48 mb-2"></span><br>
+                Pacientul nu are consultații în acest moment!
+            </p>
+        @endif
     </div>
 @endsection
