@@ -35,7 +35,7 @@
                     </li>
 
                     <li class="menu-item">
-                        <a class="item-link" href="{{ route('patients.myPatients') }}">
+                        <a class="item-link" href="{{ route('medic.patients.list') }}">
                             <span class="link-icon icofont-users"></span>
                             <span class="link-text">Pacienții mei</span>
                         </a>

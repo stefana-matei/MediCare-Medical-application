@@ -3,6 +3,7 @@
 use App\Http\Controllers\Medic\AccountController;
 use App\Http\Controllers\Medic\AppointmentController;
 use App\Http\Controllers\Medic\DashboardController;
+use App\Http\Controllers\Medic\MembershipController;
 use App\Http\Controllers\Medic\PatientController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,22 +22,16 @@ Route::prefix('medic')->group(function () {
     Route::get('/account/edit', [AccountController::class, 'updateView'])->name('medic.updateView');
 
     // Appointments
-    // List
     Route::get('/appointments', [AppointmentController::class, 'list'])->name('medic.appointments.list');
-    // Create
-//    Route::post('/appointments', [AppointmentController::class, 'create'])->name('appointments.create');
-    // CreateView
-//    Route::get('/appointments/create', [AppointmentController::class, 'createView'])->name('appointments.createView');
-    // Get
-//    Route::get('/appointments/{id}', [AppointmentController::class, 'get'])->name('appointments.get');
-    // Delete
-//    Route::delete('/appointments/{id}', [AppointmentController::class, 'delete'])->name('appointments.delete');
+
+    // Add member
+    Route::post('/memberships', [MembershipController::class, 'create'])->name('medic.memberships.create');
 
     // Patients
     // My Patients
-    Route::get('/pacientii-mei', [PatientController::class, 'myPatients'])->name('patients.myPatients');
+    Route::get('/pacientii-mei', [MembershipController::class, 'list'])->name('medic.patients.list');
 
-    Route::get('/istoric-consultatii/{membershipId}', [PatientController::class, 'history'])->name('patients.history');
+    Route::get('/istoric-consultatii/{membershipId}', [PatientController::class, 'history'])->name('medic.patients.history');
 
 });
 

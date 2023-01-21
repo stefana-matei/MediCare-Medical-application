@@ -1,5 +1,13 @@
 @extends('authenticated.medic.layouts.app')
 
+@section('head')
+    @livewireStyles
+@endsection
+
+@section('scripts')
+    @livewireScripts
+@endsection
+
 @section('header')
     <h2>Pacienții mei</h2>
 @endsection
@@ -26,17 +34,16 @@
         </form>
 
         @if(request()->patient)
-            <a class="btn btn-light btn-reset ms-3 shadow-none ps-3" href="{{ route('patients.myPatients') }}">
+            <a class="btn btn-light btn-reset ms-3 shadow-none ps-3" href="{{ route('medic.patients.list') }}">
                 <span class="btn-icon icofont-refresh fs-6 me-2"></span>
                 Resetează
             </a>
         @endif
 
-        <a href="{{ route('appointments.createView') }}"
-           class="btn btn-primary align-self-center ps-3 ms-auto disabled">
+        <button type="button" class="btn btn-primary align-self-center ps-3 ms-auto" data-bs-toggle="modal" data-bs-target="#add-patient">
             <span class="btn-icon icofont-plus fs-6 me-3"></span>
             Adăugare pacient
-        </a>
+        </button>
     </div>
 
 
@@ -76,7 +83,7 @@
                         </td>
                         <td>
                             <div class="col-md-12 text-center">
-                                <a href="{{ route('patients.history', ['membershipId' => $membership->id]) }}" class="btn btn-primary btn-square rounded-pill">
+                                <a href="{{ route('medic.patients.history', ['membershipId' => $membership->id]) }}" class="btn btn-primary btn-square rounded-pill">
                                     <span class="btn-icon icofont-ui-copy"></span>
                                 </a>
                             </div>
@@ -89,13 +96,28 @@
                                 <span class="icon sli-book-open text-muted fs-48 mb-2"></span><br>
                                 Nu aveți pacienți în evidență!
                             </span>
-
                         </td>
                     </tr>
                 @endforelse
 
                 </tbody>
             </table>
+        </div>
+    </div>
+@endsection
+
+@section('modals')
+    <div class="modal fade" id="add-patient" tabindex="-1" aria-labelledby="add-patient" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Adaugare pacient</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <livewire:add-patient/>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

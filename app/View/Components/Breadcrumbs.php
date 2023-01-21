@@ -99,7 +99,7 @@ class Breadcrumbs extends Component
         ];
 
         $medicPatients = [
-            'href' => route('patients.myPatients'),
+            'href' => route('medic.patients.list'),
             'name' => 'Pacienții mei'
         ];
 
@@ -121,8 +121,8 @@ class Breadcrumbs extends Component
             'medic.dashboard' => [$medicDashboard, $medicHome],
             'medic.updateView' => [$medicDashboard, $user, $medicUpdate],
             'medic.appointments.list' => [$medicDashboard, $medicAppointments],
-            'patients.myPatients' => [$medicDashboard, $medicPatients],
-            'patients.history' => [$medicDashboard, $medicPatients, $medicPatientsHistory],
+            'medic.patients.list' => [$medicDashboard, $medicPatients],
+            'medic.patients.history' => [$medicDashboard, $medicPatients, $medicPatientsHistory],
             default => []
         };
 
