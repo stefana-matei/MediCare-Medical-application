@@ -95,6 +95,9 @@
 #appointments-search.customizable-placeholder .filter-option-inner-inner:after {
     content: "Căutați după medic sau specialitate";
 }
+#appointments-create.customizable-placeholder .filter-option-inner-inner:after {
+    content: "Căutați după specialitatea dorită";
+}
 
 #visits-search.customizable-placeholder .filter-option-inner-inner:after {
     content: "Căutați după medic sau specialitate";

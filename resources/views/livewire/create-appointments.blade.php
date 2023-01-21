@@ -3,7 +3,7 @@
         @csrf
         <div class="row">
             <div class="col-sm-8">
-                <div wire:ignore class="form-group">
+                <div wire:ignore class="form-group customizable-placeholder" id="appointments-create">
                     <label>Specialitate</label>
                     <select class="selectpicker" data-live-search="true"
                             onchange="Livewire.emit('specialtySelectedEvent', this.value)">

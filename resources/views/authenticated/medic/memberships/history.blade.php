@@ -13,7 +13,7 @@
             <div class="d-flex align-items-start">
 
                 <div class="nav flex-column nav-pills me-5" role="tablist" aria-orientation="vertical">
-                    <h4 class="mt-0">Data investigației</h4>
+                    <h4 class="mt-0">Data</h4>
                     @foreach($visits as $visit)
                         <button class="nav-link @if($loop->first) active @endif" data-bs-toggle="pill"
                                 data-bs-target="#tab-{{ $visit->id }}" type="button" role="tab"
