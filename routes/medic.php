@@ -23,6 +23,9 @@ Route::prefix('medic')->group(function () {
 
     // Appointments
     Route::get('/appointments', [AppointmentController::class, 'list'])->name('medic.appointments.list');
+    // Refuse
+    Route::put('/appointments/refuse/{id}', [AppointmentController::class, 'refuse'])->name('medic.appointments.refuse');
+    Route::put('/appointments/accept/{id}', [AppointmentController::class, 'accept'])->name('medic.appointments.accept');
 
     // Add member
     Route::post('/memberships', [MembershipController::class, 'create'])->name('medic.memberships.create');

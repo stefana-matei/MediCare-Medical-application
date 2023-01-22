@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Medic;
 
 use App\Http\Controllers\Controller;
 use App\Services\Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
@@ -54,7 +55,85 @@ class AppointmentController extends Controller
             'canceledAppointments' => $appointments->whereStrict('confirmed', 0),
             'pendingAppointments' => $appointments->where('date', '>=', $now)->whereStrict('confirmed', null),
             'confirmedAppointments' => $appointments->where('date', '>=', $now)->whereStrict('confirmed', 1),
-            'memberships' => $memberships
+            'memberships' => $memberships,
+            'timeslots' => $this->getTimeslots()
         ]);
     }
+
+
+    /**
+     * Builds the time slots for appointment time selector
+     *
+     * @return array
+     */
+    private function getTimeslots()
+    {
+        $slot_duration = 30;
+
+        $start_date = Carbon::today()->setTime(9, 0, 0);
+        $end_date = Carbon::today()->setTime(17, 0, 0)->subMinutes($slot_duration);
+
+        $times = [];
+        $slots = $start_date->diffInMinutes($end_date) / $slot_duration;
+
+        // First time
+        $times[] = [
+            'start' => $start_date->format('H:i'),
+            'end' => $start_date->copy()->addMinutes($slot_duration)->format('H:i'),
+        ];
+
+        for ($i = 1; $i <= $slots; $i++) {
+            // Adding each additional to the list
+            $times[] = [
+                'start' => $start_date->addMinutes($slot_duration)->format('H:i'),
+                'end' => $start_date->copy()->addMinutes($slot_duration)->format('H:i')
+            ];
+        }
+
+        return $times;
+    }
+
+
+    /**
+     * Refuse appointment
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function refuse(int $id)
+    {
+        $appointment = Auth::user()->appointments()->find($id);
+
+        if (is_null($appointment)) {
+            return back()->withFail('Nu s-a putut sterge programarea!');
+        }
+
+        $appointment->update([
+            'confirmed' => false
+        ]);
+
+        return back()->withSuccess('Programarea a fost refuzata!');
+    }
+
+
+    public function accept(int $id, Request $request)
+    {
+        $timeslot = $request->get('timeslot');
+        $timeslot = explode(':', $timeslot);
+
+        $appointment = Auth::user()->appointments()->find($id);
+
+        if (is_null($appointment)) {
+            return back()->withFail('Nu a fost gasita programarea!');
+        }
+
+        $appointment->update([
+            'confirmed' => true,
+            'date' => $appointment->date->hour($timeslot[0])->minute($timeslot[1])->second(0)
+        ]);
+
+        return back()->withSuccess('Programarea a fost acceptata cu succes!');
+    }
+
+
 }

@@ -1,5 +1,6 @@
 @php($future = $future ?? false)
 @php($width = $width ?? 4)
+@php($allowActions = $allowActions ?? false)
 
 <div class="col-12 col-md-{{ $width }}">
     <div class="card text-center mb-5 bg-light">
@@ -54,6 +55,7 @@
 
 
         <div class="card-header pt-4 fs-4">
+            <strong>{{ $appointment->id }}</strong><br>
             <strong>{{ $appointment->date->format('d M Y') }}</strong><br>
             <strong>{{ $appointment->confirmed ? $appointment->date->format('H:i') : ''}}</strong>
         </div>
@@ -86,6 +88,98 @@
                     @endif
                 </div>
             </div>
+
+            @if($allowActions)
+                <div class="d-flex justify-content-center align-items-center mt-4">
+                    <button class="btn btn-primary btn-mini me-4"
+                            data-bs-toggle="modal" data-bs-target="#appointment-accept-modal-{{ $appointment->id }}">
+                        Acceptare
+                    </button>
+                    <button class="btn btn-danger btn-mini"
+                            data-bs-toggle="modal" data-bs-target="#appointment-refuse-modal-{{ $appointment->id }}">
+                        Refuzare
+                    </button>
+                </div>
+
+                <div class="modal fade"
+                     id="appointment-refuse-modal-{{ $appointment->id }}"
+                     tabindex="-1"
+                     role="dialog"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="icofont-close-line"></i>
+                            </button>
+
+                            <div class="modal-header justify-content-center py-5">
+                                <h5>Confirmați refuzarea programării?</h5>
+                            </div>
+
+                            <div class="modal-footer">
+                                <div class="actions w-100 justify-content-between">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nu</button>
+
+                                    <form class="inline-block" method="POST"
+                                          action="{{ route('medic.appointments.refuse', ['id' => $appointment->id]) }}">
+                                        @csrf
+                                        @method('PUT')
+
+                                        <button type="submit" class="btn btn-danger"
+                                                onclick="$(this).prop('disabled', true); $(this).parent().submit()">
+                                            Da, refuz
+                                        </button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade"
+                     id="appointment-accept-modal-{{ $appointment->id }}"
+                     tabindex="-1"
+                     role="dialog"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="icofont-close-line"></i>
+                            </button>
+
+                            <form class="inline-block" method="POST"
+                                  action="{{ route('medic.appointments.accept', ['id' => $appointment->id]) }}">
+                                @csrf
+                                @method('PUT')
+                                <div class="modal-header d-block py-5 text-center">
+                                    <h5 class="mb-4">Inainte de a confirma alegeti si intervalul orar</h5>
+
+                                    <select name="timeslot" class="form-control w-auto d-inline-block">
+                                        @foreach($timeslots as $timeslot)
+                                            <option value="{{ $timeslot['start'] }}" {{ $loop->first ? 'selected' : '' }}>{{ $timeslot['start'] . ' - ' . $timeslot['end']}}</option>
+                                        @endforeach
+                                    </select>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <div class="actions w-100 justify-content-between">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Inapoi</button>
+
+                                        <button type="submit" class="btn btn-primary"
+                                                onclick="$(this).prop('disabled', true); $(this).closest('form').submit()">
+                                            Accepta programarea
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </div>

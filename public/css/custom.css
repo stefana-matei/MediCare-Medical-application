@@ -95,6 +95,7 @@
 #appointments-search.customizable-placeholder .filter-option-inner-inner:after {
     content: "Căutați după medic sau specialitate";
 }
+
 #appointments-create.customizable-placeholder .filter-option-inner-inner:after {
     content: "Căutați după specialitatea dorită";
 }
@@ -287,7 +288,7 @@ body.public-layout .page-box .app-container .content-box {
 }
 
 .medic-calendar {
-    border:#eee solid 1px;
+    border: #eee solid 1px;
 }
 
 .medic-calendar .medic-calendar-week {
@@ -298,38 +299,48 @@ body.public-layout .page-box .app-container .content-box {
 .medic-calendar .medic-calendar-day {
     width: 14.28%;
     border: #eee solid 1px;
-    min-height:150px;
-    position:relative;
-    padding:30px 1px 1px;
-    font-size:15px;
+    min-height: 150px;
+    position: relative;
+    padding: 30px 1px 1px;
+    font-size: 15px;
 }
 
 .medic-calendar .medic-calendar-day .appointment {
-    margin-bottom:7px;
-    padding:0 5px 0 3px;
+    margin-bottom: 7px;
+    padding: 0 5px 0 3px;
 }
 
 .medic-calendar .medic-calendar-day .hour {
     font-weight: bold;
-    font-size:14px;
+    font-size: 14px;
 }
 
 .medic-calendar .medic-calendar-day img {
-    height:22px;
-    width:22px;
-    margin:0 2px 2px 0;
+    height: 22px;
+    width: 22px;
+    margin: 0 2px 2px 0;
 }
 
 .medic-calendar .medic-calendar-day .date {
-    position:absolute;
-    top:0;
-    right:0;
+    position: absolute;
+    top: 0;
+    right: 0;
     font-weight: bold;
-    background:#eee;
-    padding:1px 0 3px;
-    border-radius:0 0 0 5px;
-    width:40px;
+    background: #eee;
+    padding: 1px 0 3px;
+    border-radius: 0 0 0 5px;
+    width: 40px;
     text-align: center;
+}
+
+.medic-calendar .medic-calendar-day.today {
+    background: #eff1f3;
+    border-color: #aec6de;
+}
+
+.medic-calendar .medic-calendar-day .date.today {
+    background: #1976d2;
+    color: white;
 }
 
 

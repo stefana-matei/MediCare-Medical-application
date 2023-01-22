@@ -44,7 +44,7 @@
                 @if($pendingAppointments->isNotEmpty())
                 @endif
                 @forelse($pendingAppointments as $pendingAppointment)
-                    @include('authenticated.medic.components.appointment', ['width' => 3, 'future' => true, 'appointment' => $pendingAppointment])
+                    @include('authenticated.medic.components.appointment', ['allowActions' => true, 'width' => 3, 'future' => true, 'appointment' => $pendingAppointment])
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">

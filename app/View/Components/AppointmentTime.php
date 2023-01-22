@@ -6,6 +6,12 @@ use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\View\Component;
 
+/**
+ *  TODO DELETE THIS!
+ *
+ * Class AppointmentTime
+ * @package App\View\Components
+ */
 class AppointmentTime extends Component
 {
     /**
