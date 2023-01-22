@@ -9,7 +9,7 @@
         </div>
 
         <div class="info-box">
-            <h4 class="name text-primary">Dr. {{ $user->name }}</h4>
+            <h4 class="name text-primary">{{ $user->medicName }}</h4>
             <p class="text-muted fs-5 mb-0">{{ $user->settingsMedic->level->name }}</p>
             <p class="fs-6 text-muted">{{ $user->settingsMedic->specialty->name }}</p>
 

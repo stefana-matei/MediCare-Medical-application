@@ -9,13 +9,6 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        $appointments = Auth::user()
-            ->appointments()
-            ->with('membership.patient.media')
-            ->where('date', '>=', now())
-            ->where('confirmed', true)
-            ->get();
-
-        return view('authenticated.medic.dashboard', compact('appointments'));
+        return view('authenticated.medic.dashboard');
     }
 }

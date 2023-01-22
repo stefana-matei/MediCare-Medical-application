@@ -153,16 +153,49 @@ class PatientSeeder extends Seeder
         ]);
 
         $appointment3 = $membership2->appointments()->create([
-            'date' => now()->subWeek(),
+            'date' => now()->subWeek()->addMinute(),
             'confirmed' => true,
             'honored' => true
         ]);
 
         $appointment6 = $membership4->appointments()->create([
-            'date' => now()->subMonth(),
+            'date' => now()->subMonth()->subMinute(),
             'confirmed' => true,
             'honored' => true
         ]);
+
+
+        $membership->appointments()->create([
+            'date' => now()->subWeeks(3)->addDays(2),
+            'confirmed' => true,
+            'honored' => true
+        ]);
+        $membership4->appointments()->create([
+            'date' => now()->subWeeks(3)->addDays(2),
+            'confirmed' => true,
+            'honored' => true
+        ]);
+        $membership5->appointments()->create([
+            'date' => now()->subWeeks(3)->addDays(3),
+            'confirmed' => true,
+            'honored' => true
+        ]);
+        $membership4->appointments()->create([
+            'date' => now()->subWeeks(3)->addDays(3),
+            'confirmed' => true,
+            'honored' => true
+        ]);
+        $membership->appointments()->create([
+            'date' => now()->subWeeks(3)->addDays(3),
+            'confirmed' => true,
+            'honored' => true
+        ]);
+        $membership4->appointments()->create([
+            'date' => now()->subWeeks(3),
+            'confirmed' => true,
+            'honored' => true
+        ]);
+
 
         $appointment8 = $membership->appointments()->create([
             'date' => now()->subMonths(2),
