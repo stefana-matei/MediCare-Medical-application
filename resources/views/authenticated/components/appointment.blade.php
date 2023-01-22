@@ -81,7 +81,7 @@
                         </p>
 
                         @if($appointment->honored)
-                            @if($appointment->visit->record)
+                            @if($appointment->visit?->record)
                                 <div class="d-grid gap-2 col-6">
                                     <a href="{{ route('appointments.get', ['id' => $appointment->id]) }}"
                                        type="button" class="btn btn-primary btn-mini">
