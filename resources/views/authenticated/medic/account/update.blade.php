@@ -28,6 +28,66 @@
 
             <hr>
 
+            <form class="mb-4" method="POST" action="{{ route('medic.account.update') }}">
+                @csrf
+                @method('PUT')
+
+                <div class="form-group">
+                    <label>Nume de familie</label>
+                    <input name="lastname" class="form-control" type="text" placeholder="Nume de familie"
+                           value="{{ old('lastname') ?? $user->lastname }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Prenume</label>
+                    <input name="firstname" class="form-control" type="text" placeholder="Prenume"
+                           value="{{ old('firstname') ?? $user->firstname }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input name="email" class="form-control" type="text" placeholder="Email"
+                           value="{{ old('email') ?? $user->email }}">
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>Specialitate</label>
+                            <select name="specialty_id" class="selectpicker">
+                                @foreach($specialties as $specialty)
+                                    <option value="{{ $specialty->id }}" {{ $user->settingsMedic->specialty->id === $specialty->id ? 'selected' : '' }}>{{ $specialty->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>Nivel</label>
+                            <select name="level_id" class="selectpicker">
+                                @foreach($levels as $level)
+                                    <option value="{{ $level->id }}" {{ $user->settingsMedic->level->id === $level->id ? 'selected' : '' }}>{{ $level->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Specializare',                 'key' => 'specialisation',               'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Cunostinte / skills todo',     'key' => 'skills',                       'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Campuri de activitate',        'key' => 'areas_of_activity',            'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Educatie',                     'key' => 'education',                    'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Postgraduate Courses',         'key' => 'postgraduate_courses',         'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Training',                     'key' => 'trainings',                    'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'International Certifications', 'key' => 'international_certifications', 'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Publications',                 'key' => 'publications',                 'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Member of Associations',       'key' => 'member',                       'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Other realizations',           'key' => 'other_realizations',           'user' => $user])
+
+
+                <button type="submit" class="btn btn-success">Salvați modificările</button>
+            </form>
+
             <hr>
 
             <h4>Schimbă parola</h4>
@@ -39,7 +99,7 @@
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
                             <label>Parolă veche</label>
-                            <input name="old_password"  class="form-control" type="password" placeholder="Parolă veche">
+                            <input name="old_password" class="form-control" type="password" placeholder="Parolă veche">
                         </div>
                     </div>
                 </div>
@@ -55,7 +115,8 @@
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
                             <label>Confirmare parolă nouă</label>
-                            <input name="password_confirmation" class="form-control" type="password" placeholder="Confirmare parola noua">
+                            <input name="password_confirmation" class="form-control" type="password"
+                                   placeholder="Confirmare parola noua">
                         </div>
                     </div>
                 </div>

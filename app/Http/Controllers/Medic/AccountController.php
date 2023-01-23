@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Medic;
 
 use App\Http\Controllers\Controller;
+use App\Models\Level;
+use App\Models\Specialty;
 use App\Services\Auth;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
@@ -31,25 +33,29 @@ class AccountController extends Controller
                 'max:200',
                 Rule::unique('users')->ignore($user->id)
             ],
-            'pin' => 'required|size:13',
-            'birthday' => 'required',
-            'gender' => 'required',
-            'country' => '',
-            'county' => '',
-            'city' => '',
-            'address' => '',
-            'phone' => 'required|numeric|min:9'
-        ]);
 
-        $validated['birthday'] = Carbon::createFromFormat('Y-m-d', $validated['birthday'])->midDay();
+            'specialty_id' => 'required',
+            'level_id' => 'required',
+
+            'specialisation' => '',
+            'skills' => '',
+            'areas_of_activity' => '',
+            'education' => '',
+            'postgraduate_courses' => '',
+            'trainings' => '',
+            'international_certifications' => '',
+            'publications' => '',
+            'member' => '',
+            'other_realizations' => '',
+        ]);
 
         $userAttributes = Arr::only($validated, ['lastname', 'firstname', 'email']);
         $settingsAttributes = Arr::except($validated, ['lastname', 'firstname', 'email']);
 
-        $user->load('settingsPatient');
+        $user->load('settingsMedic');
 
         $user->update($userAttributes);
-        $user->settingsPatient->update($settingsAttributes);
+        $user->settingsMedic->update($settingsAttributes);
 
         return back()->withSuccess('Datele personale au fost modificate cu succes!');
     }
@@ -60,49 +66,10 @@ class AccountController extends Controller
     public function updateView(): View
     {
         return view('authenticated.medic.account.update', [
-            'user' => Auth::user()->load('settingsMedic')
+            'user' => Auth::user()->load('settingsMedic.specialty', 'settingsMedic.level'),
+            'specialties' => Specialty::all(),
+            'levels' => Level::all()
         ]);
     }
 
-
-    public function updateAvatar(Request $request)
-    {
-        $request->validate([
-            'avatar' => 'required|image|file|max:8192'
-        ]);
-
-        $oldAvatar = Auth::user()->getMedia('avatars')->first();
-        $hadOldAvatar = !is_null($oldAvatar);
-
-        $oldAvatar?->delete();
-        Auth::user()->addMediaFromRequest('avatar')->toMediaCollection('avatars');
-
-        if($hadOldAvatar) {
-            $successMessage = 'Poza de profil a fost schimbata cu succes!';
-        }else{
-            $successMessage = 'Poza de profil a fost adaugata cu succes!';
-        }
-
-        return back()->withSuccess($successMessage);
-
-    }
-
-
-    public function updatePassword(Request $request)
-    {
-        $validated = $request->validate([
-            'old_password' => 'required',
-            'password' => 'required|confirmed|min:8',
-        ]);
-
-        if (!Hash::check($validated['old_password'], Auth::user()->getAuthPassword())) {
-            return back()->withErrors(['old_password' => 'Parola veche este gresita!']);
-        }
-
-        Auth::user()->update([
-            'password' => Hash::make($validated['password'])
-        ]);
-
-        return back()->withSuccess('Parola a fost schimbata cu succes!');
-    }
 }

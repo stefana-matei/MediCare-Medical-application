@@ -20,6 +20,9 @@ Route::prefix('medic')->group(function () {
     // Account
     // UpdateView
     Route::get('/account/edit', [AccountController::class, 'updateView'])->name('medic.updateView');
+    // Update
+    Route::put('/account', [AccountController::class, 'update'])->name('medic.account.update');
+
 
     // Appointments
     Route::get('/appointments', [AppointmentController::class, 'list'])->name('medic.appointments.list');

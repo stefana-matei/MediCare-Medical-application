@@ -12,6 +12,8 @@ class SettingMedic extends Model
 
     protected $table = 'settings_medic';
 
+    protected $guarded = [];
+
     /**
      * @return BelongsTo
      */
