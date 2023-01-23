@@ -136,4 +136,35 @@ class AppointmentController extends Controller
     }
 
 
+    public function updateView(int $id, Request $request)
+    {
+        $appointment = Auth::user()->appointments()->with('membership.patient.media', 'visit.record')->find($id);
+
+
+        return view('authenticated.medic.appointments.update', [
+            'appointment' => $appointment
+        ]);
+    }
+
+    public function update(int $id, Request $request)
+    {
+        $appointment = Auth::user()->appointments()->find($id);
+
+        $validated = $request->validate([
+            'confirmed' => '',
+            'honored' => ''
+        ]);
+
+        if($validated['confirmed'] === 'null') {
+            $validated['confirmed'] = null;
+        }
+
+        $appointment->update([
+            'confirmed' => $validated['confirmed'],
+            'honored' => $validated['honored']
+        ]);
+
+        return back()->withSuccess('Programarea a fost actualizata');
+    }
+
 }

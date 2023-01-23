@@ -44,7 +44,7 @@
                 @if($pendingAppointments->isNotEmpty())
                 @endif
                 @forelse($pendingAppointments as $pendingAppointment)
-                    @include('authenticated.medic.components.appointment', ['allowActions' => true, 'width' => 3, 'future' => true, 'appointment' => $pendingAppointment])
+                    @include('authenticated.medic.components.appointment', ['acceptActions' => true, 'width' => 3, 'future' => true, 'appointment' => $pendingAppointment])
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
@@ -60,7 +60,7 @@
             <h4>Programări viitoare</h4>
             <div class="row">
                 @forelse($confirmedAppointments as $confirmedAppointment)
-                    @include('authenticated.medic.components.appointment', ['width' => 3, 'future' => true, 'appointment' => $confirmedAppointment])
+                    @include('authenticated.medic.components.appointment', ['updateActions' => true, 'width' => 3, 'future' => true, 'appointment' => $confirmedAppointment])
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">

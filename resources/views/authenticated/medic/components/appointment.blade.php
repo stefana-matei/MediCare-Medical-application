@@ -1,6 +1,7 @@
 @php($future = $future ?? false)
 @php($width = $width ?? 4)
-@php($allowActions = $allowActions ?? false)
+@php($acceptActions = $acceptActions ?? false)
+@php($updateActions = $updateActions ?? false)
 
 <div class="col-12 col-md-{{ $width }}">
     <div class="card text-center mb-5 bg-light">
@@ -89,7 +90,7 @@
                 </div>
             </div>
 
-            @if($allowActions)
+            @if($acceptActions)
                 <div class="d-flex justify-content-center align-items-center mt-4">
                     <button class="btn btn-primary btn-mini me-4"
                             data-bs-toggle="modal" data-bs-target="#appointment-accept-modal-{{ $appointment->id }}">
@@ -178,6 +179,12 @@
 
                         </div>
                     </div>
+                </div>
+            @endif
+
+            @if($updateActions)
+                <div class="d-flex justify-content-center align-items-center mt-4">
+                    <a href="{{ route('medic.appointments.updateView', ['id' => $appointment->id]) }}" class="btn btn-primary btn-mini">Actualizeaza</a>
                 </div>
             @endif
         </div>

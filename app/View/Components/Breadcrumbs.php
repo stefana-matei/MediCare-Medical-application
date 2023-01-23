@@ -98,6 +98,11 @@ class Breadcrumbs extends Component
             'name' => 'Programări'
         ];
 
+        $medicAppointmentsUpdateView = [
+            'href' => '',
+            'name' => 'Actualizare programare'
+        ];
+
         $medicPatients = [
             'href' => route('medic.patients.list'),
             'name' => 'Pacienții mei'
@@ -107,6 +112,8 @@ class Breadcrumbs extends Component
           'href' => '',
           'name' => 'Istoric pacient'
         ];
+
+
 
         $segments = match (request()->route()->getName()) {
             'account.updateView' => [$user, $update],
@@ -121,6 +128,7 @@ class Breadcrumbs extends Component
             'medic.dashboard' => [$medicDashboard, $medicHome],
             'medic.updateView' => [$medicDashboard, $user, $medicUpdate],
             'medic.appointments.list' => [$medicDashboard, $medicAppointments],
+            'medic.appointments.updateView' => [$medicDashboard, $medicAppointments, $medicAppointmentsUpdateView],
             'medic.patients.list' => [$medicDashboard, $medicPatients],
             'medic.patients.history' => [$medicDashboard, $medicPatients, $medicPatientsHistory],
             default => []
