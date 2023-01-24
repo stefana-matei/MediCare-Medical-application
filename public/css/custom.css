@@ -349,6 +349,52 @@ body.public-layout .page-box .app-container .content-box {
     color: white;
 }
 
+/* Appointments */
+
+.card.appointment-card .card-actions {
+    width:100%;
+    display:flex;
+}
+
+.card.appointment-card .card-actions .btn-wrap {
+    display:block;
+    flex-grow: 1;
+}
+
+.card.appointment-card .card-actions .btn.btn-action {
+    width:100%;
+    box-shadow:none;
+    border-color: #eee;
+    border-width: 1px 0 0 0;
+    border-style: solid;
+    border-radius: 0;
+    color:var(--main-color);
+    padding-left:0;
+    padding-right:0;
+    font-size:14px;
+}
+
+.card.appointment-card .card-actions .btn.btn-action i {
+    font-size:20px;
+}
+
+.card.appointment-card .card-actions .btn.btn-action:hover {
+    border-color:transparent;
+    color:white;
+}
+
+.card.appointment-card .card-actions .btn-wrap:first-child .btn.btn-action {
+    border-width: 1px 1px 0 0;
+    border-bottom-left-radius: 6px;
+}
+.card.appointment-card .card-actions .btn-wrap:last-child .btn.btn-action {
+    border-width: 1px 0 0 1px;
+    border-bottom-right-radius: 6px;
+}
+
+/* END Appointments */
+
+
 
 
 

@@ -50,7 +50,6 @@
             </div>
         @endif
 
-        {{--            {{$appointment->id}}:--}}
         <div class="card-header pt-4 fs-4">
             <strong>{{ $appointment->date->format('d M Y') }}</strong><br>
             <strong>{{ $appointment->confirmed ? $appointment->date->format('H:i') : ''}}</strong>

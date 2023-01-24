@@ -4,7 +4,7 @@
 @php($updateActions = $updateActions ?? false)
 
 <div class="col-12 col-md-{{ $width }}">
-    <div class="card text-center mb-5 bg-light">
+    <div class="card appointment-card text-center mb-5 bg-light">
 
         @if($future)
             <button type="button"
@@ -56,7 +56,7 @@
 
 
         <div class="card-header pt-4 fs-4">
-            <strong>{{ $appointment->id }}</strong><br>
+            {{--            <strong>{{ $appointment->id }}</strong><br>--}}
             <strong>{{ $appointment->date->format('d M Y') }}</strong><br>
             <strong>{{ $appointment->confirmed ? $appointment->date->format('H:i') : ''}}</strong>
         </div>
@@ -91,16 +91,6 @@
             </div>
 
             @if($acceptActions)
-                <div class="d-flex justify-content-center align-items-center mt-4">
-                    <button class="btn btn-primary btn-mini me-4"
-                            data-bs-toggle="modal" data-bs-target="#appointment-accept-modal-{{ $appointment->id }}">
-                        Acceptare
-                    </button>
-                    <button class="btn btn-danger btn-mini"
-                            data-bs-toggle="modal" data-bs-target="#appointment-refuse-modal-{{ $appointment->id }}">
-                        Refuzare
-                    </button>
-                </div>
 
                 <div class="modal fade"
                      id="appointment-refuse-modal-{{ $appointment->id }}"
@@ -158,7 +148,8 @@
 
                                     <select name="timeslot" class="form-control w-auto d-inline-block">
                                         @foreach($timeslots as $timeslot)
-                                            <option value="{{ $timeslot['start'] }}" {{ $loop->first ? 'selected' : '' }}>{{ $timeslot['start'] . ' - ' . $timeslot['end']}}</option>
+                                            <option
+                                                value="{{ $timeslot['start'] }}" {{ $loop->first ? 'selected' : '' }}>{{ $timeslot['start'] . ' - ' . $timeslot['end']}}</option>
                                         @endforeach
                                     </select>
 
@@ -166,7 +157,8 @@
 
                                 <div class="modal-footer">
                                     <div class="actions w-100 justify-content-between">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Inapoi</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Inapoi
+                                        </button>
 
                                         <button type="submit" class="btn btn-primary"
                                                 onclick="$(this).prop('disabled', true); $(this).closest('form').submit()">
@@ -182,11 +174,36 @@
                 </div>
             @endif
 
-            @if($updateActions)
-                <div class="d-flex justify-content-center align-items-center mt-4">
-                    <a href="{{ route('medic.appointments.updateView', ['id' => $appointment->id]) }}" class="btn btn-primary btn-mini">Actualizeaza</a>
-                </div>
-            @endif
+
         </div>
+
+        @if($acceptActions || $updateActions)
+            <div class="card-actions">
+                @if($acceptActions)
+                    <div class="btn-wrap" data-bs-toggle="modal" data-bs-target="#appointment-accept-modal-{{ $appointment->id }}">
+                        <button class="btn btn-outline-success btn-action" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirmare">
+                            <i class="icofont-check"></i>
+                        </button>
+                    </div>
+                @endif
+                @if($updateActions)
+                    <div class="btn-wrap">
+                        <a href="{{ route('medic.appointments.updateView', ['id' => $appointment->id]) }}"
+                           data-bs-toggle="tooltip" data-bs-placement="top" title="Editare"
+                           class="btn btn-outline-primary btn-action">
+                            <i class="icofont-refresh"></i>
+                        </a>
+                    </div>
+                @endif
+                @if($acceptActions)
+                    <div class="btn-wrap" data-bs-toggle="modal" data-bs-target="#appointment-refuse-modal-{{ $appointment->id }}">
+                        <button class="btn btn-outline-danger btn-action"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="Refuzare">
+                            <i class="icofont-ban"></i>
+                        </button>
+                    </div>
+                @endif
+            </div>
+        @endif
     </div>
 </div>

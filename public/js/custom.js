@@ -9,5 +9,4 @@ if(myToastEl) {
 // Send data from selects
 function sendToTarget(select, destination) {
     $('#' + destination).val(select.value).change();
-
 }

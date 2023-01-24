@@ -79,6 +79,7 @@
             @endif
 
 
+            <button wire:click="submit()" class="btn btn-success mt-5">Trimite actualizarea</button>
         </div>
         <div class="col-4">
             <div class="form-group">
@@ -101,6 +102,4 @@
 
     </div>
 
-
-    <button wire:click="submit()" class="btn btn-primary">Trimite actualizarea</button>
 </div>
