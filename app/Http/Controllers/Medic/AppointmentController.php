@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Medic;
 
 use App\Http\Controllers\Controller;
 use App\Services\Auth;
-use Carbon\Carbon;
+use App\Services\Calendar;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
@@ -56,42 +56,12 @@ class AppointmentController extends Controller
             'pendingAppointments' => $appointments->where('date', '>=', $now)->whereStrict('confirmed', null),
             'confirmedAppointments' => $appointments->where('date', '>=', $now)->whereStrict('confirmed', 1),
             'memberships' => $memberships,
-            'timeslots' => $this->getTimeslots()
+            'timeslots' => Calendar::getTimeslots()
         ]);
     }
 
 
-    /**
-     * Builds the time slots for appointment time selector
-     *
-     * @return array
-     */
-    private function getTimeslots()
-    {
-        $slot_duration = 30;
 
-        $start_date = Carbon::today()->setTime(9, 0, 0);
-        $end_date = Carbon::today()->setTime(17, 0, 0)->subMinutes($slot_duration);
-
-        $times = [];
-        $slots = $start_date->diffInMinutes($end_date) / $slot_duration;
-
-        // First time
-        $times[] = [
-            'start' => $start_date->format('H:i'),
-            'end' => $start_date->copy()->addMinutes($slot_duration)->format('H:i'),
-        ];
-
-        for ($i = 1; $i <= $slots; $i++) {
-            // Adding each additional to the list
-            $times[] = [
-                'start' => $start_date->addMinutes($slot_duration)->format('H:i'),
-                'end' => $start_date->copy()->addMinutes($slot_duration)->format('H:i')
-            ];
-        }
-
-        return $times;
-    }
 
 
     /**
@@ -136,35 +106,32 @@ class AppointmentController extends Controller
     }
 
 
-    public function updateView(int $id, Request $request)
+    public function updateView(int $id)
     {
-        $appointment = Auth::user()->appointments()->with('membership.patient.media', 'visit.record')->find($id);
+        $appointment = Auth::user()
+            ->appointments()
+            ->with('membership.patient.media', 'visit.record')
+            ->find($id);
 
+        session()->flashInput(['date' => $appointment->date->format('d-m-Y')]);
 
         return view('authenticated.medic.appointments.update', [
             'appointment' => $appointment
         ]);
     }
 
-    public function update(int $id, Request $request)
+    public function update(int $id, $attributes = [])
     {
         $appointment = Auth::user()->appointments()->find($id);
 
-        $validated = $request->validate([
-            'confirmed' => '',
-            'honored' => ''
-        ]);
-
-        if($validated['confirmed'] === 'null') {
-            $validated['confirmed'] = null;
-        }
-
         $appointment->update([
-            'confirmed' => $validated['confirmed'],
-            'honored' => $validated['honored']
+            'confirmed' => $attributes['confirmed'],
+            'honored' => $attributes['honored'],
+            'date' => $attributes['date']
         ]);
 
-        return back()->withSuccess('Programarea a fost actualizata');
+        session()->flash('success', 'Programarea a fost actualizata!');
+        return redirect()->route('medic.appointments.list');
     }
 
 }

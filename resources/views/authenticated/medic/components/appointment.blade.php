@@ -114,7 +114,7 @@
                             </button>
 
                             <div class="modal-header justify-content-center py-5">
-                                <h5>Confirmați refuzarea programării?</h5>
+                                <h5>Refuzati programarea?</h5>
                             </div>
 
                             <div class="modal-footer">

@@ -35,7 +35,7 @@
                         <div class="date @if($day['date']->isToday()) today @endif">{{ $day['date']->format('j') }}</div>
 
                         @foreach($day['appointments'] as $appointment)
-                            <div class="appointment alert alert-success w-100">
+                            <div role="button" wire:click="updateAppointment({{ $appointment->id }})" class="appointment alert alert-success w-100">
 
                                 <div class="d-flex justify-content-between">
                                     <span class="hour">{{ $appointment->date->format('H:i') }}</span>

@@ -136,6 +136,12 @@
     padding: 30px;
 }
 
+.all-disabled * {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity:.6;
+}
+
 /* Breadcrumbs */
 #breadcrumbs .page-breadcrumbs {
     align-items: center;

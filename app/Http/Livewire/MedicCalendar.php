@@ -112,4 +112,9 @@ class MedicCalendar extends Component
         $this->now = now();
         $this->referenceDate = $this->now->copy()->addMonthsWithoutOverflow($this->monthDifference);
     }
+
+    public function updateAppointment(int $id)
+    {
+        $this->redirect(route('medic.appointments.updateView', ['id' => $id]));
+    }
 }

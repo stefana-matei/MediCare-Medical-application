@@ -11,7 +11,8 @@ class Visit extends Model
     use HasFactory;
 
     protected $fillable = [
-        'membership_id'
+        'membership_id',
+        'date'
     ];
 
     protected $dates = [

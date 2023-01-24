@@ -22,8 +22,6 @@ class CalendarSelect extends Calendar
 
             $this->changeMonthDifference();
         }
-
-        $this->emit('selectedDateEvent', $this->presetDate);
     }
 
     private function changeMonthDifference()
