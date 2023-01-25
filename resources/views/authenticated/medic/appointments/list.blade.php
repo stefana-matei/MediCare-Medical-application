@@ -1,7 +1,7 @@
 @extends('authenticated.medic.layouts.app')
 
 @section('header')
-    <h2>Programările mele</h2>
+    <h2>Lista de programări</h2>
 @endsection
 
 @section('main')
