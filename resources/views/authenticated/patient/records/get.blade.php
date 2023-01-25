@@ -57,7 +57,7 @@
                                 {{--Istoric--}}
                                 <div class="item">
                                     <div class="icon-block">
-                                        <div class="item-icon icofont-doctor-alt bg-info"></div>
+                                        <div class="item-icon icofont-copy bg-info"></div>
                                     </div>
 
                                     <div class="content-block">
@@ -74,7 +74,7 @@
                                 {{--Simptome--}}
                                 <div class="item">
                                     <div class="icon-block">
-                                        <div class="item-icon icofont-drug bg-danger"></div>
+                                        <div class="item-icon icofont-ui-add bg-danger"></div>
                                     </div>
 
                                     <div class="content-block">
@@ -91,7 +91,7 @@
                                 {{--Diagnostic--}}
                                 <div class="item">
                                     <div class="icon-block">
-                                        <div class="item-icon icofont-paralysis-disability bg-warning"></div>
+                                        <div class="item-icon icofont-stethoscope-alt bg-warning"></div>
                                     </div>
 
                                     <div class="content-block">
@@ -108,7 +108,7 @@
                                 {{--Date clinice--}}
                                 <div class="item">
                                     <div class="icon-block">
-                                        <div class="item-icon icofont-stethoscope-alt"></div>
+                                        <div class="item-icon icofont-heart-beat-alt"></div>
                                     </div>
 
                                     <div class="content-block">
@@ -125,7 +125,7 @@
                                 {{--Date paraclinice--}}
                                 <div class="item">
                                     <div class="icon-block">
-                                        <div class="item-icon icofont-stethoscope-alt"></div>
+                                        <div class="item-icon icofont-ui-copy"></div>
                                     </div>
 
                                     <div class="content-block">
@@ -142,7 +142,7 @@
                                 {{--Bilet trimitere--}}
                                 <div class="item">
                                     <div class="icon-block">
-                                        <div class="item-icon icofont-stethoscope-alt"></div>
+                                        <div class="item-icon icofont-notepad bg-info"></div>
                                     </div>
 
                                     <div class="content-block">
@@ -159,7 +159,7 @@
                                 {{--Recomandari--}}
                                 <div class="item">
                                     <div class="icon-block">
-                                        <div class="item-icon icofont-stethoscope-alt"></div>
+                                        <div class="item-icon icofont-patient-file"></div>
                                     </div>
 
                                     <div class="content-block">
