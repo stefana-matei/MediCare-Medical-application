@@ -250,7 +250,7 @@ class User extends Authenticatable implements HasMedia
         if (!is_null($avatar)) {
             return asset($avatar->getUrl('thumb'));
         } else {
-            return 'https://ui-avatars.com/api?background=random&name=' . $this->name;
+            return 'https://ui-avatars.com/api?color=ffffff&background=448AFF&name=' . $this->name;
         }
 
     }

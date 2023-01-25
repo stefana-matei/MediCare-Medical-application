@@ -1,8 +1,8 @@
 <div>
     <div class="row">
         @include('authenticated.medic.components.dashboard-card', ['title' => 'Pacienți în evidență', 'count' => $patients, 'icon' => 'icofont-users-alt-6'])
-        @include('authenticated.medic.components.dashboard-card', ['title' => 'Programări în așteptare', 'count' => $pending, 'icon' => 'icon icofont-files-stack'])
-        @include('authenticated.medic.components.dashboard-card', ['title' => 'Programări viitoare', 'count' => $future, 'icon' => 'icon icofont-list'])
+        @include('authenticated.medic.components.dashboard-card', ['action' => 'pending', 'active' => $status === null, 'title' => 'Programări în așteptare', 'count' => $pending, 'icon' => 'icon icofont-files-stack'])
+        @include('authenticated.medic.components.dashboard-card', ['action' => 'confirmed', 'active' => $status === 1, 'title' => 'Programări viitoare', 'count' => $future, 'icon' => 'icon icofont-list'])
         @include('authenticated.medic.components.dashboard-card', ['title' => 'Programări onorate', 'count' => $honored, 'icon' => 'icon icofont-checked'])
     </div>
 

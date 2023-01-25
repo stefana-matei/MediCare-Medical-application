@@ -349,6 +349,13 @@ body.public-layout .page-box .app-container .content-box {
     color: white;
 }
 
+/* Cards */
+.dashboard-card.active {
+    border-bottom:#1976d2 solid 2px;
+    box-shadow:0 18px 24px rgba(25, 118, 210, .2), 0 0 5px rgb(0 0 0 / 10%);
+}
+/* END Cards */
+
 /* Appointments */
 
 .card.appointment-card .card-actions {

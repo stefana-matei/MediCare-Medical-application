@@ -27,6 +27,7 @@ class MedicCalendar extends Component
     public $pending;
 
     public $weeks;
+    public $status = 1;
 
     public function render()
     {
@@ -93,7 +94,7 @@ class MedicCalendar extends Component
             $monthlyAppointments[] = [
                 'date' => $day,
                 'appointments' => $this->appointments
-                    ->where('confirmed', 1)
+                    ->whereStrict('confirmed', $this->status)
                     ->where('date', '>=', $day->copy()->startOfDay())
                     ->where('date', '<=', $day->copy()->endOfDay())
             ];
@@ -116,5 +117,15 @@ class MedicCalendar extends Component
     public function updateAppointment(int $id)
     {
         $this->redirect(route('medic.appointments.updateView', ['id' => $id]));
+    }
+
+    public function showConfirmed()
+    {
+        $this->status = 1;
+    }
+
+    public function showPending()
+    {
+        $this->status = null;
     }
 }
