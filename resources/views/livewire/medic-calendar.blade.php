@@ -46,7 +46,6 @@
                                     <img class="rounded-circle" src="{{ $appointment->membership->patient->avatar }}" alt="{{ $appointment->membership->patient->name }}">
                                     <span>{{ $appointment->membership->patient->lastname }}</span>
                                 </div>
-
                             </div>
                         @endforeach
                     </div>
