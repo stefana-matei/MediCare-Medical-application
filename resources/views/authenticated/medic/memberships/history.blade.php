@@ -25,131 +25,148 @@
                     @foreach($visits as $visit)
                         <div class="tab-pane fade @if($loop->first) active show @endif" id="tab-{{ $visit->id }}"
                              role="tabpanel">
-                            <h4 class="mt-0">Detaliile consultației din data de {{ $visit->date->format('d.m.Y') }}</h4>
+
+                            <div class="row">
+                                <div class="col-9">
+                                    <h4 class="mt-0">Detaliile consultației din data de {{ $visit->date->format('d.m.Y') }}</h4>
+                                </div>
+                                <div class="col-3">
+                                    @if($visit->record)
+                                    <a href="{{ route('medic.appointments.updateView', ['id' => $visit->appointment_id]) }}"
+                                       type="button" class="btn btn-primary btn-mini">
+                                        <span class="btn-icon icofont-ui-edit fs-6 me-2"></span>
+                                        Editare consultație
+                                    </a>
+                                   @endif
+                                </div>
+                            </div>
+
 
                             @if($visit->record)
-                                <div class="col-md-8">
-                                    <div class="v-timeline dots">
-                                        <div class="line"></div>
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <div class="v-timeline dots">
+                                            <div class="line"></div>
 
-                                        <div class="timeline-box">
-                                            <div class="box-items">
+                                            <div class="timeline-box">
+                                                <div class="box-items">
 
-                                                {{--Istoric--}}
-                                                <div class="item">
-                                                    <div class="icon-block">
-                                                        <div class="item-icon bg-info"></div>
-                                                    </div>
-
-                                                    <div class="content-block">
-                                                        <div class="item-header">
-                                                            <h3 class="h5 item-title">Istoric</h3>
+                                                    {{--Istoric--}}
+                                                    <div class="item">
+                                                        <div class="icon-block">
+                                                            <div class="item-icon bg-info"></div>
                                                         </div>
 
-                                                        <div class="item-desc">
-                                                            {{ $visit->record->medical_history ?? '-' }}
+                                                        <div class="content-block">
+                                                            <div class="item-header">
+                                                                <h3 class="h5 item-title">Istoric</h3>
+                                                            </div>
+
+                                                            <div class="item-desc">
+                                                                {{ $visit->record->medical_history ?? '-' }}
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                {{--Simptome--}}
-                                                <div class="item">
-                                                    <div class="icon-block">
-                                                        <div class="item-icon bg-danger"></div>
-                                                    </div>
-
-                                                    <div class="content-block">
-                                                        <div class="item-header">
-                                                            <h3 class="h5 item-title">Simptome</h3>
+                                                    {{--Simptome--}}
+                                                    <div class="item">
+                                                        <div class="icon-block">
+                                                            <div class="item-icon bg-danger"></div>
                                                         </div>
 
-                                                        <div class="item-desc">
-                                                            {{ $visit->record->symptoms ?? '-' }}
+                                                        <div class="content-block">
+                                                            <div class="item-header">
+                                                                <h3 class="h5 item-title">Simptome</h3>
+                                                            </div>
+
+                                                            <div class="item-desc">
+                                                                {{ $visit->record->symptoms ?? '-' }}
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                {{--Diagnostic--}}
-                                                <div class="item">
-                                                    <div class="icon-block">
-                                                        <div class="item-icon bg-warning"></div>
-                                                    </div>
-
-                                                    <div class="content-block">
-                                                        <div class="item-header">
-                                                            <h3 class="h5 item-title">Diagnostic</h3>
+                                                    {{--Diagnostic--}}
+                                                    <div class="item">
+                                                        <div class="icon-block">
+                                                            <div class="item-icon bg-warning"></div>
                                                         </div>
 
-                                                        <div class="item-desc">
-                                                            {{ $visit->record->diagnosis ?? '-' }}
+                                                        <div class="content-block">
+                                                            <div class="item-header">
+                                                                <h3 class="h5 item-title">Diagnostic</h3>
+                                                            </div>
+
+                                                            <div class="item-desc">
+                                                                {{ $visit->record->diagnosis ?? '-' }}
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                {{--Date clinice--}}
-                                                <div class="item">
-                                                    <div class="icon-block">
-                                                        <div class="item-icon"></div>
-                                                    </div>
-
-                                                    <div class="content-block">
-                                                        <div class="item-header">
-                                                            <h3 class="h5 item-title">Date clinice</h3>
+                                                    {{--Date clinice--}}
+                                                    <div class="item">
+                                                        <div class="icon-block">
+                                                            <div class="item-icon"></div>
                                                         </div>
 
-                                                        <div class="item-desc">
-                                                            {{ $record->clinical_data ?? '-' }}
+                                                        <div class="content-block">
+                                                            <div class="item-header">
+                                                                <h3 class="h5 item-title">Date clinice</h3>
+                                                            </div>
+
+                                                            <div class="item-desc">
+                                                                {{ $visit->record->clinical_data ?? '-' }}
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                {{--Date paraclinice--}}
-                                                <div class="item">
-                                                    <div class="icon-block">
-                                                        <div class="item-icon"></div>
-                                                    </div>
-
-                                                    <div class="content-block">
-                                                        <div class="item-header">
-                                                            <h3 class="h5 item-title">Date paraclinice</h3>
+                                                    {{--Date paraclinice--}}
+                                                    <div class="item">
+                                                        <div class="icon-block">
+                                                            <div class="item-icon"></div>
                                                         </div>
 
-                                                        <div class="item-desc">
-                                                            {{ $visit->record->para_clinical_data ?? '-' }}
+                                                        <div class="content-block">
+                                                            <div class="item-header">
+                                                                <h3 class="h5 item-title">Date paraclinice</h3>
+                                                            </div>
+
+                                                            <div class="item-desc">
+                                                                {{ $visit->record->para_clinical_data ?? '-' }}
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                {{--Bilet trimitere--}}
-                                                <div class="item">
-                                                    <div class="icon-block">
-                                                        <div class="item-icon bg-warning"></div>
-                                                    </div>
-
-                                                    <div class="content-block">
-                                                        <div class="item-header">
-                                                            <h3 class="h5 item-title">Bilet trimitere</h3>
+                                                    {{--Bilet trimitere--}}
+                                                    <div class="item">
+                                                        <div class="icon-block">
+                                                            <div class="item-icon bg-warning"></div>
                                                         </div>
 
-                                                        <div class="item-desc">
-                                                            {{ $visit->record->referral ? 'Da' : 'Nu' }}
+                                                        <div class="content-block">
+                                                            <div class="item-header">
+                                                                <h3 class="h5 item-title">Bilet trimitere</h3>
+                                                            </div>
+
+                                                            <div class="item-desc">
+                                                                {{ $visit->record->referral ? 'Da' : 'Nu' }}
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                {{--Recomandari--}}
-                                                <div class="item">
-                                                    <div class="icon-block">
-                                                        <div class="item-icon bg-success"></div>
-                                                    </div>
-
-                                                    <div class="content-block">
-                                                        <div class="item-header">
-                                                            <h3 class="h5 item-title">Recomandări</h3>
+                                                    {{--Recomandari--}}
+                                                    <div class="item">
+                                                        <div class="icon-block">
+                                                            <div class="item-icon bg-success"></div>
                                                         </div>
 
-                                                        <div class="item-desc">
-                                                            {{ $visit->record->indications ?? '-' }}
+                                                        <div class="content-block">
+                                                            <div class="item-header">
+                                                                <h3 class="h5 item-title">Recomandări</h3>
+                                                            </div>
+
+                                                            <div class="item-desc">
+                                                                {{ $visit->record->indications ?? '-' }}
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -157,12 +174,15 @@
                                         </div>
                                     </div>
                                 </div>
+
+
+
                             @else
                                 <p class="alert alert-secondary text-center fw-bold">
                                     <span class="icon sli-list text-muted fs-48 mb-2"></span><br>
                                     Nu sunt informații despre această consultație!
                                     <br>
-                                    <a href="#"
+                                    <a href="{{ route('medic.appointments.updateView', ['id' => $visit->appointment_id]) }}"
                                        type="button" class="btn btn-primary btn-mini mt-3">
                                         Adăugați informații
                                     </a>
