@@ -1,9 +1,9 @@
 <div>
     <div class="row">
-        @include('authenticated.medic.components.dashboard-card', ['title' => 'Pacienti', 'count' => $patients, 'icon' => 'icofont-first-aid-alt'])
-        @include('authenticated.medic.components.dashboard-card', ['title' => 'Onorate', 'count' => $honored, 'icon' => 'icofont-first-aid-alt'])
-        @include('authenticated.medic.components.dashboard-card', ['title' => 'Viitoare', 'count' => $future, 'icon' => 'icofont-first-aid-alt'])
-        @include('authenticated.medic.components.dashboard-card', ['title' => 'In asteptare', 'count' => $pending, 'icon' => 'icofont-first-aid-alt'])
+        @include('authenticated.medic.components.dashboard-card', ['title' => 'Pacienți în evidență', 'count' => $patients, 'icon' => 'icofont-users-alt-6'])
+        @include('authenticated.medic.components.dashboard-card', ['title' => 'Programări în așteptare', 'count' => $pending, 'icon' => 'icon icofont-files-stack'])
+        @include('authenticated.medic.components.dashboard-card', ['title' => 'Programări viitoare', 'count' => $future, 'icon' => 'icon icofont-list'])
+        @include('authenticated.medic.components.dashboard-card', ['title' => 'Programări onorate', 'count' => $honored, 'icon' => 'icon icofont-checked'])
     </div>
 
     <h4 class="my-2 d-flex w-100 justify-content-between align-items-center">
@@ -14,7 +14,7 @@
 
 
     <div class="calendar-week calendar-header border-bottom-0 text-center">
-        @foreach(['Luni','Marti','Miercuri','Joi','Vineri','Sambata','Duminica'] as $label)
+        @foreach(['Luni','Marți','Miercuri','Joi','Vineri','Sâmbătă','Duminică'] as $label)
             <div class="calendar-day">
                 <div
                     data-bs-toggle="dropdown"

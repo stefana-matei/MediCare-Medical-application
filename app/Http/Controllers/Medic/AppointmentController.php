@@ -61,9 +61,6 @@ class AppointmentController extends Controller
     }
 
 
-
-
-
     /**
      * Refuse appointment
      *
@@ -75,14 +72,14 @@ class AppointmentController extends Controller
         $appointment = Auth::user()->appointments()->find($id);
 
         if (is_null($appointment)) {
-            return back()->withFail('Nu s-a putut sterge programarea!');
+            return back()->withFail('Nu s-a putut șterge programarea!');
         }
 
         $appointment->update([
             'confirmed' => false
         ]);
 
-        return back()->withSuccess('Programarea a fost refuzata!');
+        return back()->withSuccess('Programarea a fost refuzată!');
     }
 
 
@@ -94,7 +91,7 @@ class AppointmentController extends Controller
         $appointment = Auth::user()->appointments()->find($id);
 
         if (is_null($appointment)) {
-            return back()->withFail('Nu a fost gasita programarea!');
+            return back()->withFail('Nu a fost găsită programarea!');
         }
 
         $appointment->update([
@@ -102,7 +99,7 @@ class AppointmentController extends Controller
             'date' => $appointment->date->hour($timeslot[0])->minute($timeslot[1])->second(0)
         ]);
 
-        return back()->withSuccess('Programarea a fost acceptata cu succes!');
+        return back()->withSuccess('Programarea a fost confirmată cu succes!');
     }
 
 
@@ -120,6 +117,7 @@ class AppointmentController extends Controller
         ]);
     }
 
+
     public function update(int $id, $attributes = [])
     {
         $appointment = Auth::user()->appointments()->find($id);
@@ -130,8 +128,7 @@ class AppointmentController extends Controller
             'date' => $attributes['date']
         ]);
 
-        session()->flash('success', 'Programarea a fost actualizata!');
+        session()->flash('success', 'Programarea a fost actualizată!');
         return redirect()->route('medic.appointments.list');
     }
-
 }

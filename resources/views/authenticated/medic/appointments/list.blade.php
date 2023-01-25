@@ -49,7 +49,7 @@
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
                             <div class="alert-icon"><i class="icon sli-calendar"></i></div>
-                            <div class="alert-content">Nu aveți programări în așteptare!</div>
+                            <div class="alert-content">Nu sunt programări în așteptare!</div>
                         </div>
                     </div>
                 @endforelse
@@ -64,8 +64,8 @@
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
-                            <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                            <div class="alert-content">Nu aveți programări viitoare!</div>
+                            <div class="alert-icon"><i class="icon sli-calendar"></i></div>
+                            <div class="alert-content">Nu sunt programări viitoare!</div>
                         </div>
                     </div>
                 @endforelse
@@ -80,8 +80,8 @@
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
-                            <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                            <div class="alert-content">Nu aveți programări anterioare!</div>
+                            <div class="alert-icon"><i class="icon sli-calendar"></i></div>
+                            <div class="alert-content">Nu sunt programări anterioare!</div>
                         </div>
                     </div>
                 @endforelse
@@ -96,8 +96,8 @@
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
-                            <div class="alert-icon"><i class="icofont-calendar"></i></div>
-                            <div class="alert-content">Nu aveți programări refuzate!</div>
+                            <div class="alert-icon"><i class="icon sli-calendar"></i></div>
+                            <div class="alert-content">Nu sunt programări refuzate!</div>
                         </div>
                     </div>
                 @endforelse

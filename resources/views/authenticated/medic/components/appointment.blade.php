@@ -42,7 +42,7 @@
 
                                     <button type="submit" class="btn btn-danger"
                                             onclick="$(this).prop('disabled', true); $(this).parent().submit()">
-                                        Da, sterge
+                                        Da, șterge
                                     </button>
 
                                 </form>
@@ -91,7 +91,7 @@
             </div>
 
             @if($acceptActions)
-
+                {{--Refuzare programare--}}
                 <div class="modal fade"
                      id="appointment-refuse-modal-{{ $appointment->id }}"
                      tabindex="-1"
@@ -104,7 +104,7 @@
                             </button>
 
                             <div class="modal-header justify-content-center py-5">
-                                <h5>Refuzati programarea?</h5>
+                                <h5>Refuzați programarea?</h5>
                             </div>
 
                             <div class="modal-footer">
@@ -120,7 +120,6 @@
                                                 onclick="$(this).prop('disabled', true); $(this).parent().submit()">
                                             Da, refuz
                                         </button>
-
                                     </form>
                                 </div>
                             </div>
@@ -128,6 +127,7 @@
                     </div>
                 </div>
 
+                {{--Confirmare programare--}}
                 <div class="modal fade"
                      id="appointment-accept-modal-{{ $appointment->id }}"
                      tabindex="-1"
@@ -144,7 +144,7 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="modal-header d-block py-5 text-center">
-                                    <h5 class="mb-4">Inainte de a confirma alegeti si intervalul orar</h5>
+                                    <h5 class="mb-4">Alegeți intervalul orar pentru programare</h5>
 
                                     <select name="timeslot" class="form-control w-auto d-inline-block">
                                         @foreach($timeslots as $timeslot)
@@ -157,25 +157,23 @@
 
                                 <div class="modal-footer">
                                     <div class="actions w-100 justify-content-between">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Inapoi
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            Înapoi
                                         </button>
 
                                         <button type="submit" class="btn btn-primary"
                                                 onclick="$(this).prop('disabled', true); $(this).closest('form').submit()">
-                                            Accepta programarea
+                                            Confirmare programare
                                         </button>
                                     </div>
                                 </div>
-
                             </form>
-
                         </div>
                     </div>
                 </div>
             @endif
-
-
         </div>
+
 
         @if($acceptActions || $updateActions)
             <div class="card-actions">
@@ -186,6 +184,7 @@
                         </button>
                     </div>
                 @endif
+
                 @if($updateActions)
                     <div class="btn-wrap">
                         <a href="{{ route('medic.appointments.updateView', ['id' => $appointment->id]) }}"
@@ -195,6 +194,7 @@
                         </a>
                     </div>
                 @endif
+
                 @if($acceptActions)
                     <div class="btn-wrap" data-bs-toggle="modal" data-bs-target="#appointment-refuse-modal-{{ $appointment->id }}">
                         <button class="btn btn-outline-danger btn-action"

@@ -10,7 +10,7 @@
 @endsection
 
 @section('header')
-    <h2>Bine ati revenit, {{ Auth::user()->medicName }}</h2>
+    <h2>Bine ați revenit, {{ Auth::user()->medicName }}</h2>
 @endsection
 
 @section('main')

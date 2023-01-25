@@ -107,7 +107,7 @@ class UpdateAppointment extends Component
             }
         }
 
-        session()->flash('success', 'Programarea a fost actualizata!');
+        session()->flash('success', 'Programarea a fost actualizată!');
         return redirect($this->redirectBack);
     }
 

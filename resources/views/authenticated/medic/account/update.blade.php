@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            <label>Nivel</label>
+                            <label>Grad</label>
                             <select name="level_id" class="selectpicker">
                                 @foreach($levels as $level)
                                     <option value="{{ $level->id }}" {{ $user->settingsMedic->level->id === $level->id ? 'selected' : '' }}>{{ $level->name }}</option>
@@ -74,15 +74,15 @@
                 </div>
 
                 @include('authenticated.medic.components.account-textarea', ['title' => 'Specializare',                 'key' => 'specialisation',               'user' => $user])
-                @include('authenticated.medic.components.account-textarea', ['title' => 'Cunostinte / skills todo',     'key' => 'skills',                       'user' => $user])
-                @include('authenticated.medic.components.account-textarea', ['title' => 'Campuri de activitate',        'key' => 'areas_of_activity',            'user' => $user])
-                @include('authenticated.medic.components.account-textarea', ['title' => 'Educatie',                     'key' => 'education',                    'user' => $user])
-                @include('authenticated.medic.components.account-textarea', ['title' => 'Postgraduate Courses',         'key' => 'postgraduate_courses',         'user' => $user])
-                @include('authenticated.medic.components.account-textarea', ['title' => 'Training',                     'key' => 'trainings',                    'user' => $user])
-                @include('authenticated.medic.components.account-textarea', ['title' => 'International Certifications', 'key' => 'international_certifications', 'user' => $user])
-                @include('authenticated.medic.components.account-textarea', ['title' => 'Publications',                 'key' => 'publications',                 'user' => $user])
-                @include('authenticated.medic.components.account-textarea', ['title' => 'Member of Associations',       'key' => 'member',                       'user' => $user])
-                @include('authenticated.medic.components.account-textarea', ['title' => 'Other realizations',           'key' => 'other_realizations',           'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Competențe',                   'key' => 'skills',                       'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Domenii de activitate',        'key' => 'areas_of_activity',            'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Educație',                     'key' => 'education',                    'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Cursuri postuniversitare',     'key' => 'postgraduate_courses',         'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Traininguri',                  'key' => 'trainings',                    'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Certificări internaționale',   'key' => 'international_certifications', 'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Publicații',                   'key' => 'publications',                 'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Membru în',                    'key' => 'member',                       'user' => $user])
+                @include('authenticated.medic.components.account-textarea', ['title' => 'Alte realizări',               'key' => 'other_realizations',           'user' => $user])
 
 
                 <button type="submit" class="btn btn-success">Salvați modificările</button>
@@ -90,7 +90,7 @@
 
             <hr>
 
-            <h4>Schimbă parola</h4>
+            <h4>Schimbați parola</h4>
 
             <form method="POST" action="{{ route('account.updatePassword') }}">
                 @csrf
@@ -121,7 +121,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-outline-dark">Salvează parola</button>
+                <button type="submit" class="btn btn-outline-dark">Salvați parola</button>
             </form>
         </div>
     </div>

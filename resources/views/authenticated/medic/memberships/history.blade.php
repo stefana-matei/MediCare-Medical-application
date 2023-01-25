@@ -106,7 +106,7 @@
                                                 {{--Date paraclinice--}}
                                                 <div class="item">
                                                     <div class="icon-block">
-                                                        <div class="item-icon bg-dark"></div>
+                                                        <div class="item-icon"></div>
                                                     </div>
 
                                                     <div class="content-block">
