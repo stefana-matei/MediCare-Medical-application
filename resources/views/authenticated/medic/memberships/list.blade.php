@@ -57,7 +57,7 @@
                     <th scope="col">Cod numeric personal</th>
                     <th scope="col">Data nașterii</th>
                     <th scope="col">Telefon</th>
-                    <th class="text-center" scope="col">Consultații</th>
+                    <th class="text-center" scope="col">Dosar medical</th>
                 </tr>
                 </thead>
                 <tbody>
