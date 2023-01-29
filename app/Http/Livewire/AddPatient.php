@@ -30,7 +30,7 @@ class AddPatient extends Component
     /**
      * @return Collection
      */
-    private function getPatients()
+    protected function getPatients()
     {
         if(empty($this->search)) {
             return new Collection();
@@ -61,4 +61,5 @@ class AddPatient extends Component
 
         return $membershipController->create($id);
     }
+
 }

@@ -31,7 +31,7 @@
             </a>
         @endif
 
-        <a href="{{ route('appointments.createView') }}" class="btn btn-primary align-self-center ps-3 ms-auto disabled">
+        <a href="{{ route('medic.appointments.createView') }}" class="btn btn-primary align-self-center ps-3 ms-auto">
             <span class="btn-icon icofont-plus fs-6 me-3"></span>
             Programare nouă
         </a>

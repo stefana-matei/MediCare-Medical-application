@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Medic;
 use App\Http\Controllers\Controller;
 use App\Services\Auth;
 use App\Services\Calendar;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
@@ -65,7 +66,7 @@ class AppointmentController extends Controller
      * Refuse appointment
      *
      * @param int $id
-     * @return mixed
+     * @return RedirectResponse
      */
     public function refuse(int $id)
     {
@@ -83,6 +84,11 @@ class AppointmentController extends Controller
     }
 
 
+    /**
+     * @param int $id
+     * @param Request $request
+     * @return RedirectResponse
+     */
     public function accept(int $id, Request $request)
     {
         $timeslot = $request->get('timeslot');
@@ -102,7 +108,10 @@ class AppointmentController extends Controller
         return back()->withSuccess('Programarea a fost confirmată cu succes!');
     }
 
-
+    /**
+     * @param int $id
+     * @return View
+     */
     public function updateView(int $id)
     {
         $appointment = Auth::user()
@@ -117,7 +126,11 @@ class AppointmentController extends Controller
         ]);
     }
 
-
+    /**
+     * @param int $id
+     * @param $attributes
+     * @return RedirectResponse
+     */
     public function update(int $id, $attributes = [])
     {
         $appointment = Auth::user()->appointments()->find($id);
@@ -130,5 +143,13 @@ class AppointmentController extends Controller
 
         session()->flash('success', 'Programarea a fost actualizată!');
         return redirect()->route('medic.appointments.list');
+    }
+
+    /**
+     * @return View
+     */
+    public function createView()
+    {
+        return view('authenticated.medic.appointments.create');
     }
 }

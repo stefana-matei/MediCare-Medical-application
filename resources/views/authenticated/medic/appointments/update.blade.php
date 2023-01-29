@@ -14,7 +14,6 @@
 
 @section('main')
     <h4>Pacient - {{ $appointment->membership->patient->name }}</h4>
-    <h4></h4>
     <livewire:update-appointment :appointment="$appointment"/>
 @endsection
 

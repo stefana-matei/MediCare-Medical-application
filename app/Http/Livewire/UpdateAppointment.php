@@ -117,7 +117,7 @@ class UpdateAppointment extends Component
      *
      * @return void
      */
-    private function setProperties()
+    protected function setProperties()
     {
         $this->redirectBack = request()->headers->get('referer');
 
