@@ -12,7 +12,7 @@
                     <button type="button" class="btn btn-outline-primary align-self-center ps-3 ms-auto"
                             data-bs-toggle="modal" data-bs-target="#select-patient">
                         <span class="btn-icon icofont-plus fs-6 me-3"></span>
-                        Schimba pacient
+                        Schimbare pacient
                     </button>
                 </div>
 
@@ -50,7 +50,7 @@
                     </div>
                 </div>
 
-                <button wire:click="submit()" class="btn btn-success mt-5">Creaza programare</button>
+                <button wire:click="submit()" class="btn btn-success mt-5">Creează programare</button>
 
             @endif
         </div>

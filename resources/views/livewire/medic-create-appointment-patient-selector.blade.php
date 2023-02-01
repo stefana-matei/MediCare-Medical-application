@@ -2,14 +2,14 @@
     <div class="input-group flex-nowrap">
         <span class="input-group-text" id="addon-wrapping"><span class="sli-magnifier"></span></span>
         <input wire:model="search" type="text" class="form-control"
-               placeholder="Cautati dupa CNP, nume, prenume, email">
+               placeholder="Căutați după CNP, nume, prenume, email">
     </div>
 
 
     @if($count !== 1)
-        <h5 class="mb-1">{{ $count }} pacienti gasiti</h5>
+        <h5 class="mb-1">{{ $count }} pacienți găsiți</h5>
     @else
-        <h5 class="mb-1">{{ $count }} pacient gasit</h5>
+        <h5 class="mb-1">{{ $count }} pacient găsit</h5>
     @endif
 
 
@@ -50,10 +50,10 @@
                     <span class="icon sli-book-open text-muted fs-48 mb-2"></span><br>
 
                     @if(empty($search))
-                        Introduceti criteriul de cautare dorit
+                        Introduceți criteriul de căutare dorit
                     @else
-                        Nu au fost gasiti pacienti dupa criteriul de cautare<br>
-                        Ati cautat: {{ $search }}
+                        Nu au fost găsiți pacienți după criteriul de căutare<br>
+                        Ați căutat: {{ $search }}
                     @endif
 
                 </span>

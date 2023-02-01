@@ -15,7 +15,7 @@
 @endsection
 
 @section('header')
-    <h2>Noua programare</h2>
+    <h2>Programare nouă</h2>
 @endsection
 
 @section('main')
