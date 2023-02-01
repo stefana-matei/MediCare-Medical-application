@@ -49,6 +49,7 @@ class PatientSeeder extends Seeder
         /** @var User $patient */
         /** @var User $patient2 */
         /** @var User $patient3 */
+        /** @var User $patient4 */
 
         $patient = User::factory()->create([
             'role' => 'patient',
@@ -62,15 +63,23 @@ class PatientSeeder extends Seeder
             'role' => 'patient',
             'firstname' => 'Andromeda',
             'lastname' => 'Gheorghescu',
-            'email' => 'andromeda.gheorghescu@medicare.com',
+            'email' => 'andromeda.gheorghescu@patient.medicare.com',
             'password' => Hash::make('secret123')
         ]);
 
         $patient3 = User::factory()->create([
             'role' => 'patient',
             'firstname' => 'Beatrice',
-            'lastname' => 'Ionela',
-            'email' => 'beatrice.ionela@medicare.com',
+            'lastname' => 'Ionescu',
+            'email' => 'beatrice.ionescu@patient.medicare.com',
+            'password' => Hash::make('secret123')
+        ]);
+
+        $patient4 = User::factory()->create([
+            'role' => 'patient',
+            'firstname' => 'Ioan',
+            'lastname' => 'Benescu',
+            'email' => 'ioan.benescu@patient.medicare.com',
             'password' => Hash::make('secret123')
         ]);
 
@@ -323,6 +332,7 @@ class PatientSeeder extends Seeder
         /** @var SettingPatient $settingPatient */
         /** @var SettingPatient $settingPatient2 */
         /** @var SettingPatient $settingPatient3 */
+        /** @var SettingPatient $settingPatient4 */
 
         $settingPatient = $patient->settingsPatient()->create([
             'pin' => '2880822426702',
@@ -355,6 +365,17 @@ class PatientSeeder extends Seeder
             'city' => 'Timisoara',
             'address' => 'Str.Plosnitei, bl.34, sc.A',
             'phone' => '0749284591'
+        ]);
+
+        $settingPatient3 = $patient4->settingsPatient()->create([
+            'pin' => '1840303458745',
+            'birthday' => Carbon::create(1984, 3, 03),
+            'gender' => 'm',
+            'country' => 'Romania',
+            'county' => 'Timis',
+            'city' => 'Timisoara',
+            'address' => 'Str.Plosnitei, bl.34, sc.A',
+            'phone' => '0742821912'
         ]);
     }
 }
