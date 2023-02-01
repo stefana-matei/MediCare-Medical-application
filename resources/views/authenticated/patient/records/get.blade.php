@@ -6,7 +6,8 @@
     <a href="{{ route('visits.record.print', ['visit_id' => $visit->id]) }}"
        class="btn btn-outline-primary align-self-center"
        role="button">
-        Tipărește raportul medical
+        <span class="btn-icon icofont-printer fs-6 me-2"></span>
+        Tipărire raport medical
     </a>
 @endsection
 

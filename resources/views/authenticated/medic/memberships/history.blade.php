@@ -28,16 +28,23 @@
 
                             <div class="row">
                                 <div class="col-9">
-                                    <h4 class="mt-0">Detaliile consultației din data de {{ $visit->date->format('d.m.Y') }}</h4>
+                                    <h4 class="mt-0">Detaliile consultației din data
+                                        de {{ $visit->date->format('d.m.Y') }}</h4>
                                 </div>
                                 <div class="col-3">
                                     @if($visit->record)
-                                    <a href="{{ route('medic.appointments.updateView', ['id' => $visit->appointment_id]) }}"
-                                       type="button" class="btn btn-primary btn-mini">
-                                        <span class="btn-icon icofont-ui-edit fs-6 me-2"></span>
-                                        Editare consultație
-                                    </a>
-                                   @endif
+                                        <a href="{{ route('medic.appointments.updateView', ['id' => $visit->appointment_id]) }}"
+                                           type="button" class="btn btn-primary btn-mini">
+                                            <span class="btn-icon icofont-ui-edit fs-6 me-2"></span>
+                                            Editare consultație
+                                        </a>
+
+                                        <a href="{{ route('visits.record.print', ['visit_id' => $visit->id]) }}"
+                                           type="button" class="btn btn-outline-primary btn-mini mt-3">
+                                            <span class="btn-icon icofont-printer fs-6 me-2"></span>
+                                            Tipărire raport medical
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
 
@@ -174,8 +181,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
 
                             @else
                                 <p class="alert alert-secondary text-center fw-bold">

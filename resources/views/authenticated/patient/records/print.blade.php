@@ -43,7 +43,7 @@
                     <td>{{ $patient->name }}</td>
                 </tr>
                 <tr>
-                    <td class="bold mr-20">Varsta</td>
+                    <td class="bold mr-20">Vârstă</td>
                     <td>{{ $patient->patientAge }} ani</td>
                 </tr>
                 <tr>
@@ -61,11 +61,11 @@
                     <td>{{ $medic->name }}</td>
                 </tr>
                 <tr>
-                    <td class="bold mr-20">Data consultatiei</td>
+                    <td class="bold mr-20">Data consultației</td>
                     <td>{{ $visit->date->format('d.m.Y') }}</td>
                 </tr>
                 <tr>
-                    <td class="bold mr-20">Ora consultatiei</td>
+                    <td class="bold mr-20">Ora consultației</td>
                     <td>{{ $visit->date->format('H:i') }}</td>
                 </tr>
                 </tbody>
@@ -101,11 +101,9 @@
                 <td>{{ $record->para_clinical_data ?? '-' }}</td>
             </tr>
             <tr>
-                <td class="bold mr-20">Recomandari</td>
+                <td class="bold mr-20">Recomandări</td>
                 <td>{{ $record->indications ?? '-' }}</td>
             </tr>
         </tbody>
     </table>
-
-
 @endsection
