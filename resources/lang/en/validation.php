@@ -142,9 +142,13 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'email' => [
+            'unique' => 'Adresa de email este asociată unui cont existent. Reîncercați.',
         ],
+        'password' => [
+            'min' => 'Parola trebuie să aibă cel puțin :min caractere.',
+            'confirmed' => 'Parolele nu se potrivesc. Reîncercați.'
+        ]
     ],
 
     /*
