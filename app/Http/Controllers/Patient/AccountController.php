@@ -30,7 +30,11 @@ class AccountController extends Controller
                 'max:200',
                 Rule::unique('users')->ignore($user->id)
             ],
-            'pin' => 'required|size:13',
+            'pin' => [
+                'required',
+                'size:13',
+                Rule::unique('settings_patient')->ignore($user->id)
+            ],
             'birthday' => 'required',
             'gender' => 'required',
             'country' => '',
@@ -76,9 +80,9 @@ class AccountController extends Controller
         $oldAvatar?->delete();
         Auth::user()->addMediaFromRequest('avatar')->toMediaCollection('avatars');
 
-        if($hadOldAvatar) {
+        if ($hadOldAvatar) {
             $successMessage = 'Poza de profil a fost schimbata cu succes!';
-        }else{
+        } else {
             $successMessage = 'Poza de profil a fost adaugata cu succes!';
         }
 
