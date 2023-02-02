@@ -22,8 +22,8 @@ class AccountController extends Controller
         $user = Auth::user();
 
         $validated = $request->validate([
-            'lastname' => 'required|min:2',
-            'firstname' => 'required|min:2',
+            'lastname' => 'required|min:2|regex:/^[a-z-\sA-Z]+$/',
+            'firstname' => 'required|min:2|regex:/^[a-z-\sA-Z]+$/',
             'email' => [
                 'required',
                 'email:rfc,dns',
@@ -32,8 +32,9 @@ class AccountController extends Controller
             ],
             'pin' => [
                 'required',
-                'size:13',
-                Rule::unique('settings_patient')->ignore($user->id)
+                'numeric',
+                'digits:13',
+                Rule::unique('settings_patient', 'pin')->ignore($user->settingsPatient->id)
             ],
             'birthday' => 'required',
             'gender' => 'required',
@@ -41,21 +42,30 @@ class AccountController extends Controller
             'county' => '',
             'city' => '',
             'address' => '',
-            'phone' => 'required|numeric|min:9'
+            'phone' => [
+                'required',
+                'numeric',
+                'digits:10'
+            ]
         ], [
             'lastname.required' => 'Câmpul pentru numele de familie trebuie completat.',
             'lastname.min' => 'Numele de familie trebuie să conțină cel puțin 2 caractere.',
+            'lastname.regex' => 'Numele de familie trebuie să conțină doar litere.',
             'firstname.required' => 'Câmpul pentru prenume trebuie completat.',
             'firstname.min' => 'Prenumele trebuie să conțină cel puțin 2 caractere.',
+            'firstname.regex' => 'Prenumele trebuie să conțină doar litere.',
             'email.required' => 'Câmpul pentru email trebuie completat.',
             'email.unique' => 'Există cont asociat cu acest email. Recompletați.',
             'email.email' => 'Adresa de email este invalidă. Recompletați.',
             'pin.required' => 'Câmpul pentru CNP trebuie completat.',
-            'pin.size' => 'Câmpul CNP trebuie să conțină 13 caractere.',
+            'pin.numeric' => 'Câmpul pentru CNP trebuie să conțină doar cifre.',
+            'pin.digits' => 'CNP-ul trebuie să conțină 13 cifre.',
             'pin.unique' => 'CNP-ul introdus trebuie să fie unic. Recompletați câmpul.',
             'birthday.required' => 'Câmpul pentru data nașterii trebuie completat.',
             'gender.required' => 'Câmpul pentru sex trebuie completat.',
-            'phone.required' => 'Câmpul pentru număr de telefon trebuie completat.'
+            'phone.numeric' => 'Numărul de telefon trebuie să conțină doar cifre.',
+            'phone.required' => 'Câmpul pentru număr de telefon trebuie completat.',
+            'phone.digits' => 'Numărul de telefon trebuie să conțină 10 cifre.'
         ]);
 
         $validated['birthday'] = Carbon::createFromFormat('Y-m-d', $validated['birthday'])->midDay();
@@ -95,9 +105,9 @@ class AccountController extends Controller
         Auth::user()->addMediaFromRequest('avatar')->toMediaCollection('avatars');
 
         if ($hadOldAvatar) {
-            $successMessage = 'Poza de profil a fost schimbata cu succes!';
+            $successMessage = 'Poza de profil a fost schimbată cu succes!';
         } else {
-            $successMessage = 'Poza de profil a fost adaugata cu succes!';
+            $successMessage = 'Poza de profil a fost adaugată cu succes!';
         }
 
         return back()->withSuccess($successMessage);
@@ -110,16 +120,19 @@ class AccountController extends Controller
         $validated = $request->validate([
             'old_password' => 'required',
             'password' => 'required|confirmed|min:8',
+        ], [
+            'old_password.required' => 'Câmpul pentru parola veche este obligatorie.',
+            'password.required' => 'Câmpul pentru parolă este obligatoriu.'
         ]);
 
         if (!Hash::check($validated['old_password'], Auth::user()->getAuthPassword())) {
-            return back()->withErrors(['old_password' => 'Parola veche este gresita!']);
+            return back()->withErrors(['old_password' => 'Parola veche este gresită. Reîncercați.']);
         }
 
         Auth::user()->update([
             'password' => Hash::make($validated['password'])
         ]);
 
-        return back()->withSuccess('Parola a fost schimbata cu succes!');
+        return back()->withSuccess('Parola a fost schimbată cu succes!');
     }
 }
