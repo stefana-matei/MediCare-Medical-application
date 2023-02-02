@@ -43,13 +43,13 @@
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
                                     <span class="dropdown-item" wire:click="selectDate('{{ $day->format('d-m-Y') }}')"
-                                          type="button">Programare noua</span>
+                                          type="button">Programare nouă</span>
                                 </li>
 
                                 <hr class="my-2">
 
                                 <li>
-                                    <span class="dropdown-item text-danger" type="button">Anuleaza</span>
+                                    <span class="dropdown-item text-danger" type="button">Anulează</span>
                                 </li>
 
                             </ul>
