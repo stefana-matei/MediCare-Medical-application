@@ -28,7 +28,7 @@
         <div class="form-group">
             <input class="form-control"
                    type="password"
-                   placeholder="Parola"
+                   placeholder="Parolă"
                    name="password"
                    required
                    autocomplete="current-password">
