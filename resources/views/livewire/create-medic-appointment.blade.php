@@ -4,7 +4,7 @@
             @include('authenticated.components.medic', ['width' => 6, 'user' => $medic, 'showProfile' => false])
 
             <div class="col-md-6">
-                <label>Selectati data dorită</label>
+                <label>Selectați data dorită</label>
                 <livewire:calendar-select/>
             </div>
         </div>
