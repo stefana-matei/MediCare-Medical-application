@@ -42,6 +42,20 @@ class AccountController extends Controller
             'city' => '',
             'address' => '',
             'phone' => 'required|numeric|min:9'
+        ], [
+            'lastname.required' => 'Câmpul pentru numele de familie trebuie completat.',
+            'lastname.min' => 'Numele de familie trebuie să conțină cel puțin 2 caractere.',
+            'firstname.required' => 'Câmpul pentru prenume trebuie completat.',
+            'firstname.min' => 'Prenumele trebuie să conțină cel puțin 2 caractere.',
+            'email.required' => 'Câmpul pentru email trebuie completat.',
+            'email.unique' => 'Există cont asociat cu acest email. Recompletați.',
+            'email.email' => 'Adresa de email este invalidă. Recompletați.',
+            'pin.required' => 'Câmpul pentru CNP trebuie completat.',
+            'pin.size' => 'Câmpul CNP trebuie să conțină 13 caractere.',
+            'pin.unique' => 'CNP-ul introdus trebuie să fie unic. Recompletați câmpul.',
+            'birthday.required' => 'Câmpul pentru data nașterii trebuie completat.',
+            'gender.required' => 'Câmpul pentru sex trebuie completat.',
+            'phone.required' => 'Câmpul pentru număr de telefon trebuie completat.'
         ]);
 
         $validated['birthday'] = Carbon::createFromFormat('Y-m-d', $validated['birthday'])->midDay();
