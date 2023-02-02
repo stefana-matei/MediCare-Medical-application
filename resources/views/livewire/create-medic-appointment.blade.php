@@ -25,7 +25,7 @@
                 <input type="hidden" name="date" value="{{ $date->format('Y-m-d') }}">
                 <input type="hidden" name="medic_id" value="{{ $medic?->id }}">
                 <button type="submit" class="btn btn-success">
-                    Confirma
+                    Confirmă
                 </button>
             </form>
         </div>
