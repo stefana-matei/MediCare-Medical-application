@@ -342,7 +342,7 @@ class PatientSeeder extends Seeder
 
         $settingPatient = $patient->settingsPatient()->create([
             'pin' => '2880822426702',
-            'birthday' => Carbon::create(1998, 8, 22),
+            'birthday' => Carbon::create(1988, 8, 22),
             'gender' => 'f',
             'country' => 'Romania',
             'county' => 'Timis',
@@ -363,8 +363,8 @@ class PatientSeeder extends Seeder
         ]);
 
         $settingPatient3 = $patient3->settingsPatient()->create([
-            'pin' => '2740303458745',
-            'birthday' => Carbon::create(1974, 3, 03),
+            'pin' => '2801303458745',
+            'birthday' => Carbon::create(1980, 3, 13),
             'gender' => 'f',
             'country' => 'Romania',
             'county' => 'Timis',
@@ -374,8 +374,8 @@ class PatientSeeder extends Seeder
         ]);
 
         $settingPatient4 = $patient4->settingsPatient()->create([
-            'pin' => '1840303458745',
-            'birthday' => Carbon::create(1984, 3, 03),
+            'pin' => '1840503458745',
+            'birthday' => Carbon::create(1984, 5, 03),
             'gender' => 'm',
             'country' => 'Romania',
             'county' => 'Timis',
