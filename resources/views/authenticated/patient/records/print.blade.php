@@ -81,6 +81,10 @@
                 <td>{{ $record->referral ? 'Da' : 'Nu' }}</td>
             </tr>
             <tr>
+                <td class="bold mr-20">Investigații efectuate</td>
+                <td>{{ $record->medical_service ?? '-' }}</td>
+            </tr>
+            <tr>
                 <td class="bold mr-20">Istoric</td>
                 <td>{{ $record->medical_history ?? '-' }}</td>
             </tr>

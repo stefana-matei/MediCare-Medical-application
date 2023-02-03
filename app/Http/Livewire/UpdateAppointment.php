@@ -17,6 +17,7 @@ class UpdateAppointment extends Component
     public $honored;
     public $hasRecord = false;
     public $record = [
+        'medical_service' => '',
         'medical_history' => '',
         'symptoms' => '',
         'diagnosis' => '',

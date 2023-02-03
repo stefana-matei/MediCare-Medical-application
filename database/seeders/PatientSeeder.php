@@ -304,6 +304,7 @@ class PatientSeeder extends Seeder
         /** @var Record $record3 */
 
         $record = $visit->record()->create([
+            'medical_service' => $faker->text(2000),
             'medical_history' => $faker->text(2000),
             'symptoms' => $faker->text(2000),
             'diagnosis' => $faker->text(2000),
@@ -315,6 +316,7 @@ class PatientSeeder extends Seeder
         ]);
 
         $record2 = $visit3->record()->create([
+            'medical_service' => $faker->text(),
             'medical_history' => $faker->text(),
             'symptoms' => $faker->text(),
             'diagnosis' => $faker->text(),

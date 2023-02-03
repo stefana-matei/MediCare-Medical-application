@@ -16,6 +16,7 @@ class CreateRecordsTable extends Migration
         Schema::create('records', function (Blueprint $table) {
             $table->id();
             $table->foreignId('visit_id');
+            $table->text('medical_service')->nullable();
             $table->text('medical_history')->nullable();
             $table->text('symptoms')->nullable();
             $table->text('diagnosis')->nullable();

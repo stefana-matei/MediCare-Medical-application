@@ -55,6 +55,23 @@
                         <div class="timeline-box">
                             <div class="box-items">
 
+                                {{--Investigații efectuate--}}
+                                <div class="item">
+                                    <div class="icon-block">
+                                        <div class="item-icon icofont-ui-clip-board"></div>
+                                    </div>
+
+                                    <div class="content-block">
+                                        <div class="item-header">
+                                            <h3 class="h5 item-title">Investigații efectuate</h3>
+                                        </div>
+
+                                        <div class="item-desc">
+                                            {{ $record->medical_service ?? '-' }}
+                                        </div>
+                                    </div>
+                                </div>
+
                                 {{--Istoric--}}
                                 <div class="item">
                                     <div class="icon-block">

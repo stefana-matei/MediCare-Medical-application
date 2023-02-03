@@ -51,6 +51,7 @@
 
                 @if($hasRecord)
 
+                    @include('authenticated.medic.components.record-textarea', ['title' => 'Investigații efectuate', 'key' => 'medical_service', 'record' => $appointment?->visit?->record])
                     @include('authenticated.medic.components.record-textarea', ['title' => 'Istoric', 'key' => 'medical_history', 'record' => $appointment?->visit?->record])
                     @include('authenticated.medic.components.record-textarea', ['title' => 'Simptome', 'key' => 'symptoms', 'record' => $appointment?->visit?->record])
                     @include('authenticated.medic.components.record-textarea', ['title' => 'Diagnostic', 'key' => 'diagnosis', 'record' => $appointment?->visit?->record])
