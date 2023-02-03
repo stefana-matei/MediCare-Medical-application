@@ -121,7 +121,7 @@ class AccountController extends Controller
             'old_password' => 'required',
             'password' => 'required|confirmed|min:8',
         ], [
-            'old_password.required' => 'Câmpul pentru parola veche este obligatorie.',
+            'old_password.required' => 'Câmpul pentru parola veche este obligatoriu.',
             'password.required' => 'Câmpul pentru parolă este obligatoriu.'
         ]);
 
