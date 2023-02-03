@@ -26,7 +26,7 @@ class AccountController extends Controller
             'firstname' => 'required|min:2|regex:/^[a-z-\sA-Z]+$/',
             'email' => [
                 'required',
-                'email:rfc,dns',
+                'email:rfc',
                 'max:200',
                 Rule::unique('users')->ignore($user->id)
             ],
@@ -55,8 +55,8 @@ class AccountController extends Controller
             'firstname.min' => 'Prenumele trebuie să conțină cel puțin 2 caractere.',
             'firstname.regex' => 'Prenumele trebuie să conțină doar litere.',
             'email.required' => 'Câmpul pentru email trebuie completat.',
-            'email.unique' => 'Există cont asociat cu acest email. Recompletați.',
             'email.email' => 'Adresa de email este invalidă. Recompletați.',
+            'email.unique' => 'Există cont asociat cu acest email. Recompletați.',
             'pin.required' => 'Câmpul pentru CNP trebuie completat.',
             'pin.numeric' => 'Câmpul pentru CNP trebuie să conțină doar cifre.',
             'pin.digits' => 'CNP-ul trebuie să conțină 13 cifre.',
