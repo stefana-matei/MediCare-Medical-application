@@ -155,13 +155,13 @@ class PatientSeeder extends Seeder
 
         // Programari viitoare
         $membership->appointments()->create([
-            'date' => now()->addWeek()->endOfDay(),
+            'date' => now()->addWeek()->hours(10)->minutes(0),
             'confirmed' => true,
             'honored' => false
         ]);
 
         $membership->appointments()->create([
-            'date' => now()->addYear()->endOfDay(),
+            'date' => now()->addYear()->hours(12)->minutes(0),
             'confirmed' => true,
             'honored' => false
         ]);
@@ -169,68 +169,74 @@ class PatientSeeder extends Seeder
 
         //Programari anterioare
         $appointment = $membership->appointments()->create([
-            'date' => now()->subMonth()->endOfDay(),
+            'date' => now()->subMonth()->hours(13)->minutes(30),
             'confirmed' => true,
             'honored' => true
         ]);
 
         $appointment3 = $membership2->appointments()->create([
-            'date' => now()->subWeek()->endOfDay(),
+            'date' => now()->subWeek()->hours(15)->minutes(0),
             'confirmed' => true,
             'honored' => true
         ]);
 
         $appointment6 = $membership4->appointments()->create([
-            'date' => now()->subMonth()->endOfDay(),
+            'date' => now()->subMonth()->hours(11)->minutes(30),
             'confirmed' => true,
             'honored' => true
         ]);
 
 
         $membership->appointments()->create([
-            'date' => now()->subWeeks(3)->addDays(2)->endOfDay(),
+            'date' => now()->subWeeks(3)->addDays(2)->hours(10)->minutes(0),
             'confirmed' => true,
             'honored' => true
         ]);
+
         $membership4->appointments()->create([
-            'date' => now()->subWeeks(3)->addDays(2)->endOfDay(),
+            'date' => now()->subWeeks(4)->addDays(2)->hours(13)->minutes(30),
             'confirmed' => true,
             'honored' => true
         ]);
+
         $membership5->appointments()->create([
-            'date' => now()->subWeeks(3)->addDays(3)->endOfDay(),
+            'date' => now()->subWeeks(5)->addDays(3)->hours(9)->minutes(30),
             'confirmed' => true,
             'honored' => true
         ]);
+
         $membership4->appointments()->create([
-            'date' => now()->subWeeks(3)->addDays(3)->endOfDay(),
+            'date' => now()->subWeeks(6)->addDays(3)->hours(12)->minutes(0),
             'confirmed' => true,
             'honored' => true
         ]);
+
         $membership->appointments()->create([
-            'date' => now()->subWeeks(3)->addDays(3)->endOfDay(),
+            'date' => now()->subWeeks(3)->addDays(3)->hours(14)->minutes(0),
             'confirmed' => true,
             'honored' => true
         ]);
+
         $membership4->appointments()->create([
-            'date' => now()->subWeeks(3)->endOfDay(),
+            'date' => now()->subWeeks(8)->hours(16)->minutes(30),
             'confirmed' => true,
             'honored' => true
         ]);
+
         $membership4->appointments()->create([
-            'date' => now()->endOfDay(),
+            'date' => now()->subWeeks(12)->hours(16)->minutes(30),
             'confirmed' => true,
             'honored' => true
         ]);
+
 //        $membership4->appointments()->create([
 //            'date' => now(),
 //            'confirmed' => true,
 //            'honored' => true
 //        ]);
 
-
         $appointment8 = $membership->appointments()->create([
-            'date' => now()->subMonths(2)->endOfDay(),
+            'date' => now()->subMonths(2)->hours(12)->minutes(0),
             'confirmed' => true,
             'honored' => true
         ]);
@@ -238,13 +244,13 @@ class PatientSeeder extends Seeder
 
         // neonorata
         $appointment4 = $membership2->appointments()->create([
-            'date' => now()->subMonth()->endOfDay(),
+            'date' => now()->subMonth()->hours(10)->minutes(30),
             'confirmed' => true,
             'honored' => false
         ]);
 
         $appointment7 = $membership5->appointments()->create([
-            'date' => now()->addMonth()->endOfDay(),
+            'date' => now()->addMonth()->hours(15)->minutes(30),
             'confirmed' => true,
             'honored' => false
         ]);
@@ -367,7 +373,7 @@ class PatientSeeder extends Seeder
             'phone' => '0749284591'
         ]);
 
-        $settingPatient3 = $patient4->settingsPatient()->create([
+        $settingPatient4 = $patient4->settingsPatient()->create([
             'pin' => '1840303458745',
             'birthday' => Carbon::create(1984, 3, 03),
             'gender' => 'm',
