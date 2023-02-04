@@ -68,7 +68,11 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('account.updateView')->withSuccess('Contul a fost creat cu succes, continuă să adaugi datele personale.');
+        if ($user->isMedic()) {
+            return redirect()->route('medic.updateView')->withSuccess('Contul a fost creat cu succes, continuă să adaugi datele personale.');
+        } else {
+            return redirect()->route('account.updateView')->withSuccess('Contul a fost creat cu succes, continuă să adaugi datele personale.');
+        }
     }
 
     public function storeMedic(Request $request)

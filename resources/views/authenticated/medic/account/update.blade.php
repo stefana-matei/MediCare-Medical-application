@@ -54,9 +54,9 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label>Specialitate</label>
-                            <select name="specialty_id" class="selectpicker">
+                            <select name="specialty_id" class="selectpicker" title="Selectați specialitatea">
                                 @foreach($specialties as $specialty)
-                                    <option value="{{ $specialty->id }}" {{ $user->settingsMedic->specialty->id === $specialty->id ? 'selected' : '' }}>{{ $specialty->name }}</option>
+                                    <option value="{{ $specialty->id }}" {{ $user->settingsMedic->specialty?->id === $specialty->id ? 'selected' : '' }}>{{ $specialty->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -64,9 +64,9 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label>Grad</label>
-                            <select name="level_id" class="selectpicker">
+                            <select name="level_id" class="selectpicker" title="Selectați gradul">
                                 @foreach($levels as $level)
-                                    <option value="{{ $level->id }}" {{ $user->settingsMedic->level->id === $level->id ? 'selected' : '' }}>{{ $level->name }}</option>
+                                    <option value="{{ $level->id }}" {{ $user->settingsMedic->level?->id === $level->id ? 'selected' : '' }}>{{ $level->name }}</option>
                                 @endforeach
                             </select>
                         </div>

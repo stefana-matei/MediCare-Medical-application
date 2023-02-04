@@ -56,7 +56,9 @@ class AccountController extends Controller
             'firstname.regex' => 'Prenumele trebuie să conțină doar litere.',
             'email.required' => 'Câmpul pentru email trebuie completat.',
             'email.email' => 'Adresa de email este invalidă. Recompletați.',
-            'email.unique' => 'Există cont asociat cu acest email. Recompletați.'
+            'email.unique' => 'Există cont asociat cu acest email. Recompletați.',
+            'specialty_id.required' => 'Trebuie selectată specialitatea.',
+            'level_id.required' => 'Trebuie selectat gradul.',
         ]);
 
         $userAttributes = Arr::only($validated, ['lastname', 'firstname', 'email']);
