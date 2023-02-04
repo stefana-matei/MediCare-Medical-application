@@ -40,7 +40,7 @@
                                         </a>
 
                                         <a href="{{ route('visits.record.print', ['visit_id' => $visit->id]) }}"
-                                           type="button" class="btn btn-outline-primary btn-mini mt-3">
+                                           type="button" target="_blank" class="btn btn-outline-primary btn-mini mt-3">
                                             <span class="btn-icon icofont-printer fs-6 me-2"></span>
                                             Tipărire raport medical
                                         </a>
