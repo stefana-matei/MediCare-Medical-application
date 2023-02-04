@@ -12,6 +12,8 @@ class Appointment extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'appointments';
+
     protected $fillable = [
         'membership_id',
         'confirmed',

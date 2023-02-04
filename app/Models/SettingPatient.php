@@ -10,6 +10,7 @@ class SettingPatient extends Model
     use HasFactory;
 
     protected $table = 'settings_patient';
+
     protected $dates = [
         'birthday'
     ];

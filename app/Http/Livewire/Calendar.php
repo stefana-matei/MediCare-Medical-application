@@ -54,7 +54,6 @@ class Calendar extends Component
         $start = $this->now->copy()->startOfMonth()->startOfWeek()->midDay();
         $end = $this->now->copy()->endOfMonth()->endOfWeek()->midDay();
 
-
         $period = CarbonPeriod::create($start, $end);
         $days = $period->toArray();
         $this->weeks = array_chunk($days, 7);

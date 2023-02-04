@@ -15,9 +15,9 @@ class CreateSettingsMedicTable extends Migration
     {
         Schema::create('settings_medic', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('level_id')->nullable();
-            $table->foreignId('specialty_id')->nullable();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('level_id')->constrained()->nullable();
+            $table->foreignId('specialty_id')->constrained()->nullable();
             $table->text('specialisation')->nullable();
             $table->text('skills')->nullable();
             $table->text('areas_of_activity')->nullable();

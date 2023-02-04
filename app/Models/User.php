@@ -39,11 +39,14 @@ class User extends Authenticatable implements HasMedia
     const ROLE_MEDIC = 'medic';
     const ROLE_PATIENT = 'patient';
 
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var string[]
      */
+
     protected $fillable = [
         'firstname',
         'lastname',

@@ -15,7 +15,7 @@ class CreateAppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('membership_id');
+            $table->foreignId('membership_id')->constrained();
             $table->dateTime('date')->useCurrent();
             //$table->string('location');
             $table->boolean('confirmed')->nullable();
