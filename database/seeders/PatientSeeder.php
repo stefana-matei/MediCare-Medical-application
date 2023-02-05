@@ -160,8 +160,8 @@ class PatientSeeder extends Seeder
             'honored' => false
         ]);
 
-        $membership->appointments()->create([
-            'date' => now()->addYear()->hours(12)->minutes(0),
+        $membership4->appointments()->create([
+            'date' => now()->addMonth(2)->hours(12)->minutes(0),
             'confirmed' => true,
             'honored' => false
         ]);
