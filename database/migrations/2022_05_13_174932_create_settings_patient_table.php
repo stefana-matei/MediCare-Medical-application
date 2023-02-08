@@ -25,6 +25,8 @@ class CreateSettingsPatientTable extends Migration
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->timestamps();
+
+            $table->unique(['user_id']);
         });
     }
 
