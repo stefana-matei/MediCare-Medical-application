@@ -96,6 +96,8 @@ class AccountController extends Controller
     {
         $request->validate([
             'avatar' => 'required|image|file|max:8192'
+        ],[
+            'avatar.image' => 'Nu sunt permise încărcarea altor tipuri de fișiere. Reîncercați cu o imagine.'
         ]);
 
         $oldAvatar = Auth::user()->getMedia('avatars')->first();
