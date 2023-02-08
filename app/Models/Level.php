@@ -23,4 +23,12 @@ class Level extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    /**
+     * @return HasMany
+     */
+    public function settingsMedic(): HasMany
+    {
+        return $this->hasMany(SettingMedic::class);
+    }
 }
