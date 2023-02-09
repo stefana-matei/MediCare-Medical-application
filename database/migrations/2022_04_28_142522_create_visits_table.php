@@ -20,7 +20,7 @@ class CreateVisitsTable extends Migration
             $table->timestamp('date');
             $table->timestamps();
 
-            $table->unique(['membership_id', 'appointment_id']);
+            $table->unique(['membership_id', 'appointment_id'], 'UC_visit');
 
         });
     }

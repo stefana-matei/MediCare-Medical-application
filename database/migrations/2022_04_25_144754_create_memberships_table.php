@@ -19,7 +19,7 @@ class CreateMembershipsTable extends Migration
             $table->foreignId("patient_id")->constrained('users', 'id');
             $table->timestamps();
 
-            $table->unique(['medic_id', 'patient_id']);
+            $table->unique(['medic_id', 'patient_id'], 'UC_membership');
         });
     }
 

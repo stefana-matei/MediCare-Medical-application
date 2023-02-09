@@ -27,7 +27,7 @@ class CreateMediaTable extends Migration
             $table->unsignedInteger('order_column')->nullable();
             $table->nullableTimestamps();
 
-            $table->unique(['model_type', 'model_id']);
+            $table->unique(['model_type', 'model_id'], 'UC_media');
         });
     }
 }
