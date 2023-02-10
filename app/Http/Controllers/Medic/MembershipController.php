@@ -32,7 +32,7 @@ class MembershipController extends Controller
             Membership::KEY_PATIENT => $patientId
         ]);
 
-        session()->flash('success', 'Pacientul a fost adăugat cu success!');
+        session()->flash('success', 'Pacientul a fost adăugat cu succes!');
         return redirect()->route('medic.patients.list');
     }
 
