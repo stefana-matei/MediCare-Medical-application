@@ -24,7 +24,7 @@ class MembershipController extends Controller
         $patient = User::patient()->find($patientId);
 
         if (is_null($patient)) {
-            session()->flash('fail', 'Pacientul nu a putut fi gasit!');
+            session()->flash('fail', 'Pacientul nu a putut fi găsit!');
             return redirect()->route('medic.patients.list');
         }
 
@@ -32,7 +32,7 @@ class MembershipController extends Controller
             Membership::KEY_PATIENT => $patientId
         ]);
 
-        session()->flash('success', 'Pacientul a fost adaugat cu success!');
+        session()->flash('success', 'Pacientul a fost adăugat cu success!');
         return redirect()->route('medic.patients.list');
     }
 
