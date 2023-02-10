@@ -126,6 +126,7 @@ class PatientSeeder extends Seeder
         /** @var Appointment $appointment7 */
         /** @var Appointment $appointment8 */
         /** @var Appointment $appointment9 */
+        /** @var Appointment $appointment10 */
 
 
         // Programari in asteptare
@@ -176,7 +177,13 @@ class PatientSeeder extends Seeder
         ]);
 
         $appointment3 = $membership2->appointments()->create([
-            'date' => now()->subWeek()->hours(15)->minutes(0),
+            'date' => now()->subWeek(3)->hours(15)->minutes(0),
+            'confirmed' => true,
+            'honored' => true
+        ]);
+
+        $appointment10 = $membership2->appointments()->create([
+            'date' => now()->subMonth(4)->hours(12)->minutes(30),
             'confirmed' => true,
             'honored' => true
         ]);
@@ -272,6 +279,7 @@ class PatientSeeder extends Seeder
         /** @var Visit $visit4 */
         /** @var Visit $visit5 */
         /** @var Visit $visit6 */
+        /** @var Visit $visit7 */
 
         $visit = $membership->visits()->create([
             'date' => $appointment->date,
@@ -301,6 +309,11 @@ class PatientSeeder extends Seeder
         $visit6 = $membership5->visits()->create([
             'date' => $appointment9->date,
             'appointment_id' => $appointment9->id
+        ]);
+
+        $visit7 = $membership2->visits()->create([
+            'date' => $appointment10->date,
+            'appointment_id' => $appointment10->id
         ]);
 
 
