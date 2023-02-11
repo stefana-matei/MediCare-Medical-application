@@ -19,7 +19,6 @@
             @include('authenticated.patient.components.visit', ['width' => 12, 'showRecord' => false, 'visit' => $visit])
         </div>
 
-
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
@@ -171,5 +170,4 @@
             </div>
         </div>
     </div>
-
 @endsection
