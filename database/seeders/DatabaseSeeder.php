@@ -17,6 +17,5 @@ class DatabaseSeeder extends Seeder
             MedicSeeder::class,
             PatientSeeder::class
         ]);
-
     }
 }

@@ -1,4 +1,4 @@
-@extends('authenticated.layouts.app')
+@extends('authenticated.patient.layouts.app')
 
 @section('header')
     <h2> Programările mele</h2>
@@ -43,7 +43,7 @@
                     <p>Veți fi contactat în cel mai scurt timp pentru a stabili ora prezentării.</p>
                 @endif
                 @forelse($pendingAppointments as $pendingAppointment)
-                    @include('authenticated.components.appointment', ['width' => 3, 'future' => true, 'appointment' => $pendingAppointment])
+                    @include('authenticated.patient.components.appointment', ['width' => 3, 'future' => true, 'appointment' => $pendingAppointment])
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
@@ -59,7 +59,7 @@
             <h4>Programări viitoare</h4>
             <div class="row">
                 @forelse($confirmedAppointments as $confirmedAppointment)
-                    @include('authenticated.components.appointment', ['width' => 3, 'future' => true, 'appointment' => $confirmedAppointment])
+                    @include('authenticated.patient.components.appointment', ['width' => 3, 'future' => true, 'appointment' => $confirmedAppointment])
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
@@ -75,7 +75,7 @@
             <h4>Programări anterioare</h4>
             <div class="row">
                 @forelse($appointments as $appointment)
-                    @include('authenticated.components.appointment', ['width' => 3, 'appointment' => $appointment])
+                    @include('authenticated.patient.components.appointment', ['width' => 3, 'appointment' => $appointment])
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
@@ -91,7 +91,7 @@
             <h4>Programări refuzate</h4>
             <div class="row">
                 @forelse($canceledAppointments as $canceledAppointment)
-                    @include('authenticated.components.appointment', ['width' => 3, 'appointment' => $canceledAppointment])
+                    @include('authenticated.patient.components.appointment', ['width' => 3, 'appointment' => $canceledAppointment])
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">

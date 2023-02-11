@@ -1,4 +1,4 @@
-@extends('authenticated.layouts.app')
+@extends('authenticated.patient.layouts.app')
 
 @section('header')
     <h1 class="page-title">Administrare cont - {{ $user->name }}</h1>

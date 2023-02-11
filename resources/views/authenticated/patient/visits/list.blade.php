@@ -1,4 +1,4 @@
-@extends('authenticated.layouts.app')
+@extends('authenticated.patient.layouts.app')
 
 @section('header')
     <h2>Consultațiile mele</h2>
@@ -34,15 +34,19 @@
     <div class="page-content mt-5">
         <div class="row">
             @forelse($visits as $visit)
-                @include('authenticated.components.visit', ['visit' => $visit])
+                @include('authenticated.patient.components.visit', ['visit' => $visit])
             @empty
                 <div class="col">
                     <div class="alert alert-secondary with-before-icon" role="alert">
                         <div class="alert-icon"><i class="icofont-ui-copy"></i></div>
                         @if(is_null($medic))
-                            <div class="alert-content">Nu sunt informații despre istoricul consultațiilor dumneavoastră!</div>
+                            <div class="alert-content">Nu sunt informații despre istoricul consultațiilor
+                                dumneavoastră!
+                            </div>
                         @else
-                            <div class="alert-content">Nu sunt informații despre istoricul consultațiilor la {{ $medic->medicName }}!</div>
+                            <div class="alert-content">Nu sunt informații despre istoricul consultațiilor
+                                la {{ $medic->medicName }}!
+                            </div>
                         @endif
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-@extends('authenticated.layouts.app')
+@extends('authenticated.patient.layouts.app')
 
 @section('header')
     <h2>Medicii mei</h2>
@@ -36,7 +36,7 @@
     <div class="page-content mt-5">
         <div class="row">
             @forelse($medics as $medic)
-                @include('authenticated.components.medic', ['user' => $medic])
+                @include('authenticated.patient.components.medic', ['user' => $medic])
             @empty
                 <div class="col">
                     <div class="alert alert-secondary with-before-icon" role="alert">

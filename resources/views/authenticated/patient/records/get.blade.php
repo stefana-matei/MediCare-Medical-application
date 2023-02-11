@@ -1,4 +1,4 @@
-@extends('authenticated.layouts.app')
+@extends('authenticated.patient.layouts.app')
 
 @section('header')
     <h2> Detalii consultație</h2>
@@ -16,7 +16,7 @@
 
     <div class="row">
         <div class="col-3">
-            @include('authenticated.components.visit', ['width' => 12, 'showRecord' => false, 'visit' => $visit])
+            @include('authenticated.patient.components.visit', ['width' => 12, 'showRecord' => false, 'visit' => $visit])
 
             @if($record->files->isNotEmpty())
                 <div class="mt-3">

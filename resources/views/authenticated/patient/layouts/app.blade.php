@@ -22,12 +22,14 @@
 
 @if(session('success'))
     <div id="toast-wrapper">
-        <div id="toast" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="toast" class="toast align-items-center text-white bg-primary border-0" role="alert"
+             aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">
                     {{session('success')}}
                 </div>
-                <button type="button" class="btn-close btn-close-white m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
             </div>
         </div>
     </div>
@@ -36,12 +38,14 @@
 
 @if(session('fail'))
     <div id="toast-wrapper">
-        <div id="toast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="toast" class="toast align-items-center text-white bg-danger border-0" role="alert"
+             aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">
                     {{session('fail')}}
                 </div>
-                <button type="button" class="btn-close btn-close-white m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
             </div>
         </div>
     </div>
@@ -51,8 +55,8 @@
 <div class="page-box">
     <div class="app-container">
 
-        @include('authenticated.layouts.components.horizontal')
-        @include('authenticated.layouts.components.vertical')
+        @include('authenticated.patient.layouts.components.horizontal')
+        @include('authenticated.patient.layouts.components.vertical')
 
         <main class="main-content mb-0">
             <div class="main-content-wrap">
