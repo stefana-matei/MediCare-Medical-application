@@ -9,12 +9,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
 
 class AccountController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:patient');
     }
 
     public function update(Request $request)
@@ -96,7 +98,7 @@ class AccountController extends Controller
     {
         $request->validate([
             'avatar' => 'required|image|file|max:8192'
-        ],[
+        ], [
             'avatar.image' => 'Nu sunt permise încărcarea altor tipuri de fișiere. Reîncercați cu o imagine.'
         ]);
 

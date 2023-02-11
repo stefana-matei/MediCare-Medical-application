@@ -18,6 +18,7 @@ class AccountController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:medic');
     }
 
     public function update(Request $request)
