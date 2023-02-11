@@ -17,19 +17,6 @@
     <div class="row">
         <div class="col-3">
             @include('authenticated.patient.components.visit', ['width' => 12, 'showRecord' => false, 'visit' => $visit])
-
-            @if($record->files->isNotEmpty())
-                <div class="mt-3">
-                    <h5 class="mb-2">Fișiere atașate</h5>
-                    @foreach($record->files as $file)
-                        <a href="{{ $file->getUrl() }}" target="_blank"
-                           class="btn btn-outline-primary rounded-pill btn-sm mw-100 p-2 mb-2">
-                            <span class="btn-icon icofont-clip me-2"></span>
-                            <span class="btn-content-ellipsis">{{ $file->file_name }}</span>
-                        </a>
-                    @endforeach
-                </div>
-            @endif
         </div>
 
 

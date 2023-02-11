@@ -16,7 +16,7 @@ class AccountController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:patient');
+        $this->middleware('role:patient')->except(['updateAvatar', 'updatePassword']);
     }
 
     public function update(Request $request)
