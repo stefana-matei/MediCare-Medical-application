@@ -7,7 +7,6 @@ use App\Models\Membership;
 use App\Models\User;
 use App\Services\Auth;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 
 class MembershipController extends Controller
 {

@@ -34,11 +34,6 @@
                    autocomplete="current-password">
         </div>
 
-{{--        <div class="form-check form-switch mb-4">--}}
-{{--            <input type="checkbox" class="form-check-input" id="remember-me" name="remember" checked>--}}
-{{--            <label class="form-check-label" for="remember-me">Tine-ma logat</label>--}}
-{{--        </div>--}}
-
         <div class="actions justify-content-between">
             <button type="submit" class="btn btn-primary">
                 <span class="btn-icon icofont-login me-2"></span>

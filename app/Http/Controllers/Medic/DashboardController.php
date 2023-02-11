@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers\Medic;
 
-use App\Http\Controllers\Patient\Controller;
-use App\Services\Auth;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
