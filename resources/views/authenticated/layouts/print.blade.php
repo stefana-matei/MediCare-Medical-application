@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MedicApp</title>
+    <title>MediCare</title>
     @yield('head')
-
 </head>
 
 <body class="vertical-layout boxed loaded">

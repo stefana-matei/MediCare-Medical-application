@@ -4,6 +4,7 @@
     <h2> Detalii consultație</h2>
 
     <a href="{{ route('visits.record.print', ['visit_id' => $visit->id]) }}"
+       target="_blank"
        class="btn btn-outline-primary align-self-center"
        role="button">
         <span class="btn-icon icofont-printer fs-6 me-2"></span>
@@ -16,20 +17,6 @@
     <div class="row">
         <div class="col-3">
             @include('authenticated.components.visit', ['width' => 12, 'showRecord' => false, 'visit' => $visit])
-
-
-            {{--            <x-auth-validation-errors class="mb-4" :errors="$errors"/>--}}
-
-            {{--            <button class="btn btn-outline-primary" type="button" onclick="$('#uploadFile').click()">--}}
-            {{--                Incarca fisier<span class="btn-icon icofont-ui-user ms-2"></span>--}}
-            {{--            </button>--}}
-
-            {{--            <form class="d-none" id="uploadFileForm" action="{{ route('visits.record.uploadFile', ['visit_id' => $record->visit_id]) }}" method="POST"--}}
-            {{--                  enctype="multipart/form-data">--}}
-            {{--                @csrf--}}
-            {{--                <input class="d-none" type="file" id="uploadFile" name="file"--}}
-            {{--                       onchange="$('#uploadFileForm').submit()">--}}
-            {{--            </form>--}}
 
             @if($record->files->isNotEmpty())
                 <div class="mt-3">
