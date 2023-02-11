@@ -26,10 +26,13 @@ class Calendar extends Component
     /** @var Carbon */
     public $presetDate;
 
-    public function render()
+    public function mount()
     {
         $this->setPresetDate();
+    }
 
+    public function render()
+    {
         $this->now = now()->addMonthsWithoutOverflow($this->monthDifference);
 
         $this->month = $this->now->format('F Y');
@@ -50,7 +53,6 @@ class Calendar extends Component
 
         $start = $this->now->copy()->startOfMonth()->startOfWeek()->midDay();
         $end = $this->now->copy()->endOfMonth()->endOfWeek()->midDay();
-
 
         $period = CarbonPeriod::create($start, $end);
         $days = $period->toArray();

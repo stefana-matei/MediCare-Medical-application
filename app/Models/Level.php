@@ -10,6 +10,8 @@ class Level extends Model
 {
     use HasFactory;
 
+    protected $table = 'levels';
+
     protected $fillable = [
         'name'
     ];
@@ -20,5 +22,13 @@ class Level extends Model
     public function medics(): HasMany
     {
         return $this->hasMany(User::class);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function settingsMedic(): HasMany
+    {
+        return $this->hasMany(SettingMedic::class);
     }
 }

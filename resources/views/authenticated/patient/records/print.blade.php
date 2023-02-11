@@ -25,7 +25,7 @@
 
     <div class="row">
         <div class="col-6">
-            <img src="{{ public_path('assets/img/logo_print.png') }}" alt="" width="175">
+            <img src="{{ public_path('assets/img/logo_final.png') }}" alt="" width="175">
         </div>
         <div class="col-6">
             <h1>Raport medical</h1>
@@ -43,7 +43,7 @@
                     <td>{{ $patient->name }}</td>
                 </tr>
                 <tr>
-                    <td class="bold mr-20">Varsta</td>
+                    <td class="bold mr-20">Vârstă</td>
                     <td>{{ $patient->patientAge }} ani</td>
                 </tr>
                 <tr>
@@ -61,11 +61,11 @@
                     <td>{{ $medic->name }}</td>
                 </tr>
                 <tr>
-                    <td class="bold mr-20">Data consultatiei</td>
+                    <td class="bold mr-20">Data consultației</td>
                     <td>{{ $visit->date->format('d.m.Y') }}</td>
                 </tr>
                 <tr>
-                    <td class="bold mr-20">Ora consultatiei</td>
+                    <td class="bold mr-20">Ora consultației</td>
                     <td>{{ $visit->date->format('H:i') }}</td>
                 </tr>
                 </tbody>
@@ -79,6 +79,10 @@
             <tr>
                 <td class="bold mr-20">Bilet de trimitere</td>
                 <td>{{ $record->referral ? 'Da' : 'Nu' }}</td>
+            </tr>
+            <tr>
+                <td class="bold mr-20">Investigații efectuate</td>
+                <td>{{ $record->medical_service ?? '-' }}</td>
             </tr>
             <tr>
                 <td class="bold mr-20">Istoric</td>
@@ -101,11 +105,9 @@
                 <td>{{ $record->para_clinical_data ?? '-' }}</td>
             </tr>
             <tr>
-                <td class="bold mr-20">Recomandari</td>
+                <td class="bold mr-20">Recomandări</td>
                 <td>{{ $record->indications ?? '-' }}</td>
             </tr>
         </tbody>
     </table>
-
-
 @endsection

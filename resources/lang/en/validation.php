@@ -107,7 +107,7 @@ return [
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => 'The :attribute field is required.',
+    'required' => 'Câmpul :attribute trebuie completat.',
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
@@ -142,9 +142,13 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'email' => [
+            'unique' => 'Adresa de email este asociată unui cont existent. Reîncercați.',
         ],
+        'password' => [
+            'min' => 'Parola trebuie să aibă cel puțin :min caractere.',
+            'confirmed' => 'Parolele nu se potrivesc. Reîncercați.'
+        ]
     ],
 
     /*

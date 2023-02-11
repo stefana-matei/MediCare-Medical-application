@@ -10,8 +10,11 @@ class Visit extends Model
 {
     use HasFactory;
 
+    protected $table = 'visits';
+
     protected $fillable = [
-        'membership_id'
+        'membership_id',
+        'date'
     ];
 
     protected $dates = [

@@ -1,16 +1,18 @@
+@php use App\Services\Auth; @endphp
 @extends('authenticated.medic.layouts.app')
 
+@section('head')
+    @livewireStyles
+@endsection
+
+@section('scripts')
+    @livewireScripts
+@endsection
+
 @section('header')
-    <h2>Pagina medic</h2>
+    <h2>Bine ați revenit, {{ Auth::user()->medicName }}</h2>
 @endsection
 
 @section('main')
-    <div class="card">
-        <div class="card-header">
-            Titlu
-        </div>
-        <div class="card-body">
-            Esti autentificat
-        </div>
-    </div>
+    <livewire:medic-calendar/>
 @endsection

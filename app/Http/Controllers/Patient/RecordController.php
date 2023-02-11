@@ -28,7 +28,7 @@ class RecordController extends Controller
     public function create($visit_id, Request $request): RedirectResponse
     {
         if(Auth::user()->isPatient()){
-            return back()->withErrors(['email' => 'Nu puteti crea fisa medicala ca pacient!']);
+            return back()->withErrors(['email' => 'Nu puteți crea fișă medicală ca pacient!']);
         }
 
         $validated = $request->validate([
@@ -38,7 +38,7 @@ class RecordController extends Controller
         $visit = Auth::user()->visits()->find($visit_id);
 
         if(is_null($visit)){
-            return back()->withErrors(['email' => 'Nu exista aceasta vizita!']);
+            return back()->withErrors(['email' => 'Nu există această vizită!']);
         }
 
         $visit->record()->create($validated);

@@ -45,6 +45,7 @@ Route::get('/memberships/{id}/edit', [MembershipController::class, 'updateView']
 // Delete
 Route::delete('/memberships/{id}', [MembershipController::class, 'delete'])->name('memberships.delete');
 
+
 // Visits
 // CreateView
 Route::get('/visits/create', [VisitController::class, 'createView'])->name('visits.createView');
@@ -88,6 +89,7 @@ Route::delete('/visits/{visit_id}/record', [RecordController::class, 'delete'])-
 Route::post('/visits/{visit_id}/record/upload', [RecordController::class, 'uploadFile'])->name('visits.record.uploadFile');
 // Print
 Route::get('/visits/{visit_id}/record/print', [RecordController::class, 'print'])->name('visits.record.print');
+
 
 // Medics
 // Get

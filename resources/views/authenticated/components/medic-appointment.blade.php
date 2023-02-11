@@ -8,7 +8,7 @@
         </div>
 
         <div class="info-box p-3">
-            <h6 class="name text-primary mb-1">Dr. {{ $user->name }}</h6>
+            <h6 class="name text-primary mb-1">{{ $user->medicName }}</h6>
 
             <p class="text-muted fs-6 mb-1">{{ $user->settingsMedic->level->name }}</p>
             <p class="fs-6 text-muted mb-1">{{ $user->settingsMedic->specialty->name }}</p>
@@ -17,7 +17,7 @@
 
             <p>
                 <button wire:click="selectMedic({{ $user->id }})" type="button" class="btn btn-primary" onclick="setTimeout(function(){$('#confirmAppointment').modal('show');}, 1000);">
-                    Programeaza-te
+                    Programează-te
                 </button>
             </p>
 

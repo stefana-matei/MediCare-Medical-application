@@ -13,6 +13,8 @@ class Membership extends Model
     const KEY_MEDIC = 'medic_id';
     const KEY_PATIENT = 'patient_id';
 
+    protected $table = 'memberships';
+
     protected $fillable = [
         'id',
         'medic_id',

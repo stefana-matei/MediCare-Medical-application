@@ -39,11 +39,14 @@ class User extends Authenticatable implements HasMedia
     const ROLE_MEDIC = 'medic';
     const ROLE_PATIENT = 'patient';
 
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var string[]
      */
+
     protected $fillable = [
         'firstname',
         'lastname',
@@ -250,7 +253,7 @@ class User extends Authenticatable implements HasMedia
         if (!is_null($avatar)) {
             return asset($avatar->getUrl('thumb'));
         } else {
-            return 'https://ui-avatars.com/api?background=random&name=' . $this->name;
+            return 'https://ui-avatars.com/api?color=ffffff&background=448AFF&name=' . $this->name;
         }
 
     }

@@ -1,12 +1,13 @@
 @extends('authenticated.layouts.app')
 
 @section('header')
-    <h2> Detalii consultatie</h2>
+    <h2> Detalii consultație</h2>
 
     <a href="{{ route('visits.record.print', ['visit_id' => $visit->id]) }}"
        class="btn btn-outline-primary align-self-center"
        role="button">
-        Tipareste raportul medical
+        <span class="btn-icon icofont-printer fs-6 me-2"></span>
+        Tipărire raport medical
     </a>
 @endsection
 
@@ -32,7 +33,7 @@
 
             @if($record->files->isNotEmpty())
                 <div class="mt-3">
-                    <h5 class="mb-2">Fisiere atasate</h5>
+                    <h5 class="mb-2">Fișiere atașate</h5>
                     @foreach($record->files as $file)
                         <a href="{{ $file->getUrl() }}" target="_blank"
                            class="btn btn-outline-primary rounded-pill btn-sm mw-100 p-2 mb-2">
@@ -42,14 +43,11 @@
                     @endforeach
                 </div>
             @endif
-
-
         </div>
+
+
         <div class="col-md-8">
             <div class="card">
-                {{--                <div class="card-header fs-4">--}}
-                {{--                    Poti vizualiza detaliile consultatiei--}}
-                {{--                </div>--}}
                 <div class="card-body">
                     <div class="v-timeline">
                         <div class="line"></div>
@@ -57,16 +55,32 @@
                         <div class="timeline-box">
                             <div class="box-items">
 
+                                {{--Investigații efectuate--}}
+                                <div class="item">
+                                    <div class="icon-block">
+                                        <div class="item-icon icofont-ui-clip-board"></div>
+                                    </div>
+
+                                    <div class="content-block">
+                                        <div class="item-header">
+                                            <h3 class="h5 item-title">Investigații efectuate</h3>
+                                        </div>
+
+                                        <div class="item-desc">
+                                            {{ $record->medical_service ?? '-' }}
+                                        </div>
+                                    </div>
+                                </div>
+
                                 {{--Istoric--}}
                                 <div class="item">
                                     <div class="icon-block">
-                                        <div class="item-icon icofont-doctor-alt bg-info"></div>
+                                        <div class="item-icon icofont-copy bg-info"></div>
                                     </div>
 
                                     <div class="content-block">
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Istoric</h3>
-                                            {{--                                            <div class="item-date"><span>2m ago</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -78,13 +92,12 @@
                                 {{--Simptome--}}
                                 <div class="item">
                                     <div class="icon-block">
-                                        <div class="item-icon icofont-drug bg-danger"></div>
+                                        <div class="item-icon icofont-ui-add bg-danger"></div>
                                     </div>
 
                                     <div class="content-block">
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Simptome</h3>
-                                            {{--                                            <div class="item-date"><span>2h ago</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -96,13 +109,12 @@
                                 {{--Diagnostic--}}
                                 <div class="item">
                                     <div class="icon-block">
-                                        <div class="item-icon icofont-paralysis-disability bg-warning"></div>
+                                        <div class="item-icon icofont-stethoscope-alt bg-warning"></div>
                                     </div>
 
                                     <div class="content-block">
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Diagnostic</h3>
-                                            {{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -114,14 +126,12 @@
                                 {{--Date clinice--}}
                                 <div class="item">
                                     <div class="icon-block">
-                                        <div class="item-icon icofont-stethoscope-alt"></div>
+                                        <div class="item-icon icofont-heart-beat-alt"></div>
                                     </div>
 
                                     <div class="content-block">
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Date clinice</h3>
-
-                                            {{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -133,14 +143,12 @@
                                 {{--Date paraclinice--}}
                                 <div class="item">
                                     <div class="icon-block">
-                                        <div class="item-icon icofont-stethoscope-alt"></div>
+                                        <div class="item-icon icofont-ui-copy"></div>
                                     </div>
 
                                     <div class="content-block">
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Date paraclinice</h3>
-
-                                            {{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -152,14 +160,12 @@
                                 {{--Bilet trimitere--}}
                                 <div class="item">
                                     <div class="icon-block">
-                                        <div class="item-icon icofont-stethoscope-alt"></div>
+                                        <div class="item-icon icofont-notepad bg-info"></div>
                                     </div>
 
                                     <div class="content-block">
                                         <div class="item-header">
                                             <h3 class="h5 item-title">Bilet trimitere</h3>
-
-                                            {{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
                                         </div>
 
                                         <div class="item-desc">
@@ -171,14 +177,12 @@
                                 {{--Recomandari--}}
                                 <div class="item">
                                     <div class="icon-block">
-                                        <div class="item-icon icofont-stethoscope-alt"></div>
+                                        <div class="item-icon icofont-patient-file"></div>
                                     </div>
 
                                     <div class="content-block">
                                         <div class="item-header">
-                                            <h3 class="h5 item-title">Recomandari</h3>
-
-                                            {{--                                            <div class="item-date"><span>Jul 10</span></div>--}}
+                                            <h3 class="h5 item-title">Recomandări</h3>
                                         </div>
 
                                         <div class="item-desc">
@@ -191,7 +195,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 

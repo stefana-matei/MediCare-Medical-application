@@ -1,36 +1,36 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('auth.layouts.app')
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+@section('type', 'page-sign-in')
+
+@section('main')
+    <h2 class="h4 mt-0 mb-1">Resetează parola</h2>
+    <p class="text-muted">Pentru setarea parole noi, te rugăm să introduci adresa de email</p>
+
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')"/>
+
+    <!-- Validation Errors -->
+    <x-auth-validation-errors class="mb-4" :errors="$errors"/>
+
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
+
+        <div class="form-group">
+            <input class="form-control"
+                   type="email"
+                   placeholder="Email"
+                   name="email"
+                   value="{{ old('email') }}"
+                   required
+                   autofocus>
         </div>
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-primary">
+                Resetează
+            </button>
+        </div>
+    </form>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+    <p class="mt-5">Ai deja cont? <a href="{{ route('login') }}">Conectează-te!</a></p>
+@endsection

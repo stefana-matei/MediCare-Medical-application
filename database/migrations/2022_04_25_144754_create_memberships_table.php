@@ -15,11 +15,11 @@ class CreateMembershipsTable extends Migration
     {
         Schema::create('memberships', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("medic_id");
-            $table->foreignId("patient_id");
+            $table->foreignId("medic_id")->constrained('users', 'id');
+            $table->foreignId("patient_id")->constrained('users', 'id');
             $table->timestamps();
 
-            $table->unique(['medic_id', 'patient_id']);
+            $table->unique(['medic_id', 'patient_id'], 'UC_membership');
         });
     }
 

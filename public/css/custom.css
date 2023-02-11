@@ -4,7 +4,7 @@
 }
 
 .text-logo {
-    font-family: 'Forum', cursive;
+    font-family: 'Forum', sans-serif;
     font-size: 33px;
     font-weight: bold;
     color: #1f4197;
@@ -82,7 +82,7 @@
 
 .customizable-placeholder .filter-option-inner-inner:after {
     position: absolute;
-    content: "Lipseste filtru de cautare";
+    content: "Lipsește filtru de căutare";
     left: 0;
     top: 0;
     color: #6c757d;
@@ -93,16 +93,33 @@
 }
 
 #appointments-search.customizable-placeholder .filter-option-inner-inner:after {
-    content: "Cauta dupa medic sau specializare";
+    content: "Căutați după medic sau specialitate";
+}
+
+#appointments-create.customizable-placeholder .filter-option-inner-inner:after {
+    content: "Căutați după specialitatea dorită";
 }
 
 #visits-search.customizable-placeholder .filter-option-inner-inner:after {
-    content: "Cauta dupa medic sau specializare";
+    content: "Căutați după medic sau specialitate";
 }
 
 #medics-search.customizable-placeholder .filter-option-inner-inner:after {
-    content: "Cauta dupa nume sau specializare";
+    content: "Căutați după nume sau specialitate";
 }
+
+#my-medics-search.customizable-placeholder .filter-option-inner-inner:after {
+    content: "Căutați după nume sau specialitate";
+}
+
+#medic-appointments-search.customizable-placeholder .filter-option-inner-inner:after {
+    content: "Căutați după numele pacientului sau CNP-ul acestuia";
+}
+
+#my-patients-search.customizable-placeholder .filter-option-inner-inner:after {
+    content: "Căutați după numele pacientului sau CNP-ul acestuia";
+}
+
 
 .main-menu .main-menu-wrap .menu-ul .menu-item .item-link .link-icon {
     width: 20.8px;
@@ -117,6 +134,12 @@
     text-align: center;
     border: rgba(0, 0, 0, .1) dashed 1px !important;
     padding: 30px;
+}
+
+.all-disabled * {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity:.6;
 }
 
 /* Breadcrumbs */
@@ -269,3 +292,143 @@ body.public-layout .page-box .app-container .content-box {
 .calendar-day {
     width: 14.28%;
 }
+
+.medic-calendar {
+    border: #eee solid 1px;
+}
+
+.medic-calendar .medic-calendar-week {
+    width: 100%;
+    display: flex;
+}
+
+.medic-calendar .medic-calendar-day {
+    width: 14.28%;
+    border: #eee solid 1px;
+    min-height: 150px;
+    position: relative;
+    padding: 30px 1px 1px;
+    font-size: 15px;
+}
+
+.medic-calendar .medic-calendar-day .appointment {
+    margin-bottom: 7px;
+    padding: 0 5px 0 3px;
+}
+
+.medic-calendar .medic-calendar-day .hour {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.medic-calendar .medic-calendar-day img {
+    height: 22px;
+    width: 22px;
+    margin: 0 2px 2px 0;
+}
+
+.medic-calendar .medic-calendar-day .date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-weight: bold;
+    background: #eee;
+    padding: 1px 0 3px;
+    border-radius: 0 0 0 5px;
+    width: 40px;
+    text-align: center;
+}
+
+.medic-calendar .medic-calendar-day.today {
+    background: #eff1f3;
+    border-color: #aec6de;
+}
+
+.medic-calendar .medic-calendar-day .date.today {
+    background: #1976d2;
+    color: white;
+}
+
+/* Cards */
+.dashboard-card.active {
+    border-bottom:#1976d2 solid 2px;
+    box-shadow:0 18px 24px rgba(25, 118, 210, .2), 0 0 5px rgb(0 0 0 / 10%);
+}
+/* END Cards */
+
+/* Appointments */
+
+.card.appointment-card .card-actions {
+    width:100%;
+    display:flex;
+}
+
+.card.appointment-card .card-actions .btn-wrap {
+    display:block;
+    flex-grow: 1;
+}
+
+.card.appointment-card .card-actions .btn.btn-action {
+    width:100%;
+    box-shadow:none;
+    border-color: #eee;
+    border-width: 1px 0 0 0;
+    border-style: solid;
+    border-radius: 0;
+    color:var(--main-color);
+    padding-left:0;
+    padding-right:0;
+    font-size:14px;
+}
+
+.card.appointment-card .card-actions .btn.btn-action i {
+    font-size:20px;
+}
+
+.card.appointment-card .card-actions .btn.btn-action:hover {
+    border-color:transparent;
+    color:white;
+}
+
+.card.appointment-card .card-actions .btn-wrap:first-child .btn.btn-action {
+    border-width: 1px 1px 0 0;
+    border-bottom-left-radius: 6px;
+}
+.card.appointment-card .card-actions .btn-wrap:last-child .btn.btn-action {
+    border-width: 1px 0 0 1px;
+    border-bottom-right-radius: 6px;
+}
+
+/* END Appointments */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

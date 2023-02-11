@@ -15,10 +15,13 @@ class CreateVisitsTable extends Migration
     {
         Schema::create('visits', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('membership_id');
-            $table->foreignId('appointment_id');
+            $table->foreignId('membership_id')->constrained();
+            $table->foreignId('appointment_id')->unique()->constrained();
             $table->timestamp('date');
             $table->timestamps();
+
+            $table->unique(['membership_id', 'appointment_id'], 'UC_visit');
+
         });
     }
 

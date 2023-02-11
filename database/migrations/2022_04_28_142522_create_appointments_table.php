@@ -15,12 +15,13 @@ class CreateAppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('membership_id');
+            $table->foreignId('membership_id')->constrained();
             $table->dateTime('date')->useCurrent();
             //$table->string('location');
-            $table->boolean('honored')->default(false);
             $table->boolean('confirmed')->nullable();
+            $table->boolean('honored')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -1,6 +1,7 @@
 @php($future = $future ?? false)
 @php($width = $width ?? 4)
 
+
 <div class="col-12 col-md-{{ $width }}">
     <div class="card text-center mb-5 bg-light">
 
@@ -12,7 +13,6 @@
                     data-bs-target="#appointment-delete-modal-{{ $appointment->id }}">
                 <i class="icofont-close-line"></i>
             </button>
-
 
             <div class="modal fade"
                  id="appointment-delete-modal-{{ $appointment->id }}"
@@ -26,7 +26,7 @@
                         </button>
 
                         <div class="modal-header justify-content-center py-5">
-                            <h5>Confirmati anularea programarii?</h5>
+                            <h5>Confirmați anularea programării?</h5>
                         </div>
 
                         <div class="modal-footer">
@@ -40,18 +40,15 @@
 
                                     <button type="submit" class="btn btn-danger"
                                             onclick="$(this).prop('disabled', true); $(this).parent().submit()">
-                                        Da, anuleaza
+                                        Da, anulează
                                     </button>
-
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         @endif
-
 
         <div class="card-header pt-4 fs-4">
             <strong>{{ $appointment->date->format('d M Y') }}</strong><br>
@@ -79,8 +76,27 @@
                         </p>
                     @else
                         <p style="color: {{ $appointment->honored ? 'green' : 'red' }}">
-                            <strong>{{ $appointment->honored ? 'Onorata' : 'Neonorata' }}</strong>
+                            <strong>{{ $appointment->honored ? 'Onorată' : 'Neonorată' }}</strong>
                         </p>
+
+                        @if($appointment->honored)
+                            @if($appointment->visit?->record)
+                                <div class="d-grid gap-2 col-6">
+                                    <a href="{{ route('appointments.get', ['id' => $appointment->id]) }}"
+                                       type="button" class="btn btn-primary btn-mini">
+                                        Vezi raportul medical
+                                    </a>
+                                </div>
+                            @else
+                                <div class="d-grid gap-2 col-6">
+                                    <a href="{{ route('appointments.get', ['id' => $appointment->id]) }}"
+                                       type="button" class="btn btn-secondary btn-mini disabled">
+                                        Vezi raportul medical
+                                    </a>
+                                </div>
+                            @endif
+                        @endif
+
                     @endif
                 </div>
             </div>

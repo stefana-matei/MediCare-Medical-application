@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
-// App\Http\Controllers\Patient\AppointmentController
+
 class AppointmentController extends Controller
 {
     public function __construct()
@@ -35,7 +35,7 @@ class AppointmentController extends Controller
         $date = Carbon::createFromFormat('Y-m-d', $validated['date'])->endOfDay();
 
         if(!$date->isFuture()){
-            return back()->withFail('Programarea nu poate fi creata cu data din trecut!');
+            return back()->withFail('Programarea nu poate fi creată cu dată din trecut!');
         }
 
         $user = Auth::user();
@@ -50,7 +50,7 @@ class AppointmentController extends Controller
             'doctor' => $membership->medic->name
         ]);
 
-        return redirect()->route('appointments.list')->withSuccess('Programarea a fost creata cu succes!');
+        return redirect()->route('appointments.list')->withSuccess('Programarea a fost creată cu succes!');
     }
 
 
@@ -101,7 +101,7 @@ class AppointmentController extends Controller
 
         $appointments = Auth::user()
             ->appointments()
-            ->with('membership.medic.settingsMedic.specialty', 'membership.medic.media');
+            ->with('membership.medic.settingsMedic.specialty', 'membership.medic.media', 'visit.record');
 
         if ($request->medic) {
             $appointments->where('membership_id', $request->medic);
@@ -160,7 +160,7 @@ class AppointmentController extends Controller
     {
         Auth::user()->appointments()->find($id)->delete();
 
-        return redirect()->back()->withSuccess('Programarea a fost anulata!');
+        return redirect()->back()->withSuccess('Programarea a fost anulată cu succes!');
     }
 
 }

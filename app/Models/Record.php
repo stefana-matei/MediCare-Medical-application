@@ -11,7 +11,10 @@ class Record extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
+    protected $table = 'records';
+
     protected $fillable = [
+        'medical_service',
         'medical_history',
         'symptoms',
         'diagnosis',

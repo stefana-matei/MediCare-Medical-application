@@ -23,13 +23,19 @@ class CalendarSelect extends Calendar
             $this->changeMonthDifference();
         }
 
-        $this->emit('selectedDateEvent', $this->presetDate);
     }
 
     private function changeMonthDifference()
     {
         if (!$this->monthChanged) {
-            $this->monthDifference = (int)today()->startOfMonth()->floatDiffInMonths($this->presetDate->copy()->startOfMonth());
+            $startOfThisMonth = today()->startOfMonth();
+            $startOfPresetMonth = $this->presetDate->copy()->startOfMonth();
+
+            $this->monthDifference = $startOfThisMonth->floatDiffInMonths($startOfPresetMonth);
+
+            if($startOfPresetMonth->isBefore($startOfThisMonth)) {
+                $this->monthDifference = $this->monthDifference * (-1);
+            }
         }
     }
 

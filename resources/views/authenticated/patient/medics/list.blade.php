@@ -1,7 +1,7 @@
 @extends('authenticated.layouts.app')
 
 @section('header')
-    <h2>Lista medici</h2>
+    <h2>Listă medici</h2>
 @endsection
 
 @section('main')
@@ -12,7 +12,7 @@
                         onchange="$('#medics-search').submit()">
                     <option></option>
 
-                    @foreach($medics as $medic)
+                    @foreach($allMedics as $medic)
                         <option value="{{ $medic->id }}"
                                 {{ $medic->id == request('medic') ? 'selected' : '' }}
                                 data-subtext="{{ $medic->settingsMedic->specialty->name }}">{{ $medic->name }}</option>
@@ -25,7 +25,7 @@
         @if(request()->medic)
             <a class="btn btn-light btn-reset ms-3 shadow-none ps-3" href="{{ route('medics.list') }}">
                 <span class="btn-icon icofont-refresh fs-6 me-2"></span>
-                Reseteaza
+                Resetează
             </a>
         @endif
     </div>

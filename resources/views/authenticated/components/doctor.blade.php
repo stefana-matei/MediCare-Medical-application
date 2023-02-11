@@ -5,7 +5,7 @@
         </div>
 
         <div class="info-box">
-            <h4 class="name">Dr. {{ $user }}</h4>
+            <h4 class="name">{{ $user->medicName }}</h4>
 
             <p class="role">Gynecologist</p>
 
