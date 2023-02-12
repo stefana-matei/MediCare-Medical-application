@@ -36,40 +36,6 @@
     }
   }
 
-  function autocomplete() {
-    if ($('.autocomplete-control').length) {
-      $.typeahead({
-        input: '.autocomplete-control',
-        order: 'asc',
-        cancelButton: false,
-        source: {
-          groupName: {
-            // Ajax Request
-            ajax: {
-              url: '../assets/data/autocomplete.json'
-            }
-          }
-        }
-      });
-    }
-  }
-
-  function topbarAtocomplete() {
-    if ($('.topbar-search').length) {
-      $.typeahead({
-        input: '.topbar-search',
-        order: 'asc',
-        source: {
-          groupName: {
-            // Ajax Request
-            ajax: {
-              url: '../assets/data/search-menu.json'
-            }
-          }
-        }
-      });
-    }
-  }
 
   function selectpicker() {
     var select = $('.selectpicker');
