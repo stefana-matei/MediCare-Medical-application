@@ -12,6 +12,7 @@
             </div>
         </div>
 
+        {{--Sectiunea CONT PACIENT--}}
         <div class="main-menu">
             <nav class="main-menu-wrap">
                 <ul class="menu-ul">
@@ -46,10 +47,11 @@
                             <span class="link-text">Medicii mei</span>
                         </a>
                     </li>
-
                 </ul>
             </nav>
         </div>
+
+        {{--Sectiunea SANATATE--}}
         <div class="main-menu">
             <nav class="main-menu-wrap">
                 <ul class="menu-ul">
@@ -70,7 +72,6 @@
         <div class="vertical-overlay">
             <span class="large-icon icofont-doctor"></span>
         </div>
-
     </div>
 </div>
 <!-- end Vertical navbar -->
