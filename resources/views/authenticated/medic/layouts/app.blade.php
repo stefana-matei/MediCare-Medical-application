@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     @yield('head')
-
 </head>
 
 <body class="vertical-layout boxed loaded">
