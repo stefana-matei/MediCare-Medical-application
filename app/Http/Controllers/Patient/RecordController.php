@@ -10,12 +10,14 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Mpdf\Mpdf;
+use App\Http\Controllers\Controller;
 
 class RecordController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:patient')->except('print');
     }
 
     /**

@@ -1,7 +1,7 @@
 <div>
     <div class="modal-body pt-5">
         <div class="row">
-            @include('authenticated.components.medic', ['width' => 6, 'user' => $medic, 'showProfile' => false])
+            @include('authenticated.patient.components.medic', ['width' => 6, 'user' => $medic, 'showProfile' => false])
 
             <div class="col-md-6">
                 <label>Selectați data dorită</label>

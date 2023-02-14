@@ -21,7 +21,7 @@
                 @else
                     <div class="row">
                         @forelse($medics as $medic)
-                            @include('authenticated.components.medic-appointment', ['user' => $medic])
+                            @include('authenticated.patient.components.medic-appointment', ['user' => $medic])
                         @empty
                             <p>Nu sunt medici cu această specialitate.</p>
                         @endforelse
@@ -37,13 +37,14 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="confirmAppointment" tabindex="-1" aria-labelledby="confirmAppointment" aria-hidden="true">
+    <div class="modal fade" id="confirmAppointment" tabindex="-1" aria-labelledby="confirmAppointment"
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-body pt-5">
                     @if($selectedMedic)
-                        @include('authenticated.components.medic-confirm-appointment', ['user' => $selectedMedic, 'date' => $selectedDate])
+                        @include('authenticated.patient.components.medic-confirm-appointment', ['user' => $selectedMedic, 'date' => $selectedDate])
                     @endif
                 </div>
                 <div class="modal-footer">

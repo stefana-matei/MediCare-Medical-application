@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Patient;
 
 use App\Models\Membership;
-use App\Models\User;
 use App\Models\Visit;
 use App\Services\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
+use App\Http\Controllers\Controller;
 
 
 class VisitController extends Controller
@@ -17,6 +17,7 @@ class VisitController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:patient');
     }
 
 

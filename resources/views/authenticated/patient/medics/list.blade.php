@@ -1,4 +1,4 @@
-@extends('authenticated.layouts.app')
+@extends('authenticated.patient.layouts.app')
 
 @section('header')
     <h2>Listă medici</h2>
@@ -6,7 +6,8 @@
 
 @section('main')
     <div class="d-flex align-items-center">
-        <form id="medics-search" class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} search-height w-50">
+        <form id="medics-search"
+              class="{{ request()->has('medic') ? '' : 'customizable-placeholder' }} search-height w-50">
             <div class="form-group mb-0">
                 <select name="medic" class="selectpicker" data-live-search="true"
                         onchange="$('#medics-search').submit()">
@@ -33,7 +34,7 @@
     <div class="page-content mt-5">
         <div class="row">
             @foreach($medics as $medic)
-                @include('authenticated.components.medic', ['user' => $medic])
+                @include('authenticated.patient.components.medic', ['user' => $medic])
             @endforeach
         </div>
     </div>

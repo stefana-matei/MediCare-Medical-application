@@ -6,12 +6,14 @@ use App\Models\User;
 use App\Services\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use App\Http\Controllers\Controller;
 
 class MedicController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:patient');
     }
 
     public function get($id)

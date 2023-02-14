@@ -67,6 +67,7 @@ class CreateAppointment extends UpdateAppointment
             'honored' => $this->honored
         ]);
 
+        session()->flash('success', 'Programarea a fost creată!');
         $this->redirectRoute('medic.appointments.list');
     }
 }

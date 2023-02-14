@@ -6,11 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Level;
 use App\Models\Specialty;
 use App\Services\Auth;
-use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class AccountController extends Controller
@@ -18,6 +16,7 @@ class AccountController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:medic');
     }
 
     public function update(Request $request)

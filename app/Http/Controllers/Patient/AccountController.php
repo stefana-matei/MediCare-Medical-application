@@ -9,12 +9,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
 
 class AccountController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:patient')->except(['updateAvatar', 'updatePassword']);
     }
 
     public function update(Request $request)
@@ -86,7 +88,7 @@ class AccountController extends Controller
      */
     public function updateView(): View
     {
-        return view('authenticated.all.account.update', [
+        return view('authenticated.patient.account.update', [
             'user' => Auth::user()->load('settingsPatient')
         ]);
     }
@@ -96,8 +98,9 @@ class AccountController extends Controller
     {
         $request->validate([
             'avatar' => 'required|image|file|max:8192'
-        ],[
-            'avatar.image' => 'Nu sunt permise încărcarea altor tipuri de fișiere. Reîncercați cu o imagine.'
+        ], [
+            'avatar.image' => 'Nu sunt permise încărcarea altor tipuri de fișiere. Reîncercați cu o imagine.',
+            'avatar.max' => 'Fișierul încărcat este prea mare! Dimensiunea maximă este de 8MB.'
         ]);
 
         $oldAvatar = Auth::user()->getMedia('avatars')->first();

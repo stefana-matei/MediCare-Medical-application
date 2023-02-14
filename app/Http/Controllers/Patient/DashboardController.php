@@ -4,9 +4,16 @@ namespace App\Http\Controllers\Patient;
 
 use App\Services\Auth;
 use Illuminate\View\View;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:patient');
+    }
+
 
     /**
      * @return View

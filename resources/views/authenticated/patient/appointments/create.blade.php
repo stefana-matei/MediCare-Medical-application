@@ -1,4 +1,4 @@
-@extends('authenticated.layouts.app')
+@extends('authenticated.patient.layouts.app')
 
 @section('head')
     @livewireStyles

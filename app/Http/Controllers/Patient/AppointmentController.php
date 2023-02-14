@@ -9,12 +9,14 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
+use App\Http\Controllers\Controller;
 
 class AppointmentController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:patient');
     }
 
 

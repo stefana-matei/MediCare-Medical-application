@@ -49,8 +49,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
 <!-- end Horizontal navbar -->

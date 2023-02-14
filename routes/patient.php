@@ -6,7 +6,6 @@ use App\Http\Controllers\Patient\DashboardController;
 use App\Http\Controllers\Patient\MedicController;
 use App\Http\Controllers\Patient\MembershipController;
 use App\Http\Controllers\Patient\RecordController;
-use App\Http\Controllers\Patient\ServiceController;
 use App\Http\Controllers\Patient\VisitController;
 use Illuminate\Support\Facades\Route;
 
@@ -85,8 +84,6 @@ Route::get('/visits/{visit_id}/record/create', [RecordController::class, 'create
 Route::post('/visits/{visit_id}/record', [RecordController::class, 'create'])->name('visits.record.create');
 // Delete
 Route::delete('/visits/{visit_id}/record', [RecordController::class, 'delete'])->name('visits.record.delete');
-// Upload
-Route::post('/visits/{visit_id}/record/upload', [RecordController::class, 'uploadFile'])->name('visits.record.uploadFile');
 // Print
 Route::get('/visits/{visit_id}/record/print', [RecordController::class, 'print'])->name('visits.record.print');
 

@@ -1,4 +1,4 @@
-@extends('authenticated.layouts.print')
+@extends('authenticated.patient.layouts.print')
 
 @section('head')
     <style>

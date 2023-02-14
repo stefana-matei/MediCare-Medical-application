@@ -1,4 +1,4 @@
-@extends('authenticated.layouts.app')
+@extends('authenticated.patient.layouts.app')
 
 @section('head')
     @livewireStyles
@@ -8,23 +8,20 @@
     @livewireScripts
 @endsection
 
-{{--@section('header')--}}
-{{--    <h2 class="page-title">Pagina principala</h2>--}}
-{{--@endsection--}}
-
 @section('main')
     <div class="row">
         <div class="col-8 pe-4">
             <h3>
                 Programări viitoare
 
-                <a href="{{ route('appointments.list') }}" type="button" class="btn btn-outline-primary btn-mini ms-3 float-end">
+                <a href="{{ route('appointments.list') }}" type="button"
+                   class="btn btn-outline-primary btn-mini ms-3 float-end">
                     Toate programările
                 </a>
             </h3>
             <div class="row">
                 @forelse($confirmedAppointments as $confirmedAppointment)
-                    @include('authenticated.components.appointment', ['future' => true, 'appointment' => $confirmedAppointment])
+                    @include('authenticated.patient.components.appointment', ['future' => true, 'appointment' => $confirmedAppointment])
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
@@ -44,7 +41,7 @@
             </h3>
             <div class="row">
                 @forelse($visits as $visit)
-                    @include('authenticated.components.visit', ['visit' => $visit, 'width' => 6])
+                    @include('authenticated.patient.components.visit', ['visit' => $visit, 'width' => 6])
                 @empty
                     <div class="col">
                         <div class="alert alert-secondary with-before-icon" role="alert">
@@ -59,7 +56,7 @@
 
         <div class="col-4 ps-4">
             <h3>Solicită o programare</h3>
-            <livewire:calendar />
+            <livewire:calendar/>
         </div>
 
 
