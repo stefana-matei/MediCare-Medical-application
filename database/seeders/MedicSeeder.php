@@ -28,11 +28,13 @@ class MedicSeeder extends Seeder
         /** @var User $medic5 */
         /** @var User $medic6 */
 
+        // Pentru testarea aplicatiei se pot folosi credentialele de autentificare
+        // ale medicului $medic
         $medic = User::factory()->create([
             'role' => 'medic',
             'firstname' => 'Andrei',
             'lastname' => 'David',
-            'email' => 'david.andrei@medicare.com',
+            'email' => 'medic_demo@medicare.com',
             'password' => Hash::make('secret123')
         ]);
 
