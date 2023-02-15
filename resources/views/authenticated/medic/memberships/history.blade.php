@@ -198,7 +198,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             @else
                                 <p class="alert alert-secondary text-center fw-bold">
                                     <span class="icon sli-list text-muted fs-48 mb-2"></span><br>

@@ -6,7 +6,7 @@ use Carbon\Carbon;
 
 class Calendar
 {
-    const START_HOUR = 9;
+    const START_HOUR = 8;
     const END_HOUR = 17;
 
     /**

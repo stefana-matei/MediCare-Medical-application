@@ -127,8 +127,6 @@ class PatientSeeder extends Seeder
         /** @var Appointment $appointment7 */
         /** @var Appointment $appointment8 */
         /** @var Appointment $appointment9 */
-        /** @var Appointment $appointment10 */
-
 
         // Programari in asteptare
         // Important: pentru a fi in astepare => 'confirmed' = null (implicit)
@@ -165,13 +163,13 @@ class PatientSeeder extends Seeder
             'honored' => true
         ]);
 
-        $membership->appointments()->create([
+        $appointment5 = $membership->appointments()->create([
             'date' => now()->subMonths(3)->addDays(3)->hours(14)->minutes(0),
             'confirmed' => true,
             'honored' => true
         ]);
 
-        $membership3->appointments()->create([
+        $appointment8 = $membership3->appointments()->create([
             'date' => now()->subMonths(4)->addDays(2)->hours(10)->minutes(0),
             'confirmed' => true,
             'honored' => true
@@ -186,24 +184,6 @@ class PatientSeeder extends Seeder
         // $patient2
         $appointment6 = $membership4->appointments()->create([
             'date' => now()->subMonth()->hours(11)->minutes(30),
-            'confirmed' => true,
-            'honored' => true
-        ]);
-
-        $membership4->appointments()->create([
-            'date' => now()->subWeeks(4)->addDays(2)->hours(13)->minutes(30),
-            'confirmed' => true,
-            'honored' => true
-        ]);
-
-        $membership4->appointments()->create([
-            'date' => now()->subWeeks(6)->addDays(3)->hours(12)->minutes(0),
-            'confirmed' => true,
-            'honored' => true
-        ]);
-
-        $membership4->appointments()->create([
-            'date' => now()->subWeeks(8)->hours(16)->minutes(30),
             'confirmed' => true,
             'honored' => true
         ]);
@@ -253,24 +233,28 @@ class PatientSeeder extends Seeder
         /** @var Visit $visit4 */
         /** @var Visit $visit5 */
         /** @var Visit $visit6 */
-        /** @var Visit $visit7 */
 
         $visit = $membership->visits()->create([
             'date' => $appointment->date,
             'appointment_id' => $appointment->id
         ]);
 
-//        $visit2 = $membership->visits()->create([
-//            'date' => $appointment2->date,
-//            'appointment_id' => $appointment2->id
-//        ]);
+        $visit2 = $membership->visits()->create([
+            'date' => $appointment5->date,
+            'appointment_id' => $appointment5->id
+        ]);
 
-        $visit3 = $membership2->visits()->create([
+        $visit3 = $membership3->visits()->create([
+            'date' => $appointment8->date,
+            'appointment_id' => $appointment8->id
+        ]);
+
+        $visit4 = $membership2->visits()->create([
             'date' => $appointment3->date,
             'appointment_id' => $appointment3->id
         ]);
 
-        $visit4 = $membership4->visits()->create([
+        $visit5 = $membership4->visits()->create([
             'date' => $appointment6->date,
             'appointment_id' => $appointment6->id
         ]);
@@ -281,11 +265,9 @@ class PatientSeeder extends Seeder
         ]);
 
 
-
         // Records
         /** @var Record $record */
         /** @var Record $record2 */
-        /** @var Record $record3 */
 
         $record = $visit->record()->create([
             'medical_service' => $faker->text(2000),
@@ -299,7 +281,7 @@ class PatientSeeder extends Seeder
             'date_processed' => now()->subDay(7)
         ]);
 
-        $record2 = $visit3->record()->create([
+        $record2 = $visit4->record()->create([
             'medical_service' => $faker->text(),
             'medical_history' => $faker->text(),
             'symptoms' => $faker->text(),
@@ -310,15 +292,6 @@ class PatientSeeder extends Seeder
             'date_processed' => now()->subDay(7)
         ]);
 
-//        $record3 = $visit4->record()->create([
-//            'medical_history' => $faker->text(),
-//            'symptoms' => $faker->text(),
-//            'diagnosis' => $faker->text(),
-//            'para_clinical_data' => $faker->text(),
-//            'referral' => true,
-//            'indications' => $faker->text(),
-//            'date_processed' => now()->subDay(7)
-//        ]);
 
         // SettingsPatient
         /** @var SettingPatient $settingPatient */
