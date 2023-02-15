@@ -42,7 +42,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        // TODO Remove when frontend can handle roles
         $request->mergeIfMissing(['role' => User::ROLE_PATIENT]);
 
         $request->validate([

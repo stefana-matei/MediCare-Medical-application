@@ -75,7 +75,6 @@ class AppointmentController extends Controller
 
 
     /**
-     * TODO Not needed anymore
      * Displays an appointment
      *
      * @param $id

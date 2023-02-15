@@ -49,13 +49,13 @@ class MembershipController extends Controller
         $user = Auth::user();
 
         if ($email == $user->email) {
-            return back()->withErrors(['email' => 'Nu te poti abona la tine insuti!']);
+            return back()->withErrors(['email' => 'Nu te poți abona la tine însuți!']);
         }
 
         $member = User::where('email', $email)->first();
 
         if (is_null($member)) {
-            return back()->withErrors(['email' => 'Nu exista email-ul in BD!']); // TODO rescrie
+            return back()->withErrors(['email' => 'Nu a fost găsit email-ul căutat']);
         }
 
         $column = $user->getOtherMemberKey();
