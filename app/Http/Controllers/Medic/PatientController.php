@@ -22,7 +22,7 @@ class PatientController extends Controller
 
         return view('authenticated.medic.memberships.history', [
             'patient' => $membership->patient,
-            'visits' => $membership->visits
+            'visits' => $membership->visits->sortByDesc('date')
         ]);
     }
 }
