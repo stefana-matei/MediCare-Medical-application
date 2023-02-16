@@ -197,6 +197,7 @@ ECO: Ambii rinichi dimensiuni si aspect normal ecografic, fara calculi, fara sta
 
         // Appointments Pacient 1
         $appointment1_1_1 = $this->createAppointment($membership_1_1, '24/02/2023 14:00', true, false);
+        $appointment1_1_1 = $this->createAppointment($membership_1_1, '24/02/2023 23:59', false, false);
 
         $appointment2_1_1 = $this->createAppointment($membership_1_1, '05/01/2023 10:00', true, true); // visit record TODO Use to showcase
         $appointment3_1_1 = $this->createAppointment($membership_1_1, '06/01/2023 11:00', true, true); // visit
@@ -417,7 +418,7 @@ ECO: Ambii rinichi dimensiuni si aspect normal ecografic, fara calculi, fara sta
             'country' => 'Romania',
             'county' => 'Timis',
             'city' => 'Timisoara',
-            'address' => $this->faker->address(),
+            'address' => 'B-dul. Brăduțului nr. 6, bl. 9, ap. 47',
             'phone' => $this->faker->phoneNumber()
         ]);
 
