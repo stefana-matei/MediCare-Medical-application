@@ -41,8 +41,8 @@ class MedicSeeder extends Seeder
         $medic2 = User::factory()->create([
             'role' => 'medic',
             'firstname' => 'Andreea',
-            'lastname' => 'Alexandru',
-            'email' => 'andreea.alexandru@medicare.com',
+            'lastname' => 'Alexandrescu',
+            'email' => 'andreea.alexandrescu@medicare.com',
             'password' => Hash::make('secret123')
         ]);
 
@@ -56,9 +56,9 @@ class MedicSeeder extends Seeder
 
         $medic4 = User::factory()->create([
             'role' => 'medic',
-            'firstname' => 'Adina Ioana',
+            'firstname' => 'Adina-Ioana',
             'lastname' => 'Popescu',
-            'email' => 'adina.i.popescu@medicare.com',
+            'email' => 'adina.ioana.popescu@medicare.com',
             'password' => Hash::make('secret123')
         ]);
 
@@ -74,8 +74,8 @@ class MedicSeeder extends Seeder
         $medic6 = User::factory()->create([
             'role' => 'medic',
             'firstname' => 'Marius',
-            'lastname' => 'Balea',
-            'email' => 'marius.balea@medicare.com',
+            'lastname' => 'Ionescu',
+            'email' => 'marius.ionescu@medicare.com',
             'password' => Hash::make('secret123')
         ]);
 
