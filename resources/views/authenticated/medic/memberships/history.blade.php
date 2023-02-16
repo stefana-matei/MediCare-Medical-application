@@ -155,7 +155,7 @@
                                                             </div>
 
                                                             <div class="item-desc">
-                                                                {{ $visit->record->para_clinical_data ?? '-' }}
+                                                                {!! nl2br(e($visit->record->para_clinical_data ?? '-')) !!}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -189,7 +189,7 @@
                                                             </div>
 
                                                             <div class="item-desc">
-                                                                {{ $visit->record->indications ?? '-' }}
+                                                                {!! nl2br(e($visit->record->indications ?? '-')) !!}
                                                             </div>
                                                         </div>
                                                     </div>

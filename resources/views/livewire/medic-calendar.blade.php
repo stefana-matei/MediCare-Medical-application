@@ -8,7 +8,10 @@
 
     <h4 class="my-2 d-flex w-100 justify-content-between align-items-center">
         <div class="btn btn-square btn-calendar shadow-none" wire:click="subMonth"><i class="icon sli-arrow-left"></i></div>
-        <span>{{ $referenceDate->format('F Y') }}</span>
+        <span>
+            {{ \App\Services\Calendar::getMonthTranslated($referenceDate->format('n')) }}
+            {{ $referenceDate->format('Y') }}</span>
+
         <div class="btn btn-square btn-calendar shadow-none" wire:click="addMonth"><i class="icon sli-arrow-right"></i></div>
     </h4>
 
